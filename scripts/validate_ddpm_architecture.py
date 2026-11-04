@@ -37,8 +37,8 @@ def model_for(candidate, pack, seed):
         def forward(self, x, noisy, t):
             return self.head(torch.cat([self.context(x), noisy, self.time(t)], dim=1))
     model = Predictor()
-    opt = torch.optim.AdamW(model.parameters(), lr=core.PROTOCOL['learning_rate'],
-                           weight_decay=core.PROTOCOL['weight_decay'])
+    opt = torch.optim.AdamW(model.parameters(), lr=candidate.get('learning_rate', core.PROTOCOL['learning_rate']),
+                           weight_decay=candidate.get('weight_decay', core.PROTOCOL['weight_decay']))
     return model, opt
 
 
@@ -66,7 +66,9 @@ def fit_trial(candidate, seed, pack, Y, training, validation, baseline, folder):
             pd.DataFrame(history).to_csv(folder / 'validation_history.csv', index=False)
             print(f'{candidate["name"]} seed={seed} epoch={epoch}: {best}', flush=True)
     result = dict(candidate=candidate['name'], context=candidate['context'], hidden=candidate['hidden'],
-                  model_seed=seed, parameter_count=sum(p.numel() for p in model.parameters()), **best)
+                  model_seed=seed, parameter_count=sum(p.numel() for p in model.parameters()),
+                  learning_rate=candidate.get('learning_rate', core.PROTOCOL['learning_rate']),
+                  weight_decay=candidate.get('weight_decay', core.PROTOCOL['weight_decay']), **best)
     core.save_json(folder / 'selection.json', result)
     return result
 
