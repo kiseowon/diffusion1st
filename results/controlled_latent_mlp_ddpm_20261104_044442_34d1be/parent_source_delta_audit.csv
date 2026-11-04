@@ -1,0 +1,1256 @@
+condition_id,control_condition_id,compound
+3,0,LPS
+4,1,LPS
+5,2,LPS
+6,0,LPS
+7,1,LPS
+8,2,LPS
+12,9,TNFÉø
+13,10,TNFÉø
+14,11,TNFÉø
+15,9,TNFÉø
+16,10,TNFÉø
+17,11,TNFÉø
+18,9,TNFÉø
+19,10,TNFÉø
+20,11,TNFÉø
+24,21,WY-14643
+25,22,WY-14643
+26,23,WY-14643
+27,21,WY-14643
+28,22,WY-14643
+29,23,WY-14643
+30,21,WY-14643
+31,22,WY-14643
+32,23,WY-14643
+36,33,acarbose
+37,34,acarbose
+38,35,acarbose
+39,33,acarbose
+40,34,acarbose
+41,35,acarbose
+42,33,acarbose
+43,34,acarbose
+44,35,acarbose
+48,45,acetamidofluorene
+49,46,acetamidofluorene
+50,47,acetamidofluorene
+51,45,acetamidofluorene
+52,46,acetamidofluorene
+53,47,acetamidofluorene
+54,45,acetamidofluorene
+55,46,acetamidofluorene
+56,47,acetamidofluorene
+60,57,acetaminophen
+61,58,acetaminophen
+62,59,acetaminophen
+63,57,acetaminophen
+64,58,acetaminophen
+65,59,acetaminophen
+66,57,acetaminophen
+67,58,acetaminophen
+68,59,acetaminophen
+72,69,acetazolamide
+73,70,acetazolamide
+74,71,acetazolamide
+75,69,acetazolamide
+76,70,acetazolamide
+77,71,acetazolamide
+78,69,acetazolamide
+79,70,acetazolamide
+80,71,acetazolamide
+84,81,adapin
+85,82,adapin
+86,83,adapin
+87,81,adapin
+88,82,adapin
+89,83,adapin
+90,81,adapin
+91,82,adapin
+92,83,adapin
+96,93,ajmaline
+97,94,ajmaline
+98,95,ajmaline
+99,93,ajmaline
+100,94,ajmaline
+101,95,ajmaline
+102,93,ajmaline
+103,94,ajmaline
+104,95,ajmaline
+108,105,allopurinol
+109,106,allopurinol
+110,107,allopurinol
+111,105,allopurinol
+112,106,allopurinol
+113,107,allopurinol
+114,105,allopurinol
+115,106,allopurinol
+116,107,allopurinol
+120,117,allyl alcohol
+121,118,allyl alcohol
+122,119,allyl alcohol
+123,117,allyl alcohol
+124,118,allyl alcohol
+125,119,allyl alcohol
+126,117,allyl alcohol
+127,118,allyl alcohol
+128,119,allyl alcohol
+132,129,amiodarone
+133,130,amiodarone
+134,131,amiodarone
+135,129,amiodarone
+136,130,amiodarone
+137,131,amiodarone
+138,129,amiodarone
+139,130,amiodarone
+140,131,amiodarone
+144,141,amitriptyline
+145,142,amitriptyline
+146,143,amitriptyline
+147,141,amitriptyline
+148,142,amitriptyline
+149,143,amitriptyline
+150,141,amitriptyline
+151,142,amitriptyline
+152,143,amitriptyline
+156,153,aspirin
+157,154,aspirin
+158,155,aspirin
+159,153,aspirin
+160,154,aspirin
+161,155,aspirin
+162,153,aspirin
+163,154,aspirin
+164,155,aspirin
+168,165,azathioprine
+169,166,azathioprine
+170,167,azathioprine
+171,165,azathioprine
+172,166,azathioprine
+173,167,azathioprine
+174,165,azathioprine
+175,166,azathioprine
+176,167,azathioprine
+180,177,bendazac
+181,178,bendazac
+182,179,bendazac
+183,177,bendazac
+184,178,bendazac
+185,179,bendazac
+186,177,bendazac
+187,178,bendazac
+188,179,bendazac
+192,189,benzbromarone
+193,190,benzbromarone
+194,191,benzbromarone
+195,189,benzbromarone
+196,190,benzbromarone
+197,191,benzbromarone
+198,189,benzbromarone
+199,190,benzbromarone
+200,191,benzbromarone
+204,201,benziodarone
+205,202,benziodarone
+206,203,benziodarone
+207,201,benziodarone
+208,202,benziodarone
+209,203,benziodarone
+210,201,benziodarone
+211,202,benziodarone
+212,203,benziodarone
+216,213,bromobenzene
+217,214,bromobenzene
+218,215,bromobenzene
+219,213,bromobenzene
+220,214,bromobenzene
+221,215,bromobenzene
+222,213,bromobenzene
+223,214,bromobenzene
+224,215,bromobenzene
+228,225,bromoethylamine
+229,226,bromoethylamine
+230,227,bromoethylamine
+231,225,bromoethylamine
+232,226,bromoethylamine
+233,227,bromoethylamine
+234,225,bromoethylamine
+235,226,bromoethylamine
+236,227,bromoethylamine
+240,237,bucetin
+241,238,bucetin
+242,239,bucetin
+243,237,bucetin
+244,238,bucetin
+245,239,bucetin
+246,237,bucetin
+247,238,bucetin
+248,239,bucetin
+252,249,buthionine sulfoximine
+253,250,buthionine sulfoximine
+254,251,buthionine sulfoximine
+255,249,buthionine sulfoximine
+256,250,buthionine sulfoximine
+257,251,buthionine sulfoximine
+258,249,buthionine sulfoximine
+259,250,buthionine sulfoximine
+260,251,buthionine sulfoximine
+264,261,caffeine
+265,262,caffeine
+266,263,caffeine
+267,261,caffeine
+268,262,caffeine
+269,263,caffeine
+270,261,caffeine
+271,262,caffeine
+272,263,caffeine
+276,273,captopril
+277,274,captopril
+278,275,captopril
+279,273,captopril
+280,274,captopril
+281,275,captopril
+282,273,captopril
+283,274,captopril
+284,275,captopril
+288,285,carbamazepine
+289,286,carbamazepine
+290,287,carbamazepine
+291,285,carbamazepine
+292,286,carbamazepine
+293,287,carbamazepine
+294,285,carbamazepine
+295,286,carbamazepine
+296,287,carbamazepine
+300,297,carbon tetrachloride
+301,298,carbon tetrachloride
+302,299,carbon tetrachloride
+303,297,carbon tetrachloride
+304,298,carbon tetrachloride
+305,299,carbon tetrachloride
+306,298,carbon tetrachloride
+310,307,carboplatin
+311,308,carboplatin
+312,309,carboplatin
+313,307,carboplatin
+314,308,carboplatin
+315,309,carboplatin
+316,307,carboplatin
+317,308,carboplatin
+318,309,carboplatin
+322,319,cephalothin
+323,320,cephalothin
+324,321,cephalothin
+325,319,cephalothin
+326,320,cephalothin
+327,321,cephalothin
+328,319,cephalothin
+329,320,cephalothin
+330,321,cephalothin
+334,331,chloramphenicol
+335,332,chloramphenicol
+336,333,chloramphenicol
+337,331,chloramphenicol
+338,332,chloramphenicol
+339,333,chloramphenicol
+340,331,chloramphenicol
+341,332,chloramphenicol
+342,333,chloramphenicol
+346,343,chlormadinone
+347,344,chlormadinone
+348,345,chlormadinone
+349,343,chlormadinone
+350,344,chlormadinone
+351,345,chlormadinone
+352,343,chlormadinone
+353,344,chlormadinone
+354,345,chlormadinone
+358,355,chlormezanone
+359,356,chlormezanone
+360,357,chlormezanone
+361,355,chlormezanone
+362,356,chlormezanone
+363,357,chlormezanone
+364,355,chlormezanone
+365,356,chlormezanone
+366,357,chlormezanone
+370,367,chlorpheniramine
+371,368,chlorpheniramine
+372,369,chlorpheniramine
+373,367,chlorpheniramine
+374,368,chlorpheniramine
+375,369,chlorpheniramine
+376,367,chlorpheniramine
+377,368,chlorpheniramine
+378,369,chlorpheniramine
+382,379,chlorpromazine
+383,380,chlorpromazine
+384,381,chlorpromazine
+385,379,chlorpromazine
+386,380,chlorpromazine
+387,381,chlorpromazine
+388,379,chlorpromazine
+389,380,chlorpromazine
+390,381,chlorpromazine
+394,391,chlorpropamide
+395,392,chlorpropamide
+396,393,chlorpropamide
+397,391,chlorpropamide
+398,392,chlorpropamide
+399,393,chlorpropamide
+400,391,chlorpropamide
+401,392,chlorpropamide
+402,393,chlorpropamide
+406,403,cimetidine
+407,404,cimetidine
+408,405,cimetidine
+409,403,cimetidine
+410,404,cimetidine
+411,405,cimetidine
+412,403,cimetidine
+413,404,cimetidine
+414,405,cimetidine
+418,415,ciprofloxacin
+419,416,ciprofloxacin
+420,417,ciprofloxacin
+421,415,ciprofloxacin
+422,416,ciprofloxacin
+423,417,ciprofloxacin
+424,415,ciprofloxacin
+425,416,ciprofloxacin
+426,417,ciprofloxacin
+430,427,cisplatin
+431,428,cisplatin
+432,429,cisplatin
+433,427,cisplatin
+434,428,cisplatin
+435,429,cisplatin
+436,427,cisplatin
+437,428,cisplatin
+438,429,cisplatin
+442,439,clofibrate
+443,440,clofibrate
+444,441,clofibrate
+445,439,clofibrate
+446,440,clofibrate
+447,441,clofibrate
+448,439,clofibrate
+449,440,clofibrate
+450,441,clofibrate
+454,451,clomipramine
+455,452,clomipramine
+456,453,clomipramine
+457,451,clomipramine
+458,452,clomipramine
+459,453,clomipramine
+460,451,clomipramine
+461,452,clomipramine
+462,453,clomipramine
+466,463,colchicine
+467,464,colchicine
+468,465,colchicine
+469,463,colchicine
+470,464,colchicine
+471,465,colchicine
+472,463,colchicine
+473,464,colchicine
+474,465,colchicine
+478,475,coumarin
+479,476,coumarin
+480,477,coumarin
+481,475,coumarin
+482,476,coumarin
+483,477,coumarin
+484,475,coumarin
+485,476,coumarin
+486,477,coumarin
+490,487,cycloheximide
+491,488,cycloheximide
+492,489,cycloheximide
+493,487,cycloheximide
+494,488,cycloheximide
+495,489,cycloheximide
+496,487,cycloheximide
+497,488,cycloheximide
+498,489,cycloheximide
+502,499,cyclophosphamide
+503,500,cyclophosphamide
+504,501,cyclophosphamide
+505,499,cyclophosphamide
+506,500,cyclophosphamide
+507,501,cyclophosphamide
+508,499,cyclophosphamide
+509,500,cyclophosphamide
+510,501,cyclophosphamide
+514,511,cyclosporine A
+515,512,cyclosporine A
+516,513,cyclosporine A
+517,511,cyclosporine A
+518,512,cyclosporine A
+519,513,cyclosporine A
+520,511,cyclosporine A
+521,512,cyclosporine A
+522,513,cyclosporine A
+526,523,danazol
+527,524,danazol
+528,525,danazol
+529,523,danazol
+530,524,danazol
+531,525,danazol
+532,523,danazol
+533,524,danazol
+534,525,danazol
+538,535,dantrolene
+539,536,dantrolene
+540,537,dantrolene
+541,535,dantrolene
+542,536,dantrolene
+543,537,dantrolene
+544,535,dantrolene
+545,536,dantrolene
+546,537,dantrolene
+550,547,diazepam
+551,548,diazepam
+552,549,diazepam
+553,547,diazepam
+554,548,diazepam
+555,549,diazepam
+556,547,diazepam
+557,548,diazepam
+558,549,diazepam
+562,559,diclofenac
+563,560,diclofenac
+564,561,diclofenac
+565,559,diclofenac
+566,560,diclofenac
+567,561,diclofenac
+568,559,diclofenac
+569,560,diclofenac
+570,561,diclofenac
+574,571,diethyl maleate
+575,572,diethyl maleate
+576,573,diethyl maleate
+577,571,diethyl maleate
+578,572,diethyl maleate
+579,573,diethyl maleate
+580,571,diethyl maleate
+581,572,diethyl maleate
+582,573,diethyl maleate
+586,583,diltiazem
+587,584,diltiazem
+588,585,diltiazem
+589,583,diltiazem
+590,584,diltiazem
+591,585,diltiazem
+592,583,diltiazem
+593,584,diltiazem
+594,585,diltiazem
+598,595,disopyramide
+599,596,disopyramide
+600,597,disopyramide
+601,595,disopyramide
+602,596,disopyramide
+603,597,disopyramide
+604,595,disopyramide
+605,596,disopyramide
+606,597,disopyramide
+610,607,disulfiram
+611,608,disulfiram
+612,609,disulfiram
+613,607,disulfiram
+614,608,disulfiram
+615,609,disulfiram
+616,607,disulfiram
+617,608,disulfiram
+618,609,disulfiram
+622,619,doxorubicin
+623,620,doxorubicin
+624,621,doxorubicin
+625,619,doxorubicin
+626,620,doxorubicin
+627,621,doxorubicin
+628,619,doxorubicin
+629,620,doxorubicin
+630,621,doxorubicin
+634,631,enalapril
+635,632,enalapril
+636,633,enalapril
+637,631,enalapril
+638,632,enalapril
+639,633,enalapril
+640,631,enalapril
+641,632,enalapril
+642,633,enalapril
+646,643,erythromycin ethylsuccinate
+647,644,erythromycin ethylsuccinate
+648,645,erythromycin ethylsuccinate
+649,643,erythromycin ethylsuccinate
+650,644,erythromycin ethylsuccinate
+651,645,erythromycin ethylsuccinate
+652,643,erythromycin ethylsuccinate
+653,644,erythromycin ethylsuccinate
+654,645,erythromycin ethylsuccinate
+658,655,ethambutol
+659,656,ethambutol
+660,657,ethambutol
+661,655,ethambutol
+662,656,ethambutol
+663,657,ethambutol
+664,655,ethambutol
+665,656,ethambutol
+666,657,ethambutol
+670,667,ethanol
+671,668,ethanol
+672,669,ethanol
+673,667,ethanol
+674,668,ethanol
+675,669,ethanol
+676,667,ethanol
+677,668,ethanol
+678,669,ethanol
+682,679,ethinylestradiol
+683,680,ethinylestradiol
+684,681,ethinylestradiol
+685,679,ethinylestradiol
+686,680,ethinylestradiol
+687,681,ethinylestradiol
+688,679,ethinylestradiol
+689,680,ethinylestradiol
+690,681,ethinylestradiol
+694,691,ethionamide
+695,692,ethionamide
+696,693,ethionamide
+697,691,ethionamide
+698,692,ethionamide
+699,693,ethionamide
+700,691,ethionamide
+701,692,ethionamide
+702,693,ethionamide
+706,703,ethionine
+707,704,ethionine
+708,705,ethionine
+709,703,ethionine
+710,704,ethionine
+711,705,ethionine
+712,703,ethionine
+713,704,ethionine
+714,705,ethionine
+718,715,etoposide
+719,716,etoposide
+720,717,etoposide
+721,715,etoposide
+722,716,etoposide
+723,717,etoposide
+724,715,etoposide
+725,716,etoposide
+726,717,etoposide
+730,727,famotidine
+731,728,famotidine
+732,729,famotidine
+733,727,famotidine
+734,728,famotidine
+735,729,famotidine
+736,727,famotidine
+737,728,famotidine
+738,729,famotidine
+742,739,fenofibrate
+743,740,fenofibrate
+744,741,fenofibrate
+745,739,fenofibrate
+746,740,fenofibrate
+747,741,fenofibrate
+748,739,fenofibrate
+749,740,fenofibrate
+750,741,fenofibrate
+754,751,fluphenazine
+755,752,fluphenazine
+756,753,fluphenazine
+757,751,fluphenazine
+758,752,fluphenazine
+759,753,fluphenazine
+760,751,fluphenazine
+761,752,fluphenazine
+762,753,fluphenazine
+766,763,flutamide
+767,764,flutamide
+768,765,flutamide
+769,763,flutamide
+770,764,flutamide
+771,765,flutamide
+772,763,flutamide
+773,764,flutamide
+774,765,flutamide
+778,775,furosemide
+779,776,furosemide
+780,777,furosemide
+781,775,furosemide
+782,776,furosemide
+783,777,furosemide
+784,775,furosemide
+785,776,furosemide
+786,777,furosemide
+790,787,galactosamine
+791,788,galactosamine
+792,789,galactosamine
+793,787,galactosamine
+794,788,galactosamine
+795,789,galactosamine
+796,787,galactosamine
+797,788,galactosamine
+798,789,galactosamine
+802,799,gemfibrozil
+803,800,gemfibrozil
+804,801,gemfibrozil
+805,799,gemfibrozil
+806,800,gemfibrozil
+807,801,gemfibrozil
+808,799,gemfibrozil
+809,800,gemfibrozil
+810,801,gemfibrozil
+814,811,gentamicin
+815,812,gentamicin
+816,813,gentamicin
+817,811,gentamicin
+818,812,gentamicin
+819,813,gentamicin
+820,811,gentamicin
+821,812,gentamicin
+822,813,gentamicin
+826,823,glibenclamide
+827,824,glibenclamide
+828,825,glibenclamide
+829,823,glibenclamide
+830,824,glibenclamide
+831,825,glibenclamide
+832,823,glibenclamide
+833,824,glibenclamide
+834,825,glibenclamide
+838,835,griseofulvin
+839,836,griseofulvin
+840,837,griseofulvin
+841,835,griseofulvin
+842,836,griseofulvin
+843,837,griseofulvin
+844,835,griseofulvin
+845,836,griseofulvin
+846,837,griseofulvin
+850,847,haloperidol
+851,848,haloperidol
+852,849,haloperidol
+853,847,haloperidol
+854,848,haloperidol
+855,849,haloperidol
+856,847,haloperidol
+857,848,haloperidol
+858,849,haloperidol
+862,859,hexachlorobenzene
+863,860,hexachlorobenzene
+864,861,hexachlorobenzene
+865,859,hexachlorobenzene
+866,860,hexachlorobenzene
+867,861,hexachlorobenzene
+868,859,hexachlorobenzene
+869,860,hexachlorobenzene
+870,861,hexachlorobenzene
+874,871,hydroxyzine
+875,872,hydroxyzine
+876,873,hydroxyzine
+877,871,hydroxyzine
+878,872,hydroxyzine
+879,873,hydroxyzine
+880,871,hydroxyzine
+881,872,hydroxyzine
+882,873,hydroxyzine
+886,883,ibuprofen
+887,884,ibuprofen
+888,885,ibuprofen
+889,883,ibuprofen
+890,884,ibuprofen
+891,885,ibuprofen
+892,883,ibuprofen
+893,884,ibuprofen
+894,885,ibuprofen
+898,895,imipramine
+899,896,imipramine
+900,897,imipramine
+901,895,imipramine
+902,896,imipramine
+903,897,imipramine
+904,895,imipramine
+905,896,imipramine
+906,897,imipramine
+910,907,indomethacin
+911,908,indomethacin
+912,909,indomethacin
+913,907,indomethacin
+914,908,indomethacin
+915,909,indomethacin
+916,907,indomethacin
+917,908,indomethacin
+918,909,indomethacin
+922,919,iproniazid
+923,920,iproniazid
+924,921,iproniazid
+925,919,iproniazid
+926,920,iproniazid
+927,921,iproniazid
+928,919,iproniazid
+929,920,iproniazid
+930,921,iproniazid
+934,931,isoniazid
+935,932,isoniazid
+936,933,isoniazid
+937,931,isoniazid
+938,932,isoniazid
+939,933,isoniazid
+940,931,isoniazid
+941,932,isoniazid
+942,933,isoniazid
+946,943,ketoconazole
+947,944,ketoconazole
+948,945,ketoconazole
+949,943,ketoconazole
+950,944,ketoconazole
+951,945,ketoconazole
+952,943,ketoconazole
+953,944,ketoconazole
+954,945,ketoconazole
+958,955,labetalol
+959,956,labetalol
+960,957,labetalol
+961,955,labetalol
+962,956,labetalol
+963,957,labetalol
+964,955,labetalol
+965,956,labetalol
+966,957,labetalol
+970,967,lomustine
+971,968,lomustine
+972,969,lomustine
+973,967,lomustine
+974,968,lomustine
+975,969,lomustine
+976,967,lomustine
+977,968,lomustine
+978,969,lomustine
+982,979,lornoxicam
+983,980,lornoxicam
+984,981,lornoxicam
+985,979,lornoxicam
+986,980,lornoxicam
+987,981,lornoxicam
+988,979,lornoxicam
+989,980,lornoxicam
+990,981,lornoxicam
+994,991,mefenamic acid
+995,992,mefenamic acid
+996,993,mefenamic acid
+997,991,mefenamic acid
+998,992,mefenamic acid
+999,993,mefenamic acid
+1000,991,mefenamic acid
+1001,992,mefenamic acid
+1002,993,mefenamic acid
+1006,1003,meloxicam
+1007,1004,meloxicam
+1008,1005,meloxicam
+1009,1003,meloxicam
+1010,1004,meloxicam
+1011,1005,meloxicam
+1012,1003,meloxicam
+1013,1004,meloxicam
+1014,1005,meloxicam
+1018,1015,metformin
+1019,1016,metformin
+1020,1017,metformin
+1021,1015,metformin
+1022,1016,metformin
+1023,1017,metformin
+1024,1015,metformin
+1025,1016,metformin
+1026,1017,metformin
+1030,1027,methapyrilene
+1031,1028,methapyrilene
+1032,1029,methapyrilene
+1033,1027,methapyrilene
+1034,1028,methapyrilene
+1035,1029,methapyrilene
+1036,1027,methapyrilene
+1037,1028,methapyrilene
+1038,1029,methapyrilene
+1042,1039,methimazole
+1043,1040,methimazole
+1044,1041,methimazole
+1045,1039,methimazole
+1046,1040,methimazole
+1047,1041,methimazole
+1048,1039,methimazole
+1049,1040,methimazole
+1050,1041,methimazole
+1054,1051,methyldopa
+1055,1052,methyldopa
+1056,1053,methyldopa
+1057,1051,methyldopa
+1058,1052,methyldopa
+1059,1053,methyldopa
+1060,1051,methyldopa
+1061,1052,methyldopa
+1062,1053,methyldopa
+1066,1063,methyltestosterone
+1067,1064,methyltestosterone
+1068,1065,methyltestosterone
+1069,1063,methyltestosterone
+1070,1064,methyltestosterone
+1071,1065,methyltestosterone
+1072,1063,methyltestosterone
+1073,1064,methyltestosterone
+1074,1065,methyltestosterone
+1078,1075,mexiletine
+1079,1076,mexiletine
+1080,1077,mexiletine
+1081,1075,mexiletine
+1082,1076,mexiletine
+1083,1077,mexiletine
+1084,1075,mexiletine
+1085,1076,mexiletine
+1086,1077,mexiletine
+1090,1087,monocrotaline
+1091,1088,monocrotaline
+1092,1089,monocrotaline
+1093,1087,monocrotaline
+1094,1088,monocrotaline
+1095,1089,monocrotaline
+1096,1087,monocrotaline
+1097,1088,monocrotaline
+1098,1089,monocrotaline
+1102,1099,moxisylyte
+1103,1100,moxisylyte
+1104,1101,moxisylyte
+1105,1099,moxisylyte
+1106,1100,moxisylyte
+1107,1101,moxisylyte
+1108,1099,moxisylyte
+1109,1100,moxisylyte
+1110,1101,moxisylyte
+1114,1111,naphthyl isothiocyanate
+1115,1112,naphthyl isothiocyanate
+1116,1113,naphthyl isothiocyanate
+1117,1111,naphthyl isothiocyanate
+1118,1112,naphthyl isothiocyanate
+1119,1113,naphthyl isothiocyanate
+1120,1111,naphthyl isothiocyanate
+1121,1112,naphthyl isothiocyanate
+1122,1113,naphthyl isothiocyanate
+1126,1123,naproxen
+1127,1124,naproxen
+1128,1125,naproxen
+1129,1123,naproxen
+1130,1124,naproxen
+1131,1125,naproxen
+1132,1123,naproxen
+1133,1124,naproxen
+1134,1125,naproxen
+1138,1135,nicotinic acid
+1139,1136,nicotinic acid
+1140,1137,nicotinic acid
+1141,1135,nicotinic acid
+1142,1136,nicotinic acid
+1143,1137,nicotinic acid
+1144,1135,nicotinic acid
+1145,1136,nicotinic acid
+1146,1137,nicotinic acid
+1150,1147,nifedipine
+1151,1148,nifedipine
+1152,1149,nifedipine
+1153,1147,nifedipine
+1154,1148,nifedipine
+1155,1149,nifedipine
+1156,1147,nifedipine
+1157,1148,nifedipine
+1158,1149,nifedipine
+1162,1159,nimesulide
+1163,1160,nimesulide
+1164,1161,nimesulide
+1165,1159,nimesulide
+1166,1160,nimesulide
+1167,1161,nimesulide
+1168,1159,nimesulide
+1169,1160,nimesulide
+1170,1161,nimesulide
+1174,1171,nitrofurantoin
+1175,1172,nitrofurantoin
+1176,1173,nitrofurantoin
+1177,1171,nitrofurantoin
+1178,1172,nitrofurantoin
+1179,1173,nitrofurantoin
+1180,1171,nitrofurantoin
+1181,1172,nitrofurantoin
+1182,1173,nitrofurantoin
+1186,1183,nitrofurazone
+1187,1184,nitrofurazone
+1188,1185,nitrofurazone
+1189,1183,nitrofurazone
+1190,1184,nitrofurazone
+1191,1185,nitrofurazone
+1192,1183,nitrofurazone
+1193,1184,nitrofurazone
+1194,1185,nitrofurazone
+1198,1195,nitrosodiethylamine
+1199,1196,nitrosodiethylamine
+1200,1197,nitrosodiethylamine
+1201,1195,nitrosodiethylamine
+1202,1196,nitrosodiethylamine
+1203,1197,nitrosodiethylamine
+1204,1195,nitrosodiethylamine
+1205,1196,nitrosodiethylamine
+1206,1197,nitrosodiethylamine
+1210,1207,omeprazole
+1211,1208,omeprazole
+1212,1209,omeprazole
+1213,1207,omeprazole
+1214,1208,omeprazole
+1215,1209,omeprazole
+1216,1207,omeprazole
+1217,1208,omeprazole
+1218,1209,omeprazole
+1222,1219,papaverine
+1223,1220,papaverine
+1224,1221,papaverine
+1225,1219,papaverine
+1226,1220,papaverine
+1227,1221,papaverine
+1228,1219,papaverine
+1229,1220,papaverine
+1230,1221,papaverine
+1234,1231,pemoline
+1235,1232,pemoline
+1236,1233,pemoline
+1237,1231,pemoline
+1238,1232,pemoline
+1239,1233,pemoline
+1240,1231,pemoline
+1241,1232,pemoline
+1242,1233,pemoline
+1246,1243,penicillamine
+1247,1244,penicillamine
+1248,1245,penicillamine
+1249,1243,penicillamine
+1250,1244,penicillamine
+1251,1245,penicillamine
+1252,1243,penicillamine
+1253,1244,penicillamine
+1254,1245,penicillamine
+1258,1255,perhexiline
+1259,1256,perhexiline
+1260,1257,perhexiline
+1261,1255,perhexiline
+1262,1256,perhexiline
+1263,1257,perhexiline
+1264,1255,perhexiline
+1265,1256,perhexiline
+1266,1257,perhexiline
+1270,1267,phalloidin
+1271,1268,phalloidin
+1272,1269,phalloidin
+1273,1267,phalloidin
+1274,1268,phalloidin
+1275,1269,phalloidin
+1276,1267,phalloidin
+1277,1268,phalloidin
+1278,1269,phalloidin
+1282,1279,phenacetin
+1283,1280,phenacetin
+1284,1281,phenacetin
+1285,1279,phenacetin
+1286,1280,phenacetin
+1287,1281,phenacetin
+1288,1279,phenacetin
+1289,1280,phenacetin
+1290,1281,phenacetin
+1294,1291,phenobarbital
+1295,1292,phenobarbital
+1296,1293,phenobarbital
+1297,1291,phenobarbital
+1298,1292,phenobarbital
+1299,1293,phenobarbital
+1300,1291,phenobarbital
+1301,1292,phenobarbital
+1302,1293,phenobarbital
+1306,1303,phenylanthranilic acid
+1307,1304,phenylanthranilic acid
+1308,1305,phenylanthranilic acid
+1309,1303,phenylanthranilic acid
+1310,1304,phenylanthranilic acid
+1311,1305,phenylanthranilic acid
+1312,1303,phenylanthranilic acid
+1313,1304,phenylanthranilic acid
+1314,1305,phenylanthranilic acid
+1318,1315,phenylbutazone
+1319,1316,phenylbutazone
+1320,1317,phenylbutazone
+1321,1315,phenylbutazone
+1322,1316,phenylbutazone
+1323,1317,phenylbutazone
+1324,1315,phenylbutazone
+1325,1316,phenylbutazone
+1326,1317,phenylbutazone
+1330,1327,phenytoin
+1331,1328,phenytoin
+1332,1329,phenytoin
+1333,1327,phenytoin
+1334,1328,phenytoin
+1335,1329,phenytoin
+1336,1327,phenytoin
+1337,1328,phenytoin
+1338,1329,phenytoin
+1342,1339,phorone
+1343,1340,phorone
+1344,1341,phorone
+1345,1339,phorone
+1346,1340,phorone
+1347,1341,phorone
+1348,1339,phorone
+1349,1340,phorone
+1350,1341,phorone
+1354,1351,promethazine
+1355,1352,promethazine
+1356,1353,promethazine
+1357,1351,promethazine
+1358,1352,promethazine
+1359,1353,promethazine
+1360,1351,promethazine
+1361,1352,promethazine
+1362,1353,promethazine
+1366,1363,propylthiouracil
+1367,1364,propylthiouracil
+1368,1365,propylthiouracil
+1369,1363,propylthiouracil
+1370,1364,propylthiouracil
+1371,1365,propylthiouracil
+1372,1363,propylthiouracil
+1373,1364,propylthiouracil
+1374,1365,propylthiouracil
+1378,1375,puromycin aminonucleoside
+1379,1376,puromycin aminonucleoside
+1380,1377,puromycin aminonucleoside
+1381,1375,puromycin aminonucleoside
+1382,1376,puromycin aminonucleoside
+1383,1377,puromycin aminonucleoside
+1384,1375,puromycin aminonucleoside
+1385,1376,puromycin aminonucleoside
+1386,1377,puromycin aminonucleoside
+1390,1387,quinidine
+1391,1388,quinidine
+1392,1389,quinidine
+1393,1387,quinidine
+1394,1388,quinidine
+1395,1389,quinidine
+1396,1387,quinidine
+1397,1388,quinidine
+1398,1389,quinidine
+1402,1399,ranitidine
+1403,1400,ranitidine
+1404,1401,ranitidine
+1405,1399,ranitidine
+1406,1400,ranitidine
+1407,1401,ranitidine
+1408,1399,ranitidine
+1409,1400,ranitidine
+1410,1401,ranitidine
+1414,1411,rifampicin
+1415,1412,rifampicin
+1416,1413,rifampicin
+1417,1411,rifampicin
+1418,1412,rifampicin
+1419,1413,rifampicin
+1420,1411,rifampicin
+1421,1412,rifampicin
+1422,1413,rifampicin
+1426,1423,simvastatin
+1427,1424,simvastatin
+1428,1425,simvastatin
+1429,1423,simvastatin
+1430,1424,simvastatin
+1431,1425,simvastatin
+1432,1423,simvastatin
+1433,1424,simvastatin
+1434,1425,simvastatin
+1438,1435,sulfasalazine
+1439,1436,sulfasalazine
+1440,1437,sulfasalazine
+1441,1435,sulfasalazine
+1442,1436,sulfasalazine
+1443,1437,sulfasalazine
+1444,1435,sulfasalazine
+1445,1436,sulfasalazine
+1446,1437,sulfasalazine
+1450,1447,sulindac
+1451,1448,sulindac
+1452,1449,sulindac
+1453,1447,sulindac
+1454,1448,sulindac
+1455,1449,sulindac
+1456,1447,sulindac
+1457,1448,sulindac
+1458,1449,sulindac
+1462,1459,sulpiride
+1463,1460,sulpiride
+1464,1461,sulpiride
+1465,1459,sulpiride
+1466,1460,sulpiride
+1467,1461,sulpiride
+1468,1459,sulpiride
+1469,1460,sulpiride
+1470,1461,sulpiride
+1474,1471,tacrine
+1475,1472,tacrine
+1476,1473,tacrine
+1477,1471,tacrine
+1478,1472,tacrine
+1479,1473,tacrine
+1480,1471,tacrine
+1481,1472,tacrine
+1482,1473,tacrine
+1486,1483,tamoxifen
+1487,1484,tamoxifen
+1488,1485,tamoxifen
+1489,1483,tamoxifen
+1490,1484,tamoxifen
+1491,1485,tamoxifen
+1492,1483,tamoxifen
+1493,1484,tamoxifen
+1494,1485,tamoxifen
+1498,1495,tannic acid
+1499,1496,tannic acid
+1500,1497,tannic acid
+1501,1495,tannic acid
+1502,1496,tannic acid
+1503,1497,tannic acid
+1504,1495,tannic acid
+1505,1496,tannic acid
+1506,1497,tannic acid
+1510,1507,terbinafine
+1511,1508,terbinafine
+1512,1509,terbinafine
+1513,1507,terbinafine
+1514,1508,terbinafine
+1515,1509,terbinafine
+1516,1507,terbinafine
+1517,1508,terbinafine
+1518,1509,terbinafine
+1522,1519,tetracycline
+1523,1520,tetracycline
+1524,1521,tetracycline
+1525,1519,tetracycline
+1526,1520,tetracycline
+1527,1521,tetracycline
+1528,1519,tetracycline
+1529,1520,tetracycline
+1530,1521,tetracycline
+1534,1531,theophylline
+1535,1532,theophylline
+1536,1533,theophylline
+1537,1531,theophylline
+1538,1532,theophylline
+1539,1533,theophylline
+1540,1531,theophylline
+1541,1532,theophylline
+1542,1533,theophylline
+1546,1543,thioacetamide
+1547,1544,thioacetamide
+1548,1545,thioacetamide
+1549,1543,thioacetamide
+1550,1544,thioacetamide
+1551,1545,thioacetamide
+1552,1543,thioacetamide
+1553,1544,thioacetamide
+1554,1545,thioacetamide
+1558,1555,thioridazine
+1559,1556,thioridazine
+1560,1557,thioridazine
+1561,1555,thioridazine
+1562,1556,thioridazine
+1563,1557,thioridazine
+1564,1555,thioridazine
+1565,1556,thioridazine
+1566,1557,thioridazine
+1570,1567,ticlopidine
+1571,1568,ticlopidine
+1572,1569,ticlopidine
+1573,1567,ticlopidine
+1574,1568,ticlopidine
+1575,1569,ticlopidine
+1576,1567,ticlopidine
+1577,1568,ticlopidine
+1578,1569,ticlopidine
+1582,1579,tiopronin
+1583,1580,tiopronin
+1584,1581,tiopronin
+1585,1579,tiopronin
+1586,1580,tiopronin
+1587,1581,tiopronin
+1588,1579,tiopronin
+1589,1580,tiopronin
+1590,1581,tiopronin
+1594,1591,tolbutamide
+1595,1592,tolbutamide
+1596,1593,tolbutamide
+1597,1591,tolbutamide
+1598,1592,tolbutamide
+1599,1593,tolbutamide
+1600,1591,tolbutamide
+1601,1592,tolbutamide
+1602,1593,tolbutamide
+1606,1603,triamterene
+1607,1604,triamterene
+1608,1605,triamterene
+1609,1603,triamterene
+1610,1604,triamterene
+1611,1605,triamterene
+1612,1603,triamterene
+1613,1604,triamterene
+1614,1605,triamterene
+1618,1615,triazolam
+1619,1616,triazolam
+1620,1617,triazolam
+1621,1615,triazolam
+1622,1616,triazolam
+1623,1617,triazolam
+1624,1615,triazolam
+1625,1616,triazolam
+1626,1617,triazolam
+1630,1627,trimethadione
+1631,1628,trimethadione
+1632,1629,trimethadione
+1633,1627,trimethadione
+1634,1628,trimethadione
+1635,1629,trimethadione
+1636,1627,trimethadione
+1637,1628,trimethadione
+1638,1629,trimethadione
+1642,1639,tunicamycin
+1643,1640,tunicamycin
+1644,1641,tunicamycin
+1645,1639,tunicamycin
+1646,1640,tunicamycin
+1647,1641,tunicamycin
+1648,1639,tunicamycin
+1649,1640,tunicamycin
+1650,1641,tunicamycin
+1654,1651,valproic acid
+1655,1652,valproic acid
+1656,1653,valproic acid
+1657,1651,valproic acid
+1658,1652,valproic acid
+1659,1653,valproic acid
+1660,1651,valproic acid
+1661,1652,valproic acid
+1662,1653,valproic acid
+1666,1663,vitamin A
+1667,1664,vitamin A
+1668,1665,vitamin A
+1669,1663,vitamin A
+1670,1664,vitamin A
+1671,1665,vitamin A
+1672,1663,vitamin A
+1673,1664,vitamin A
+1674,1665,vitamin A

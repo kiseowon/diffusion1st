@@ -1,0 +1,1665 @@
+condition_id,control_condition_id,compound,time_h,unit,level
+4,0,LPS,3,μg/kg,Low
+5,1,LPS,6,μg/kg,Low
+6,2,LPS,9,μg/kg,Low
+7,3,LPS,24,μg/kg,Low
+8,0,LPS,3,μg/kg,Middle
+9,1,LPS,6,μg/kg,Middle
+10,2,LPS,9,μg/kg,Middle
+11,3,LPS,24,μg/kg,Middle
+12,0,LPS,3,μg/kg,High
+13,1,LPS,6,μg/kg,High
+14,2,LPS,9,μg/kg,High
+15,3,LPS,24,μg/kg,High
+20,16,TNFÉø,3,μg/kg,Low
+21,17,TNFÉø,6,μg/kg,Low
+22,18,TNFÉø,9,μg/kg,Low
+23,19,TNFÉø,24,μg/kg,Low
+24,16,TNFÉø,3,μg/kg,Middle
+25,17,TNFÉø,6,μg/kg,Middle
+26,18,TNFÉø,9,μg/kg,Middle
+27,19,TNFÉø,24,μg/kg,Middle
+28,16,TNFÉø,3,μg/kg,High
+29,17,TNFÉø,6,μg/kg,High
+30,18,TNFÉø,9,μg/kg,High
+31,19,TNFÉø,24,μg/kg,High
+36,32,WY-14643,3,mg/kg,Low
+37,33,WY-14643,6,mg/kg,Low
+38,34,WY-14643,9,mg/kg,Low
+39,35,WY-14643,24,mg/kg,Low
+40,32,WY-14643,3,mg/kg,Middle
+41,33,WY-14643,6,mg/kg,Middle
+42,34,WY-14643,9,mg/kg,Middle
+43,35,WY-14643,24,mg/kg,Middle
+44,32,WY-14643,3,mg/kg,High
+45,33,WY-14643,6,mg/kg,High
+46,34,WY-14643,9,mg/kg,High
+47,35,WY-14643,24,mg/kg,High
+52,48,acarbose,3,mg/kg,Low
+53,49,acarbose,6,mg/kg,Low
+54,50,acarbose,9,mg/kg,Low
+55,51,acarbose,24,mg/kg,Low
+56,48,acarbose,3,mg/kg,Middle
+57,49,acarbose,6,mg/kg,Middle
+58,50,acarbose,9,mg/kg,Middle
+59,51,acarbose,24,mg/kg,Middle
+60,48,acarbose,3,mg/kg,High
+61,49,acarbose,6,mg/kg,High
+62,50,acarbose,9,mg/kg,High
+63,51,acarbose,24,mg/kg,High
+68,64,acetamidofluorene,3,mg/kg,Low
+69,65,acetamidofluorene,6,mg/kg,Low
+70,66,acetamidofluorene,9,mg/kg,Low
+71,67,acetamidofluorene,24,mg/kg,Low
+72,64,acetamidofluorene,3,mg/kg,Middle
+73,65,acetamidofluorene,6,mg/kg,Middle
+74,66,acetamidofluorene,9,mg/kg,Middle
+75,67,acetamidofluorene,24,mg/kg,Middle
+76,64,acetamidofluorene,3,mg/kg,High
+77,65,acetamidofluorene,6,mg/kg,High
+78,66,acetamidofluorene,9,mg/kg,High
+79,67,acetamidofluorene,24,mg/kg,High
+84,80,acetaminophen,3,mg/kg,Low
+85,81,acetaminophen,6,mg/kg,Low
+86,82,acetaminophen,9,mg/kg,Low
+87,83,acetaminophen,24,mg/kg,Low
+88,80,acetaminophen,3,mg/kg,Middle
+89,81,acetaminophen,6,mg/kg,Middle
+90,82,acetaminophen,9,mg/kg,Middle
+91,83,acetaminophen,24,mg/kg,Middle
+92,80,acetaminophen,3,mg/kg,High
+93,81,acetaminophen,6,mg/kg,High
+94,82,acetaminophen,9,mg/kg,High
+95,83,acetaminophen,24,mg/kg,High
+100,96,acetazolamide,3,mg/kg,Low
+101,97,acetazolamide,6,mg/kg,Low
+102,98,acetazolamide,9,mg/kg,Low
+103,99,acetazolamide,24,mg/kg,Low
+104,96,acetazolamide,3,mg/kg,Middle
+105,97,acetazolamide,6,mg/kg,Middle
+106,98,acetazolamide,9,mg/kg,Middle
+107,99,acetazolamide,24,mg/kg,Middle
+108,96,acetazolamide,3,mg/kg,High
+109,97,acetazolamide,6,mg/kg,High
+110,98,acetazolamide,9,mg/kg,High
+111,99,acetazolamide,24,mg/kg,High
+116,112,adapin,3,mg/kg,Low
+117,113,adapin,6,mg/kg,Low
+118,114,adapin,9,mg/kg,Low
+119,115,adapin,24,mg/kg,Low
+120,112,adapin,3,mg/kg,Middle
+121,113,adapin,6,mg/kg,Middle
+122,114,adapin,9,mg/kg,Middle
+123,115,adapin,24,mg/kg,Middle
+128,124,ajmaline,3,mg/kg,Low
+129,125,ajmaline,6,mg/kg,Low
+130,126,ajmaline,9,mg/kg,Low
+131,127,ajmaline,24,mg/kg,Low
+132,124,ajmaline,3,mg/kg,Middle
+133,125,ajmaline,6,mg/kg,Middle
+134,126,ajmaline,9,mg/kg,Middle
+135,127,ajmaline,24,mg/kg,Middle
+136,124,ajmaline,3,mg/kg,High
+137,125,ajmaline,6,mg/kg,High
+138,126,ajmaline,9,mg/kg,High
+139,127,ajmaline,24,mg/kg,High
+144,140,allopurinol,3,mg/kg,Low
+145,141,allopurinol,6,mg/kg,Low
+146,142,allopurinol,9,mg/kg,Low
+147,143,allopurinol,24,mg/kg,Low
+148,140,allopurinol,3,mg/kg,Middle
+149,141,allopurinol,6,mg/kg,Middle
+150,142,allopurinol,9,mg/kg,Middle
+151,143,allopurinol,24,mg/kg,Middle
+152,140,allopurinol,3,mg/kg,High
+153,141,allopurinol,6,mg/kg,High
+154,142,allopurinol,9,mg/kg,High
+155,143,allopurinol,24,mg/kg,High
+160,156,allyl alcohol,3,mg/kg,Low
+161,157,allyl alcohol,6,mg/kg,Low
+162,158,allyl alcohol,9,mg/kg,Low
+163,159,allyl alcohol,24,mg/kg,Low
+164,156,allyl alcohol,3,mg/kg,Middle
+165,157,allyl alcohol,6,mg/kg,Middle
+166,158,allyl alcohol,9,mg/kg,Middle
+167,159,allyl alcohol,24,mg/kg,Middle
+168,156,allyl alcohol,3,mg/kg,High
+169,157,allyl alcohol,6,mg/kg,High
+170,158,allyl alcohol,9,mg/kg,High
+171,159,allyl alcohol,24,mg/kg,High
+176,172,amiodarone,3,mg/kg,Low
+177,173,amiodarone,6,mg/kg,Low
+178,174,amiodarone,9,mg/kg,Low
+179,175,amiodarone,24,mg/kg,Low
+180,172,amiodarone,3,mg/kg,Middle
+181,173,amiodarone,6,mg/kg,Middle
+182,174,amiodarone,9,mg/kg,Middle
+183,175,amiodarone,24,mg/kg,Middle
+184,172,amiodarone,3,mg/kg,High
+185,173,amiodarone,6,mg/kg,High
+186,174,amiodarone,9,mg/kg,High
+187,175,amiodarone,24,mg/kg,High
+192,188,amitriptyline,3,mg/kg,Low
+193,189,amitriptyline,6,mg/kg,Low
+194,190,amitriptyline,9,mg/kg,Low
+195,191,amitriptyline,24,mg/kg,Low
+196,188,amitriptyline,3,mg/kg,Middle
+197,189,amitriptyline,6,mg/kg,Middle
+198,190,amitriptyline,9,mg/kg,Middle
+199,191,amitriptyline,24,mg/kg,Middle
+200,188,amitriptyline,3,mg/kg,High
+201,189,amitriptyline,6,mg/kg,High
+202,190,amitriptyline,9,mg/kg,High
+203,191,amitriptyline,24,mg/kg,High
+208,204,aspirin,3,mg/kg,Low
+209,205,aspirin,6,mg/kg,Low
+210,206,aspirin,9,mg/kg,Low
+211,207,aspirin,24,mg/kg,Low
+212,204,aspirin,3,mg/kg,Middle
+213,205,aspirin,6,mg/kg,Middle
+214,206,aspirin,9,mg/kg,Middle
+215,207,aspirin,24,mg/kg,Middle
+216,204,aspirin,3,mg/kg,High
+217,205,aspirin,6,mg/kg,High
+218,206,aspirin,9,mg/kg,High
+219,207,aspirin,24,mg/kg,High
+224,220,azathioprine,3,mg/kg,Low
+225,221,azathioprine,6,mg/kg,Low
+226,222,azathioprine,9,mg/kg,Low
+227,223,azathioprine,24,mg/kg,Low
+228,220,azathioprine,3,mg/kg,Middle
+229,221,azathioprine,6,mg/kg,Middle
+230,222,azathioprine,9,mg/kg,Middle
+231,223,azathioprine,24,mg/kg,Middle
+232,220,azathioprine,3,mg/kg,High
+233,221,azathioprine,6,mg/kg,High
+234,222,azathioprine,9,mg/kg,High
+235,223,azathioprine,24,mg/kg,High
+240,236,bendazac,3,mg/kg,Low
+241,237,bendazac,6,mg/kg,Low
+242,238,bendazac,9,mg/kg,Low
+243,239,bendazac,24,mg/kg,Low
+244,236,bendazac,3,mg/kg,Middle
+245,237,bendazac,6,mg/kg,Middle
+246,238,bendazac,9,mg/kg,Middle
+247,239,bendazac,24,mg/kg,Middle
+248,236,bendazac,3,mg/kg,High
+249,237,bendazac,6,mg/kg,High
+250,238,bendazac,9,mg/kg,High
+251,239,bendazac,24,mg/kg,High
+256,252,benzbromarone,3,mg/kg,Low
+257,253,benzbromarone,6,mg/kg,Low
+258,254,benzbromarone,9,mg/kg,Low
+259,255,benzbromarone,24,mg/kg,Low
+260,252,benzbromarone,3,mg/kg,Middle
+261,253,benzbromarone,6,mg/kg,Middle
+262,254,benzbromarone,9,mg/kg,Middle
+263,255,benzbromarone,24,mg/kg,Middle
+264,252,benzbromarone,3,mg/kg,High
+265,253,benzbromarone,6,mg/kg,High
+266,254,benzbromarone,9,mg/kg,High
+267,255,benzbromarone,24,mg/kg,High
+272,268,benziodarone,3,mg/kg,Low
+273,269,benziodarone,6,mg/kg,Low
+274,270,benziodarone,9,mg/kg,Low
+275,271,benziodarone,24,mg/kg,Low
+276,268,benziodarone,3,mg/kg,Middle
+277,269,benziodarone,6,mg/kg,Middle
+278,270,benziodarone,9,mg/kg,Middle
+279,271,benziodarone,24,mg/kg,Middle
+280,268,benziodarone,3,mg/kg,High
+281,269,benziodarone,6,mg/kg,High
+282,270,benziodarone,9,mg/kg,High
+283,271,benziodarone,24,mg/kg,High
+288,284,bromobenzene,3,mg/kg,Low
+289,285,bromobenzene,6,mg/kg,Low
+290,286,bromobenzene,9,mg/kg,Low
+291,287,bromobenzene,24,mg/kg,Low
+292,284,bromobenzene,3,mg/kg,Middle
+293,285,bromobenzene,6,mg/kg,Middle
+294,286,bromobenzene,9,mg/kg,Middle
+295,287,bromobenzene,24,mg/kg,Middle
+296,284,bromobenzene,3,mg/kg,High
+297,285,bromobenzene,6,mg/kg,High
+298,286,bromobenzene,9,mg/kg,High
+299,287,bromobenzene,24,mg/kg,High
+304,300,bromoethylamine,3,mg/kg,Low
+305,301,bromoethylamine,6,mg/kg,Low
+306,302,bromoethylamine,9,mg/kg,Low
+307,303,bromoethylamine,24,mg/kg,Low
+308,300,bromoethylamine,3,mg/kg,Middle
+309,301,bromoethylamine,6,mg/kg,Middle
+310,302,bromoethylamine,9,mg/kg,Middle
+311,303,bromoethylamine,24,mg/kg,Middle
+312,300,bromoethylamine,3,mg/kg,High
+313,301,bromoethylamine,6,mg/kg,High
+314,302,bromoethylamine,9,mg/kg,High
+315,303,bromoethylamine,24,mg/kg,High
+320,316,bucetin,3,mg/kg,Low
+321,317,bucetin,6,mg/kg,Low
+322,318,bucetin,9,mg/kg,Low
+323,319,bucetin,24,mg/kg,Low
+324,316,bucetin,3,mg/kg,Middle
+325,317,bucetin,6,mg/kg,Middle
+326,318,bucetin,9,mg/kg,Middle
+327,319,bucetin,24,mg/kg,Middle
+328,316,bucetin,3,mg/kg,High
+329,317,bucetin,6,mg/kg,High
+330,318,bucetin,9,mg/kg,High
+331,319,bucetin,24,mg/kg,High
+336,332,buthionine sulfoximine,3,mg/kg,Low
+337,333,buthionine sulfoximine,6,mg/kg,Low
+338,334,buthionine sulfoximine,9,mg/kg,Low
+339,335,buthionine sulfoximine,24,mg/kg,Low
+340,332,buthionine sulfoximine,3,mg/kg,Middle
+341,333,buthionine sulfoximine,6,mg/kg,Middle
+342,334,buthionine sulfoximine,9,mg/kg,Middle
+343,335,buthionine sulfoximine,24,mg/kg,Middle
+344,332,buthionine sulfoximine,3,mg/kg,High
+345,333,buthionine sulfoximine,6,mg/kg,High
+346,334,buthionine sulfoximine,9,mg/kg,High
+347,335,buthionine sulfoximine,24,mg/kg,High
+352,348,caffeine,3,mg/kg,Low
+353,349,caffeine,6,mg/kg,Low
+354,350,caffeine,9,mg/kg,Low
+355,351,caffeine,24,mg/kg,Low
+356,348,caffeine,3,mg/kg,Middle
+357,349,caffeine,6,mg/kg,Middle
+358,350,caffeine,9,mg/kg,Middle
+359,351,caffeine,24,mg/kg,Middle
+360,348,caffeine,3,mg/kg,High
+361,349,caffeine,6,mg/kg,High
+362,350,caffeine,9,mg/kg,High
+363,351,caffeine,24,mg/kg,High
+368,364,captopril,3,mg/kg,Low
+369,365,captopril,6,mg/kg,Low
+370,366,captopril,9,mg/kg,Low
+371,367,captopril,24,mg/kg,Low
+372,364,captopril,3,mg/kg,Middle
+373,365,captopril,6,mg/kg,Middle
+374,366,captopril,9,mg/kg,Middle
+375,367,captopril,24,mg/kg,Middle
+376,364,captopril,3,mg/kg,High
+377,365,captopril,6,mg/kg,High
+378,366,captopril,9,mg/kg,High
+379,367,captopril,24,mg/kg,High
+384,380,carbamazepine,3,mg/kg,Low
+385,381,carbamazepine,6,mg/kg,Low
+386,382,carbamazepine,9,mg/kg,Low
+387,383,carbamazepine,24,mg/kg,Low
+388,380,carbamazepine,3,mg/kg,Middle
+389,381,carbamazepine,6,mg/kg,Middle
+390,382,carbamazepine,9,mg/kg,Middle
+391,383,carbamazepine,24,mg/kg,Middle
+392,380,carbamazepine,3,mg/kg,High
+393,381,carbamazepine,6,mg/kg,High
+394,382,carbamazepine,9,mg/kg,High
+395,383,carbamazepine,24,mg/kg,High
+400,396,carbon tetrachloride,3,mg/kg,Low
+401,397,carbon tetrachloride,6,mg/kg,Low
+402,398,carbon tetrachloride,9,mg/kg,Low
+403,399,carbon tetrachloride,24,mg/kg,Low
+404,396,carbon tetrachloride,3,mg/kg,Middle
+405,397,carbon tetrachloride,6,mg/kg,Middle
+406,398,carbon tetrachloride,9,mg/kg,Middle
+407,399,carbon tetrachloride,24,mg/kg,Middle
+408,396,carbon tetrachloride,3,mg/kg,High
+409,397,carbon tetrachloride,6,mg/kg,High
+410,398,carbon tetrachloride,9,mg/kg,High
+411,399,carbon tetrachloride,24,mg/kg,High
+416,412,carboplatin,3,mg/kg,Low
+417,413,carboplatin,6,mg/kg,Low
+418,414,carboplatin,9,mg/kg,Low
+419,415,carboplatin,24,mg/kg,Low
+420,412,carboplatin,3,mg/kg,Middle
+421,413,carboplatin,6,mg/kg,Middle
+422,414,carboplatin,9,mg/kg,Middle
+423,415,carboplatin,24,mg/kg,Middle
+424,412,carboplatin,3,mg/kg,High
+425,413,carboplatin,6,mg/kg,High
+426,414,carboplatin,9,mg/kg,High
+427,415,carboplatin,24,mg/kg,High
+432,428,cephalothin,3,mg/kg,Low
+433,429,cephalothin,6,mg/kg,Low
+434,430,cephalothin,9,mg/kg,Low
+435,431,cephalothin,24,mg/kg,Low
+436,428,cephalothin,3,mg/kg,Middle
+437,429,cephalothin,6,mg/kg,Middle
+438,430,cephalothin,9,mg/kg,Middle
+439,431,cephalothin,24,mg/kg,Middle
+440,428,cephalothin,3,mg/kg,High
+441,429,cephalothin,6,mg/kg,High
+442,430,cephalothin,9,mg/kg,High
+443,431,cephalothin,24,mg/kg,High
+448,444,chloramphenicol,3,mg/kg,Low
+449,445,chloramphenicol,6,mg/kg,Low
+450,446,chloramphenicol,9,mg/kg,Low
+451,447,chloramphenicol,24,mg/kg,Low
+452,444,chloramphenicol,3,mg/kg,Middle
+453,445,chloramphenicol,6,mg/kg,Middle
+454,446,chloramphenicol,9,mg/kg,Middle
+455,447,chloramphenicol,24,mg/kg,Middle
+456,444,chloramphenicol,3,mg/kg,High
+457,445,chloramphenicol,6,mg/kg,High
+458,446,chloramphenicol,9,mg/kg,High
+459,447,chloramphenicol,24,mg/kg,High
+464,460,chlormadinone,3,mg/kg,Low
+465,461,chlormadinone,6,mg/kg,Low
+466,462,chlormadinone,9,mg/kg,Low
+467,463,chlormadinone,24,mg/kg,Low
+468,460,chlormadinone,3,mg/kg,Middle
+469,461,chlormadinone,6,mg/kg,Middle
+470,462,chlormadinone,9,mg/kg,Middle
+471,463,chlormadinone,24,mg/kg,Middle
+472,460,chlormadinone,3,mg/kg,High
+473,461,chlormadinone,6,mg/kg,High
+474,462,chlormadinone,9,mg/kg,High
+475,463,chlormadinone,24,mg/kg,High
+480,476,chlormezanone,3,mg/kg,Low
+481,477,chlormezanone,6,mg/kg,Low
+482,478,chlormezanone,9,mg/kg,Low
+483,479,chlormezanone,24,mg/kg,Low
+484,476,chlormezanone,3,mg/kg,Middle
+485,477,chlormezanone,6,mg/kg,Middle
+486,478,chlormezanone,9,mg/kg,Middle
+487,479,chlormezanone,24,mg/kg,Middle
+488,476,chlormezanone,3,mg/kg,High
+489,477,chlormezanone,6,mg/kg,High
+490,478,chlormezanone,9,mg/kg,High
+491,479,chlormezanone,24,mg/kg,High
+496,492,chlorpheniramine,3,mg/kg,Low
+497,493,chlorpheniramine,6,mg/kg,Low
+498,494,chlorpheniramine,9,mg/kg,Low
+499,495,chlorpheniramine,24,mg/kg,Low
+500,492,chlorpheniramine,3,mg/kg,Middle
+501,493,chlorpheniramine,6,mg/kg,Middle
+502,494,chlorpheniramine,9,mg/kg,Middle
+503,495,chlorpheniramine,24,mg/kg,Middle
+504,492,chlorpheniramine,3,mg/kg,High
+505,493,chlorpheniramine,6,mg/kg,High
+506,494,chlorpheniramine,9,mg/kg,High
+507,495,chlorpheniramine,24,mg/kg,High
+512,508,chlorpromazine,3,mg/kg,Low
+513,509,chlorpromazine,6,mg/kg,Low
+514,510,chlorpromazine,9,mg/kg,Low
+515,511,chlorpromazine,24,mg/kg,Low
+516,508,chlorpromazine,3,mg/kg,Middle
+517,509,chlorpromazine,6,mg/kg,Middle
+518,510,chlorpromazine,9,mg/kg,Middle
+519,511,chlorpromazine,24,mg/kg,Middle
+524,520,chlorpropamide,3,mg/kg,Low
+525,521,chlorpropamide,6,mg/kg,Low
+526,522,chlorpropamide,9,mg/kg,Low
+527,523,chlorpropamide,24,mg/kg,Low
+528,520,chlorpropamide,3,mg/kg,Middle
+529,521,chlorpropamide,6,mg/kg,Middle
+530,522,chlorpropamide,9,mg/kg,Middle
+531,523,chlorpropamide,24,mg/kg,Middle
+532,520,chlorpropamide,3,mg/kg,High
+533,521,chlorpropamide,6,mg/kg,High
+534,522,chlorpropamide,9,mg/kg,High
+535,523,chlorpropamide,24,mg/kg,High
+540,536,cimetidine,3,mg/kg,Low
+541,537,cimetidine,6,mg/kg,Low
+542,538,cimetidine,9,mg/kg,Low
+543,539,cimetidine,24,mg/kg,Low
+544,536,cimetidine,3,mg/kg,Middle
+545,537,cimetidine,6,mg/kg,Middle
+546,538,cimetidine,9,mg/kg,Middle
+547,539,cimetidine,24,mg/kg,Middle
+548,536,cimetidine,3,mg/kg,High
+549,537,cimetidine,6,mg/kg,High
+550,538,cimetidine,9,mg/kg,High
+551,539,cimetidine,24,mg/kg,High
+556,552,ciprofloxacin,3,mg/kg,Low
+557,553,ciprofloxacin,6,mg/kg,Low
+558,554,ciprofloxacin,9,mg/kg,Low
+559,555,ciprofloxacin,24,mg/kg,Low
+560,552,ciprofloxacin,3,mg/kg,Middle
+561,553,ciprofloxacin,6,mg/kg,Middle
+562,554,ciprofloxacin,9,mg/kg,Middle
+563,555,ciprofloxacin,24,mg/kg,Middle
+564,552,ciprofloxacin,3,mg/kg,High
+565,553,ciprofloxacin,6,mg/kg,High
+566,554,ciprofloxacin,9,mg/kg,High
+567,555,ciprofloxacin,24,mg/kg,High
+572,568,cisplatin,3,mg/kg,Low
+573,569,cisplatin,6,mg/kg,Low
+574,570,cisplatin,9,mg/kg,Low
+575,571,cisplatin,24,mg/kg,Low
+576,568,cisplatin,3,mg/kg,Middle
+577,569,cisplatin,6,mg/kg,Middle
+578,570,cisplatin,9,mg/kg,Middle
+579,571,cisplatin,24,mg/kg,Middle
+580,568,cisplatin,3,mg/kg,High
+581,569,cisplatin,6,mg/kg,High
+582,570,cisplatin,9,mg/kg,High
+583,571,cisplatin,24,mg/kg,High
+588,584,clofibrate,3,mg/kg,Low
+589,585,clofibrate,6,mg/kg,Low
+590,586,clofibrate,9,mg/kg,Low
+591,587,clofibrate,24,mg/kg,Low
+592,584,clofibrate,3,mg/kg,Middle
+593,585,clofibrate,6,mg/kg,Middle
+594,586,clofibrate,9,mg/kg,Middle
+595,587,clofibrate,24,mg/kg,Middle
+596,584,clofibrate,3,mg/kg,High
+597,585,clofibrate,6,mg/kg,High
+598,586,clofibrate,9,mg/kg,High
+599,587,clofibrate,24,mg/kg,High
+604,600,clomipramine,3,mg/kg,Low
+605,601,clomipramine,6,mg/kg,Low
+606,602,clomipramine,9,mg/kg,Low
+607,603,clomipramine,24,mg/kg,Low
+608,600,clomipramine,3,mg/kg,Middle
+609,601,clomipramine,6,mg/kg,Middle
+610,602,clomipramine,9,mg/kg,Middle
+611,603,clomipramine,24,mg/kg,Middle
+612,600,clomipramine,3,mg/kg,High
+613,601,clomipramine,6,mg/kg,High
+614,602,clomipramine,9,mg/kg,High
+615,603,clomipramine,24,mg/kg,High
+620,616,colchicine,3,mg/kg,Low
+621,617,colchicine,6,mg/kg,Low
+622,618,colchicine,9,mg/kg,Low
+623,619,colchicine,24,mg/kg,Low
+624,616,colchicine,3,mg/kg,Middle
+625,617,colchicine,6,mg/kg,Middle
+626,618,colchicine,9,mg/kg,Middle
+627,619,colchicine,24,mg/kg,Middle
+628,616,colchicine,3,mg/kg,High
+629,617,colchicine,6,mg/kg,High
+630,618,colchicine,9,mg/kg,High
+631,619,colchicine,24,mg/kg,High
+636,632,coumarin,3,mg/kg,Low
+637,633,coumarin,6,mg/kg,Low
+638,634,coumarin,9,mg/kg,Low
+639,635,coumarin,24,mg/kg,Low
+640,632,coumarin,3,mg/kg,Middle
+641,633,coumarin,6,mg/kg,Middle
+642,634,coumarin,9,mg/kg,Middle
+643,635,coumarin,24,mg/kg,Middle
+644,632,coumarin,3,mg/kg,High
+645,633,coumarin,6,mg/kg,High
+646,634,coumarin,9,mg/kg,High
+647,635,coumarin,24,mg/kg,High
+652,648,cycloheximide,3,mg/kg,Low
+653,649,cycloheximide,6,mg/kg,Low
+654,650,cycloheximide,9,mg/kg,Low
+655,651,cycloheximide,24,mg/kg,Low
+656,648,cycloheximide,3,mg/kg,Middle
+657,649,cycloheximide,6,mg/kg,Middle
+658,650,cycloheximide,9,mg/kg,Middle
+659,651,cycloheximide,24,mg/kg,Middle
+660,648,cycloheximide,3,mg/kg,High
+661,649,cycloheximide,6,mg/kg,High
+662,650,cycloheximide,9,mg/kg,High
+663,651,cycloheximide,24,mg/kg,High
+668,664,cyclophosphamide,3,mg/kg,Low
+669,665,cyclophosphamide,6,mg/kg,Low
+670,666,cyclophosphamide,9,mg/kg,Low
+671,667,cyclophosphamide,24,mg/kg,Low
+672,664,cyclophosphamide,3,mg/kg,Middle
+673,665,cyclophosphamide,6,mg/kg,Middle
+674,666,cyclophosphamide,9,mg/kg,Middle
+675,667,cyclophosphamide,24,mg/kg,Middle
+676,664,cyclophosphamide,3,mg/kg,High
+677,665,cyclophosphamide,6,mg/kg,High
+678,666,cyclophosphamide,9,mg/kg,High
+679,667,cyclophosphamide,24,mg/kg,High
+684,680,cyclosporine A,3,mg/kg,Low
+685,681,cyclosporine A,6,mg/kg,Low
+686,682,cyclosporine A,9,mg/kg,Low
+687,683,cyclosporine A,24,mg/kg,Low
+688,680,cyclosporine A,3,mg/kg,Middle
+689,681,cyclosporine A,6,mg/kg,Middle
+690,682,cyclosporine A,9,mg/kg,Middle
+691,683,cyclosporine A,24,mg/kg,Middle
+692,680,cyclosporine A,3,mg/kg,High
+693,681,cyclosporine A,6,mg/kg,High
+694,682,cyclosporine A,9,mg/kg,High
+695,683,cyclosporine A,24,mg/kg,High
+700,696,danazol,3,mg/kg,Low
+701,697,danazol,6,mg/kg,Low
+702,698,danazol,9,mg/kg,Low
+703,699,danazol,24,mg/kg,Low
+704,696,danazol,3,mg/kg,Middle
+705,697,danazol,6,mg/kg,Middle
+706,698,danazol,9,mg/kg,Middle
+707,699,danazol,24,mg/kg,Middle
+708,696,danazol,3,mg/kg,High
+709,697,danazol,6,mg/kg,High
+710,698,danazol,9,mg/kg,High
+711,699,danazol,24,mg/kg,High
+716,712,dantrolene,3,mg/kg,Low
+717,713,dantrolene,6,mg/kg,Low
+718,714,dantrolene,9,mg/kg,Low
+719,715,dantrolene,24,mg/kg,Low
+720,712,dantrolene,3,mg/kg,Middle
+721,713,dantrolene,6,mg/kg,Middle
+722,714,dantrolene,9,mg/kg,Middle
+723,715,dantrolene,24,mg/kg,Middle
+724,712,dantrolene,3,mg/kg,High
+725,713,dantrolene,6,mg/kg,High
+726,714,dantrolene,9,mg/kg,High
+727,715,dantrolene,24,mg/kg,High
+732,728,diazepam,3,mg/kg,Low
+733,729,diazepam,6,mg/kg,Low
+734,730,diazepam,9,mg/kg,Low
+735,731,diazepam,24,mg/kg,Low
+736,728,diazepam,3,mg/kg,Middle
+737,729,diazepam,6,mg/kg,Middle
+738,730,diazepam,9,mg/kg,Middle
+739,731,diazepam,24,mg/kg,Middle
+740,728,diazepam,3,mg/kg,High
+741,729,diazepam,6,mg/kg,High
+742,730,diazepam,9,mg/kg,High
+743,731,diazepam,24,mg/kg,High
+748,744,diclofenac,3,mg/kg,Low
+749,745,diclofenac,6,mg/kg,Low
+750,746,diclofenac,9,mg/kg,Low
+751,747,diclofenac,24,mg/kg,Low
+752,744,diclofenac,3,mg/kg,Middle
+753,745,diclofenac,6,mg/kg,Middle
+754,746,diclofenac,9,mg/kg,Middle
+755,747,diclofenac,24,mg/kg,Middle
+756,744,diclofenac,3,mg/kg,High
+757,745,diclofenac,6,mg/kg,High
+758,746,diclofenac,9,mg/kg,High
+759,747,diclofenac,24,mg/kg,High
+764,760,diethyl maleate,3,mg/kg,Low
+765,761,diethyl maleate,6,mg/kg,Low
+766,762,diethyl maleate,9,mg/kg,Low
+767,763,diethyl maleate,24,mg/kg,Low
+768,760,diethyl maleate,3,mg/kg,Middle
+769,761,diethyl maleate,6,mg/kg,Middle
+770,762,diethyl maleate,9,mg/kg,Middle
+771,763,diethyl maleate,24,mg/kg,Middle
+772,760,diethyl maleate,3,mg/kg,High
+773,761,diethyl maleate,6,mg/kg,High
+774,762,diethyl maleate,9,mg/kg,High
+775,763,diethyl maleate,24,mg/kg,High
+780,776,diltiazem,3,mg/kg,Low
+781,777,diltiazem,6,mg/kg,Low
+782,778,diltiazem,9,mg/kg,Low
+783,779,diltiazem,24,mg/kg,Low
+784,776,diltiazem,3,mg/kg,Middle
+785,777,diltiazem,6,mg/kg,Middle
+786,778,diltiazem,9,mg/kg,Middle
+787,779,diltiazem,24,mg/kg,Middle
+788,776,diltiazem,3,mg/kg,High
+789,777,diltiazem,6,mg/kg,High
+790,778,diltiazem,9,mg/kg,High
+791,779,diltiazem,24,mg/kg,High
+796,792,disopyramide,3,mg/kg,Low
+797,793,disopyramide,6,mg/kg,Low
+798,794,disopyramide,9,mg/kg,Low
+799,795,disopyramide,24,mg/kg,Low
+800,792,disopyramide,3,mg/kg,Middle
+801,793,disopyramide,6,mg/kg,Middle
+802,794,disopyramide,9,mg/kg,Middle
+803,795,disopyramide,24,mg/kg,Middle
+804,792,disopyramide,3,mg/kg,High
+805,793,disopyramide,6,mg/kg,High
+806,794,disopyramide,9,mg/kg,High
+807,795,disopyramide,24,mg/kg,High
+812,808,disulfiram,3,mg/kg,Low
+813,809,disulfiram,6,mg/kg,Low
+814,810,disulfiram,9,mg/kg,Low
+815,811,disulfiram,24,mg/kg,Low
+816,808,disulfiram,3,mg/kg,Middle
+817,809,disulfiram,6,mg/kg,Middle
+818,810,disulfiram,9,mg/kg,Middle
+819,811,disulfiram,24,mg/kg,Middle
+820,808,disulfiram,3,mg/kg,High
+821,809,disulfiram,6,mg/kg,High
+822,810,disulfiram,9,mg/kg,High
+823,811,disulfiram,24,mg/kg,High
+828,824,doxorubicin,3,mg/kg,Low
+829,825,doxorubicin,6,mg/kg,Low
+830,826,doxorubicin,9,mg/kg,Low
+831,827,doxorubicin,24,mg/kg,Low
+832,824,doxorubicin,3,mg/kg,Middle
+833,825,doxorubicin,6,mg/kg,Middle
+834,826,doxorubicin,9,mg/kg,Middle
+835,827,doxorubicin,24,mg/kg,Middle
+836,824,doxorubicin,3,mg/kg,High
+837,825,doxorubicin,6,mg/kg,High
+838,826,doxorubicin,9,mg/kg,High
+839,827,doxorubicin,24,mg/kg,High
+844,840,enalapril,3,mg/kg,Low
+845,841,enalapril,6,mg/kg,Low
+846,842,enalapril,9,mg/kg,Low
+847,843,enalapril,24,mg/kg,Low
+848,840,enalapril,3,mg/kg,Middle
+849,841,enalapril,6,mg/kg,Middle
+850,842,enalapril,9,mg/kg,Middle
+851,843,enalapril,24,mg/kg,Middle
+852,840,enalapril,3,mg/kg,High
+853,841,enalapril,6,mg/kg,High
+854,842,enalapril,9,mg/kg,High
+855,843,enalapril,24,mg/kg,High
+860,856,erythromycin ethylsuccinate,3,mg/kg,Low
+861,857,erythromycin ethylsuccinate,6,mg/kg,Low
+862,858,erythromycin ethylsuccinate,9,mg/kg,Low
+863,859,erythromycin ethylsuccinate,24,mg/kg,Low
+864,856,erythromycin ethylsuccinate,3,mg/kg,Middle
+865,857,erythromycin ethylsuccinate,6,mg/kg,Middle
+866,858,erythromycin ethylsuccinate,9,mg/kg,Middle
+867,859,erythromycin ethylsuccinate,24,mg/kg,Middle
+868,856,erythromycin ethylsuccinate,3,mg/kg,High
+869,857,erythromycin ethylsuccinate,6,mg/kg,High
+870,858,erythromycin ethylsuccinate,9,mg/kg,High
+871,859,erythromycin ethylsuccinate,24,mg/kg,High
+876,872,ethambutol,3,mg/kg,Low
+877,873,ethambutol,6,mg/kg,Low
+878,874,ethambutol,9,mg/kg,Low
+879,875,ethambutol,24,mg/kg,Low
+880,872,ethambutol,3,mg/kg,Middle
+881,873,ethambutol,6,mg/kg,Middle
+882,874,ethambutol,9,mg/kg,Middle
+883,875,ethambutol,24,mg/kg,Middle
+884,872,ethambutol,3,mg/kg,High
+885,873,ethambutol,6,mg/kg,High
+886,874,ethambutol,9,mg/kg,High
+887,875,ethambutol,24,mg/kg,High
+892,888,ethanol,3,mg/kg,Low
+893,889,ethanol,6,mg/kg,Low
+894,890,ethanol,9,mg/kg,Low
+895,891,ethanol,24,mg/kg,Low
+896,888,ethanol,3,mg/kg,Middle
+897,889,ethanol,6,mg/kg,Middle
+898,890,ethanol,9,mg/kg,Middle
+899,891,ethanol,24,mg/kg,Middle
+900,888,ethanol,3,mg/kg,High
+901,889,ethanol,6,mg/kg,High
+902,890,ethanol,9,mg/kg,High
+903,891,ethanol,24,mg/kg,High
+908,904,ethinylestradiol,3,mg/kg,Low
+909,905,ethinylestradiol,6,mg/kg,Low
+910,906,ethinylestradiol,9,mg/kg,Low
+911,907,ethinylestradiol,24,mg/kg,Low
+912,904,ethinylestradiol,3,mg/kg,Middle
+913,905,ethinylestradiol,6,mg/kg,Middle
+914,906,ethinylestradiol,9,mg/kg,Middle
+915,907,ethinylestradiol,24,mg/kg,Middle
+916,904,ethinylestradiol,3,mg/kg,High
+917,905,ethinylestradiol,6,mg/kg,High
+918,906,ethinylestradiol,9,mg/kg,High
+919,907,ethinylestradiol,24,mg/kg,High
+924,920,ethionamide,3,mg/kg,Low
+925,921,ethionamide,6,mg/kg,Low
+926,922,ethionamide,9,mg/kg,Low
+927,923,ethionamide,24,mg/kg,Low
+928,920,ethionamide,3,mg/kg,Middle
+929,921,ethionamide,6,mg/kg,Middle
+930,922,ethionamide,9,mg/kg,Middle
+931,923,ethionamide,24,mg/kg,Middle
+932,920,ethionamide,3,mg/kg,High
+933,921,ethionamide,6,mg/kg,High
+934,922,ethionamide,9,mg/kg,High
+935,923,ethionamide,24,mg/kg,High
+940,936,ethionine,3,mg/kg,Low
+941,937,ethionine,6,mg/kg,Low
+942,938,ethionine,9,mg/kg,Low
+943,939,ethionine,24,mg/kg,Low
+944,936,ethionine,3,mg/kg,Middle
+945,937,ethionine,6,mg/kg,Middle
+946,938,ethionine,9,mg/kg,Middle
+947,939,ethionine,24,mg/kg,Middle
+948,936,ethionine,3,mg/kg,High
+949,937,ethionine,6,mg/kg,High
+950,938,ethionine,9,mg/kg,High
+951,939,ethionine,24,mg/kg,High
+956,952,etoposide,3,mg/kg,Low
+957,953,etoposide,6,mg/kg,Low
+958,954,etoposide,9,mg/kg,Low
+959,955,etoposide,24,mg/kg,Low
+960,952,etoposide,3,mg/kg,Middle
+961,953,etoposide,6,mg/kg,Middle
+962,954,etoposide,9,mg/kg,Middle
+963,955,etoposide,24,mg/kg,Middle
+964,952,etoposide,3,mg/kg,High
+965,953,etoposide,6,mg/kg,High
+966,954,etoposide,9,mg/kg,High
+967,955,etoposide,24,mg/kg,High
+972,968,famotidine,3,mg/kg,Low
+973,969,famotidine,6,mg/kg,Low
+974,970,famotidine,9,mg/kg,Low
+975,971,famotidine,24,mg/kg,Low
+976,968,famotidine,3,mg/kg,Middle
+977,969,famotidine,6,mg/kg,Middle
+978,970,famotidine,9,mg/kg,Middle
+979,971,famotidine,24,mg/kg,Middle
+980,968,famotidine,3,mg/kg,High
+981,969,famotidine,6,mg/kg,High
+982,970,famotidine,9,mg/kg,High
+983,971,famotidine,24,mg/kg,High
+988,984,fenofibrate,3,mg/kg,Low
+989,985,fenofibrate,6,mg/kg,Low
+990,986,fenofibrate,9,mg/kg,Low
+991,987,fenofibrate,24,mg/kg,Low
+992,984,fenofibrate,3,mg/kg,Middle
+993,985,fenofibrate,6,mg/kg,Middle
+994,986,fenofibrate,9,mg/kg,Middle
+995,987,fenofibrate,24,mg/kg,Middle
+996,984,fenofibrate,3,mg/kg,High
+997,985,fenofibrate,6,mg/kg,High
+998,986,fenofibrate,9,mg/kg,High
+999,987,fenofibrate,24,mg/kg,High
+1004,1000,fluphenazine,3,mg/kg,Low
+1005,1001,fluphenazine,6,mg/kg,Low
+1006,1002,fluphenazine,9,mg/kg,Low
+1007,1003,fluphenazine,24,mg/kg,Low
+1008,1000,fluphenazine,3,mg/kg,Middle
+1009,1001,fluphenazine,6,mg/kg,Middle
+1010,1002,fluphenazine,9,mg/kg,Middle
+1011,1003,fluphenazine,24,mg/kg,Middle
+1012,1000,fluphenazine,3,mg/kg,High
+1013,1001,fluphenazine,6,mg/kg,High
+1014,1002,fluphenazine,9,mg/kg,High
+1015,1003,fluphenazine,24,mg/kg,High
+1020,1016,flutamide,3,mg/kg,Low
+1021,1017,flutamide,6,mg/kg,Low
+1022,1018,flutamide,9,mg/kg,Low
+1023,1019,flutamide,24,mg/kg,Low
+1024,1016,flutamide,3,mg/kg,Middle
+1025,1017,flutamide,6,mg/kg,Middle
+1026,1018,flutamide,9,mg/kg,Middle
+1027,1019,flutamide,24,mg/kg,Middle
+1028,1016,flutamide,3,mg/kg,High
+1029,1017,flutamide,6,mg/kg,High
+1030,1018,flutamide,9,mg/kg,High
+1031,1019,flutamide,24,mg/kg,High
+1036,1032,furosemide,3,mg/kg,Low
+1037,1033,furosemide,6,mg/kg,Low
+1038,1034,furosemide,9,mg/kg,Low
+1039,1035,furosemide,24,mg/kg,Low
+1040,1032,furosemide,3,mg/kg,Middle
+1041,1033,furosemide,6,mg/kg,Middle
+1042,1034,furosemide,9,mg/kg,Middle
+1043,1035,furosemide,24,mg/kg,Middle
+1044,1032,furosemide,3,mg/kg,High
+1045,1033,furosemide,6,mg/kg,High
+1046,1034,furosemide,9,mg/kg,High
+1047,1035,furosemide,24,mg/kg,High
+1052,1048,galactosamine,3,mg/kg,Low
+1053,1049,galactosamine,6,mg/kg,Low
+1054,1050,galactosamine,9,mg/kg,Low
+1055,1051,galactosamine,24,mg/kg,Low
+1056,1048,galactosamine,3,mg/kg,Middle
+1057,1049,galactosamine,6,mg/kg,Middle
+1058,1050,galactosamine,9,mg/kg,Middle
+1059,1051,galactosamine,24,mg/kg,Middle
+1060,1048,galactosamine,3,mg/kg,High
+1061,1049,galactosamine,6,mg/kg,High
+1062,1050,galactosamine,9,mg/kg,High
+1063,1051,galactosamine,24,mg/kg,High
+1068,1064,gemfibrozil,3,mg/kg,Low
+1069,1065,gemfibrozil,6,mg/kg,Low
+1070,1066,gemfibrozil,9,mg/kg,Low
+1071,1067,gemfibrozil,24,mg/kg,Low
+1072,1064,gemfibrozil,3,mg/kg,Middle
+1073,1065,gemfibrozil,6,mg/kg,Middle
+1074,1066,gemfibrozil,9,mg/kg,Middle
+1075,1067,gemfibrozil,24,mg/kg,Middle
+1076,1064,gemfibrozil,3,mg/kg,High
+1077,1065,gemfibrozil,6,mg/kg,High
+1078,1066,gemfibrozil,9,mg/kg,High
+1079,1067,gemfibrozil,24,mg/kg,High
+1084,1080,gentamicin,3,mg/kg,Low
+1085,1081,gentamicin,6,mg/kg,Low
+1086,1082,gentamicin,9,mg/kg,Low
+1087,1083,gentamicin,24,mg/kg,Low
+1088,1080,gentamicin,3,mg/kg,Middle
+1089,1081,gentamicin,6,mg/kg,Middle
+1090,1082,gentamicin,9,mg/kg,Middle
+1091,1083,gentamicin,24,mg/kg,Middle
+1092,1080,gentamicin,3,mg/kg,High
+1093,1081,gentamicin,6,mg/kg,High
+1094,1082,gentamicin,9,mg/kg,High
+1095,1083,gentamicin,24,mg/kg,High
+1100,1096,glibenclamide,3,mg/kg,Low
+1101,1097,glibenclamide,6,mg/kg,Low
+1102,1098,glibenclamide,9,mg/kg,Low
+1103,1099,glibenclamide,24,mg/kg,Low
+1104,1096,glibenclamide,3,mg/kg,Middle
+1105,1097,glibenclamide,6,mg/kg,Middle
+1106,1098,glibenclamide,9,mg/kg,Middle
+1107,1099,glibenclamide,24,mg/kg,Middle
+1108,1096,glibenclamide,3,mg/kg,High
+1109,1097,glibenclamide,6,mg/kg,High
+1110,1098,glibenclamide,9,mg/kg,High
+1111,1099,glibenclamide,24,mg/kg,High
+1116,1112,griseofulvin,3,mg/kg,Low
+1117,1113,griseofulvin,6,mg/kg,Low
+1118,1114,griseofulvin,9,mg/kg,Low
+1119,1115,griseofulvin,24,mg/kg,Low
+1120,1112,griseofulvin,3,mg/kg,Middle
+1121,1113,griseofulvin,6,mg/kg,Middle
+1122,1114,griseofulvin,9,mg/kg,Middle
+1123,1115,griseofulvin,24,mg/kg,Middle
+1124,1112,griseofulvin,3,mg/kg,High
+1125,1113,griseofulvin,6,mg/kg,High
+1126,1114,griseofulvin,9,mg/kg,High
+1127,1115,griseofulvin,24,mg/kg,High
+1132,1128,haloperidol,3,mg/kg,Low
+1133,1129,haloperidol,6,mg/kg,Low
+1134,1130,haloperidol,9,mg/kg,Low
+1135,1131,haloperidol,24,mg/kg,Low
+1136,1128,haloperidol,3,mg/kg,Middle
+1137,1129,haloperidol,6,mg/kg,Middle
+1138,1130,haloperidol,9,mg/kg,Middle
+1139,1131,haloperidol,24,mg/kg,Middle
+1140,1128,haloperidol,3,mg/kg,High
+1141,1129,haloperidol,6,mg/kg,High
+1142,1130,haloperidol,9,mg/kg,High
+1143,1131,haloperidol,24,mg/kg,High
+1148,1144,hexachlorobenzene,3,mg/kg,Low
+1149,1145,hexachlorobenzene,6,mg/kg,Low
+1150,1146,hexachlorobenzene,9,mg/kg,Low
+1151,1147,hexachlorobenzene,24,mg/kg,Low
+1152,1144,hexachlorobenzene,3,mg/kg,Middle
+1153,1145,hexachlorobenzene,6,mg/kg,Middle
+1154,1146,hexachlorobenzene,9,mg/kg,Middle
+1155,1147,hexachlorobenzene,24,mg/kg,Middle
+1156,1144,hexachlorobenzene,3,mg/kg,High
+1157,1145,hexachlorobenzene,6,mg/kg,High
+1158,1146,hexachlorobenzene,9,mg/kg,High
+1159,1147,hexachlorobenzene,24,mg/kg,High
+1164,1160,hydroxyzine,3,mg/kg,Low
+1165,1161,hydroxyzine,6,mg/kg,Low
+1166,1162,hydroxyzine,9,mg/kg,Low
+1167,1163,hydroxyzine,24,mg/kg,Low
+1168,1160,hydroxyzine,3,mg/kg,Middle
+1169,1161,hydroxyzine,6,mg/kg,Middle
+1170,1162,hydroxyzine,9,mg/kg,Middle
+1171,1163,hydroxyzine,24,mg/kg,Middle
+1172,1160,hydroxyzine,3,mg/kg,High
+1173,1161,hydroxyzine,6,mg/kg,High
+1174,1162,hydroxyzine,9,mg/kg,High
+1175,1163,hydroxyzine,24,mg/kg,High
+1180,1176,ibuprofen,3,mg/kg,Low
+1181,1177,ibuprofen,6,mg/kg,Low
+1182,1178,ibuprofen,9,mg/kg,Low
+1183,1179,ibuprofen,24,mg/kg,Low
+1184,1176,ibuprofen,3,mg/kg,Middle
+1185,1177,ibuprofen,6,mg/kg,Middle
+1186,1178,ibuprofen,9,mg/kg,Middle
+1187,1179,ibuprofen,24,mg/kg,Middle
+1188,1176,ibuprofen,3,mg/kg,High
+1189,1177,ibuprofen,6,mg/kg,High
+1190,1178,ibuprofen,9,mg/kg,High
+1191,1179,ibuprofen,24,mg/kg,High
+1196,1192,imipramine,3,mg/kg,Low
+1197,1193,imipramine,6,mg/kg,Low
+1198,1194,imipramine,9,mg/kg,Low
+1199,1195,imipramine,24,mg/kg,Low
+1200,1192,imipramine,3,mg/kg,Middle
+1201,1193,imipramine,6,mg/kg,Middle
+1202,1194,imipramine,9,mg/kg,Middle
+1203,1195,imipramine,24,mg/kg,Middle
+1204,1192,imipramine,3,mg/kg,High
+1205,1193,imipramine,6,mg/kg,High
+1206,1194,imipramine,9,mg/kg,High
+1207,1195,imipramine,24,mg/kg,High
+1212,1208,indomethacin,3,mg/kg,Low
+1213,1209,indomethacin,6,mg/kg,Low
+1214,1210,indomethacin,9,mg/kg,Low
+1215,1211,indomethacin,24,mg/kg,Low
+1216,1208,indomethacin,3,mg/kg,Middle
+1217,1209,indomethacin,6,mg/kg,Middle
+1218,1210,indomethacin,9,mg/kg,Middle
+1219,1211,indomethacin,24,mg/kg,Middle
+1220,1208,indomethacin,3,mg/kg,High
+1221,1209,indomethacin,6,mg/kg,High
+1222,1210,indomethacin,9,mg/kg,High
+1223,1211,indomethacin,24,mg/kg,High
+1228,1224,iproniazid,3,mg/kg,Low
+1229,1225,iproniazid,6,mg/kg,Low
+1230,1226,iproniazid,9,mg/kg,Low
+1231,1227,iproniazid,24,mg/kg,Low
+1232,1224,iproniazid,3,mg/kg,Middle
+1233,1225,iproniazid,6,mg/kg,Middle
+1234,1226,iproniazid,9,mg/kg,Middle
+1235,1227,iproniazid,24,mg/kg,Middle
+1236,1224,iproniazid,3,mg/kg,High
+1237,1225,iproniazid,6,mg/kg,High
+1238,1226,iproniazid,9,mg/kg,High
+1239,1227,iproniazid,24,mg/kg,High
+1244,1240,isoniazid,3,mg/kg,Low
+1245,1241,isoniazid,6,mg/kg,Low
+1246,1242,isoniazid,9,mg/kg,Low
+1247,1243,isoniazid,24,mg/kg,Low
+1248,1240,isoniazid,3,mg/kg,Middle
+1249,1241,isoniazid,6,mg/kg,Middle
+1250,1242,isoniazid,9,mg/kg,Middle
+1251,1243,isoniazid,24,mg/kg,Middle
+1252,1240,isoniazid,3,mg/kg,High
+1253,1241,isoniazid,6,mg/kg,High
+1254,1242,isoniazid,9,mg/kg,High
+1255,1243,isoniazid,24,mg/kg,High
+1260,1256,ketoconazole,3,mg/kg,Low
+1261,1257,ketoconazole,6,mg/kg,Low
+1262,1258,ketoconazole,9,mg/kg,Low
+1263,1259,ketoconazole,24,mg/kg,Low
+1264,1256,ketoconazole,3,mg/kg,Middle
+1265,1257,ketoconazole,6,mg/kg,Middle
+1266,1258,ketoconazole,9,mg/kg,Middle
+1267,1259,ketoconazole,24,mg/kg,Middle
+1268,1256,ketoconazole,3,mg/kg,High
+1269,1257,ketoconazole,6,mg/kg,High
+1270,1258,ketoconazole,9,mg/kg,High
+1271,1259,ketoconazole,24,mg/kg,High
+1276,1272,labetalol,3,mg/kg,Low
+1277,1273,labetalol,6,mg/kg,Low
+1278,1274,labetalol,9,mg/kg,Low
+1279,1275,labetalol,24,mg/kg,Low
+1280,1272,labetalol,3,mg/kg,Middle
+1281,1273,labetalol,6,mg/kg,Middle
+1282,1274,labetalol,9,mg/kg,Middle
+1283,1275,labetalol,24,mg/kg,Middle
+1284,1272,labetalol,3,mg/kg,High
+1285,1273,labetalol,6,mg/kg,High
+1286,1274,labetalol,9,mg/kg,High
+1287,1275,labetalol,24,mg/kg,High
+1292,1288,lomustine,3,mg/kg,Low
+1293,1289,lomustine,6,mg/kg,Low
+1294,1290,lomustine,9,mg/kg,Low
+1295,1291,lomustine,24,mg/kg,Low
+1296,1288,lomustine,3,mg/kg,Middle
+1297,1289,lomustine,6,mg/kg,Middle
+1298,1290,lomustine,9,mg/kg,Middle
+1299,1291,lomustine,24,mg/kg,Middle
+1300,1288,lomustine,3,mg/kg,High
+1301,1289,lomustine,6,mg/kg,High
+1302,1290,lomustine,9,mg/kg,High
+1303,1291,lomustine,24,mg/kg,High
+1308,1304,lornoxicam,3,mg/kg,Low
+1309,1305,lornoxicam,6,mg/kg,Low
+1310,1306,lornoxicam,9,mg/kg,Low
+1311,1307,lornoxicam,24,mg/kg,Low
+1312,1304,lornoxicam,3,mg/kg,Middle
+1313,1305,lornoxicam,6,mg/kg,Middle
+1314,1306,lornoxicam,9,mg/kg,Middle
+1315,1307,lornoxicam,24,mg/kg,Middle
+1316,1304,lornoxicam,3,mg/kg,High
+1317,1305,lornoxicam,6,mg/kg,High
+1318,1306,lornoxicam,9,mg/kg,High
+1319,1307,lornoxicam,24,mg/kg,High
+1324,1320,mefenamic acid,3,mg/kg,Low
+1325,1321,mefenamic acid,6,mg/kg,Low
+1326,1322,mefenamic acid,9,mg/kg,Low
+1327,1323,mefenamic acid,24,mg/kg,Low
+1328,1320,mefenamic acid,3,mg/kg,Middle
+1329,1321,mefenamic acid,6,mg/kg,Middle
+1330,1322,mefenamic acid,9,mg/kg,Middle
+1331,1323,mefenamic acid,24,mg/kg,Middle
+1332,1320,mefenamic acid,3,mg/kg,High
+1333,1321,mefenamic acid,6,mg/kg,High
+1334,1322,mefenamic acid,9,mg/kg,High
+1335,1323,mefenamic acid,24,mg/kg,High
+1340,1336,meloxicam,3,mg/kg,Low
+1341,1337,meloxicam,6,mg/kg,Low
+1342,1338,meloxicam,9,mg/kg,Low
+1343,1339,meloxicam,24,mg/kg,Low
+1344,1336,meloxicam,3,mg/kg,Middle
+1345,1337,meloxicam,6,mg/kg,Middle
+1346,1338,meloxicam,9,mg/kg,Middle
+1347,1339,meloxicam,24,mg/kg,Middle
+1348,1336,meloxicam,3,mg/kg,High
+1349,1337,meloxicam,6,mg/kg,High
+1350,1338,meloxicam,9,mg/kg,High
+1351,1339,meloxicam,24,mg/kg,High
+1356,1352,metformin,3,mg/kg,Low
+1357,1353,metformin,6,mg/kg,Low
+1358,1354,metformin,9,mg/kg,Low
+1359,1355,metformin,24,mg/kg,Low
+1360,1352,metformin,3,mg/kg,Middle
+1361,1353,metformin,6,mg/kg,Middle
+1362,1354,metformin,9,mg/kg,Middle
+1363,1355,metformin,24,mg/kg,Middle
+1364,1352,metformin,3,mg/kg,High
+1365,1353,metformin,6,mg/kg,High
+1366,1354,metformin,9,mg/kg,High
+1367,1355,metformin,24,mg/kg,High
+1372,1368,methapyrilene,3,mg/kg,Low
+1373,1369,methapyrilene,6,mg/kg,Low
+1374,1370,methapyrilene,9,mg/kg,Low
+1375,1371,methapyrilene,24,mg/kg,Low
+1376,1368,methapyrilene,3,mg/kg,Middle
+1377,1369,methapyrilene,6,mg/kg,Middle
+1378,1370,methapyrilene,9,mg/kg,Middle
+1379,1371,methapyrilene,24,mg/kg,Middle
+1380,1368,methapyrilene,3,mg/kg,High
+1381,1369,methapyrilene,6,mg/kg,High
+1382,1370,methapyrilene,9,mg/kg,High
+1383,1371,methapyrilene,24,mg/kg,High
+1388,1384,methimazole,3,mg/kg,Low
+1389,1385,methimazole,6,mg/kg,Low
+1390,1386,methimazole,9,mg/kg,Low
+1391,1387,methimazole,24,mg/kg,Low
+1392,1384,methimazole,3,mg/kg,Middle
+1393,1385,methimazole,6,mg/kg,Middle
+1394,1386,methimazole,9,mg/kg,Middle
+1395,1387,methimazole,24,mg/kg,Middle
+1396,1384,methimazole,3,mg/kg,High
+1397,1385,methimazole,6,mg/kg,High
+1398,1386,methimazole,9,mg/kg,High
+1399,1387,methimazole,24,mg/kg,High
+1404,1400,methyldopa,3,mg/kg,Low
+1405,1401,methyldopa,6,mg/kg,Low
+1406,1402,methyldopa,9,mg/kg,Low
+1407,1403,methyldopa,24,mg/kg,Low
+1408,1400,methyldopa,3,mg/kg,Middle
+1409,1401,methyldopa,6,mg/kg,Middle
+1410,1402,methyldopa,9,mg/kg,Middle
+1411,1403,methyldopa,24,mg/kg,Middle
+1412,1400,methyldopa,3,mg/kg,High
+1413,1401,methyldopa,6,mg/kg,High
+1414,1402,methyldopa,9,mg/kg,High
+1415,1403,methyldopa,24,mg/kg,High
+1420,1416,methyltestosterone,3,mg/kg,Low
+1421,1417,methyltestosterone,6,mg/kg,Low
+1422,1418,methyltestosterone,9,mg/kg,Low
+1423,1419,methyltestosterone,24,mg/kg,Low
+1424,1416,methyltestosterone,3,mg/kg,Middle
+1425,1417,methyltestosterone,6,mg/kg,Middle
+1426,1418,methyltestosterone,9,mg/kg,Middle
+1427,1419,methyltestosterone,24,mg/kg,Middle
+1428,1416,methyltestosterone,3,mg/kg,High
+1429,1417,methyltestosterone,6,mg/kg,High
+1430,1418,methyltestosterone,9,mg/kg,High
+1431,1419,methyltestosterone,24,mg/kg,High
+1436,1432,mexiletine,3,mg/kg,Low
+1437,1433,mexiletine,6,mg/kg,Low
+1438,1434,mexiletine,9,mg/kg,Low
+1439,1435,mexiletine,24,mg/kg,Low
+1440,1432,mexiletine,3,mg/kg,Middle
+1441,1433,mexiletine,6,mg/kg,Middle
+1442,1434,mexiletine,9,mg/kg,Middle
+1443,1435,mexiletine,24,mg/kg,Middle
+1444,1432,mexiletine,3,mg/kg,High
+1445,1433,mexiletine,6,mg/kg,High
+1446,1434,mexiletine,9,mg/kg,High
+1447,1435,mexiletine,24,mg/kg,High
+1452,1448,monocrotaline,3,mg/kg,Low
+1453,1449,monocrotaline,6,mg/kg,Low
+1454,1450,monocrotaline,9,mg/kg,Low
+1455,1451,monocrotaline,24,mg/kg,Low
+1456,1448,monocrotaline,3,mg/kg,Middle
+1457,1449,monocrotaline,6,mg/kg,Middle
+1458,1450,monocrotaline,9,mg/kg,Middle
+1459,1451,monocrotaline,24,mg/kg,Middle
+1460,1448,monocrotaline,3,mg/kg,High
+1461,1449,monocrotaline,6,mg/kg,High
+1462,1450,monocrotaline,9,mg/kg,High
+1463,1451,monocrotaline,24,mg/kg,High
+1468,1464,moxisylyte,3,mg/kg,Low
+1469,1465,moxisylyte,6,mg/kg,Low
+1470,1466,moxisylyte,9,mg/kg,Low
+1471,1467,moxisylyte,24,mg/kg,Low
+1472,1464,moxisylyte,3,mg/kg,Middle
+1473,1465,moxisylyte,6,mg/kg,Middle
+1474,1466,moxisylyte,9,mg/kg,Middle
+1475,1467,moxisylyte,24,mg/kg,Middle
+1476,1464,moxisylyte,3,mg/kg,High
+1477,1465,moxisylyte,6,mg/kg,High
+1478,1466,moxisylyte,9,mg/kg,High
+1479,1467,moxisylyte,24,mg/kg,High
+1484,1480,naphthyl isothiocyanate,3,mg/kg,Low
+1485,1481,naphthyl isothiocyanate,6,mg/kg,Low
+1486,1482,naphthyl isothiocyanate,9,mg/kg,Low
+1487,1483,naphthyl isothiocyanate,24,mg/kg,Low
+1488,1480,naphthyl isothiocyanate,3,mg/kg,Middle
+1489,1481,naphthyl isothiocyanate,6,mg/kg,Middle
+1490,1482,naphthyl isothiocyanate,9,mg/kg,Middle
+1491,1483,naphthyl isothiocyanate,24,mg/kg,Middle
+1492,1480,naphthyl isothiocyanate,3,mg/kg,High
+1493,1481,naphthyl isothiocyanate,6,mg/kg,High
+1494,1482,naphthyl isothiocyanate,9,mg/kg,High
+1495,1483,naphthyl isothiocyanate,24,mg/kg,High
+1500,1496,naproxen,3,mg/kg,Low
+1501,1497,naproxen,6,mg/kg,Low
+1502,1498,naproxen,9,mg/kg,Low
+1503,1499,naproxen,24,mg/kg,Low
+1504,1496,naproxen,3,mg/kg,Middle
+1505,1497,naproxen,6,mg/kg,Middle
+1506,1498,naproxen,9,mg/kg,Middle
+1507,1499,naproxen,24,mg/kg,Middle
+1508,1496,naproxen,3,mg/kg,High
+1509,1497,naproxen,6,mg/kg,High
+1510,1498,naproxen,9,mg/kg,High
+1511,1499,naproxen,24,mg/kg,High
+1516,1512,nicotinic acid,3,mg/kg,Low
+1517,1513,nicotinic acid,6,mg/kg,Low
+1518,1514,nicotinic acid,9,mg/kg,Low
+1519,1515,nicotinic acid,24,mg/kg,Low
+1520,1512,nicotinic acid,3,mg/kg,Middle
+1521,1513,nicotinic acid,6,mg/kg,Middle
+1522,1514,nicotinic acid,9,mg/kg,Middle
+1523,1515,nicotinic acid,24,mg/kg,Middle
+1524,1512,nicotinic acid,3,mg/kg,High
+1525,1513,nicotinic acid,6,mg/kg,High
+1526,1514,nicotinic acid,9,mg/kg,High
+1527,1515,nicotinic acid,24,mg/kg,High
+1532,1528,nifedipine,3,mg/kg,Low
+1533,1529,nifedipine,6,mg/kg,Low
+1534,1530,nifedipine,9,mg/kg,Low
+1535,1531,nifedipine,24,mg/kg,Low
+1536,1528,nifedipine,3,mg/kg,Middle
+1537,1529,nifedipine,6,mg/kg,Middle
+1538,1530,nifedipine,9,mg/kg,Middle
+1539,1531,nifedipine,24,mg/kg,Middle
+1540,1528,nifedipine,3,mg/kg,High
+1541,1529,nifedipine,6,mg/kg,High
+1542,1530,nifedipine,9,mg/kg,High
+1543,1531,nifedipine,24,mg/kg,High
+1548,1544,nimesulide,3,mg/kg,Low
+1549,1545,nimesulide,6,mg/kg,Low
+1550,1546,nimesulide,9,mg/kg,Low
+1551,1547,nimesulide,24,mg/kg,Low
+1552,1544,nimesulide,3,mg/kg,Middle
+1553,1545,nimesulide,6,mg/kg,Middle
+1554,1546,nimesulide,9,mg/kg,Middle
+1555,1547,nimesulide,24,mg/kg,Middle
+1556,1544,nimesulide,3,mg/kg,High
+1557,1545,nimesulide,6,mg/kg,High
+1558,1546,nimesulide,9,mg/kg,High
+1559,1547,nimesulide,24,mg/kg,High
+1564,1560,nitrofurantoin,3,mg/kg,Low
+1565,1561,nitrofurantoin,6,mg/kg,Low
+1566,1562,nitrofurantoin,9,mg/kg,Low
+1567,1563,nitrofurantoin,24,mg/kg,Low
+1568,1560,nitrofurantoin,3,mg/kg,Middle
+1569,1561,nitrofurantoin,6,mg/kg,Middle
+1570,1562,nitrofurantoin,9,mg/kg,Middle
+1571,1563,nitrofurantoin,24,mg/kg,Middle
+1572,1560,nitrofurantoin,3,mg/kg,High
+1573,1561,nitrofurantoin,6,mg/kg,High
+1574,1562,nitrofurantoin,9,mg/kg,High
+1575,1563,nitrofurantoin,24,mg/kg,High
+1580,1576,nitrofurazone,3,mg/kg,Low
+1581,1577,nitrofurazone,6,mg/kg,Low
+1582,1578,nitrofurazone,9,mg/kg,Low
+1583,1579,nitrofurazone,24,mg/kg,Low
+1584,1576,nitrofurazone,3,mg/kg,Middle
+1585,1577,nitrofurazone,6,mg/kg,Middle
+1586,1578,nitrofurazone,9,mg/kg,Middle
+1587,1579,nitrofurazone,24,mg/kg,Middle
+1588,1576,nitrofurazone,3,mg/kg,High
+1589,1577,nitrofurazone,6,mg/kg,High
+1590,1578,nitrofurazone,9,mg/kg,High
+1591,1579,nitrofurazone,24,mg/kg,High
+1596,1592,nitrosodiethylamine,3,mg/kg,Low
+1597,1593,nitrosodiethylamine,6,mg/kg,Low
+1598,1594,nitrosodiethylamine,9,mg/kg,Low
+1599,1595,nitrosodiethylamine,24,mg/kg,Low
+1600,1592,nitrosodiethylamine,3,mg/kg,Middle
+1601,1593,nitrosodiethylamine,6,mg/kg,Middle
+1602,1594,nitrosodiethylamine,9,mg/kg,Middle
+1603,1595,nitrosodiethylamine,24,mg/kg,Middle
+1604,1592,nitrosodiethylamine,3,mg/kg,High
+1605,1593,nitrosodiethylamine,6,mg/kg,High
+1606,1594,nitrosodiethylamine,9,mg/kg,High
+1607,1595,nitrosodiethylamine,24,mg/kg,High
+1612,1608,omeprazole,3,mg/kg,Low
+1613,1609,omeprazole,6,mg/kg,Low
+1614,1610,omeprazole,9,mg/kg,Low
+1615,1611,omeprazole,24,mg/kg,Low
+1616,1608,omeprazole,3,mg/kg,Middle
+1617,1609,omeprazole,6,mg/kg,Middle
+1618,1610,omeprazole,9,mg/kg,Middle
+1619,1611,omeprazole,24,mg/kg,Middle
+1620,1608,omeprazole,3,mg/kg,High
+1621,1609,omeprazole,6,mg/kg,High
+1622,1610,omeprazole,9,mg/kg,High
+1623,1611,omeprazole,24,mg/kg,High
+1628,1624,papaverine,3,mg/kg,Low
+1629,1625,papaverine,6,mg/kg,Low
+1630,1626,papaverine,9,mg/kg,Low
+1631,1627,papaverine,24,mg/kg,Low
+1632,1624,papaverine,3,mg/kg,Middle
+1633,1625,papaverine,6,mg/kg,Middle
+1634,1626,papaverine,9,mg/kg,Middle
+1635,1627,papaverine,24,mg/kg,Middle
+1636,1624,papaverine,3,mg/kg,High
+1637,1625,papaverine,6,mg/kg,High
+1638,1626,papaverine,9,mg/kg,High
+1639,1627,papaverine,24,mg/kg,High
+1644,1640,pemoline,3,mg/kg,Low
+1645,1641,pemoline,6,mg/kg,Low
+1646,1642,pemoline,9,mg/kg,Low
+1647,1643,pemoline,24,mg/kg,Low
+1648,1640,pemoline,3,mg/kg,Middle
+1649,1641,pemoline,6,mg/kg,Middle
+1650,1642,pemoline,9,mg/kg,Middle
+1651,1643,pemoline,24,mg/kg,Middle
+1652,1640,pemoline,3,mg/kg,High
+1653,1641,pemoline,6,mg/kg,High
+1654,1642,pemoline,9,mg/kg,High
+1655,1643,pemoline,24,mg/kg,High
+1660,1656,penicillamine,3,mg/kg,Low
+1661,1657,penicillamine,6,mg/kg,Low
+1662,1658,penicillamine,9,mg/kg,Low
+1663,1659,penicillamine,24,mg/kg,Low
+1664,1656,penicillamine,3,mg/kg,Middle
+1665,1657,penicillamine,6,mg/kg,Middle
+1666,1658,penicillamine,9,mg/kg,Middle
+1667,1659,penicillamine,24,mg/kg,Middle
+1668,1656,penicillamine,3,mg/kg,High
+1669,1657,penicillamine,6,mg/kg,High
+1670,1658,penicillamine,9,mg/kg,High
+1671,1659,penicillamine,24,mg/kg,High
+1676,1672,perhexiline,3,mg/kg,Low
+1677,1673,perhexiline,6,mg/kg,Low
+1678,1674,perhexiline,9,mg/kg,Low
+1679,1675,perhexiline,24,mg/kg,Low
+1680,1672,perhexiline,3,mg/kg,Middle
+1681,1673,perhexiline,6,mg/kg,Middle
+1682,1674,perhexiline,9,mg/kg,Middle
+1683,1675,perhexiline,24,mg/kg,Middle
+1684,1672,perhexiline,3,mg/kg,High
+1685,1673,perhexiline,6,mg/kg,High
+1686,1674,perhexiline,9,mg/kg,High
+1687,1675,perhexiline,24,mg/kg,High
+1692,1688,phalloidin,3,mg/kg,High
+1693,1689,phalloidin,6,mg/kg,High
+1694,1690,phalloidin,9,mg/kg,High
+1695,1691,phalloidin,24,mg/kg,High
+1700,1696,phenacetin,3,mg/kg,Low
+1701,1697,phenacetin,6,mg/kg,Low
+1702,1698,phenacetin,9,mg/kg,Low
+1703,1699,phenacetin,24,mg/kg,Low
+1704,1696,phenacetin,3,mg/kg,Middle
+1705,1697,phenacetin,6,mg/kg,Middle
+1706,1698,phenacetin,9,mg/kg,Middle
+1707,1699,phenacetin,24,mg/kg,Middle
+1708,1696,phenacetin,3,mg/kg,High
+1709,1697,phenacetin,6,mg/kg,High
+1710,1698,phenacetin,9,mg/kg,High
+1711,1699,phenacetin,24,mg/kg,High
+1716,1712,phenobarbital,3,mg/kg,Low
+1717,1713,phenobarbital,6,mg/kg,Low
+1718,1714,phenobarbital,9,mg/kg,Low
+1719,1715,phenobarbital,24,mg/kg,Low
+1720,1712,phenobarbital,3,mg/kg,Middle
+1721,1713,phenobarbital,6,mg/kg,Middle
+1722,1714,phenobarbital,9,mg/kg,Middle
+1723,1715,phenobarbital,24,mg/kg,Middle
+1724,1712,phenobarbital,3,mg/kg,High
+1725,1713,phenobarbital,6,mg/kg,High
+1726,1714,phenobarbital,9,mg/kg,High
+1727,1715,phenobarbital,24,mg/kg,High
+1732,1728,phenylanthranilic acid,3,mg/kg,Low
+1733,1729,phenylanthranilic acid,6,mg/kg,Low
+1734,1730,phenylanthranilic acid,9,mg/kg,Low
+1735,1731,phenylanthranilic acid,24,mg/kg,Low
+1736,1728,phenylanthranilic acid,3,mg/kg,Middle
+1737,1729,phenylanthranilic acid,6,mg/kg,Middle
+1738,1730,phenylanthranilic acid,9,mg/kg,Middle
+1739,1731,phenylanthranilic acid,24,mg/kg,Middle
+1740,1728,phenylanthranilic acid,3,mg/kg,High
+1741,1729,phenylanthranilic acid,6,mg/kg,High
+1742,1730,phenylanthranilic acid,9,mg/kg,High
+1743,1731,phenylanthranilic acid,24,mg/kg,High
+1748,1744,phenylbutazone,3,mg/kg,Low
+1749,1745,phenylbutazone,6,mg/kg,Low
+1750,1746,phenylbutazone,9,mg/kg,Low
+1751,1747,phenylbutazone,24,mg/kg,Low
+1752,1744,phenylbutazone,3,mg/kg,Middle
+1753,1745,phenylbutazone,6,mg/kg,Middle
+1754,1746,phenylbutazone,9,mg/kg,Middle
+1755,1747,phenylbutazone,24,mg/kg,Middle
+1756,1744,phenylbutazone,3,mg/kg,High
+1757,1745,phenylbutazone,6,mg/kg,High
+1758,1746,phenylbutazone,9,mg/kg,High
+1759,1747,phenylbutazone,24,mg/kg,High
+1764,1760,phenytoin,3,mg/kg,Low
+1765,1761,phenytoin,6,mg/kg,Low
+1766,1762,phenytoin,9,mg/kg,Low
+1767,1763,phenytoin,24,mg/kg,Low
+1768,1760,phenytoin,3,mg/kg,Middle
+1769,1761,phenytoin,6,mg/kg,Middle
+1770,1762,phenytoin,9,mg/kg,Middle
+1771,1763,phenytoin,24,mg/kg,Middle
+1772,1760,phenytoin,3,mg/kg,High
+1773,1761,phenytoin,6,mg/kg,High
+1774,1762,phenytoin,9,mg/kg,High
+1775,1763,phenytoin,24,mg/kg,High
+1780,1776,phorone,3,mg/kg,Low
+1781,1777,phorone,6,mg/kg,Low
+1782,1778,phorone,9,mg/kg,Low
+1783,1779,phorone,24,mg/kg,Low
+1784,1776,phorone,3,mg/kg,Middle
+1785,1777,phorone,6,mg/kg,Middle
+1786,1778,phorone,9,mg/kg,Middle
+1787,1779,phorone,24,mg/kg,Middle
+1788,1776,phorone,3,mg/kg,High
+1789,1777,phorone,6,mg/kg,High
+1790,1778,phorone,9,mg/kg,High
+1791,1779,phorone,24,mg/kg,High
+1796,1792,promethazine,3,mg/kg,Low
+1797,1793,promethazine,6,mg/kg,Low
+1798,1794,promethazine,9,mg/kg,Low
+1799,1795,promethazine,24,mg/kg,Low
+1800,1792,promethazine,3,mg/kg,Middle
+1801,1793,promethazine,6,mg/kg,Middle
+1802,1794,promethazine,9,mg/kg,Middle
+1803,1795,promethazine,24,mg/kg,Middle
+1804,1792,promethazine,3,mg/kg,High
+1805,1793,promethazine,6,mg/kg,High
+1806,1794,promethazine,9,mg/kg,High
+1807,1795,promethazine,24,mg/kg,High
+1812,1808,propylthiouracil,3,mg/kg,Low
+1813,1809,propylthiouracil,6,mg/kg,Low
+1814,1810,propylthiouracil,9,mg/kg,Low
+1815,1811,propylthiouracil,24,mg/kg,Low
+1816,1808,propylthiouracil,3,mg/kg,Middle
+1817,1809,propylthiouracil,6,mg/kg,Middle
+1818,1810,propylthiouracil,9,mg/kg,Middle
+1819,1811,propylthiouracil,24,mg/kg,Middle
+1820,1808,propylthiouracil,3,mg/kg,High
+1821,1809,propylthiouracil,6,mg/kg,High
+1822,1810,propylthiouracil,9,mg/kg,High
+1823,1811,propylthiouracil,24,mg/kg,High
+1828,1824,puromycin aminonucleoside,3,mg/kg,Low
+1829,1825,puromycin aminonucleoside,6,mg/kg,Low
+1830,1826,puromycin aminonucleoside,9,mg/kg,Low
+1831,1827,puromycin aminonucleoside,24,mg/kg,Low
+1832,1824,puromycin aminonucleoside,3,mg/kg,Middle
+1833,1825,puromycin aminonucleoside,6,mg/kg,Middle
+1834,1826,puromycin aminonucleoside,9,mg/kg,Middle
+1835,1827,puromycin aminonucleoside,24,mg/kg,Middle
+1836,1824,puromycin aminonucleoside,3,mg/kg,High
+1837,1825,puromycin aminonucleoside,6,mg/kg,High
+1838,1826,puromycin aminonucleoside,9,mg/kg,High
+1839,1827,puromycin aminonucleoside,24,mg/kg,High
+1844,1840,quinidine,3,mg/kg,Low
+1845,1841,quinidine,6,mg/kg,Low
+1846,1842,quinidine,9,mg/kg,Low
+1847,1843,quinidine,24,mg/kg,Low
+1848,1840,quinidine,3,mg/kg,Middle
+1849,1841,quinidine,6,mg/kg,Middle
+1850,1842,quinidine,9,mg/kg,Middle
+1851,1843,quinidine,24,mg/kg,Middle
+1852,1840,quinidine,3,mg/kg,High
+1853,1841,quinidine,6,mg/kg,High
+1854,1842,quinidine,9,mg/kg,High
+1855,1843,quinidine,24,mg/kg,High
+1860,1856,ranitidine,3,mg/kg,Low
+1861,1857,ranitidine,6,mg/kg,Low
+1862,1858,ranitidine,9,mg/kg,Low
+1863,1859,ranitidine,24,mg/kg,Low
+1864,1856,ranitidine,3,mg/kg,Middle
+1865,1857,ranitidine,6,mg/kg,Middle
+1866,1858,ranitidine,9,mg/kg,Middle
+1867,1859,ranitidine,24,mg/kg,Middle
+1868,1856,ranitidine,3,mg/kg,High
+1869,1857,ranitidine,6,mg/kg,High
+1870,1858,ranitidine,9,mg/kg,High
+1871,1859,ranitidine,24,mg/kg,High
+1876,1872,rifampicin,3,mg/kg,Low
+1877,1873,rifampicin,6,mg/kg,Low
+1878,1874,rifampicin,9,mg/kg,Low
+1879,1875,rifampicin,24,mg/kg,Low
+1880,1872,rifampicin,3,mg/kg,Middle
+1881,1873,rifampicin,6,mg/kg,Middle
+1882,1874,rifampicin,9,mg/kg,Middle
+1883,1875,rifampicin,24,mg/kg,Middle
+1884,1872,rifampicin,3,mg/kg,High
+1885,1873,rifampicin,6,mg/kg,High
+1886,1874,rifampicin,9,mg/kg,High
+1887,1875,rifampicin,24,mg/kg,High
+1892,1888,simvastatin,3,mg/kg,Low
+1893,1889,simvastatin,6,mg/kg,Low
+1894,1890,simvastatin,9,mg/kg,Low
+1895,1891,simvastatin,24,mg/kg,Low
+1896,1888,simvastatin,3,mg/kg,Middle
+1897,1889,simvastatin,6,mg/kg,Middle
+1898,1890,simvastatin,9,mg/kg,Middle
+1899,1891,simvastatin,24,mg/kg,Middle
+1900,1888,simvastatin,3,mg/kg,High
+1901,1889,simvastatin,6,mg/kg,High
+1902,1890,simvastatin,9,mg/kg,High
+1903,1891,simvastatin,24,mg/kg,High
+1908,1904,sulfasalazine,3,mg/kg,Low
+1909,1905,sulfasalazine,6,mg/kg,Low
+1910,1906,sulfasalazine,9,mg/kg,Low
+1911,1907,sulfasalazine,24,mg/kg,Low
+1912,1904,sulfasalazine,3,mg/kg,Middle
+1913,1905,sulfasalazine,6,mg/kg,Middle
+1914,1906,sulfasalazine,9,mg/kg,Middle
+1915,1907,sulfasalazine,24,mg/kg,Middle
+1916,1904,sulfasalazine,3,mg/kg,High
+1917,1905,sulfasalazine,6,mg/kg,High
+1918,1906,sulfasalazine,9,mg/kg,High
+1919,1907,sulfasalazine,24,mg/kg,High
+1924,1920,sulindac,3,mg/kg,Low
+1925,1921,sulindac,6,mg/kg,Low
+1926,1922,sulindac,9,mg/kg,Low
+1927,1923,sulindac,24,mg/kg,Low
+1928,1920,sulindac,3,mg/kg,Middle
+1929,1921,sulindac,6,mg/kg,Middle
+1930,1922,sulindac,9,mg/kg,Middle
+1931,1923,sulindac,24,mg/kg,Middle
+1932,1920,sulindac,3,mg/kg,High
+1933,1921,sulindac,6,mg/kg,High
+1934,1922,sulindac,9,mg/kg,High
+1935,1923,sulindac,24,mg/kg,High
+1940,1936,sulpiride,3,mg/kg,Low
+1941,1937,sulpiride,6,mg/kg,Low
+1942,1938,sulpiride,9,mg/kg,Low
+1943,1939,sulpiride,24,mg/kg,Low
+1944,1936,sulpiride,3,mg/kg,Middle
+1945,1937,sulpiride,6,mg/kg,Middle
+1946,1938,sulpiride,9,mg/kg,Middle
+1947,1939,sulpiride,24,mg/kg,Middle
+1948,1936,sulpiride,3,mg/kg,High
+1949,1937,sulpiride,6,mg/kg,High
+1950,1938,sulpiride,9,mg/kg,High
+1951,1939,sulpiride,24,mg/kg,High
+1956,1952,tacrine,3,mg/kg,Low
+1957,1953,tacrine,6,mg/kg,Low
+1958,1954,tacrine,9,mg/kg,Low
+1959,1955,tacrine,24,mg/kg,Low
+1960,1952,tacrine,3,mg/kg,Middle
+1961,1953,tacrine,6,mg/kg,Middle
+1962,1954,tacrine,9,mg/kg,Middle
+1963,1955,tacrine,24,mg/kg,Middle
+1964,1952,tacrine,3,mg/kg,High
+1965,1953,tacrine,6,mg/kg,High
+1966,1954,tacrine,9,mg/kg,High
+1967,1955,tacrine,24,mg/kg,High
+1972,1968,tamoxifen,3,mg/kg,Low
+1973,1969,tamoxifen,6,mg/kg,Low
+1974,1970,tamoxifen,9,mg/kg,Low
+1975,1971,tamoxifen,24,mg/kg,Low
+1976,1968,tamoxifen,3,mg/kg,Middle
+1977,1969,tamoxifen,6,mg/kg,Middle
+1978,1970,tamoxifen,9,mg/kg,Middle
+1979,1971,tamoxifen,24,mg/kg,Middle
+1980,1968,tamoxifen,3,mg/kg,High
+1981,1969,tamoxifen,6,mg/kg,High
+1982,1970,tamoxifen,9,mg/kg,High
+1983,1971,tamoxifen,24,mg/kg,High
+1988,1984,tannic acid,3,mg/kg,Low
+1989,1985,tannic acid,6,mg/kg,Low
+1990,1986,tannic acid,9,mg/kg,Low
+1991,1987,tannic acid,24,mg/kg,Low
+1992,1984,tannic acid,3,mg/kg,Middle
+1993,1985,tannic acid,6,mg/kg,Middle
+1994,1986,tannic acid,9,mg/kg,Middle
+1995,1987,tannic acid,24,mg/kg,Middle
+1996,1984,tannic acid,3,mg/kg,High
+1997,1985,tannic acid,6,mg/kg,High
+1998,1986,tannic acid,9,mg/kg,High
+1999,1987,tannic acid,24,mg/kg,High
+2004,2000,terbinafine,3,mg/kg,Low
+2005,2001,terbinafine,6,mg/kg,Low
+2006,2002,terbinafine,9,mg/kg,Low
+2007,2003,terbinafine,24,mg/kg,Low
+2008,2000,terbinafine,3,mg/kg,Middle
+2009,2001,terbinafine,6,mg/kg,Middle
+2010,2002,terbinafine,9,mg/kg,Middle
+2011,2003,terbinafine,24,mg/kg,Middle
+2012,2000,terbinafine,3,mg/kg,High
+2013,2001,terbinafine,6,mg/kg,High
+2014,2002,terbinafine,9,mg/kg,High
+2015,2003,terbinafine,24,mg/kg,High
+2020,2016,tetracycline,3,mg/kg,Low
+2021,2017,tetracycline,6,mg/kg,Low
+2022,2018,tetracycline,9,mg/kg,Low
+2023,2019,tetracycline,24,mg/kg,Low
+2024,2016,tetracycline,3,mg/kg,Middle
+2025,2017,tetracycline,6,mg/kg,Middle
+2026,2018,tetracycline,9,mg/kg,Middle
+2027,2019,tetracycline,24,mg/kg,Middle
+2028,2016,tetracycline,3,mg/kg,High
+2029,2017,tetracycline,6,mg/kg,High
+2030,2018,tetracycline,9,mg/kg,High
+2031,2019,tetracycline,24,mg/kg,High
+2036,2032,theophylline,3,mg/kg,Low
+2037,2033,theophylline,6,mg/kg,Low
+2038,2034,theophylline,9,mg/kg,Low
+2039,2035,theophylline,24,mg/kg,Low
+2040,2032,theophylline,3,mg/kg,Middle
+2041,2033,theophylline,6,mg/kg,Middle
+2042,2034,theophylline,9,mg/kg,Middle
+2043,2035,theophylline,24,mg/kg,Middle
+2044,2032,theophylline,3,mg/kg,High
+2045,2033,theophylline,6,mg/kg,High
+2046,2034,theophylline,9,mg/kg,High
+2047,2035,theophylline,24,mg/kg,High
+2052,2048,thioacetamide,3,mg/kg,Low
+2053,2049,thioacetamide,6,mg/kg,Low
+2054,2050,thioacetamide,9,mg/kg,Low
+2055,2051,thioacetamide,24,mg/kg,Low
+2056,2048,thioacetamide,3,mg/kg,Middle
+2057,2049,thioacetamide,6,mg/kg,Middle
+2058,2050,thioacetamide,9,mg/kg,Middle
+2059,2051,thioacetamide,24,mg/kg,Middle
+2060,2048,thioacetamide,3,mg/kg,High
+2061,2049,thioacetamide,6,mg/kg,High
+2062,2050,thioacetamide,9,mg/kg,High
+2063,2051,thioacetamide,24,mg/kg,High
+2068,2064,thioridazine,3,mg/kg,Low
+2069,2065,thioridazine,6,mg/kg,Low
+2070,2066,thioridazine,9,mg/kg,Low
+2071,2067,thioridazine,24,mg/kg,Low
+2072,2064,thioridazine,3,mg/kg,Middle
+2073,2065,thioridazine,6,mg/kg,Middle
+2074,2066,thioridazine,9,mg/kg,Middle
+2075,2067,thioridazine,24,mg/kg,Middle
+2076,2064,thioridazine,3,mg/kg,High
+2077,2065,thioridazine,6,mg/kg,High
+2078,2066,thioridazine,9,mg/kg,High
+2079,2067,thioridazine,24,mg/kg,High
+2084,2080,ticlopidine,3,mg/kg,Low
+2085,2081,ticlopidine,6,mg/kg,Low
+2086,2082,ticlopidine,9,mg/kg,Low
+2087,2083,ticlopidine,24,mg/kg,Low
+2088,2080,ticlopidine,3,mg/kg,Middle
+2089,2081,ticlopidine,6,mg/kg,Middle
+2090,2082,ticlopidine,9,mg/kg,Middle
+2091,2083,ticlopidine,24,mg/kg,Middle
+2092,2080,ticlopidine,3,mg/kg,High
+2093,2081,ticlopidine,6,mg/kg,High
+2094,2082,ticlopidine,9,mg/kg,High
+2095,2083,ticlopidine,24,mg/kg,High
+2100,2096,tiopronin,3,mg/kg,Low
+2101,2097,tiopronin,6,mg/kg,Low
+2102,2098,tiopronin,9,mg/kg,Low
+2103,2099,tiopronin,24,mg/kg,Low
+2104,2096,tiopronin,3,mg/kg,Middle
+2105,2097,tiopronin,6,mg/kg,Middle
+2106,2098,tiopronin,9,mg/kg,Middle
+2107,2099,tiopronin,24,mg/kg,Middle
+2108,2096,tiopronin,3,mg/kg,High
+2109,2097,tiopronin,6,mg/kg,High
+2110,2098,tiopronin,9,mg/kg,High
+2111,2099,tiopronin,24,mg/kg,High
+2116,2112,tolbutamide,3,mg/kg,Low
+2117,2113,tolbutamide,6,mg/kg,Low
+2118,2114,tolbutamide,9,mg/kg,Low
+2119,2115,tolbutamide,24,mg/kg,Low
+2120,2112,tolbutamide,3,mg/kg,Middle
+2121,2113,tolbutamide,6,mg/kg,Middle
+2122,2114,tolbutamide,9,mg/kg,Middle
+2123,2115,tolbutamide,24,mg/kg,Middle
+2124,2112,tolbutamide,3,mg/kg,High
+2125,2113,tolbutamide,6,mg/kg,High
+2126,2114,tolbutamide,9,mg/kg,High
+2127,2115,tolbutamide,24,mg/kg,High
+2132,2128,triamterene,3,mg/kg,Low
+2133,2129,triamterene,6,mg/kg,Low
+2134,2130,triamterene,9,mg/kg,Low
+2135,2131,triamterene,24,mg/kg,Low
+2136,2128,triamterene,3,mg/kg,Middle
+2137,2129,triamterene,6,mg/kg,Middle
+2138,2130,triamterene,9,mg/kg,Middle
+2139,2131,triamterene,24,mg/kg,Middle
+2140,2128,triamterene,3,mg/kg,High
+2141,2129,triamterene,6,mg/kg,High
+2142,2130,triamterene,9,mg/kg,High
+2143,2131,triamterene,24,mg/kg,High
+2148,2144,triazolam,3,mg/kg,Low
+2149,2145,triazolam,6,mg/kg,Low
+2150,2146,triazolam,9,mg/kg,Low
+2151,2147,triazolam,24,mg/kg,Low
+2152,2144,triazolam,3,mg/kg,Middle
+2153,2145,triazolam,6,mg/kg,Middle
+2154,2146,triazolam,9,mg/kg,Middle
+2155,2147,triazolam,24,mg/kg,Middle
+2156,2144,triazolam,3,mg/kg,High
+2157,2145,triazolam,6,mg/kg,High
+2158,2146,triazolam,9,mg/kg,High
+2159,2147,triazolam,24,mg/kg,High
+2164,2160,trimethadione,3,mg/kg,Low
+2165,2161,trimethadione,6,mg/kg,Low
+2166,2162,trimethadione,9,mg/kg,Low
+2167,2163,trimethadione,24,mg/kg,Low
+2168,2160,trimethadione,3,mg/kg,Middle
+2169,2161,trimethadione,6,mg/kg,Middle
+2170,2162,trimethadione,9,mg/kg,Middle
+2171,2163,trimethadione,24,mg/kg,Middle
+2172,2160,trimethadione,3,mg/kg,High
+2173,2161,trimethadione,6,mg/kg,High
+2174,2162,trimethadione,9,mg/kg,High
+2175,2163,trimethadione,24,mg/kg,High
+2180,2176,tunicamycin,3,μg/kg,Low
+2181,2177,tunicamycin,6,μg/kg,Low
+2182,2178,tunicamycin,9,μg/kg,Low
+2183,2179,tunicamycin,24,μg/kg,Low
+2184,2176,tunicamycin,3,μg/kg,Middle
+2185,2177,tunicamycin,6,μg/kg,Middle
+2186,2178,tunicamycin,9,μg/kg,Middle
+2187,2179,tunicamycin,24,μg/kg,Middle
+2188,2176,tunicamycin,3,μg/kg,High
+2189,2177,tunicamycin,6,μg/kg,High
+2190,2178,tunicamycin,9,μg/kg,High
+2191,2179,tunicamycin,24,μg/kg,High
+2196,2192,valproic acid,3,mg/kg,Low
+2197,2193,valproic acid,6,mg/kg,Low
+2198,2194,valproic acid,9,mg/kg,Low
+2199,2195,valproic acid,24,mg/kg,Low
+2200,2192,valproic acid,3,mg/kg,Middle
+2201,2193,valproic acid,6,mg/kg,Middle
+2202,2194,valproic acid,9,mg/kg,Middle
+2203,2195,valproic acid,24,mg/kg,Middle
+2204,2192,valproic acid,3,mg/kg,High
+2205,2193,valproic acid,6,mg/kg,High
+2206,2194,valproic acid,9,mg/kg,High
+2207,2195,valproic acid,24,mg/kg,High
+2212,2208,vitamin A,3,mg/kg,Low
+2213,2209,vitamin A,6,mg/kg,Low
+2214,2210,vitamin A,9,mg/kg,Low
+2215,2211,vitamin A,24,mg/kg,Low
+2216,2208,vitamin A,3,mg/kg,Middle
+2217,2209,vitamin A,6,mg/kg,Middle
+2218,2210,vitamin A,9,mg/kg,Middle
+2219,2211,vitamin A,24,mg/kg,Middle
+2220,2208,vitamin A,3,mg/kg,High
+2221,2209,vitamin A,6,mg/kg,High
+2222,2210,vitamin A,9,mg/kg,High
+2223,2211,vitamin A,24,mg/kg,High

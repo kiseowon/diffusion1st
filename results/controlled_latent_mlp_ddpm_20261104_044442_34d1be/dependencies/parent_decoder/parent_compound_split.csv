@@ -1,0 +1,141 @@
+compound,stage
+TNFÉø,inner_train
+acetazolamide,inner_train
+adapin,inner_train
+allopurinol,inner_train
+allyl alcohol,inner_train
+amiodarone,inner_train
+azathioprine,inner_train
+bendazac,inner_train
+benzbromarone,inner_train
+benziodarone,inner_train
+bromoethylamine,inner_train
+buthionine sulfoximine,inner_train
+caffeine,inner_train
+captopril,inner_train
+carboplatin,inner_train
+chlormadinone,inner_train
+chlormezanone,inner_train
+chlorpheniramine,inner_train
+chlorpromazine,inner_train
+cimetidine,inner_train
+ciprofloxacin,inner_train
+cisplatin,inner_train
+colchicine,inner_train
+coumarin,inner_train
+cycloheximide,inner_train
+cyclophosphamide,inner_train
+cyclosporine A,inner_train
+danazol,inner_train
+dantrolene,inner_train
+diclofenac,inner_train
+diethyl maleate,inner_train
+diltiazem,inner_train
+enalapril,inner_train
+erythromycin ethylsuccinate,inner_train
+ethambutol,inner_train
+ethinylestradiol,inner_train
+ethionamide,inner_train
+ethionine,inner_train
+etoposide,inner_train
+famotidine,inner_train
+fenofibrate,inner_train
+fluphenazine,inner_train
+flutamide,inner_train
+galactosamine,inner_train
+gemfibrozil,inner_train
+glibenclamide,inner_train
+haloperidol,inner_train
+ibuprofen,inner_train
+indomethacin,inner_train
+iproniazid,inner_train
+ketoconazole,inner_train
+labetalol,inner_train
+lomustine,inner_train
+mefenamic acid,inner_train
+meloxicam,inner_train
+metformin,inner_train
+methapyrilene,inner_train
+methyldopa,inner_train
+methyltestosterone,inner_train
+nicotinic acid,inner_train
+nimesulide,inner_train
+nitrofurantoin,inner_train
+nitrofurazone,inner_train
+nitrosodiethylamine,inner_train
+papaverine,inner_train
+phalloidin,inner_train
+phenobarbital,inner_train
+phenylanthranilic acid,inner_train
+phenylbutazone,inner_train
+phorone,inner_train
+promethazine,inner_train
+puromycin aminonucleoside,inner_train
+quinidine,inner_train
+simvastatin,inner_train
+sulfasalazine,inner_train
+sulpiride,inner_train
+tacrine,inner_train
+terbinafine,inner_train
+tetracycline,inner_train
+theophylline,inner_train
+thioacetamide,inner_train
+thioridazine,inner_train
+ticlopidine,inner_train
+tolbutamide,inner_train
+triamterene,inner_train
+triazolam,inner_train
+trimethadione,inner_train
+tunicamycin,inner_train
+vitamin A,inner_train
+ajmaline,inner_validation
+amitriptyline,inner_validation
+bromobenzene,inner_validation
+cephalothin,inner_validation
+clomipramine,inner_validation
+disulfiram,inner_validation
+doxorubicin,inner_validation
+furosemide,inner_validation
+gentamicin,inner_validation
+griseofulvin,inner_validation
+hexachlorobenzene,inner_validation
+hydroxyzine,inner_validation
+imipramine,inner_validation
+monocrotaline,inner_validation
+omeprazole,inner_validation
+penicillamine,inner_validation
+perhexiline,inner_validation
+phenytoin,inner_validation
+propylthiouracil,inner_validation
+sulindac,inner_validation
+tannic acid,inner_validation
+tiopronin,inner_validation
+valproic acid,inner_validation
+LPS,outer_test
+WY-14643,outer_test
+acarbose,outer_test
+acetamidofluorene,outer_test
+acetaminophen,outer_test
+aspirin,outer_test
+bucetin,outer_test
+carbamazepine,outer_test
+carbon tetrachloride,outer_test
+chloramphenicol,outer_test
+chlorpropamide,outer_test
+clofibrate,outer_test
+diazepam,outer_test
+disopyramide,outer_test
+ethanol,outer_test
+isoniazid,outer_test
+lornoxicam,outer_test
+methimazole,outer_test
+mexiletine,outer_test
+moxisylyte,outer_test
+naphthyl isothiocyanate,outer_test
+naproxen,outer_test
+nifedipine,outer_test
+pemoline,outer_test
+phenacetin,outer_test
+ranitidine,outer_test
+rifampicin,outer_test
+tamoxifen,outer_test

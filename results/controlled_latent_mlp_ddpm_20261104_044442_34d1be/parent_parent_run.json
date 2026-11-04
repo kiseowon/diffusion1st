@@ -1,0 +1,52 @@
+{
+  "config": {
+    "split_seed": 42,
+    "output_ranks": [
+      8,
+      16,
+      32
+    ],
+    "ridge_alphas": [
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "representations": [
+      "C",
+      "E",
+      "E_S",
+      "P_S",
+      "PCA_S"
+    ],
+    "threads": 4,
+    "target": "vivo_treated_minus_matched_control",
+    "method": "baseline_plus_PCA_response_ridge",
+    "selection": "validation_response_rmse",
+    "exploratory": true
+  },
+  "helper_commit": "3300adec5e204b6e4930b4cdf396d9fd0f197111",
+  "input_sha256": {
+    "/home/seowon1211/data1/conditioned_expression/prepared_controls/vitro_expression.npy": "dcb876df0b525882a763cc1bb5bb04d05fa0da5353c85286538667167718ffeb",
+    "/home/seowon1211/data1/conditioned_expression/prepared_controls/vivo_expression.npy": "2ee3cace147a6f48a3d464f8e7d842248198f116f679c5f97e923458b1119c8a",
+    "/home/seowon1211/data1/conditioned_expression/prepared_controls/vitro_conditions.csv": "7ea1ce961027782a88c422175d82d399a851d669fec75a0cb7bb7e1555d8ffb2",
+    "/home/seowon1211/data1/conditioned_expression/prepared_controls/vivo_conditions.csv": "8aef635fc484861e7d39926f5c69a00e201b06ef612cf12bdf46299f7b663278",
+    "/home/seowon1211/data1/conditioned_expression/prepared_controls/pairs.csv.gz": "82bb08a458e9279c19b6cc3a78eb50a9ca2d62e6e3295ac338622dd6f2c89d97",
+    "/home/seowon1211/data1/conditioned_expression/prepared_controls/probes.csv": "ce30b279405b7065f2bcf27cc3820b12017fbb4af2358b35b6f28fb46bf4b6db",
+    "/home/seowon1211/data1/conditioned_expression/morgan_matched/morgan_binary.csv": "6ce0330b2ab02ad54f54a751a0860c10582d8636ffc48e20378baaaa76bf575f",
+    "/home/seowon1211/data1/conditioned_expression/kegg_rat_20261102_034010_265aed/projection.npy": "ede461d9c9c356c411c3646a1dc6c52ee016b447c146cbb131547afb947f4979",
+    "/home/seowon1211/data1/conditioned_expression/kegg_rat_20261102_034010_265aed/pathway_audit.csv": "920ed7bf7d554b0e0d635c201b04bdea5f7718f537ba0f57c4bfbe2acc0624ce",
+    "/home/seowon1211/data1/conditioned_expression/kegg_rat_20261102_034010_265aed/provenance.json": "1bf22adaceef111d9b9c6991715963a32b0811bd73cdb902d15a54efcba4887d"
+  },
+  "helper_sha256": {
+    "first_structure_mlp.py": "60ac8a142007dc7b6b1b864923c0b34e59b4a29dbf167df7ec469b6feb33bf82",
+    "pathway_structure_mlp.py": "e3b5dc8f5c935b463ff4d6d6599707747b029b9a7c61a64631c0ba6203db0c8f",
+    "repeated_pathway_validation.py": "e0995df6dba2369b51de7ef1e80e116dd1d9b5a6f8df0006d883965710974204"
+  },
+  "versions": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "torch": "2.5.0+cu121"
+  }
+}

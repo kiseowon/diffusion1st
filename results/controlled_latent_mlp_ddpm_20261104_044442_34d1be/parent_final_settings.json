@@ -1,0 +1,47 @@
+{
+  "baseline_alpha": 100.0,
+  "residual_scale": 0.28135972148633753,
+  "settings": {
+    "model_seeds": [
+      42,
+      43,
+      44
+    ],
+    "graph_seed": 20261102,
+    "baseline_alphas": [
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "input_pca_max": 64,
+    "input_pca_relative_tolerance": 1e-08,
+    "hidden": 128,
+    "free_route_rank": 8,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "dropout": 0.1,
+    "batch_size": 64,
+    "epochs": 30,
+    "validation_epochs": [
+      1,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    "strengths": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "threads": 4,
+    "baseline": "target_conditions_ridge",
+    "target": "direct_vivo_treated_minus_control",
+    "source": "vitro_treated_minus_control",
+    "residual": "in_sample_training_baseline_residual",
+    "exploratory": true
+  }
+}

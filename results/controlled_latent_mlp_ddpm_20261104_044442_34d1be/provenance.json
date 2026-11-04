@@ -8,8 +8,8 @@
   "independent_training_performed": false,
   "independent_prediction_performed": false,
   "independent_metric_recalculation": false,
-  "server_code_snapshot_received": false,
-  "server_artifact_hashes_verified": false,
+  "server_code_snapshot_received": true,
+  "server_artifact_hashes_verified": true,
   "source_data_in_repository": false,
   "prior_time_level_baseline": {
     "value": 0.3103845757483401,
@@ -28,8 +28,18 @@
   "artifact_checks": "artifact_checks.json",
   "condition_mse_reaggregation_performed": true,
   "independent_prediction_vs_truth_metric_recalculation": false,
-  "unassigned_prediction_and_checkpoint_received": true,
+  "unassigned_prediction_and_checkpoint_received": false,
   "independent_metric_recalculation_scope_note": "Raw truth versus predictions not recomputed; uploaded per-condition MSE reaggregated separately.",
   "binary_transfer_status": "User explicitly approved uploading condition metrics, prediction array and checkpoint to kiseowon/diffusion1st after automatic review rejection was explained.",
-  "user_transfer_approval_date": "2026-11-04"
+  "user_transfer_approval_date": "2026-11-04",
+  "server_artifact_hashes_verified_scope": "44 manifest-listed files match SHA-256 and size; three helper files match server-recorded code hashes. Raw input hashes not independently rechecked.",
+  "initial_unassigned_uploads_resolved_as": "mlp via identical SHA-256",
+  "backup_checks": "backup_checks.json",
+  "backup_import_manifest": "backup_import_manifest.json",
+  "remaining_gaps": [
+    "raw prepared_controls expression/condition/pair/probe files not included",
+    "raw Morgan CSV not included",
+    "full original environment lock not supplied",
+    "clean-environment training/inference restoration not executed"
+  ]
 }

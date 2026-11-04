@@ -1,0 +1,35 @@
+{
+  "seed": 42,
+  "models": [
+    "mlp",
+    "ddpm"
+  ],
+  "output_components_max": 32,
+  "epochs": 100,
+  "validation_epochs": [
+    1,
+    25,
+    50,
+    75,
+    100
+  ],
+  "learning_rate": 0.0003,
+  "weight_decay": 0.01,
+  "batch_size": 64,
+  "steps": 30,
+  "samples": 16,
+  "strengths": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "threads": 4,
+  "diffusion_prediction": "x0",
+  "schedule": "cosine",
+  "structure": true,
+  "target": "PCA_of_training_baseline_residual",
+  "residual_policy": "in_sample_training_baseline_residual",
+  "exploratory": true
+}

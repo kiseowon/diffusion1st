@@ -1,0 +1,44 @@
+{
+  "manifest_files_verified": 44,
+  "zip_crc_passed": true,
+  "helper_code_matches_recorded_sha256": true,
+  "parent_run_records_identical": true,
+  "split_counts": {
+    "inner_train": 89,
+    "inner_validation": 23,
+    "outer_test": 28
+  },
+  "test_compounds_match_metrics": true,
+  "model_artifacts": {
+    "mlp": {
+      "prediction_shape": [
+        336,
+        3453
+      ],
+      "predictions_finite": true,
+      "target_ids_match_condition_metrics": true,
+      "target_ids_match_baseline": true,
+      "condition_mse_rmse": 0.3118587617478962,
+      "checkpoint_zip_crc_passed": true,
+      "checkpoint_deserialized": false
+    },
+    "ddpm": {
+      "prediction_shape": [
+        336,
+        3453
+      ],
+      "predictions_finite": true,
+      "target_ids_match_condition_metrics": true,
+      "target_ids_match_baseline": true,
+      "condition_mse_rmse": 0.3106236005192594,
+      "checkpoint_zip_crc_passed": true,
+      "checkpoint_deserialized": false
+    }
+  },
+  "original_scripts_syntax_parsed_without_execution": true,
+  "joblib_or_checkpoint_deserialization_performed": false,
+  "raw_truth_vs_prediction_metrics_recomputed": false,
+  "raw_data_received": false,
+  "training_performed": false,
+  "input_files_have_server_recorded_hashes_but_not_rechecked_against_raw_data": true
+}

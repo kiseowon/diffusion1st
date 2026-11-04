@@ -1,0 +1,20 @@
+[
+  {
+    "archive_path": "controlled_run/baseline_predictions.npz",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/baseline_predictions.npz",
+    "bytes": 8891578,
+    "sha256": "242d764d1fabaa11c394b1fef8f1861cc0287566a406f5315686dac2551c095d"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/predictions.npz",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/predictions.npz",
+    "bytes": 8894239,
+    "sha256": "a8841fc9b7626cb653990ef3fb8244ddd9c40bbfb07e662abac10d30de57ed75"
+  },
+  {
+    "archive_path": "controlled_run/mlp/predictions.npz",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/predictions.npz",
+    "bytes": 8894489,
+    "sha256": "2bd556084456f7cd69b43ca63a010c06ed8122a694d4bd27e46c1f63c29b00c8"
+  }
+]

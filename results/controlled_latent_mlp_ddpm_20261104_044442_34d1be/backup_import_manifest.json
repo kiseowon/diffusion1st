@@ -1,0 +1,310 @@
+[
+  {
+    "archive_path": "controlled_run/baseline.joblib",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/baseline.joblib",
+    "bytes": 223993,
+    "sha256": "e18d02371f0d684a05dfa2114f2f3b5772044c22d1f07bca2fe44e15b42d2571",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/baseline.joblib"
+  },
+  {
+    "archive_path": "controlled_run/completed.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/completed.json",
+    "bytes": 27,
+    "sha256": "dc7adde55a5b4ff521b24e60d3b81c7ff6862fd15ab5ea94638bc99cbbe0c5df",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/completed.json"
+  },
+  {
+    "archive_path": "controlled_run/config.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/config.json",
+    "bytes": 570,
+    "sha256": "0d0fdf77f0e8e8d6a8009bd1799b55b74f8759178eeab9e884743ca9696fb9e4",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/config.json"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/complete.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/complete.json",
+    "bytes": 145,
+    "sha256": "7029932e5a85cb73ce4b21c618faedbebfc8730503239d9887434d490c50a1a4",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/complete.json"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/condition_metrics.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/condition_metrics.csv",
+    "bytes": 14704,
+    "sha256": "808f503d1321069044cf84b8432f265d95a225474342f8bafd8903472e4cdec9",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/condition_metrics.csv"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/model.pt",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/model.pt",
+    "bytes": 624110,
+    "sha256": "6b67c15c2d4b9e7c6c53ae772a4b2203afdffe7a1f9db64cadc13b3a27e604ed",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/model.pt"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/selection.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/selection.json",
+    "bytes": 87,
+    "sha256": "707a462b84077f31c1b2e0ec183884703d48dc9036c0064601433746b057ae49",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/selection.json"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/validation_history.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/validation_history.csv",
+    "bytes": 739,
+    "sha256": "2b5500c71b1ba5e54f4aeb3d678bf319031d38fa1fab20ec2edb6dd3cfc2a556",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/validation_history.csv"
+  },
+  {
+    "archive_path": "controlled_run/executed_cell.py",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/executed_cell.py",
+    "bytes": 11934,
+    "sha256": "b0c0a471b61f23feffc5dc541e3466b90859208a2a0e92d2e9bc14be5e45fcc2",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/executed_cell.py"
+  },
+  {
+    "archive_path": "controlled_run/final_input_preprocess.joblib",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/final_input_preprocess.joblib",
+    "bytes": 1900113,
+    "sha256": "a4f045ee0bfe139606df3b1c3a2552fae2e2ff56323461c6495c5638134728b3",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/final_input_preprocess.joblib"
+  },
+  {
+    "archive_path": "controlled_run/final_output_preprocess.joblib",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/final_output_preprocess.joblib",
+    "bytes": 913452,
+    "sha256": "94ac17112313b2164da612763e20bad46fe4fd1c94b4f63f8850eb51841ab4ff",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/final_output_preprocess.joblib"
+  },
+  {
+    "archive_path": "controlled_run/inner_input_preprocess.joblib",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/inner_input_preprocess.joblib",
+    "bytes": 1900097,
+    "sha256": "8640b9504bee7dde3484ca318e8bce4af0103485fe6de82cc7e420d9ed17ac5e",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/inner_input_preprocess.joblib"
+  },
+  {
+    "archive_path": "controlled_run/inner_output_preprocess.joblib",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/inner_output_preprocess.joblib",
+    "bytes": 913452,
+    "sha256": "3665783ca2fa8fe060cdc2e435fb50a47acebd4eca203be2ed75562b177e855b",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/inner_output_preprocess.joblib"
+  },
+  {
+    "archive_path": "controlled_run/mlp/complete.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/complete.json",
+    "bytes": 145,
+    "sha256": "143d2872cd2e9f50a7662e01c8a3be0ec5ecb721b5605455576ec0d4325ca512",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/complete.json"
+  },
+  {
+    "archive_path": "controlled_run/mlp/condition_metrics.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/condition_metrics.csv",
+    "bytes": 14698,
+    "sha256": "67f3e8c70048c9f7f39b9e52657a4d69b821fc020e351111c587a807a21cf15d",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/condition_metrics.csv"
+  },
+  {
+    "archive_path": "controlled_run/mlp/model.pt",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/model.pt",
+    "bytes": 624110,
+    "sha256": "5590d6428a65eefe00091dc6281c8d7307857635a75813a906892e2c2393bed9",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/model.pt"
+  },
+  {
+    "archive_path": "controlled_run/mlp/selection.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/selection.json",
+    "bytes": 88,
+    "sha256": "57a01420e2b85b43eeacae1da20c0b98922fb513095ebfa30079f8a9f73e171d",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/selection.json"
+  },
+  {
+    "archive_path": "controlled_run/mlp/validation_history.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/validation_history.csv",
+    "bytes": 738,
+    "sha256": "b3133ed7f78a5c6f7b7e432b4528e046e84f3137aa0f9c6a7c970afa39478b0d",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/validation_history.csv"
+  },
+  {
+    "archive_path": "controlled_run/parent.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent.json",
+    "bytes": 135,
+    "sha256": "0b27e1934b4f224eaeebbc24314291c17b8c9921212189e3463e6e596ca4be62",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent.json"
+  },
+  {
+    "archive_path": "controlled_run/parent_baseline_validation.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_baseline_validation.csv",
+    "bytes": 109,
+    "sha256": "479a1107a2d4ef421cd6e90b6f0ff619e8fb172ad904374d7a0f46cd9df1c6c7",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_baseline_validation.csv"
+  },
+  {
+    "archive_path": "controlled_run/parent_config.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_config.json",
+    "bytes": 712,
+    "sha256": "2afe267a504f9462796301dab429510933ddd39d830586d17dac1a0501490f53",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_config.json"
+  },
+  {
+    "archive_path": "controlled_run/parent_final_settings.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_final_settings.json",
+    "bytes": 882,
+    "sha256": "72c118ff8c27ce6215f25b0d1a579f73c2ec740fa690e423e9d271c055e93c5c",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_final_settings.json"
+  },
+  {
+    "archive_path": "controlled_run/parent_parent_compound_split.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_parent_compound_split.csv",
+    "bytes": 3534,
+    "sha256": "0cfd6f92d689a881ab51003fc34050f25924baf9440e332e3381109d79c488e8",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_parent_compound_split.csv"
+  },
+  {
+    "archive_path": "controlled_run/parent_parent_run.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_parent_run.json",
+    "bytes": 2610,
+    "sha256": "9dd7d3a5fb9ed1f13a7a515e939e53381c7efa422cc67aee83b3530d60a15329",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_parent_run.json"
+  },
+  {
+    "archive_path": "controlled_run/parent_source_delta_audit.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_source_delta_audit.csv",
+    "bytes": 26642,
+    "sha256": "cc4c4c018cbda21e8431b0d15ee96fff8d814939b16eafc81fa4e874a772cd44",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/parent_source_delta_audit.csv"
+  },
+  {
+    "archive_path": "controlled_run/results.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/results.csv",
+    "bytes": 212,
+    "sha256": "b0f6bb2bf85826ac844ce2ace10b12184eb4950a20aa9310b7a4fa6435d9b8e9",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/server_results.csv"
+  },
+  {
+    "archive_path": "parent_decoder/baseline_validation.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/baseline_validation.csv",
+    "bytes": 109,
+    "sha256": "479a1107a2d4ef421cd6e90b6f0ff619e8fb172ad904374d7a0f46cd9df1c6c7",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/baseline_validation.csv"
+  },
+  {
+    "archive_path": "parent_decoder/config.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/config.json",
+    "bytes": 712,
+    "sha256": "2afe267a504f9462796301dab429510933ddd39d830586d17dac1a0501490f53",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/config.json"
+  },
+  {
+    "archive_path": "parent_decoder/executed_cell.py",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/executed_cell.py",
+    "bytes": 17670,
+    "sha256": "eade4756e26aea4ea231bb709904360d3910c6700f20e38e083f96c99550f295",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/executed_cell.py"
+  },
+  {
+    "archive_path": "parent_decoder/final_settings.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/final_settings.json",
+    "bytes": 882,
+    "sha256": "72c118ff8c27ce6215f25b0d1a579f73c2ec740fa690e423e9d271c055e93c5c",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/final_settings.json"
+  },
+  {
+    "archive_path": "parent_decoder/parent_compound_split.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/parent_compound_split.csv",
+    "bytes": 3534,
+    "sha256": "0cfd6f92d689a881ab51003fc34050f25924baf9440e332e3381109d79c488e8",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/parent_compound_split.csv"
+  },
+  {
+    "archive_path": "parent_decoder/parent_run.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/parent_run.json",
+    "bytes": 2610,
+    "sha256": "9dd7d3a5fb9ed1f13a7a515e939e53381c7efa422cc67aee83b3530d60a15329",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/parent_run.json"
+  },
+  {
+    "archive_path": "parent_decoder/source_delta_audit.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/pathway_decoder_pilot_20261104_040530_3cd03c/source_delta_audit.csv",
+    "bytes": 26642,
+    "sha256": "cc4c4c018cbda21e8431b0d15ee96fff8d814939b16eafc81fa4e874a772cd44",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_decoder/source_delta_audit.csv"
+  },
+  {
+    "archive_path": "parent_lowrank/compound_split.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/compound_split.csv",
+    "bytes": 3534,
+    "sha256": "0cfd6f92d689a881ab51003fc34050f25924baf9440e332e3381109d79c488e8",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/compound_split.csv"
+  },
+  {
+    "archive_path": "parent_lowrank/executed_cell.py",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/executed_cell.py",
+    "bytes": 12676,
+    "sha256": "4c2da42e4d8ca3ab850fcc06f6f5a03f3abcf900ea86c0098f35c2ae94fad5e3",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/executed_cell.py"
+  },
+  {
+    "archive_path": "parent_lowrank/first_structure_mlp.py",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/first_structure_mlp.py",
+    "bytes": 14163,
+    "sha256": "60ac8a142007dc7b6b1b864923c0b34e59b4a29dbf167df7ec469b6feb33bf82",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/first_structure_mlp.py"
+  },
+  {
+    "archive_path": "parent_lowrank/pathway_structure_mlp.py",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/pathway_structure_mlp.py",
+    "bytes": 8305,
+    "sha256": "e3b5dc8f5c935b463ff4d6d6599707747b029b9a7c61a64631c0ba6203db0c8f",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/pathway_structure_mlp.py"
+  },
+  {
+    "archive_path": "parent_lowrank/repeated_pathway_validation.py",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/repeated_pathway_validation.py",
+    "bytes": 19607,
+    "sha256": "e0995df6dba2369b51de7ef1e80e116dd1d9b5a6f8df0006d883965710974204",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/repeated_pathway_validation.py"
+  },
+  {
+    "archive_path": "parent_lowrank/response_target_audit.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/response_target_audit.csv",
+    "bytes": 58519,
+    "sha256": "f66663c854921b5a652b24b8f5272ee2d95b4bd95b8d72a3e503348c4a82f857",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/response_target_audit.csv"
+  },
+  {
+    "archive_path": "parent_lowrank/run.json",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/run.json",
+    "bytes": 2610,
+    "sha256": "9dd7d3a5fb9ed1f13a7a515e939e53381c7efa422cc67aee83b3530d60a15329",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/run.json"
+  },
+  {
+    "archive_path": "parent_lowrank/structure_audit.csv",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/lowrank_pathway_pilot_20261104_033758_4e53b4/structure_audit.csv",
+    "bytes": 2059,
+    "sha256": "522577a3bd164f3654c2cc792acfb4523dde8b87800450f65dd6f7b758c9fee2",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/dependencies/parent_lowrank/structure_audit.csv"
+  },
+  {
+    "archive_path": "controlled_run/baseline_predictions.npz",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/baseline_predictions.npz",
+    "bytes": 8891578,
+    "sha256": "242d764d1fabaa11c394b1fef8f1861cc0287566a406f5315686dac2551c095d",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/baseline_predictions.npz"
+  },
+  {
+    "archive_path": "controlled_run/ddpm/predictions.npz",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/predictions.npz",
+    "bytes": 8894239,
+    "sha256": "a8841fc9b7626cb653990ef3fb8244ddd9c40bbfb07e662abac10d30de57ed75",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/ddpm/predictions.npz"
+  },
+  {
+    "archive_path": "controlled_run/mlp/predictions.npz",
+    "source_path": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/predictions.npz",
+    "bytes": 8894489,
+    "sha256": "2bd556084456f7cd69b43ca63a010c06ed8122a694d4bd27e46c1f63c29b00c8",
+    "repository_path": "results/controlled_latent_mlp_ddpm_20261104_044442_34d1be/mlp/predictions.npz"
+  }
+]

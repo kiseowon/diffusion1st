@@ -14,7 +14,7 @@
     "selection_matches_validation_minimum": true
   },
   "paired_target_metadata_identical": true,
-  "unassigned_predictions": {
+  "initial_upload_predictions": {
     "shape": [
       336,
       3453
@@ -22,12 +22,14 @@
     "target_ids_match_both_models": true,
     "finite": true,
     "zip_crc_passed": true,
-    "model_association": "unverified",
-    "prediction_vs_truth_metrics_recomputed": false
+    "model_association": "mlp_verified_by_sha256_against_folder_preserved_backup",
+    "prediction_vs_truth_metrics_recomputed": false,
+    "was_previously_unassigned": true
   },
-  "unassigned_checkpoint": {
+  "initial_upload_checkpoint": {
     "zip_crc_passed": true,
     "deserialized_or_executed": false,
-    "model_association": "unverified"
+    "model_association": "mlp_verified_by_sha256_against_folder_preserved_backup",
+    "was_previously_unassigned": true
   }
 }

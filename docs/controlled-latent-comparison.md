@@ -4,7 +4,7 @@
 
 동일한 입력·반응 압축·기본 예측 아래에서, 잠재 반응을 직접 예측하는 MLP보다 조건부 Diffusion으로 생성·평균하는 방식이 더 낮은 오차를 보이는가?
 
-설명은 채팅에서 제공한 실행 셀을 근거로 하고, 결과는 사용자가 제공한 서버 로그를 근거로 합니다. 서버에서 실제 실행한 파일과 채팅 셀의 checksum 일치는 아직 확인하지 못했습니다. 이 환경에서 학습을 실행하거나 원자료를 독립 검증한 것은 아닙니다.
+설명은 채팅에서 제공한 실행 셀을 근거로 하고, 결과는 사용자가 제공한 서버 로그를 근거로 합니다. 이후 폴더 구조를 보존한 백업에서 실제 실행 셀과 상위 셀을 확보해 코드를 읽어 대조했습니다. 채팅 설명과 서버 실행 기록의 연결은 backup_checks.json과 보존한 원본을 참고하세요. 이 환경에서 학습을 실행하거나 원자료를 독립 검증한 것은 아닙니다.
 
 ## 데이터와 분할
 
@@ -15,7 +15,7 @@
 - split seed42의 화합물 단위 내부 학습89 / 검증23 / 외부 테스트28. 설정 선택 후 112개 화합물로 다시 적합합니다. 모델 seed는42 하나입니다.
 - 기존 decoder 셀의 전처리·분할·기준선 객체를 재사용하는 continuation 셀이었습니다. 새 커널에서 단독 실행할 수 있는 완결 스크립트는 아닙니다.
 
-실제 분할 CSV·전처리 객체 원본은 아직 제출되지 않아 위 내용은 제공 코드 기준 설계 기록입니다. 원자료의 RMA/log2 처리 여부는 값 범위만으로 확정하지 않습니다.
+추가 백업에서 실제 분할 CSV·전처리 객체 원본을 확보했습니다. 분할은 화합물140개 중89/23/28로 확인했고 테스트 지표의28개 화합물과 일치합니다. 전처리 객체 자체를 로드해 실행한 것은 아닙니다. 원자료의 RMA/log2 처리 여부는 값 범위만으로 확정하지 않습니다.
 
 ## 공통 입력과 전처리
 
@@ -25,7 +25,7 @@
 4. source와 target 각각 dose·time·unit·level을 조건으로 사용합니다. dose에는 log1p, 수치 열에는 학습 pair 기반 표준화, 범주에는 unknown을 무시하는 one-hot을 적용합니다. 조건 특징도 target별 pair 평균을 사용합니다. 단위의 물리적 환산은 추가하지 않습니다.
 5. Morgan binary와 presence flag는 표준화하지 않고 입력에 연결합니다. 누락 구조는0과 presence=0으로 처리하는 기존 로더를 따릅니다. 구조 로더의 이름 매칭 검사가 물질 동일성을 보증하지는 않습니다.
 
-입력 PCA/scaler는 내부 학습 단계와 최종 refit 단계에 각각 따로 적합합니다. Morgan 특징은 실제 실행 시 상위 셀의 data.structure를 재사용했습니다. 그 셀은 morgan_matched/morgan_binary.csv를 읽도록 제공됐지만, 서버 객체·입력 hash 원본은 아직 확인하지 못했습니다.
+입력 PCA/scaler는 내부 학습 단계와 최종 refit 단계에 각각 따로 적합합니다. Morgan 특징은 실제 실행 시 상위 셀의 data.structure를 재사용했습니다. 상위 실행 셀과 run.json에서 morgan_matched/morgan_binary.csv 경로 및 서버 기록 hash를 확인했습니다. 원래 CSV 본문은 이번 첨부에 없어 입력 파일 hash를 독립적으로 다시 계산한 것은 아닙니다.
 
 ## 공통 목표 조건 Ridge
 
@@ -92,14 +92,18 @@ DDPM−MLP = −0.0012351612286368, DDPM−Ridge = −0.0022152248094555입니�
 
 서버 실행 폴더: `/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be`.
 
-아직 필요한 원본은 executed_cell.py, config.json, parent.json, parent 분할·입력 hash 기록, baseline NPZ, 모델 소속이 확인된 각 prediction NPZ·checkpoint, 전처리 joblib입니다. 두 모델의 validation_history.csv·selection.json·complete.json·condition_metrics.csv는 추가 첨부로 확보했습니다. 특히 상위 커널의 의존 객체가 있어 두 실행 셀과 분할·전처리를 함께 보존해야 합니다.
+추가 백업으로 executed_cell.py, config.json, parent.json, parent 분할·입력 hash 기록, baseline NPZ, 두 모델별 prediction NPZ·checkpoint, 전처리 joblib 및 상위 실행 셀들을 확보했습니다. 원자료와 새 환경 전체 재실행 검증은 여전히 남았습니다. 특히 상위 커널 객체에 의존하므로 셀만 단독 실행할 수는 없습니다.
 
-현재 GitHub에는 설계와 전사된 결과 및 일부 첨부 산출물을 보존했습니다. 원자료·실제 실행 코드 snapshot·모델별 산출물 전체의 백업 완료, 학습 재현 완료, 서버 코드 hash 일치는 주장하지 않습니다. 이 기록을 만들면서 추가 실험은 실행하지 않았습니다.
+현재 GitHub에는 설계와 전사된 결과, 서버 실행 셀과 상위 의존 셀 및 첨부 산출물을 보존했습니다. 원자료·실제 실행 코드 snapshot·모델별 산출물 전체의 백업 완료, 학습 재현 완료, 서버 코드 hash 일치는 주장하지 않습니다. 이 기록을 만들면서 추가 실험은 실행하지 않았습니다.
 
 ## 추가 첨부 산출물의 검사
 
 MLP와 DDPM 각각 selection.json·complete.json·validation_history.csv·condition_metrics.csv를 원본 바이트 그대로 보존했습니다. 파일명 (1) 자체로 모델을 결정하지 않고 complete의 model 필드, 선택 epoch·강도·검증 점수, 검증 이력을 함께 대조했습니다. 두 조건별 표의 336개 고유 target,28개 화합물 및 condition_id·compound·time_h·level 순서가 일치합니다. 조건별 MSE 평균의 제곱근은 각각0.3118587617478962와0.3106236005192594로 완료 기록과 일치합니다.
 
-첨부된 predictions.npz 하나는336×3453, 유한한 값이며 target ID 순서는 두 모델의 지표 표와 같습니다. ID가 같다는 것으로 모델 소속을 결정할 수는 없습니다. model.pt 하나도 모델 소속 미확인 상태로 별도 보존했고 ZIP CRC만 검사했습니다. 자동 승인 검토의 최초 전송 거부 이후 사용자가 외부 업로드를 명시적으로 승인하여 두 파일 원본도 unassigned/에 보존했습니다. torch.load나 pickle 실행은 하지 않았습니다. 두 파일을 특정 모델의 확정 산출물이라고 표시하지 않습니다.
+처음 단독 첨부된 predictions.npz와 model.pt는 모델 소속이 미확인이었지만, 폴더 구조를 보존한 다음 백업의 mlp/ 파일과 SHA-256이 정확히 같아 MLP 파일로 확인했습니다. 기존 단독 파일은 mlp/로 정리하고 원래 업로드 ID·hash·이전 위치는 artifact_manifest.json에 남겼습니다.
 
-artifact_manifest.json은 첨부 파일별 원래 이름·업로드 ID·보존 위치·SHA-256을 기록합니다. artifact_checks.json은 검사 결과입니다. checksum은 받은 파일의 보존 근거이며 서버 원본과 독립적으로 대조한 근거는 아닙니다. 원자료 정답이 없어 예측으로부터 RMSE를 직접 재계산하지 못했고, 실행 셀·입력·분할·전처리 원본은 여전히 필요합니다.
+추가 백업의 두 모델과 기준선 예측 모두336×3453이며 유한한 값입니다. 세 파일의 target ID 순서가 같고 두 모델의 condition_metrics.csv와도 일치합니다. 모델별 checkpoint의 ZIP CRC를 확인했으며 torch.load나 joblib.load는 하지 않았습니다.
+
+backup_import_manifest.json은 원본 archive 경로·서버 경로·보존 경로·SHA-256을 연결하고, 원본 manifest 두 개도 수정하지 않고 보존했습니다. 총44개 manifest 파일 모두 크기와hash가 일치합니다. 상위 저차원 실험에서 기록한 helper3개 hash와 이번 helper 원본이 같고, 상위 run.json의 사본들도 byte 단위로 일치합니다. 보존한 Python6개의 문법만 파싱했고 실행하지 않았습니다.
+
+원자료 정답이 없어 예측에서부터 RMSE를 직접 재계산하지 못했습니다. 조건별 MSE의 재집계와 학습·추론 재현은 구분합니다. 자세한 현재 확보 범위는 [백업 상태](backup-status.md)를 참고하세요.
