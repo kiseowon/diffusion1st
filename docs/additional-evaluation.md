@@ -19,7 +19,7 @@
 | Active sign accuracy | 실제 절댓값≥τ인 원소에서 예측 부호가 같은 비율. 예측 절댓값이τ보다 작아도 부호만 같으면 맞음 |
 | Class별 precision/recall/F1/support | 특정 방향만 놓치거나 small만 예측하는지 확인 |
 
-표준화된 잠재 공간이 아니라 **역변환된 원래 반응 척도**에서 평가합니다. 원자료의 log2/RMA provenance가 확정된 것은 아닙니다. 기본τ=0.5와1.0은 결과를 보기 전에 지정한 탐색적 진폭 threshold이며 통계적으로 유의한 차등발현,2배 변화,검증된 생물학적 중요도 기준이 아닙니다. 유리한 threshold를 사후 선택해 주결과로 바꾸지 않습니다.
+표준화된 잠재 공간이 아니라 **역변환된 원래 반응 척도**에서 평가합니다. 이후 사용자 서버의 배포 checksum 일치로 [AIVIVE RMA 입력 출처](expression-source.md)가 연결됐습니다. 기본τ=0.5와1.0은 결과를 보기 전에 지정한 탐색적 진폭 threshold이며 통계적으로 유의한 차등발현,2배 변화,검증된 생물학적 중요도 기준이 아닙니다. 유리한 threshold를 사후 선택해 주결과로 바꾸지 않습니다.
 
 분류 규칙은 `y≥τ: up`, `y≤−τ: down`, 나머지 `small`입니다. 모든3453probe를 포함합니다. 변화가 작은 원소가 많으면 전체 accuracy가 높아도 반응 방향을 못 맞힐 수 있으므로 Macro F1·class별 support·active sign accuracy를 함께 봅니다. 실제 변화가 큰 원소가 없으면 active sign accuracy는 빈 값입니다.
 

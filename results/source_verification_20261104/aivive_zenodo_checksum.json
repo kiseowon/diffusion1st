@@ -1,0 +1,42 @@
+{
+  "record_date": "2026-11-04",
+  "verification_environment": "user_server",
+  "verification_source": "user_pasted_Zenodo_API_metadata_and_local_checksum_output",
+  "zenodo_record": "14984579",
+  "data_doi": "10.5281/zenodo.14984579",
+  "zenodo_api": "https://zenodo.org/api/records/14984579",
+  "data_title": "AIVIVE: A Novel AI Framework for Enhanced In Vitro to In Vivo Extrapolation (IVIVE) of Toxicogenomics Data",
+  "paper_doi": "10.1093/toxsci/kfaf100",
+  "normalization_evidence": "User-supplied paper Methods says oligo RMA; local AIVIVE README describes the Zenodo training/test inputs as RMA-normalized.",
+  "files": [
+    {
+      "name": "vitro_train_test.csv",
+      "local_path": "/home/seowon1211/data1/vitro_train_test.csv",
+      "zenodo_bytes": 1876727611,
+      "checksum_algorithm": "md5",
+      "zenodo_checksum": "139f24ef70d1af8730f3e08ae032d723",
+      "local_checksum": "139f24ef70d1af8730f3e08ae032d723",
+      "exact_match_reported": true
+    },
+    {
+      "name": "vivo_train_test.csv",
+      "local_path": "/home/seowon1211/data1/vivo_train_test.csv",
+      "zenodo_bytes": 3740796430,
+      "checksum_algorithm": "md5",
+      "zenodo_checksum": "217681c2335da3371182588ec1ff5a33",
+      "local_checksum": "217681c2335da3371182588ec1ff5a33",
+      "exact_match_reported": true
+    }
+  ],
+  "source_file_provenance_status": "Local input CSVs match the RMA-normalized AIVIVE Zenodo distribution per user-server checksum verification.",
+  "independent_original_csv_download_here": false,
+  "independent_local_csv_checksum_computation_here": false,
+  "raw_RMA_reexecution": false,
+  "research_training_performed": false,
+  "original_large_csvs_in_repository": false,
+  "limitations": [
+    "This records the user-server check; original multi-GB CSVs not received here.",
+    "RMA-derived expression and statistically significant differential expression are different concepts.",
+    "Checksum evidence does not identify old corrected metadata generation version or establish biological sample independence."
+  ]
+}

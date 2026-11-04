@@ -39,3 +39,7 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 ## 세 모델 계열의 공통 조건 비교
 
 [기준선의 의미와 예시](docs/baselines.md)와 [MLP·cGAN·DDPM 비교 설계](docs/three-family-comparison.md)를 추가했습니다. `--families mlp cgan ddpm`은45조건·최대90회신경망fit을계획합니다. 기본은기존MLP/DDPM이고실제학습은별도`--execute`가필요합니다. 이번확장에서는연구데이터학습을실행하지않았습니다.
+
+## 발현 입력 출처 확인
+
+[발현 출처와 전처리](docs/expression-source.md): 사용자 서버의 vitro_train_test.csv·vivo_train_test.csv가 AIVIVE Zenodo14984579 배포 파일의 MD5와 각각 정확히 일치했습니다. 논문·README의 RMA 정규화 설명과 연결해 AIVIVE가 전처리한 배포 발현 자료를 사용한 것으로 기록합니다. 이는 사용자 서버의 checksum 검사이며 이 환경에서 원시 CSV 다운로드·RMA 재실행·추가 학습을 수행한 것은 아닙니다.
