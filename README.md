@@ -25,3 +25,7 @@ DDPM의 MLP 대비 RMSE 차이는 −0.001235입니다. **단일 화합물 분�
 - [상위 셀·복원 의존성·현재 검증 범위](docs/backup-status.md)
 
 checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **원자료 발현·조건/pair/probe·Morgan CSV와 새 환경의 전체 재실행 검증은 아직 없습니다.** 파일 확보·hash 검사와 학습/추론 재현은 구분합니다. 보존 셀들은 상위 커널 변수에 의존하므로 독립 실행용 프로그램이 아닙니다.
+
+## 고정 설정 반복 평가 실행기
+
+[반복 검증 설계·실행 안내](docs/repeated-latent-validation.md)와 [실행 코드](scripts/repeated_latent_validation.py)를 추가했습니다. 기본은 화합물5-fold × 모델seed3개 × MLP/DDPM으로30조건·최대60회 신경망fit이며, 계획만 출력합니다. `--execute`를 붙여야 실제 학습합니다. Ridge·시간×등급 평균·반응0 기준선을 같은 target으로 비교합니다. 코드 작성 환경에서는 작은 합성 검사만 했고 연구 데이터 반복 학습은 실행하지 않았습니다.
