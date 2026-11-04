@@ -1,0 +1,34 @@
+{
+  "record_date": "2026-11-04",
+  "source": "user_pasted_server_console_output_and_assistant_supplied_chat_cell",
+  "server_result_folder": "/home/seowon1211/data1/conditioned_expression/controlled_latent_mlp_ddpm_20261104_044442_34d1be",
+  "reported_completion": "both_models_completed_in_pasted_log",
+  "results_csv_status": "transcription_not_original_server_file",
+  "protocol_status": "transcription_of_provided_cell_not_verified_server_config",
+  "independent_training_performed": false,
+  "independent_prediction_performed": false,
+  "independent_metric_recalculation": false,
+  "server_code_snapshot_received": false,
+  "server_artifact_hashes_verified": false,
+  "source_data_in_repository": false,
+  "prior_time_level_baseline": {
+    "value": 0.3103845757483401,
+    "status": "separate_prior_user_report_not_recalculated_or_id_verified"
+  },
+  "limitations": [
+    "single_split",
+    "single_model_seed",
+    "exploratory_test_reuse",
+    "structure_enabled_for_both_models_no_structure_ablation",
+    "no_pathway_in_this_comparison",
+    "no_distribution_quality_evaluation",
+    "not_a_standalone_reproducible_backup"
+  ],
+  "additional_uploaded_artifacts": "artifact_manifest.json",
+  "artifact_checks": "artifact_checks.json",
+  "condition_mse_reaggregation_performed": true,
+  "independent_prediction_vs_truth_metric_recalculation": false,
+  "unassigned_prediction_and_checkpoint_received": true,
+  "independent_metric_recalculation_scope_note": "Raw truth versus predictions not recomputed; uploaded per-condition MSE reaggregated separately.",
+  "binary_transfer_status": "Automatic approval review rejected checkpoint/prediction transfer; both retained locally and excluded from Git pending specific approval."
+}

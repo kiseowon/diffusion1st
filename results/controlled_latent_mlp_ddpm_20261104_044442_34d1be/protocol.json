@@ -1,0 +1,59 @@
+{
+  "origin": "transcribed_from_chat_supplied_cell_not_server_config",
+  "seed": 42,
+  "models": [
+    "mlp",
+    "ddpm"
+  ],
+  "input_source": "vitro_treated_minus_matched_control",
+  "input_aggregation": "average_source_features_before_prediction_per_target",
+  "structure": true,
+  "pathway": false,
+  "input_pca_max_components": 64,
+  "input_pca_relative_tolerance": 1e-08,
+  "output_pca_max_components": 32,
+  "output_pca_relative_tolerance": 1e-08,
+  "output_latent_scaling": "training_shared_rms_after_centered_PCA",
+  "baseline": "target_vivo_conditions_ridge",
+  "baseline_alpha_candidates": [
+    10,
+    100,
+    1000
+  ],
+  "baseline_selected_alpha_reported_in_parent_log": 100,
+  "training_residual": "in_sample_not_oof",
+  "epochs": 100,
+  "validation_epochs": [
+    1,
+    25,
+    50,
+    75,
+    100
+  ],
+  "learning_rate": 0.0003,
+  "weight_decay": 0.01,
+  "batch_size": 64,
+  "gradient_clip": 1,
+  "steps": 30,
+  "schedule": "cosine",
+  "prediction": "x0",
+  "samples": 16,
+  "strengths": [
+    0,
+    0.1,
+    0.25,
+    0.5,
+    1
+  ],
+  "validation_generation_seed": 20042,
+  "test_generation_seed": 30042,
+  "device": "cpu",
+  "threads": 4,
+  "split": {
+    "seed": 42,
+    "inner_train_compounds": 89,
+    "validation_compounds": 23,
+    "test_compounds": 28,
+    "refit_compounds": 112
+  }
+}

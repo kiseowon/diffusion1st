@@ -1,0 +1,7 @@
+{
+  "model": "ddpm",
+  "response_rmse": 0.3106236005192594,
+  "epoch": 75,
+  "strength": 0.25,
+  "validation_response_rmse": 0.2432111596190763
+}

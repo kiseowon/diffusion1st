@@ -1,0 +1,3 @@
+# Preserve binary uploads locally; external transfer pending specific approval.
+results/**/unassigned/*.pt
+results/**/unassigned/*.npz

@@ -1,0 +1,33 @@
+{
+  "mlp": {
+    "unique_targets": 336,
+    "compounds": 28,
+    "rmse_reaggregated_from_uploaded_condition_mse": 0.3118587617478962,
+    "complete_rmse_matches": true,
+    "selection_matches_validation_minimum": true
+  },
+  "ddpm": {
+    "unique_targets": 336,
+    "compounds": 28,
+    "rmse_reaggregated_from_uploaded_condition_mse": 0.3106236005192594,
+    "complete_rmse_matches": true,
+    "selection_matches_validation_minimum": true
+  },
+  "paired_target_metadata_identical": true,
+  "unassigned_predictions": {
+    "shape": [
+      336,
+      3453
+    ],
+    "target_ids_match_both_models": true,
+    "finite": true,
+    "zip_crc_passed": true,
+    "model_association": "unverified",
+    "prediction_vs_truth_metrics_recomputed": false
+  },
+  "unassigned_checkpoint": {
+    "zip_crc_passed": true,
+    "deserialized_or_executed": false,
+    "model_association": "unverified"
+  }
+}

@@ -1,0 +1,4 @@
+model,response_rmse,epoch,strength,validation_response_rmse
+target_conditions_ridge,0.3128388253287149,,,
+mlp,0.3118587617478962,100,0.1,0.24398470772839295
+ddpm,0.3106236005192594,75,0.25,0.2432111596190763
