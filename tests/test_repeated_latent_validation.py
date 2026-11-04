@@ -102,6 +102,27 @@ class RepeatedLatentTests(unittest.TestCase):
                 self.assertTrue(np.isfinite(pred).all())
                 np.testing.assert_array_equal(pred, run.predict_scores(kind, model, pack, np.arange(5), 99))
 
+    def test_three_family_plan_and_cgan_updates_both_networks(self):
+        import torch
+        import numpy as np
+        with contextlib.redirect_stdout(io.StringIO()):
+            planned = run.main(['--prepared', '/missing', '--structure', '/missing.csv',
+                                '--out', '/missing_output', '--families', 'mlp', 'cgan', 'ddpm'])
+        self.assertEqual(len(planned), 45)
+        with patch.dict(run.PROTOCOL, samples=2):
+            model, opt, disc, dopt = run.make_family_model('cgan', 4, 3, 42)
+            pack = dict(X=torch.randn(5, 4), Z=torch.randn(5, 3))
+            before_g = [p.detach().clone() for p in model.parameters()]
+            before_d = [p.detach().clone() for p in disc.parameters()]
+            for _ in range(2):
+                run.train_family_epoch('cgan', model, opt, disc, dopt, pack, np.arange(4))
+            self.assertTrue(any(not torch.equal(a, b) for a, b in zip(before_g, model.parameters())))
+            self.assertTrue(any(not torch.equal(a, b) for a, b in zip(before_d, disc.parameters())))
+            pred = run.predict_family_scores('cgan', model, pack, np.arange(5), 99)
+            self.assertEqual(pred.shape, (5, 3))
+            self.assertTrue(np.isfinite(pred).all())
+            np.testing.assert_array_equal(pred, run.predict_family_scores('cgan', model, pack, np.arange(5), 99))
+
     def test_time_level_baseline_compound_balance(self):
         import pandas as pd
         import numpy as np

@@ -72,6 +72,30 @@ class EvaluationTests(unittest.TestCase):
                 evaluate.execute(evaluation)
             self.assertFalse(evaluation.out.exists())
 
+    def test_three_family_saved_prediction_evaluation(self):
+        import pandas as pd
+        from types import SimpleNamespace
+        from test_repeated_latent_validation import RepeatedLatentTests
+        import repeated_latent_validation as run
+        reduced = dict(epochs=1, validation_epochs=[1], steps=3, samples=2,
+                       input_components=4, output_components=3, baseline_alphas=[10.], strengths=[0., 1.])
+        with tempfile.TemporaryDirectory() as d, patch.dict(run.PROTOCOL, **reduced):
+            root = Path(d)
+            args = RepeatedLatentTests().synthetic(root)
+            args.families = ['mlp', 'cgan', 'ddpm']
+            with contextlib.redirect_stdout(io.StringIO()):
+                run.execute(args)
+            self.assertEqual(json.loads((args.out / 'completed.json').read_text())['completed_jobs'], 6)
+            paired = pd.read_csv(args.out / 'paired_comparisons.csv')
+            self.assertIn('ddpm_minus_cgan', paired.columns)
+            self.assertIn('cgan_minus_mlp', paired.columns)
+            evaluation = SimpleNamespace(run=args.out, out=root / 'evaluation', thresholds=[.5, 1.])
+            with contextlib.redirect_stdout(io.StringIO()):
+                evaluate.execute(evaluation)
+            table = pd.read_csv(evaluation.out / 'regression_by_unit.csv')
+            self.assertEqual(len(table), 6)
+            self.assertIn('cgan', set(table.model))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -21,7 +21,8 @@ PROTOCOL = dict(input_components=64, output_components=32, rank_tolerance=1e-8,
                 structure=True, prediction='x0', schedule='cosine', device='cpu',
                 residual='in_sample_training_ridge_not_oof',
                 input_aggregation='source_features_averaged_per_target',
-                target='vivo_treatment_minus_matched_control')
+                target='vivo_treatment_minus_matched_control',
+                cgan_noise_dim=16, cgan_loss='conditional_BCE_only', cgan_discriminator_steps=1)
 
 
 def digest(path):
@@ -42,7 +43,7 @@ def save_json(path, obj):
 def jobs(args):
     return [dict(split_seed=s, fold=f, model_seed=m, model=k)
             for s in args.split_seeds for f in range(args.folds)
-            for m in args.model_seeds for k in ['mlp', 'ddpm']]
+            for m in args.model_seeds for k in args.families]
 
 
 def compound_folds(names, seed, folds):
@@ -298,18 +299,103 @@ def predict_scores(kind, model, pack, rows, seed):
     return np.concatenate(result)
 
 
+
+def make_family_model(kind, input_dim, latent_dim, seed):
+    """Keep original MLP/DDPM unchanged; add a pure conditional latent GAN."""
+    if kind != 'cgan':
+        model, optimizer = make_model(input_dim, latent_dim, seed)
+        return model, optimizer, None, None
+    import torch
+    from torch import nn
+    import numpy as np
+    import random
+    random.seed(seed); np.random.seed(seed); torch.manual_seed(seed)
+    class Generator(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.latent_dim = latent_dim
+            self.context = nn.Sequential(nn.Linear(input_dim, 64), nn.SiLU())
+            self.head = nn.Sequential(nn.Linear(64 + PROTOCOL['cgan_noise_dim'], 128), nn.SiLU(), nn.Linear(128, latent_dim))
+        def forward(self, x, noise):
+            return self.head(torch.cat([self.context(x), noise], dim=1))
+    class Discriminator(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.context = nn.Sequential(nn.Linear(input_dim, 64), nn.SiLU())
+            self.head = nn.Sequential(nn.Linear(64 + latent_dim, 128), nn.LeakyReLU(.2), nn.Linear(128, 1))
+        def forward(self, x, latent):
+            return self.head(torch.cat([self.context(x), latent], dim=1)).squeeze(1)
+    generator, discriminator = Generator(), Discriminator()
+    optimizer = torch.optim.AdamW(generator.parameters(), lr=PROTOCOL['learning_rate'], weight_decay=PROTOCOL['weight_decay'])
+    dopt = torch.optim.AdamW(discriminator.parameters(), lr=PROTOCOL['learning_rate'], weight_decay=PROTOCOL['weight_decay'])
+    return generator, optimizer, discriminator, dopt
+
+
+def train_family_epoch(kind, model, optimizer, disc, dopt, pack, fit):
+    if kind != 'cgan':
+        return train_epoch(kind, model, optimizer, pack, fit)
+    import torch
+    import torch.nn.functional as F
+    model.train(); disc.train()
+    for local in torch.randperm(len(fit)).split(PROTOCOL['batch_size']):
+        rows = fit[local.numpy()]
+        x, truth = pack['X'][rows], pack['Z'][rows]
+        for p in disc.parameters():
+            p.requires_grad_(True)
+        fake = model(x, torch.randn(len(rows), PROTOCOL['cgan_noise_dim'])).detach()
+        real_logits, fake_logits = disc(x, truth), disc(x, fake)
+        loss_d = .5 * (F.binary_cross_entropy_with_logits(real_logits, torch.ones_like(real_logits))
+                       + F.binary_cross_entropy_with_logits(fake_logits, torch.zeros_like(fake_logits)))
+        if not torch.isfinite(loss_d):
+            raise ValueError('Nonfinite discriminator loss')
+        dopt.zero_grad(); loss_d.backward()
+        torch.nn.utils.clip_grad_norm_(disc.parameters(), PROTOCOL['gradient_clip'])
+        dopt.step()
+        for p in disc.parameters():
+            p.requires_grad_(False)
+        generated = model(x, torch.randn(len(rows), PROTOCOL['cgan_noise_dim']))
+        logits = disc(x, generated)
+        loss_g = F.binary_cross_entropy_with_logits(logits, torch.ones_like(logits))
+        if not torch.isfinite(loss_g):
+            raise ValueError('Nonfinite generator loss')
+        optimizer.zero_grad(); loss_g.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), PROTOCOL['gradient_clip'])
+        optimizer.step()
+
+
+def predict_family_scores(kind, model, pack, rows, seed):
+    if kind != 'cgan':
+        return predict_scores(kind, model, pack, rows, seed)
+    import torch
+    import numpy as np
+    model.eval()
+    rng = torch.Generator().manual_seed(seed)
+    result = []
+    with torch.no_grad():
+        for start in range(0, len(rows), PROTOCOL['batch_size']):
+            batch = rows[start:start + PROTOCOL['batch_size']]
+            context = model.context(pack['X'][batch]).repeat_interleave(PROTOCOL['samples'], dim=0)
+            noise = torch.randn((len(context), PROTOCOL['cgan_noise_dim']), generator=rng)
+            generated = model.head(torch.cat([context, noise], dim=1))
+            pred = generated.reshape(len(batch), PROTOCOL['samples'], model.latent_dim).mean(1).numpy()
+            if not np.isfinite(pred).all():
+                raise ValueError('Nonfinite cGAN prediction')
+            result.append(pred)
+    return np.concatenate(result)
+
+
 def fit_job(job, inner, outer, Y, itr, validation, testing, training, inner_base, final_base, folder):
     import numpy as np
     import pandas as pd
     import torch
     kind, seed = job['model'], job['model_seed']
-    model, optimizer = make_model(inner['X'].shape[1], inner['Z'].shape[1], seed)
+    model, optimizer, disc, dopt = make_family_model(kind, inner['X'].shape[1], inner['Z'].shape[1], seed)
     best = dict(epoch=0, strength=0., validation_response_rmse=rmse(Y[validation], inner_base[validation]))
     history = [best.copy()]
     for epoch in range(1, PROTOCOL['epochs'] + 1):
-        train_epoch(kind, model, optimizer, inner, itr)
+        train_family_epoch(kind, model, optimizer, disc, dopt, inner, itr)
         if epoch in PROTOCOL['validation_epochs']:
-            correction = restore(predict_scores(kind, model, inner, validation, seed + 20000), inner['state'])
+            correction = restore(predict_family_scores(kind, model, inner, validation, seed + 20000), inner['state'])
             for strength in PROTOCOL['strengths']:
                 record = dict(epoch=epoch, strength=strength,
                               validation_response_rmse=rmse(Y[validation], inner_base[validation] + strength * correction))
@@ -323,14 +409,16 @@ def fit_job(job, inner, outer, Y, itr, validation, testing, training, inner_base
     save_json(folder / 'selection.json', best)
     prediction = final_base[testing].copy()
     if best['strength'] > 0:
-        model, optimizer = make_model(outer['X'].shape[1], outer['Z'].shape[1], seed)
+        model, optimizer, disc, dopt = make_family_model(kind, outer['X'].shape[1], outer['Z'].shape[1], seed)
         for epoch in range(1, best['epoch'] + 1):
-            train_epoch(kind, model, optimizer, outer, training)
+            train_family_epoch(kind, model, optimizer, disc, dopt, outer, training)
             if epoch == 1 or epoch % 10 == 0 or epoch == best['epoch']:
                 print(f'Refit {job}: {epoch}/{best["epoch"]}', flush=True)
         prediction += best['strength'] * restore(
-            predict_scores(kind, model, outer, testing, seed + 30000), outer['state'])
+            predict_family_scores(kind, model, outer, testing, seed + 30000), outer['state'])
         torch.save(model.state_dict(), folder / 'model.pt')
+        if disc is not None:
+            torch.save(disc.state_dict(), folder / 'discriminator.pt')
     return prediction, best
 
 
@@ -356,11 +444,14 @@ def aggregate(out, records, baseline_rows, bootstrap_samples):
     units = detail.groupby(['split_seed', 'model_seed', 'model']).response_mse.agg(['sum', 'count']).reset_index()
     units['response_rmse'] = np.sqrt(units['sum'] / units['count'])
     units.to_csv(out / 'pooled_by_split_model_seed.csv', index=False)
-    neural = units.loc[units.model.isin(['mlp', 'ddpm'])].pivot(index=['split_seed', 'model_seed'], columns='model', values='response_rmse')
-    neural['ddpm_minus_mlp'] = neural.ddpm - neural.mlp
+    available = [m for m in ['mlp', 'cgan', 'ddpm'] if m in set(units.model)]
+    neural = units.loc[units.model.isin(available)].pivot(index=['split_seed', 'model_seed'], columns='model', values='response_rmse')
+    for left, right in [('ddpm', 'mlp'), ('cgan', 'mlp'), ('ddpm', 'cgan')]:
+        if left in available and right in available:
+            neural[left + '_minus_' + right] = neural[left] - neural[right]
     base = units.loc[units.model_seed.eq(-1)].pivot(index='split_seed', columns='model', values='response_rmse')
     paired = neural.reset_index().merge(base.reset_index(), on='split_seed', validate='many_to_one')
-    for model in ['mlp', 'ddpm']:
+    for model in available:
         for name in ['target_conditions_ridge', 'time_level_mean', 'zero_response']:
             paired[model + '_minus_' + name] = paired[model] - paired[name]
     paired.to_csv(out / 'paired_comparisons.csv', index=False)
@@ -370,7 +461,7 @@ def aggregate(out, records, baseline_rows, bootstrap_samples):
         raise ValueError('Incomplete paired target coverage')
     summary = pd.DataFrame(dict(model=target.columns, pooled_rmse=np.sqrt(target.mean()).to_numpy()))
     summary.to_csv(out / 'summary.csv', index=False)
-    if bootstrap_samples:
+    if bootstrap_samples and 'ddpm' in available:
         # Resample compounds, retaining all their targets and averaging seed/repeat MSE first.
         sums = target.groupby(level='compound').sum()
         counts = target.groupby(level='compound').size().reindex(sums.index).to_numpy()
@@ -379,7 +470,7 @@ def aggregate(out, records, baseline_rows, bootstrap_samples):
         sampled = np.sqrt(sums.to_numpy()[draws].sum(1) / counts[draws].sum(1)[:, None])
         names = list(sums.columns)
         ci = []
-        for comparator in ['mlp', 'target_conditions_ridge', 'time_level_mean']:
+        for comparator in [m for m in ['mlp', 'cgan', 'target_conditions_ridge', 'time_level_mean'] if m in names]:
             delta = sampled[:, names.index('ddpm')] - sampled[:, names.index(comparator)]
             estimate = float(np.sqrt(target.ddpm.mean()) - np.sqrt(target[comparator].mean()))
             lo, hi = np.quantile(delta, [.025, .975])
@@ -453,7 +544,7 @@ def execute(args):
                 joblib.dump(inner['state'], folder / 'inner_preprocess.joblib')
                 joblib.dump(outer['state'], folder / 'final_preprocess.joblib')
                 for mseed in args.model_seeds:
-                    for kind in ['mlp', 'ddpm']:
+                    for kind in args.families:
                         job = dict(split_seed=seed, fold=fold, model_seed=mseed, model=kind)
                         task = folder / f'{kind}_seed{mseed}'
                         task.mkdir(exist_ok=True)
@@ -489,6 +580,7 @@ def parser():
         p.add_argument('--' + name, type=Path, required=True)
     p.add_argument('--split-seeds', type=int, nargs='+', default=[42])
     p.add_argument('--model-seeds', type=int, nargs='+', default=[42, 43, 44])
+    p.add_argument('--families', choices=['mlp', 'cgan', 'ddpm'], nargs='+', default=['mlp', 'ddpm'])
     p.add_argument('--folds', type=int, default=5)
     p.add_argument('--threads', type=int, default=4)
     p.add_argument('--bootstrap-samples', type=int, default=1000)
@@ -498,6 +590,8 @@ def parser():
 
 def main(argv=None):
     p = parser(); args = p.parse_args(argv)
+    if len(args.families) != len(set(args.families)):
+        p.error('Duplicate model families')
     if args.folds < 2 or args.threads < 1 or args.bootstrap_samples < 0:
         p.error('Invalid folds, threads or bootstrap count')
     for field in ['split_seeds', 'model_seeds']:
@@ -507,7 +601,7 @@ def main(argv=None):
     planned = jobs(args)
     print(json.dumps(dict(mode='execute' if args.execute else 'plan_only',
         split_seeds=args.split_seeds, model_seeds=args.model_seeds, folds=args.folds,
-        fold_seed_pairs=len(planned) // 2, neural_jobs=len(planned),
+        families=args.families, fold_seed_pairs=len(planned) // len(args.families), neural_jobs=len(planned),
         neural_fits_up_to=len(planned) * 2, protocol=PROTOCOL), indent=2), flush=True)
     if args.execute:
         execute(args)

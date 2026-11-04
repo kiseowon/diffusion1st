@@ -49,3 +49,5 @@ numpy,pandas,scipy만 사용하며 torch 및 sklearn 모델 역직렬화는 필�
 summary의 RMSE는 **unit별 RMSE의 평균**입니다. 원래 반복 실행기 summary.csv는 seed/repeat MSE를 먼저 평균한 뒤 제곱근을 취하므로 미세하게 다를 수 있습니다. 어느 것도 model prediction을 ensemble한 성능은 아닙니다. paired 비교나 통계적 우월성 판단에는 unit별 기록과 화합물 의존성을 고려해야 합니다.
 
 평가 코드는 완벽 예측·상수 상관·sklearn의 fixed3class F1과 일치·축소 합성 저장 예측의 전체 평가·재학습 금지·입력 변조 거부를 검사했습니다. 이는 연구 원자료의 새로운 결과 검증을 완료했다는 뜻이 아닙니다. 추가 지표는 주RMSE를 보고 난 뒤 요청된 **사후 탐색 평가**임을 유지합니다.
+
+새 run의 `families`에 cgan이 있으면 같은 방식으로 추가 평가합니다. 해당 필드가 없는 이전 run은 mlp/ddpm으로 해석합니다.

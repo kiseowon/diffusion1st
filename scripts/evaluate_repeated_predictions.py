@@ -84,7 +84,8 @@ def truth_for_run(run):
     import pandas as pd
     info = json.loads((run / 'run.json').read_text())
     done = json.loads((run / 'completed.json').read_text())
-    expected = len(info['arguments']['split_seeds']) * info['arguments']['folds'] * len(info['arguments']['model_seeds']) * 2
+    families = info['arguments'].get('families', ['mlp', 'ddpm'])
+    expected = len(info['arguments']['split_seeds']) * info['arguments']['folds'] * len(info['arguments']['model_seeds']) * len(families)
     if done.get('completed_jobs') != expected or done.get('expected_jobs') != expected:
         raise ValueError('Repeated run is incomplete or has an unsupported completion record')
     # Verify all original input hashes before reading truth. Do not load source expressions/models.
@@ -159,7 +160,7 @@ def execute(args):
     regression, classification, confusions, target_rows = [], [], [], []
     baselines = ['target_conditions_ridge', 'time_level_mean', 'zero_response']
     units = [(seed, -1, kind) for seed in args_run['split_seeds'] for kind in baselines]
-    units += [(seed, m, kind) for seed in args_run['split_seeds'] for m in args_run['model_seeds'] for kind in ['mlp', 'ddpm']]
+    units += [(seed, m, kind) for seed in args_run['split_seeds'] for m in args_run['model_seeds'] for kind in args_run.get('families', ['mlp', 'ddpm'])]
     id_position = {int(cid): i for i, cid in enumerate(ids)}
     for number, (seed, model_seed, kind) in enumerate(units, 1):
         prediction = np.empty_like(Y)

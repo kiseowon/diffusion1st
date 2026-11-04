@@ -35,3 +35,7 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 ## 보고된 추가 평가 결과
 
 [5-fold·모델seed3개의 추가 지표](results/additional_metrics_20261104_071610_11d5d7/README.md)를 보존했습니다. 서버 출력의6자리 전사본이며 원본 평가CSV는 아직 미확보입니다. DDPM은 목표 조건 Ridge보다 개선됐지만 MLP보다 일관되게 좋지는 않았고, 시간×등급 평균이 RMSE·MAE·R²에서 가장 좋았습니다. 94~98% 분류accuracy는 변화작음 다수 class의 영향을 크게 받으며, 큰 반응의 방향accuracy와 up/down F1을 구분해야 합니다.
+
+## 세 모델 계열의 공통 조건 비교
+
+[기준선의 의미와 예시](docs/baselines.md)와 [MLP·cGAN·DDPM 비교 설계](docs/three-family-comparison.md)를 추가했습니다. `--families mlp cgan ddpm`은45조건·최대90회신경망fit을계획합니다. 기본은기존MLP/DDPM이고실제학습은별도`--execute`가필요합니다. 이번확장에서는연구데이터학습을실행하지않았습니다.
