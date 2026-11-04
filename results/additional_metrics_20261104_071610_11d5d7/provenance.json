@@ -1,0 +1,46 @@
+{
+  "record_date": "2026-11-04",
+  "source": "user_pasted_server_evaluation_output",
+  "server_evaluation_folder": "/home/seowon1211/data1/conditioned_expression/additional_metrics_20261104_071610_11d5d7",
+  "server_training_folder": "/home/seowon1211/data1/conditioned_expression/repeated_latent_20261104_065648_7d7360",
+  "evaluator_commit": "582711fe3bf85f7fe2c4112914ea96ac4c4d28a7",
+  "evaluator_sha256": "503c5d9705003fec871cbee12b75d1994d6df31b151ff0a7d787f862d82842e0",
+  "training_runner_commit": "381cd4848ba77d4887894449aa7379528481e7b1",
+  "split_seeds": [
+    42
+  ],
+  "model_seeds": [
+    42,
+    43,
+    44
+  ],
+  "folds": 5,
+  "reported_evaluation_units": 9,
+  "thresholds": [
+    0.5,
+    1.0
+  ],
+  "threshold_interpretation": "exploratory_input_scale_amplitude_not_statistical_DE_or_verified_log2_fold_change",
+  "summary_aggregation": "mean of per-unit full-OOF metrics; baseline once per split",
+  "numerical_precision": "six-decimal displayed values transcribed; NaN preserved",
+  "server_original_csv_files_received": false,
+  "server_evaluation_json_received": false,
+  "independent_raw_truth_metric_recalculation_here": false,
+  "training_or_prediction_regeneration_here": false,
+  "missing_files_for_independent_review": [
+    "evaluation.json",
+    "regression_by_unit.csv",
+    "classification_by_unit.csv",
+    "regression_summary.csv",
+    "classification_summary.csv",
+    "confusion_matrices.csv",
+    "target_metrics.csv"
+  ],
+  "limitations": [
+    "post_hoc_exploratory_metrics_after_RMSE_review",
+    "one_outer_partition_seed",
+    "three_model_seeds_share_the_same_compounds",
+    "all_neural_models_use_structure_no_structure_ablation",
+    "do_not_treat_accuracy_as_ability_to_detect_large_responses"
+  ]
+}

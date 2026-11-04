@@ -1,0 +1,6 @@
+model,rmse_mean,mae_mean,r2_probe_variance_weighted_mean,pearson_target_mean_mean,spearman_target_mean_mean
+ddpm,0.290991,0.173203,0.016512,0.262731,0.225305
+mlp,0.290797,0.173403,0.017826,0.263922,0.225157
+target_conditions_ridge,0.294052,0.174387,-0.004283,0.246480,0.218094
+time_level_mean,0.288403,0.171470,0.033935,0.257109,0.227570
+zero_response,0.303112,0.176331,-0.067122,NaN,NaN

@@ -31,3 +31,7 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 [반복 검증 설계·실행 안내](docs/repeated-latent-validation.md)와 [실행 코드](scripts/repeated_latent_validation.py)를 추가했습니다. 기본은 화합물5-fold × 모델seed3개 × MLP/DDPM으로30조건·최대60회 신경망fit이며, 계획만 출력합니다. `--execute`를 붙여야 실제 학습합니다. Ridge·시간×등급 평균·반응0 기준선을 같은 target으로 비교합니다. 코드 작성 환경에서는 작은 합성 검사만 했고 연구 데이터 반복 학습은 실행하지 않았습니다.
 
 [저장 예측의 추가 평가](docs/additional-evaluation.md): 재학습 없이 MAE·R²·target별 Pearson/Spearman·방향 정확도·3분류 F1을 기준선과 함께 계산합니다. 진폭 threshold 기반 사후 탐색 지표이며 통계적 차등발현 판정이 아닙니다.
+
+## 보고된 추가 평가 결과
+
+[5-fold·모델seed3개의 추가 지표](results/additional_metrics_20261104_071610_11d5d7/README.md)를 보존했습니다. 서버 출력의6자리 전사본이며 원본 평가CSV는 아직 미확보입니다. DDPM은 목표 조건 Ridge보다 개선됐지만 MLP보다 일관되게 좋지는 않았고, 시간×등급 평균이 RMSE·MAE·R²에서 가장 좋았습니다. 94~98% 분류accuracy는 변화작음 다수 class의 영향을 크게 받으며, 큰 반응의 방향accuracy와 up/down F1을 구분해야 합니다.
