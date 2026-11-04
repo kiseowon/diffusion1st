@@ -100,6 +100,6 @@ DDPM−MLP = −0.0012351612286368, DDPM−Ridge = −0.0022152248094555입니�
 
 MLP와 DDPM 각각 selection.json·complete.json·validation_history.csv·condition_metrics.csv를 원본 바이트 그대로 보존했습니다. 파일명 (1) 자체로 모델을 결정하지 않고 complete의 model 필드, 선택 epoch·강도·검증 점수, 검증 이력을 함께 대조했습니다. 두 조건별 표의 336개 고유 target,28개 화합물 및 condition_id·compound·time_h·level 순서가 일치합니다. 조건별 MSE 평균의 제곱근은 각각0.3118587617478962와0.3106236005192594로 완료 기록과 일치합니다.
 
-첨부된 predictions.npz 하나는336×3453, 유한한 값이며 target ID 순서는 두 모델의 지표 표와 같습니다. ID가 같다는 것으로 모델 소속을 결정할 수는 없습니다. model.pt 하나도 모델 소속 미확인 상태로 로컬에 별도 보존했고 ZIP CRC만 검사했습니다. 자동 승인 검토가 checkpoint/예측 배열 전송을 거부하여 두 binary 파일은 Git에서 제외했습니다. GitHub에는 두 파일의 hash·검사 기록만 있고 파일 본문은 없습니다. torch.load나 pickle 실행은 하지 않았습니다. 두 파일을 특정 모델의 확정 산출물이라고 표시하지 않습니다.
+첨부된 predictions.npz 하나는336×3453, 유한한 값이며 target ID 순서는 두 모델의 지표 표와 같습니다. ID가 같다는 것으로 모델 소속을 결정할 수는 없습니다. model.pt 하나도 모델 소속 미확인 상태로 별도 보존했고 ZIP CRC만 검사했습니다. 자동 승인 검토의 최초 전송 거부 이후 사용자가 외부 업로드를 명시적으로 승인하여 두 파일 원본도 unassigned/에 보존했습니다. torch.load나 pickle 실행은 하지 않았습니다. 두 파일을 특정 모델의 확정 산출물이라고 표시하지 않습니다.
 
 artifact_manifest.json은 첨부 파일별 원래 이름·업로드 ID·보존 위치·SHA-256을 기록합니다. artifact_checks.json은 검사 결과입니다. checksum은 받은 파일의 보존 근거이며 서버 원본과 독립적으로 대조한 근거는 아닙니다. 원자료 정답이 없어 예측으로부터 RMSE를 직접 재계산하지 못했고, 실행 셀·입력·분할·전처리 원본은 여전히 필요합니다.

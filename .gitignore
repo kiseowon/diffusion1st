@@ -1,3 +1,2 @@
-# Preserve binary uploads locally; external transfer pending specific approval.
-results/**/unassigned/*.pt
-results/**/unassigned/*.npz
+__pycache__/
+.ipynb_checkpoints/

@@ -30,5 +30,6 @@
   "independent_prediction_vs_truth_metric_recalculation": false,
   "unassigned_prediction_and_checkpoint_received": true,
   "independent_metric_recalculation_scope_note": "Raw truth versus predictions not recomputed; uploaded per-condition MSE reaggregated separately.",
-  "binary_transfer_status": "Automatic approval review rejected checkpoint/prediction transfer; both retained locally and excluded from Git pending specific approval."
+  "binary_transfer_status": "User explicitly approved uploading condition metrics, prediction array and checkpoint to kiseowon/diffusion1st after automatic review rejection was explained.",
+  "user_transfer_approval_date": "2026-11-04"
 }

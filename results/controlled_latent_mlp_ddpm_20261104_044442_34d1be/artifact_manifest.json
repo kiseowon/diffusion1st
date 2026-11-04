@@ -33,7 +33,7 @@
     "sha256": "5590d6428a65eefe00091dc6281c8d7307857635a75813a906892e2c2393bed9",
     "bytes": 624110,
     "association": "unverified",
-    "repository_storage": "local_only_excluded_from_git_pending_transfer_approval"
+    "repository_storage": "tracked_in_git"
   },
   {
     "original_filename": "complete (1).json",
@@ -60,7 +60,7 @@
     "sha256": "2bd556084456f7cd69b43ca63a010c06ed8122a694d4bd27e46c1f63c29b00c8",
     "bytes": 8894489,
     "association": "unverified",
-    "repository_storage": "local_only_excluded_from_git_pending_transfer_approval"
+    "repository_storage": "tracked_in_git"
   },
   {
     "original_filename": "selection.json",
