@@ -43,3 +43,7 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 ## 발현 입력 출처 확인
 
 [발현 출처와 전처리](docs/expression-source.md): 사용자 서버의 vitro_train_test.csv·vivo_train_test.csv가 AIVIVE Zenodo14984579 배포 파일의 MD5와 각각 정확히 일치했습니다. 논문·README의 RMA 정규화 설명과 연결해 AIVIVE가 전처리한 배포 발현 자료를 사용한 것으로 기록합니다. 이는 사용자 서버의 checksum 검사이며 이 환경에서 원시 CSV 다운로드·RMA 재실행·추가 학습을 수행한 것은 아닙니다.
+
+## DDPM 설정의 이유와 민감도 계획
+
+[설정 이유·검증 범위](docs/ddpm-hyperparameter-rationale.md)와 [내부 검증 전용 실행기](scripts/validate_ddpm_architecture.py)를 추가했습니다. context/hidden 폭을 한 번에 하나씩 바꾸는5후보×3seed의15회 내부 fit 계획이며, 기본은 계획 모드입니다. 외부 테스트 평가·최종 refit은 포함하지 않고 연구 자료에서는 아직 실행하지 않았습니다.
