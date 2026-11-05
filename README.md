@@ -61,3 +61,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 [코드 학습·연구미팅 PPT 초안](docs/presentation-and-code-study.md)을 추가했습니다. 기본 모델과 현재 파라미터 탐색을 구분하고, 슬라이드 문장·도식·발표 노트·함수별 공부 순서를 담았습니다. 진행 중인 조합 탐색은 완료 결과로 표시하지 않았습니다.
 
 - [네 입력 × MLP/cGAN/DDPM 직접 반응 예측 실행 안내](docs/factorial-response-validation.md): 기본/구조/pathway/둘 다, Ridge 없는 별도 탐색 프로토콜. 기본은 계획 모드이며 실제 학습 결과는 아직 없음.
+
+- [AIVIVE를 참고한 PCA 없는 직접 반응 예측](docs/aivive-inspired-no-pca.md): 구조 없음/있음 × MLP/cGAN/DDPM. 참고한 설정과 변경한 설정을 구분한 별도 탐색 코드이며 AIVIVE 원본 재현이 아님.
