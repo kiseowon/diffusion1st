@@ -1,0 +1,50 @@
+{
+  "record_date": "2026-11-05",
+  "source": "user_uploaded_server_console_log",
+  "uploaded_file_id": "file_0000000055388209a65af8d1bc3f81d6",
+  "source_log_sha256": "a0d844ce8725371b13c350c827c811092d6d6cb2347cbdda513eeb186c8789db",
+  "tables": "parsed_from_displayed_tab_separated_summaries_six_decimal_precision_not_original_server_CSVs",
+  "server_structure_on_folder": "/home/seowon1211/data1/conditioned_expression/three_family_repeated_20261104_074715_159844",
+  "server_structure_off_folder": "/home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc",
+  "server_comparison_folder": "/home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc_comparison_d37918",
+  "server_off_evaluation_folder": "/home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc_metrics_0c975f",
+  "provided_launcher_commit": "63148510d6929fe3ec31bebe0ebefdba8b8ff4f5",
+  "split_seeds": [
+    42
+  ],
+  "model_seeds": [
+    42,
+    43,
+    44
+  ],
+  "folds": 5,
+  "families": [
+    "mlp",
+    "cgan",
+    "ddpm"
+  ],
+  "off_neural_jobs": 45,
+  "reported_preflight_passed": true,
+  "completion_markers_in_log": 45,
+  "reported_comparison_complete": true,
+  "reported_off_evaluation_complete": true,
+  "independent_raw_truth_prediction_metric_recalculation_here": false,
+  "server_original_result_csvs_received": false,
+  "server_run_jsons_and_comparison_json_received": false,
+  "off_model_and_prediction_files_received": false,
+  "research_training_or_inference_performed_here": false,
+  "baseline_time_level_mean_rmse_reported": 0.288403,
+  "table_checks": {
+    "summary_matches_paired_seed_means_within_display_rounding": true,
+    "improved_seed_counts_match": true,
+    "off_rmse_matches_off_regression_table": true
+  },
+  "limitations": [
+    "single_outer_partition_seed",
+    "model_seeds_share_same_compound_folds",
+    "post_hoc_exploratory_structure_ablation",
+    "small_effect_not_consistent_across_all_seeds_or_metrics",
+    "no_scaffold_or_random_fingerprint_comparison",
+    "bootstrap_output_not_present_in_console_report"
+  ]
+}

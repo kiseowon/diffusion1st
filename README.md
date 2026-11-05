@@ -53,3 +53,7 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 ## 구조 정보 대조
 
 [동일 설정 구조 on/off 비교](docs/structure-ablation.md)를 추가했습니다. `--no-structure`는 Morgan과 presence만0으로 바꾸고 입력 차원과 나머지 설정을 유지합니다. `--paired-on-run`으로 학습 전에 기존 on의 입력·설정·환경을 확인하고, 완료 후 비교 코드가 분할·기준선·대응 target을 검사합니다. 실제 연구 off 학습은 이 작업에서 실행하지 않았습니다.
+
+## 구조 대조의 보고 결과
+
+[구조 on/off 대조 결과](results/structure_ablation_20261105_020903_dfd7fc/README.md)를 보존했습니다. 고정 설정에서 구조 on이 평균RMSE를 MLP·DDPM에서약0.27%,cGAN에서약0.16% 낮췄습니다. MLP는3개seed 모두,DDPM/cGAN은2개seed에서 낮았습니다. 이는 단일분할의 작은 탐색적 개선 신호이며 모든지표의 개선이나 일반적 구조효과 입증은 아닙니다. 서버원본CSV가 아닌 첨부로그와 표시표 전사본으로 구분했습니다.

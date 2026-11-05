@@ -1,0 +1,4 @@
+model,mean_rmse_on,mean_rmse_off,mean_on_minus_off,std_on_minus_off,units_on_lower,units
+cgan,0.294099,0.294571,-0.000471,0.000884,2,3
+ddpm,0.290991,0.291770,-0.000779,0.000911,2,3
+mlp,0.290797,0.291572,-0.000775,0.000132,3,3

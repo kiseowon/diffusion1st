@@ -1,0 +1,7 @@
+model,rmse_mean,rmse_std,mae_mean,mae_std,r2_probe_variance_weighted_mean,r2_probe_variance_weighted_std,pearson_target_mean_mean,pearson_target_mean_std,spearman_target_mean_mean,spearman_target_mean_std,rmse_improvement_vs_ridge_pct_mean,rmse_improvement_vs_ridge_pct_std,rmse_improvement_vs_time_level_pct_mean,rmse_improvement_vs_time_level_pct_std
+cgan,0.294571,0.000519,0.174827,0.000601,-0.007833,0.003554,0.242427,0.004587,0.211628,0.007586,-0.176525,0.176585,-2.138803,0.180044
+ddpm,0.291770,0.000266,0.173199,0.000193,0.011244,0.001801,0.262553,0.000817,0.225553,0.000961,0.776041,0.090349,-1.167578,0.092119
+mlp,0.291572,0.000049,0.173167,0.000027,0.012584,0.000330,0.263885,0.000752,0.226685,0.000169,0.843282,0.016570,-1.099019,0.016895
+target_conditions_ridge,0.294052,NaN,0.174387,NaN,-0.004283,NaN,0.246480,NaN,0.218094,NaN,0.000000,NaN,-1.958820,NaN
+time_level_mean,0.288403,NaN,0.171470,NaN,0.033935,NaN,0.257109,NaN,0.227570,NaN,1.921188,NaN,0.000000,NaN
+zero_response,0.303112,NaN,0.176331,NaN,-0.067122,NaN,NaN,NaN,NaN,NaN,-3.081109,NaN,-5.100283,NaN

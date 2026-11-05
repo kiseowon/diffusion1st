@@ -1,0 +1,874 @@
+Cloning into '/home/seowon1211/data1/conditioned_expression/diffusion1st_code_6314851'...
+기존 구조 on: /home/seowon1211/data1/conditioned_expression/three_family_repeated_20261104_074715_159844
+새 구조 off: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc
+{
+  "mode": "plan_only",
+  "split_seeds": [
+    42
+  ],
+  "model_seeds": [
+    42,
+    43,
+    44
+  ],
+  "folds": 5,
+  "families": [
+    "mlp",
+    "cgan",
+    "ddpm"
+  ],
+  "fold_seed_pairs": 15,
+  "neural_jobs": 45,
+  "neural_fits_up_to": 90,
+  "protocol": {
+    "input_components": 64,
+    "output_components": 32,
+    "rank_tolerance": 1e-08,
+    "epochs": 100,
+    "validation_epochs": [
+      1,
+      25,
+      50,
+      75,
+      100
+    ],
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "batch_size": 64,
+    "gradient_clip": 1.0,
+    "steps": 30,
+    "samples": 16,
+    "strengths": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "baseline_alphas": [
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "structure": false,
+    "prediction": "x0",
+    "schedule": "cosine",
+    "device": "cpu",
+    "residual": "in_sample_training_ridge_not_oof",
+    "input_aggregation": "source_features_averaged_per_target",
+    "target": "vivo_treatment_minus_matched_control",
+    "cgan_noise_dim": 16,
+    "cgan_loss": "conditional_BCE_only",
+    "cgan_discriminator_steps": 1
+  }
+}
+{
+  "mode": "execute",
+  "split_seeds": [
+    42
+  ],
+  "model_seeds": [
+    42,
+    43,
+    44
+  ],
+  "folds": 5,
+  "families": [
+    "mlp",
+    "cgan",
+    "ddpm"
+  ],
+  "fold_seed_pairs": 15,
+  "neural_jobs": 45,
+  "neural_fits_up_to": 90,
+  "protocol": {
+    "input_components": 64,
+    "output_components": 32,
+    "rank_tolerance": 1e-08,
+    "epochs": 100,
+    "validation_epochs": [
+      1,
+      25,
+      50,
+      75,
+      100
+    ],
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "batch_size": 64,
+    "gradient_clip": 1.0,
+HEAD is now at 6314851 Add paired structure-off experiments and verified on/off comparisons
+    "steps": 30,
+    "samples": 16,
+    "strengths": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "baseline_alphas": [
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "structure": false,
+    "prediction": "x0",
+    "schedule": "cosine",
+    "device": "cpu",
+    "residual": "in_sample_training_ridge_not_oof",
+    "input_aggregation": "source_features_averaged_per_target",
+    "target": "vivo_treatment_minus_matched_control",
+    "cgan_noise_dim": 16,
+    "cgan_loss": "conditional_BCE_only",
+    "cgan_discriminator_steps": 1
+  }
+}
+PAIRED ON CONTRACT CHECK PASSED: /home/seowon1211/data1/conditioned_expression/three_family_repeated_20261104_074715_159844
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 0.5, 'validation_response_rmse': 0.3049770116841901}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.3028520818867345}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.30255817118635486}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.30215744359974933}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.5, 'validation_response_rmse': 0.30172725264247524}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}: 100/100
+Completed 1/45: {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.3050115313818192}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.3050115313818192}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.3050115313818192}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.3044225205501694}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'} epoch=100: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.3044225205501694}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 1/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 10/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 20/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 30/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 40/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 50/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 60/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 70/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}: 75/75
+Completed 2/45: {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.3049603630059775}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.3034569089381665}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.30316878887392695}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.30300467162266803}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.30276777373206487}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}: 100/100
+Completed 3/45: {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3049639020053557}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.3025828637459495}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.30231236456382626}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.3020440167651157}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.5, 'validation_response_rmse': 0.3017835047190014}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}: 100/100
+Completed 4/45: {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.3045091626650344}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'} epoch=100: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.3045091626650344}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 1/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 10/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 20/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 30/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 40/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 50/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 60/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 70/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}: 75/75
+Completed 5/45: {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.3050297903815546}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.30359888871596385}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.3029792651400177}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.3029792651400177}
+{'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.30248143256508087}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}: 100/100
+Completed 6/45: {'split_seed': 42, 'fold': 0, 'model_seed': 43, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.3028677131578163}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.30246844852691335}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.3023391121291609}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.5, 'validation_response_rmse': 0.30207526927385697}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}: 100/100
+Completed 7/45: {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'} epoch=75: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.1, 'validation_response_rmse': 0.3049064369859191}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}: 100/100
+Completed 8/45: {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.30503275247483247}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.3033115734527337}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.3030314724122412}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.3030193485025521}
+{'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'} epoch=100: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.3030193485025521}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 1/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 10/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 20/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 30/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 40/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 50/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 60/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 70/75
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}: 75/75
+Completed 9/45: {'split_seed': 42, 'fold': 0, 'model_seed': 44, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 0.5, 'validation_response_rmse': 0.27100142348018064}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.26839517820680603}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2683438619251872}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'} epoch=75: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2683438619251872}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'} epoch=100: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2683438619251872}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}: 1/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}: 10/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}: 20/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}: 30/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}: 40/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}: 50/50
+Completed 10/45: {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.2710266062927703}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.2710266062927703}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.2710266062927703}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'} epoch=75: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.2710266062927703}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.1, 'validation_response_rmse': 0.27071497345565365}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}: 100/100
+Completed 11/45: {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.27101071489054157}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2684384238918423}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.267997693803058}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.267997693803058}
+{'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'} epoch=100: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.267997693803058}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}: 1/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}: 10/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}: 20/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}: 30/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}: 40/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}: 50/50
+Completed 12/45: {'split_seed': 42, 'fold': 1, 'model_seed': 42, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 0.5, 'validation_response_rmse': 0.27098518285365414}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2682646147702256}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'} epoch=50: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2682646147702256}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'} epoch=75: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2682646147702256}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'} epoch=100: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2682646147702256}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'}: 1/25
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'}: 10/25
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'}: 20/25
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'}: 25/25
+Completed 13/45: {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.2706654399704944}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.1, 'validation_response_rmse': 0.2705344118155064}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}: 100/100
+Completed 14/45: {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2709873963691336}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2683139558948047}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.26825845889473915}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.26825845889473915}
+{'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'} epoch=100: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.26825845889473915}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}: 1/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}: 10/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}: 20/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}: 30/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}: 40/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}: 50/50
+Completed 15/45: {'split_seed': 42, 'fold': 1, 'model_seed': 43, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.27102430563003355}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.26853948285971685}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'} epoch=50: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.26853948285971685}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'} epoch=75: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.26853948285971685}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'} epoch=100: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.26853948285971685}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'}: 1/25
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'}: 10/25
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'}: 20/25
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'}: 25/25
+Completed 16/45: {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.270952443867146}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'} epoch=100: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.270952443867146}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 1/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 10/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 20/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 30/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 40/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 50/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 60/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 70/75
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}: 75/75
+Completed 17/45: {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2710275131502019}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.26890411850608337}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.26884011378545053}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.26884011378545053}
+{'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'} epoch=100: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.26884011378545053}
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}: 1/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}: 10/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}: 20/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}: 30/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}: 40/50
+Refit {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}: 50/50
+Completed 18/45: {'split_seed': 42, 'fold': 1, 'model_seed': 44, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2724290471853409}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.27042196182346784}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2701721702080402}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.27012376575439023}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'} epoch=100: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.27012376575439023}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 1/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 10/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 20/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 30/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 40/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 50/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 60/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 70/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}: 75/75
+Completed 19/45: {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.27234678389667333}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.1, 'validation_response_rmse': 0.2722003289713652}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}: 100/100
+Completed 20/45: {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2724168425140928}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2704904948464305}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2700871648271737}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2700871648271737}
+{'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'} epoch=100: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2700871648271737}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}: 1/50
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}: 10/50
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}: 20/50
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}: 30/50
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}: 40/50
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}: 50/50
+Completed 21/45: {'split_seed': 42, 'fold': 2, 'model_seed': 42, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.27023492922126563}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2702232433128976}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.2701563592538023}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'} epoch=100: {'epoch': 75, 'strength': 0.5, 'validation_response_rmse': 0.2701563592538023}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 1/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 10/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 20/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 30/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 40/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 50/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 60/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 70/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}: 75/75
+Completed 22/45: {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'} epoch=75: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.1, 'validation_response_rmse': 0.2718137144184397}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}: 100/100
+Completed 23/45: {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2704581028907367}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'} epoch=50: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2704581028907367}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'} epoch=75: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2704581028907367}
+{'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.2703162337818078}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 1/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 10/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 20/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 30/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 40/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 50/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 60/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 70/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 80/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 90/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}: 100/100
+Completed 24/45: {'split_seed': 42, 'fold': 2, 'model_seed': 43, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.27238253683490843}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2702010378469741}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2701892357241672}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'} epoch=75: {'epoch': 50, 'strength': 0.5, 'validation_response_rmse': 0.2701892357241672}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.5, 'validation_response_rmse': 0.27017866101430166}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}: 100/100
+Completed 25/45: {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.2724436168713058}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'} epoch=50: {'epoch': 50, 'strength': 0.1, 'validation_response_rmse': 0.2723407582782974}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.2721272932699016}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'} epoch=100: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.2721272932699016}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 1/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 10/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 20/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 30/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 40/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 50/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 60/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 70/75
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}: 75/75
+Completed 26/45: {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.2724268807387852}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27048255226488416}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'} epoch=50: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27048255226488416}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'} epoch=75: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27048255226488416}
+{'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'} epoch=100: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27048255226488416}
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'}: 1/25
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'}: 10/25
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'}: 20/25
+Refit {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'}: 25/25
+Completed 27/45: {'split_seed': 42, 'fold': 2, 'model_seed': 44, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.27670177517039857}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2759987308155712}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27590541101932137}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.2758769057795329}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'} epoch=100: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.2758769057795329}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 1/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 10/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 20/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 30/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 40/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 50/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 60/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 70/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}: 75/75
+Completed 28/45: {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766818137981924}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766818137981924}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766818137981924}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.2761896703570641}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'} epoch=100: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.2761896703570641}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 1/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 10/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 20/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 30/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 40/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 50/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 60/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 70/75
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}: 75/75
+Completed 29/45: {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.27670177517039857}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27613312889878056}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.1, 'validation_response_rmse': 0.2760285777954383}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.1, 'validation_response_rmse': 0.2760285777954383}
+{'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'} epoch=100: {'epoch': 50, 'strength': 0.1, 'validation_response_rmse': 0.2760285777954383}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}: 1/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}: 10/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}: 20/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}: 30/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}: 40/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}: 50/50
+Completed 30/45: {'split_seed': 42, 'fold': 3, 'model_seed': 42, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.27656442867009395}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27611106650738176}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27598668190111003}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'} epoch=75: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27598668190111003}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'} epoch=100: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27598668190111003}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}: 1/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}: 10/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}: 20/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}: 30/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}: 40/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}: 50/50
+Completed 31/45: {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766544982467365}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766544982467365}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766544982467365}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'} epoch=75: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766544982467365}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'} epoch=100: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2766544982467365}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'}: 1/1
+Completed 32/45: {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'} epoch=1: {'epoch': 1, 'strength': 0.5, 'validation_response_rmse': 0.2765640848751377}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27600043458387036}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'} epoch=50: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27600043458387036}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'} epoch=75: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27600043458387036}
+{'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'} epoch=100: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27600043458387036}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'}: 1/25
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'}: 10/25
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'}: 20/25
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'}: 25/25
+Completed 33/45: {'split_seed': 42, 'fold': 3, 'model_seed': 43, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.2767000755340527}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.27606173775843745}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27605684246489526}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'} epoch=75: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27605684246489526}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'} epoch=100: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.27605684246489526}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}: 1/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}: 10/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}: 20/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}: 30/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}: 40/50
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}: 50/50
+Completed 34/45: {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.27669972760866135}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.27669972760866135}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.27669972760866135}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'} epoch=75: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.27669972760866135}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.1, 'validation_response_rmse': 0.27587310813038973}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}: 100/100
+Completed 35/45: {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.27670177517039857}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2757063775687146}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'} epoch=50: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2757063775687146}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'} epoch=75: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2757063775687146}
+{'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'} epoch=100: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2757063775687146}
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'}: 1/25
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'}: 10/25
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'}: 20/25
+Refit {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'}: 25/25
+Completed 36/45: {'split_seed': 42, 'fold': 3, 'model_seed': 44, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.24323969236617102}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.24271718617679947}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.24256915705477086}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.24244621599163654}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}: 100/100
+Completed 37/45: {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'} epoch=25: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'} epoch=50: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'} epoch=75: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'} epoch=100: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+Completed 38/45: {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.24296974050704004}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.24277417571425258}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.24255405688745396}
+{'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.2422948758099083}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 1/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 10/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 20/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 30/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 40/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 50/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 60/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 70/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 80/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 90/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}: 100/100
+Completed 39/45: {'split_seed': 42, 'fold': 4, 'model_seed': 42, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.5, 'validation_response_rmse': 0.2433681094450035}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.2431351640136406}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.2428559464466878}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.24274771961954425}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}: 100/100
+Completed 40/45: {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2450990778935979}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2450990778935979}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.25, 'validation_response_rmse': 0.2450990778935979}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.24450481441917024}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.2442910685193449}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}: 100/100
+Completed 41/45: {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.24327213195314626}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.2431968044195319}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'} epoch=75: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.2431968044195319}
+{'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'} epoch=100: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.2431968044195319}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}: 1/50
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}: 10/50
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}: 20/50
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}: 30/50
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}: 40/50
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}: 50/50
+Completed 42/45: {'split_seed': 42, 'fold': 4, 'model_seed': 43, 'model': 'ddpm'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2433071595267315}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.24293277074875175}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.2427369920381386}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'} epoch=100: {'epoch': 100, 'strength': 0.25, 'validation_response_rmse': 0.24252113935802286}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 1/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 10/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 20/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 30/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 40/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 50/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 60/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 70/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 80/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 90/100
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}: 100/100
+Completed 43/45: {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'mlp'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'} epoch=1: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.24512647733676762}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'} epoch=25: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.24512647733676762}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'} epoch=50: {'epoch': 1, 'strength': 0.1, 'validation_response_rmse': 0.24512647733676762}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'} epoch=75: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.24459617025617475}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'} epoch=100: {'epoch': 75, 'strength': 0.1, 'validation_response_rmse': 0.24459617025617475}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 1/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 10/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 20/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 30/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 40/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 50/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 60/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 70/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}: 75/75
+Completed 44/45: {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'cgan'}
+Starting {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'} epoch=1: {'epoch': 0, 'strength': 0.0, 'validation_response_rmse': 0.24513143974727236}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'} epoch=25: {'epoch': 25, 'strength': 0.25, 'validation_response_rmse': 0.2434295667983718}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'} epoch=50: {'epoch': 50, 'strength': 0.25, 'validation_response_rmse': 0.2428212893000023}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'} epoch=75: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.24267312426337906}
+{'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'} epoch=100: {'epoch': 75, 'strength': 0.25, 'validation_response_rmse': 0.24267312426337906}
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 1/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 10/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 20/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 30/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 40/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 50/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 60/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 70/75
+Refit {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}: 75/75
+Completed 45/45: {'split_seed': 42, 'fold': 4, 'model_seed': 44, 'model': 'ddpm'}
+ALL COMPLETE: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc
+STRUCTURE COMPARISON COMPLETE: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc_comparison_d37918
+
+=== 구조 on/off 비교 ===
+model	mean_rmse_on	mean_rmse_off	mean_on_minus_off	std_on_minus_off	units_on_lower	units
+0	cgan	0.294099	0.294571	-0.000471	0.000884	2	3
+1	ddpm	0.290991	0.291770	-0.000779	0.000911	2	3
+2	mlp	0.290797	0.291572	-0.000775	0.000132	3	3
+split_seed	model_seed	model	response_mse_on	response_mse_off	rmse_on	rmse_off	structure_on_minus_off	structure_on_improvement_pct
+0	42	42	cgan	0.086769	0.086531	0.294565	0.294161	0.000404	-0.137490
+1	42	42	ddpm	0.084298	0.085299	0.290341	0.292061	-0.001719	0.588676
+2	42	42	mlp	0.084677	0.085042	0.290993	0.291620	-0.000627	0.214928
+3	42	43	cgan	0.086313	0.087116	0.293791	0.295155	-0.001364	0.462033
+4	42	43	ddpm	0.084676	0.085094	0.290991	0.291709	-0.000718	0.246001
+5	42	43	mlp	0.084503	0.085016	0.290693	0.291574	-0.000881	0.302128
+6	42	44	cgan	0.086402	0.086670	0.293942	0.294397	-0.000455	0.154533
+7	42	44	ddpm	0.085054	0.084995	0.291640	0.291540	0.000101	-0.034481
+8	42	44	mlp	0.084509	0.084985	0.290705	0.291522	-0.000817	0.280327
+Evaluated 1/12: {'split_seed': 42, 'model_seed': -1, 'model': 'target_conditions_ridge'}; RMSE=0.294052
+Evaluated 2/12: {'split_seed': 42, 'model_seed': -1, 'model': 'time_level_mean'}; RMSE=0.288403
+Evaluated 3/12: {'split_seed': 42, 'model_seed': -1, 'model': 'zero_response'}; RMSE=0.303112
+Evaluated 4/12: {'split_seed': 42, 'model_seed': 42, 'model': 'mlp'}; RMSE=0.291620
+Evaluated 5/12: {'split_seed': 42, 'model_seed': 42, 'model': 'cgan'}; RMSE=0.294161
+Evaluated 6/12: {'split_seed': 42, 'model_seed': 42, 'model': 'ddpm'}; RMSE=0.292061
+Evaluated 7/12: {'split_seed': 42, 'model_seed': 43, 'model': 'mlp'}; RMSE=0.291574
+Evaluated 8/12: {'split_seed': 42, 'model_seed': 43, 'model': 'cgan'}; RMSE=0.295155
+Evaluated 9/12: {'split_seed': 42, 'model_seed': 43, 'model': 'ddpm'}; RMSE=0.291709
+Evaluated 10/12: {'split_seed': 42, 'model_seed': 44, 'model': 'mlp'}; RMSE=0.291522
+Evaluated 11/12: {'split_seed': 42, 'model_seed': 44, 'model': 'cgan'}; RMSE=0.294397
+Evaluated 12/12: {'split_seed': 42, 'model_seed': 44, 'model': 'ddpm'}; RMSE=0.291540
+EVALUATION COMPLETE: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc_metrics_0c975f
+
+=== 구조 off 회귀 지표 ===
+model	rmse_mean	rmse_std	mae_mean	mae_std	r2_probe_variance_weighted_mean	r2_probe_variance_weighted_std	pearson_target_mean_mean	pearson_target_mean_std	spearman_target_mean_mean	spearman_target_mean_std	rmse_improvement_vs_ridge_pct_mean	rmse_improvement_vs_ridge_pct_std	rmse_improvement_vs_time_level_pct_mean	rmse_improvement_vs_time_level_pct_std
+0	cgan	0.294571	0.000519	0.174827	0.000601	-0.007833	0.003554	0.242427	0.004587	0.211628	0.007586	-0.176525	0.176585	-2.138803	0.180044
+1	ddpm	0.291770	0.000266	0.173199	0.000193	0.011244	0.001801	0.262553	0.000817	0.225553	0.000961	0.776041	0.090349	-1.167578	0.092119
+2	mlp	0.291572	0.000049	0.173167	0.000027	0.012584	0.000330	0.263885	0.000752	0.226685	0.000169	0.843282	0.016570	-1.099019	0.016895
+3	target_conditions_ridge	0.294052	NaN	0.174387	NaN	-0.004283	NaN	0.246480	NaN	0.218094	NaN	0.000000	NaN	-1.958820	NaN
+4	time_level_mean	0.288403	NaN	0.171470	NaN	0.033935	NaN	0.257109	NaN	0.227570	NaN	1.921188	NaN	0.000000	NaN
+5	zero_response	0.303112	NaN	0.176331	NaN	-0.067122	NaN	NaN	NaN	NaN	NaN	-3.081109	NaN	-5.100283	NaN
+
+=== 구조 off 방향·F1 ===
+threshold	model	macro_f1_pct_mean	active_sign_accuracy_pct_mean	down_f1_pct_mean	up_f1_pct_mean
+0	0.5	cgan	36.072844	71.737533	5.389719	5.962678
+1	0.5	ddpm	37.041325	72.940176	6.172098	8.073191
+2	0.5	mlp	37.058023	72.796730	6.150435	8.143716
+3	0.5	target_conditions_ridge	35.918438	72.362549	5.277699	5.609060
+4	0.5	time_level_mean	37.426900	72.735253	7.687737	7.624291
+5	0.5	zero_response	32.322154	0.000000	0.000000	0.000000
+6	1.0	cgan	33.734088	75.313518	1.066846	0.902884
+7	1.0	ddpm	34.336802	76.528845	1.525822	2.254039
+8	1.0	mlp	34.368783	76.050859	1.512777	2.361395
+9	1.0	target_conditions_ridge	33.702301	76.308236	1.018685	0.854717
+10	1.0	time_level_mean	34.630567	76.869248	4.244191	0.387793
+11	1.0	zero_response	33.086964	0.000000	0.000000	0.000000
+
+전체 완료
+off 결과: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc
+on/off 비교: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc_comparison_d37918
+추가 평가: /home/seowon1211/data1/conditioned_expression/structure_off_20261105_020903_dfd7fc_metrics_0c975f
