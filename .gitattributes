@@ -1,0 +1,2 @@
+# Preserve uploaded console evidence byte-for-byte, including its original CRLF.
+results/**/server_console_output.txt -text whitespace=cr-at-eol
