@@ -13,7 +13,7 @@ def arguments(a,fold,seed):
         '--out',str(a.out/f'fold_{fold}'/f'seed_{seed}'),'--epochs',str(a.epochs),
         '--threads',str(a.threads),'--budget-minutes',str(a.unit_budget_minutes),
         '--split-seed',str(a.split_seed),'--model-seed',str(seed),'--fold',str(fold),'--folds',str(a.folds),
-        '--arms',*a.arms,'--families',*a.families,'--descriptor-policy',a.descriptor_policy]
+        '--arms',*a.arms,'--families',*a.families,'--descriptor-policy',a.descriptor_policy,'--output-space',a.output_space]
 
 
 def summarize(a):
@@ -99,6 +99,8 @@ def summarize(a):
 
 
 def check_reference_root(a):
+    if a.output_space!='pca':
+        raise ValueError('Cannot merge old output-PCA scores with a full-output study')
     if a.arms!=['descriptor']:
         raise ValueError('Reference reuse is only supported for descriptor-only addition')
     status=json.loads((a.reference_run/'repeat_status.json').read_text())
@@ -125,6 +127,7 @@ def check_reference_unit(a,fold,seed):
     expected=json.loads(capture.getvalue())['settings']
     excluded={'arms','families','descriptor_policy'}
     old={k:v for k,v in info['settings'].items() if k not in excluded}
+    old.setdefault('output_space','pca')
     new={k:v for k,v in expected.items() if k not in excluded}
     if old!=new:raise ValueError('Reference training/preprocessing settings differ')
     for filename,checksum in info['input_sha256'].items():
@@ -174,6 +177,7 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['prepared','structure','smiles','out']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--epochs',type=int,default=100)
+    p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--folds',type=int,default=5)
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seeds',nargs='+',type=int,default=[42,43,44])

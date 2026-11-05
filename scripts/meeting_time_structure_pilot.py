@@ -32,7 +32,7 @@ def encoder_for(table,fit):
     return enc,enc.transform(features)
 
 
-def prepare(data,source,slots,ids,meta,Y,fit,components=32):
+def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca"):
     import numpy as np
     import torch
     from sklearn.preprocessing import MinMaxScaler,StandardScaler
@@ -61,17 +61,38 @@ def prepare(data,source,slots,ids,meta,Y,fit,components=32):
         sequences[compound]=matrix.ravel()
     tenc,target_conditions=encoder_for(meta,fit)
     X=np.c_[np.asarray([sequences[c] for c in meta.compound]),target_conditions].astype(np.float32)
-    output=PCA(n_components=min(32,len(fit)-1,Y.shape[1]),svd_solver='randomized',random_state=42).fit(Y[fit])
-    okeep=output.singular_values_>output.singular_values_[0]*1e-8
-    z=output.transform(Y[fit])[:,okeep]
-    scale=float(np.sqrt(np.mean(z*z)))
-    if not okeep.any() or scale<=1e-8 or not np.isfinite(X).all():raise ValueError('Invalid PCA/inputs')
-    Z=torch.zeros(len(Y),int(okeep.sum()));Z[fit]=torch.tensor(z/scale,dtype=torch.float32)
     state=dict(source_scaler=scaler,source_pca=pca,source_keep=keep,source_score_scaler=pscale,
         source_condition_encoder=senc,target_condition_encoder=tenc,slots=slots,source_slot_audit=sequence_audit,
-        output_pca=output,output_keep=okeep,output_scale=scale,prediction_target='direct_response',
+        prediction_target='direct_response',output_space=output_space,
         source_feature_layout='slot_[PCA_scores,source_conditions,observed_flag]_then_target_conditions')
+    if output_space=='full':
+        mean=Y[fit].mean(0)
+        centered=Y[fit]-mean
+        scale=float(np.sqrt(np.mean(centered*centered)))
+        if not np.isfinite(scale):raise ValueError('Invalid target scale')
+        if scale<=1e-8:scale=1.
+        z=centered/scale
+        state.update(output_mean=mean,output_scale=scale,output_pca=None,
+            target_transform='training_probe_mean_then_shared_RMS_no_dimension_reduction',
+            output_dimension=Y.shape[1],target_roundtrip_max_abs_error=float(np.max(np.abs(z*scale+mean-Y[fit]))))
+    else:
+        output=PCA(n_components=min(32,len(fit)-1,Y.shape[1]),svd_solver='randomized',random_state=42).fit(Y[fit])
+        okeep=output.singular_values_>output.singular_values_[0]*1e-8
+        z=output.transform(Y[fit])[:,okeep]
+        scale=float(np.sqrt(np.mean(z*z)))
+        if not okeep.any() or scale<=1e-8:raise ValueError('Invalid output PCA')
+        z=z/scale
+        state.update(output_pca=output,output_keep=okeep,output_scale=scale,output_dimension=int(okeep.sum()))
+    if not np.isfinite(X).all() or not np.isfinite(z).all():raise ValueError('Invalid features/targets')
+    Z=torch.zeros(len(Y),z.shape[1]);Z[fit]=torch.tensor(z,dtype=torch.float32)
     return dict(X=torch.tensor(X),Z=Z,state=state)
+
+
+def restore_output(scores,state):
+    if state.get('output_space','pca')=='full':
+        return scores*state['output_scale']+state['output_mean']
+    return (scores*state['output_scale']@state['output_pca'].components_[state['output_keep']]
+            +state['output_pca'].mean_)
 
 
 def with_structure(base,data,meta,fit,raw,arm,descriptor_policy="bounded"):
@@ -99,6 +120,7 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['prepared','structure','smiles','out']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--epochs',type=int,default=20)
+    p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seed',type=int,default=42)
     p.add_argument('--fold',type=int,default=0)
@@ -123,6 +145,11 @@ def main(argv=None):
         cgan_loss='10_PCA_MAE_plus_2_BCE_no_cycle',pca=True,split_seed=a.split_seed,model_seed=a.model_seed,
         outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,descriptor_policy=a.descriptor_policy,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
+    settings['output_space']=a.output_space
+    if a.output_space=='full':
+        settings.update(output_components=None,output_transform='training_probe_mean_then_shared_RMS',
+            mlp_loss='full_probe_MAE',cgan_loss='10_full_probe_MAE_plus_2_BCE_no_cycle',
+            pca='input_only',output_pca=False)
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=n_jobs,fits_up_to=2*n_jobs,
         settings=settings,soft_budget_minutes=a.budget_minutes,
         note='one exploratory compound holdout; no new job starts after budget, running job may finish later'),indent=2),flush=True)
@@ -161,7 +188,7 @@ def main(argv=None):
     slots=schema_for(source);core.save_json(a.out/'source_slots.json',slots)
     print('Compounds:',len(tn),len(vn),sum(f==a.fold for f in mapping.values()),'source slots:',len(slots),flush=True)
     torch.set_num_threads(a.threads)
-    old=core.PROTOCOL.copy();hooks={k:getattr(core,k) for k in ['make_family_model','train_family_epoch']}
+    old=core.PROTOCOL.copy();hooks={k:getattr(core,k) for k in ['make_family_model','train_family_epoch','restore']}
     results=[];classifications=[]
     def add_result(arm,kind,pred,selection=None):
         reg,cls,_,detail=score(Y[test],pred,[.5,1.])
@@ -171,10 +198,14 @@ def main(argv=None):
         pd.DataFrame(classifications).to_csv(a.out/'classification.csv',index=False)
         return detail
     try:
-        core.PROTOCOL.update(settings);core.make_family_model=inspired.models;core.train_family_epoch=inspired.train
+        core.PROTOCOL.update(settings);core.make_family_model=inspired.models;core.train_family_epoch=inspired.train;core.restore=restore_output
         with threadpool_limits(limits=a.threads):
-            inner=prepare(data,source,slots,ids,meta,Y,itr)
-            outer=prepare(data,source,slots,ids,meta,Y,train)
+            inner=prepare(data,source,slots,ids,meta,Y,itr,output_space=a.output_space)
+            outer=prepare(data,source,slots,ids,meta,Y,train,output_space=a.output_space)
+            core.save_json(a.out/'target_representation.json',dict(output_space=a.output_space,
+                inner_dimension=inner['Z'].shape[1],final_dimension=outer['Z'].shape[1],n_probes=Y.shape[1],
+                full_target_roundtrip_max_abs_error=outer['state'].get('target_roundtrip_max_abs_error'),
+                training_target_only=True))
             mean,counts=core.time_level_mean(meta,Y,train,test)
             core.save_json(a.out/'baseline_training_counts.json',counts)
             np.savez_compressed(a.out/'baseline_predictions.npz',target_ids=ids[test],time_level=mean)
