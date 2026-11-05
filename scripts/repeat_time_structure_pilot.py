@@ -9,11 +9,13 @@ from evaluate_repeated_predictions import score
 
 
 def arguments(a,fold,seed):
-    return ['--prepared',str(a.prepared),'--structure',str(a.structure),'--smiles',str(a.smiles),
+    command = ['--prepared',str(a.prepared),'--structure',str(a.structure),'--smiles',str(a.smiles),
         '--out',str(a.out/f'fold_{fold}'/f'seed_{seed}'),'--epochs',str(a.epochs),
         '--threads',str(a.threads),'--budget-minutes',str(a.unit_budget_minutes),
         '--split-seed',str(a.split_seed),'--model-seed',str(seed),'--fold',str(fold),'--folds',str(a.folds),
         '--arms',*a.arms,'--families',*a.families,'--descriptor-policy',a.descriptor_policy,'--output-space',a.output_space,'--input-space',a.input_space]
+    if a.cache_diffusion_context:command.append('--cache-diffusion-context')
+    return command
 
 
 def summarize(a):
@@ -80,18 +82,26 @@ def summarize(a):
     paired=[]
     for seed,row in wide.iterrows():
         for model in a.families:
-            if 'basic' in a.arms and 'morgan' in a.arms:
-                paired.append(dict(model_seed=seed,comparison='morgan_minus_basic_'+model,
-                    rmse_difference=row[('morgan',model)]-row[('basic',model)]))
+            for left,right in [('morgan','basic'),('descriptor','basic'),('descriptor','morgan')]:
+                if left in a.arms and right in a.arms:
+                    paired.append(dict(model_seed=seed,comparison=left+'_minus_'+right+'_'+model,
+                        rmse_difference=row[(left,model)]-row[(right,model)]))
         for arm in a.arms:
             for left,right in [('ddpm','mlp'),('ddpm','cgan')]:
                 if left in a.families and right in a.families:
                     paired.append(dict(model_seed=seed,comparison=arm+'_'+left+'_minus_'+right,
                         rmse_difference=row[(arm,left)]-row[(arm,right)]))
+    baseline_values=reg[reg.model_seed.eq(-1)].set_index('model').rmse.to_dict()
+    for seed,row in wide.iterrows():
+        for arm in a.arms:
+            for model in a.families:
+                for baseline,value in baseline_values.items():
+                    paired.append(dict(model_seed=seed,comparison=arm+'_'+model+'_minus_'+baseline,
+                        rmse_difference=row[(arm,model)]-value))
     pd.DataFrame(paired).to_csv(a.out/'paired_rmse_differences.csv',index=False)
     core.save_json(a.out/'evaluation_status.json',dict(full_fold_model_seeds=seeds,
         expected_model_seeds=a.model_seeds,all_requested_units_completed=len(complete)==a.folds*len(a.model_seeds),
-        fold_averages_not_used=True,prediction_ensembling=False,
+        fold_averages_not_used=True,prediction_ensembling=False,input_space=a.input_space,output_space=a.output_space,
         uncertainty='std_across_model_initializations_only_not_compound_sampling_CI'))
     print(summary.to_string(),flush=True)
     return len(complete)==a.folds*len(a.model_seeds)
@@ -180,6 +190,7 @@ def main(argv=None):
     p.add_argument('--epochs',type=int,default=100)
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-space',choices=['pca','full'],default='pca')
+    p.add_argument('--cache-diffusion-context',action='store_true')
     p.add_argument('--folds',type=int,default=5)
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seeds',nargs='+',type=int,default=[42,43,44])
@@ -198,7 +209,8 @@ def main(argv=None):
     if any(s<0 or s>=2**32 for s in [a.split_seed]+a.model_seeds):p.error('Invalid seeds')
     jobs=a.folds*len(a.model_seeds)*len(a.arms)*len(a.families)
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=jobs,fits_up_to=2*jobs,
-        folds=a.folds,model_seeds=a.model_seeds,arms=a.arms,families=a.families,max_epochs=a.epochs,
+        folds=a.folds,model_seeds=a.model_seeds,arms=a.arms,families=a.families,max_epochs=a.epochs,input_space=a.input_space,output_space=a.output_space,
+        cache_diffusion_context=a.cache_diffusion_context,
         descriptor=a.descriptor_policy if 'descriptor' in a.arms else 'not_requested',soft_global_budget=a.budget_minutes,
         note='Global budget checked between fold/seed units; current unit and evaluation can overrun'),indent=2),flush=True)
     if not a.execute:return jobs
@@ -222,6 +234,11 @@ def main(argv=None):
             pilot.main(arguments(a,fold,seed)+['--execute'])
             if not (folder/'completed.json').exists():stopped=True;break
             if a.reference_run is not None:check_reference_baseline(a,fold,seed)
+            completed_units=sum((a.out/f'fold_{f}'/f'seed_{s}'/'completed.json').exists() for f in range(a.folds) for s in a.model_seeds)
+            progress=dict(completed_units=completed_units,expected_units=a.folds*len(a.model_seeds),
+                elapsed_minutes=(time.monotonic()-started)/60,expected_model_jobs=jobs)
+            core.save_json(a.out/'progress.json',progress)
+            print('REPEAT PROGRESS:',json.dumps(progress),flush=True)
         if stopped:break
     complete=summarize(a)
     if complete and a.reference_run is not None:merge_reference(a)
