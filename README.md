@@ -67,3 +67,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [MLP의 Descriptor/Morgan 비교](docs/descriptor-morgan-comparison.md): 기본/2D Descriptor/Morgan, train-only 변수 선별·표준화와 동일 parameter 수를 적용한 별도 실행기. RAID 원본 재현이 아니며 실제 연구 데이터 결과는 아직 없음.
 
 - [첫 미팅용 시간별 입력 보존 파일럿](docs/meeting-time-structure-pilot.md): 고정 슬롯+관측mask, PCA, 구조 없음/Morgan/2D Descriptor × MLP/cGAN/DDPM 9조건. 단일 holdout·seed·20epoch의 짧은 탐색이며 5fold 전체 검증이 아님.
+
+- [시간별 입력 보존 모델의 반복 검증](docs/repeated-time-structure-study.md): Descriptor를 제외한 basic/Morgan × 세 모델, 5fold × 초기화3개, 최대100epoch. 전역/개별 작업 소프트 시간 제한·정확한 OOF 집계·재개 지원.

@@ -93,24 +93,33 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['prepared','structure','smiles','out']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--epochs',type=int,default=20)
+    p.add_argument('--split-seed',type=int,default=42)
+    p.add_argument('--model-seed',type=int,default=42)
+    p.add_argument('--fold',type=int,default=0)
+    p.add_argument('--folds',type=int,default=5)
+    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor'],default=['basic','morgan','descriptor'])
+    p.add_argument('--families',nargs='+',choices=['mlp','cgan','ddpm'],default=['mlp','cgan','ddpm'])
     p.add_argument('--threads',type=int,default=4)
     p.add_argument('--budget-minutes',type=float,default=60.)
     p.add_argument('--execute',action='store_true')
     a=p.parse_args(argv)
     if a.epochs<1 or a.threads<1 or a.budget_minutes<=0:p.error('Invalid epoch/thread/budget')
-    epochs=sorted(set([1]+list(range(5,a.epochs+1,5))+[a.epochs]))
+    if a.folds<2 or not 0<=a.fold<a.folds or any(s<0 or s>=2**32 for s in [a.split_seed,a.model_seed]):p.error('Invalid folds/seeds')
+    if len(set(a.arms))!=len(a.arms) or len(set(a.families))!=len(a.families):p.error('Duplicate arms/families')
+    n_jobs=len(a.arms)*len(a.families)
+    epochs=sorted(set(e for e in [1,5,10,15,20]+list(range(40,a.epochs+1,20))+[a.epochs] if e<=a.epochs))
     settings=dict(inspired.SETTINGS,protocol_name='meeting_time_condition_pilot_v1',
         epochs=a.epochs,validation_epochs=epochs,batch_size=128,learning_rate=1e-4,
         input_components=32,output_components=32,steps=20,samples=4,
         input_transform='training_source_MinMax_then_PCA_then_StandardScaler',
         output_transform='training_response_PCA_shared_RMS',mlp_loss='PCA_score_MAE',
-        cgan_loss='10_PCA_MAE_plus_2_BCE_no_cycle',pca=True,split_seed=42,model_seed=42,
-        outer_folds=5,evaluated_fold=0,source_aggregation='none_fixed_metadata_slots_with_mask',
+        cgan_loss='10_PCA_MAE_plus_2_BCE_no_cycle',pca=True,split_seed=a.split_seed,model_seed=a.model_seed,
+        outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
-    print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=9,fits_up_to=18,
+    print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=n_jobs,fits_up_to=2*n_jobs,
         settings=settings,soft_budget_minutes=a.budget_minutes,
         note='one exploratory compound holdout; no new job starts after budget, running job may finish later'),indent=2),flush=True)
-    if not a.execute:return 9
+    if not a.execute:return n_jobs
     started=time.monotonic()
     import numpy as np
     import pandas as pd
@@ -135,15 +144,15 @@ def main(argv=None):
     coverage=data.structure_audit.copy().rename(columns={'structure_present':'morgan_present'})
     coverage['descriptor_present']=coverage.compound.map(raw.notna().any(axis=1)).fillna(False).astype(int)
     coverage.to_csv(a.out/'structure_coverage.csv',index=False)
-    mapping=core.compound_folds(data.names,42,5);tn,vn=core.inner_compounds(mapping,0,42)
+    mapping=core.compound_folds(data.names,a.split_seed,a.folds);tn,vn=core.inner_compounds(mapping,a.fold,a.split_seed)
     itr=np.flatnonzero(meta.compound.isin(tn));val=np.flatnonzero(meta.compound.isin(vn))
-    test=np.flatnonzero(meta.compound.map(mapping).eq(0));train=np.sort(np.r_[itr,val])
-    pd.DataFrame([dict(compound=c,stage='test' if f==0 else 'validation' if c in vn else 'train') for c,f in mapping.items()]).to_csv(a.out/'compound_split.csv',index=False)
+    test=np.flatnonzero(meta.compound.map(mapping).eq(a.fold));train=np.sort(np.r_[itr,val])
+    pd.DataFrame([dict(compound=c,stage='test' if f==a.fold else 'validation' if c in vn else 'train') for c,f in mapping.items()]).to_csv(a.out/'compound_split.csv',index=False)
     source=pd.read_csv(a.prepared/'vitro_conditions.csv')
     source=source[source.condition_id.isin(np.unique(data.source_ids))].reset_index(drop=True)
     if source[['compound','dose','unit','time_h','level']].isna().any().any():raise ValueError('Missing source metadata')
     slots=schema_for(source);core.save_json(a.out/'source_slots.json',slots)
-    print('Compounds:',len(tn),len(vn),sum(f==0 for f in mapping.values()),'source slots:',len(slots),flush=True)
+    print('Compounds:',len(tn),len(vn),sum(f==a.fold for f in mapping.values()),'source slots:',len(slots),flush=True)
     torch.set_num_threads(a.threads)
     old=core.PROTOCOL.copy();hooks={k:getattr(core,k) for k in ['make_family_model','train_family_epoch']}
     results=[];classifications=[]
@@ -164,17 +173,17 @@ def main(argv=None):
             np.savez_compressed(a.out/'baseline_predictions.npz',target_ids=ids[test],time_level=mean)
             add_result('baseline','time_level_mean',mean);add_result('baseline','zero_response',np.zeros_like(mean))
             offset=np.zeros_like(Y)
-            for arm in ['basic','morgan','descriptor']:
+            for arm in a.arms:
                 ip=with_structure(inner,data,meta,itr,raw,arm);op=with_structure(outer,data,meta,train,raw,arm)
                 armfolder=a.out/arm;armfolder.mkdir(exist_ok=True)
                 joblib.dump(ip['state'],armfolder/'inner_preprocess.joblib');joblib.dump(op['state'],armfolder/'final_preprocess.joblib')
-                for kind in ['mlp','cgan','ddpm']:
-                    job=dict(split_seed=42,fold=0,model_seed=42,model=kind,arm=arm)
+                for kind in a.families:
+                    job=dict(split_seed=a.split_seed,fold=a.fold,model_seed=a.model_seed,model=kind,arm=arm)
                     task=armfolder/kind;task.mkdir(exist_ok=True)
                     record=core.read_completion(task,job)
                     if record is None:
                         if time.monotonic()-started>a.budget_minutes*60:
-                            core.save_json(a.out/'partial.json',dict(completed_jobs=len(results)-2,total_jobs=9,reason='soft_time_budget'))
+                            core.save_json(a.out/'partial.json',dict(completed_jobs=len(results)-2,total_jobs=n_jobs,reason='soft_time_budget'))
                             print('SOFT BUDGET REACHED: partial results saved; no new training started.',flush=True)
                             return len(results)-2
                         attempt=task/('attempt_'+uuid.uuid4().hex);attempt.mkdir()
@@ -190,15 +199,15 @@ def main(argv=None):
                         pred=saved['prediction']
                     detail=add_result(arm,kind,pred,record['selection'])
                     pd.DataFrame(dict(condition_id=ids[test],compound=meta.iloc[test].compound.to_numpy(),**detail)).to_csv(task/'condition_metrics.csv',index=False)
-                    print(f'COMPLETED {len(results)-2}/9; elapsed {(time.monotonic()-started)/60:.1f} min; RMSE={results[-1]["rmse"]:.6f}',flush=True)
-            core.save_json(a.out/'completed.json',dict(jobs=9,scope='single_holdout_exploratory_not_full_5fold'))
+                    print(f'COMPLETED {len(results)-2}/{n_jobs}; elapsed {(time.monotonic()-started)/60:.1f} min; RMSE={results[-1]["rmse"]:.6f}',flush=True)
+            core.save_json(a.out/'completed.json',dict(jobs=n_jobs,scope='single_holdout_exploratory_not_full_5fold'))
             if (a.out/'partial.json').exists():(a.out/'partial.json').unlink()
             print(pd.DataFrame(results)[['arm','model','rmse','mae','pearson_target_mean']].to_string(index=False),flush=True)
             print('ALL COMPLETE:',a.out,flush=True)
     finally:
         core.PROTOCOL.clear();core.PROTOCOL.update(old)
         for k,v in hooks.items():setattr(core,k,v)
-    return 9
+    return n_jobs
 
 
 if __name__=='__main__':main()
