@@ -1,0 +1,37 @@
+{
+  "source": "user_uploaded_server_console_output",
+  "server_folder": "/home/seowon1211/data1/conditioned_expression/full_probe_output_20261105_112018_614d84",
+  "executed_commit": "33ca7ee",
+  "input_space": "PCA_up_to_32_per_source_condition",
+  "output_space": "all_3453_probes_direct_no_output_PCA",
+  "evaluation": {
+    "split_seed": 42,
+    "outer_folds_defined": 5,
+    "evaluated_fold": 0,
+    "model_seed": 42,
+    "inner_train_compounds": 89,
+    "validation_compounds": 23,
+    "test_compounds": 28,
+    "test_target_conditions": 336
+  },
+  "source_sha256": "b5df7dc63ce3939a0e74587189d0cd9d33a23809f5e79bd50e685564c97f6bdc",
+  "precision": "six_decimal_console_summary; not original raw CSV precision",
+  "verification": "parsed reported log; no raw prediction re-evaluation or training in this environment",
+  "status": "9 conditions complete in server log",
+  "interpretation": "exploratory holdout; selected after observing results; not confirmatory; no significance tests",
+  "target_roundtrip_error": {
+    "reported_float64_training_transform_inverse_max_abs_error": 1.7763568394002505e-15,
+    "not_a_prediction_error": true
+  },
+  "files_sha256": {
+    "classification.csv": "28b511d989d28a78b320249daedf30766d48e7d8c135675576664873224c976a",
+    "regression.csv": "087ee53427ded9d3516544af1731b0fbba962595421a562e58eb4a684b086432",
+    "morgan_and_baselines.csv": "f3911a42ec3d74dda3ae98610aa49a3466c9b743c7dfdd9dd4a302e2d83890e1",
+    "server_console_output.txt": "b5df7dc63ce3939a0e74587189d0cd9d33a23809f5e79bd50e685564c97f6bdc",
+    "all_conditions.csv": "72406961c73e1fa60d95d4d925cff1aa516f65d86d7d8f0b06b97afd35f51e10"
+  },
+  "contextual_comparison_sources": {
+    "reference_logs/no_PCA_MLP_server_log/server_console_output.txt": "8855020476a03493c9eff8bcd630f5bdee8cef40bbf088a581edd3faa9ea456f",
+    "reference_logs/repeated_time_PCA_output_server_log/server_console_output.txt": "736e75b3b0640b8177da15c5136768bdb652e0ffc74f32e78bc1b382fe3e9d9f"
+  }
+}

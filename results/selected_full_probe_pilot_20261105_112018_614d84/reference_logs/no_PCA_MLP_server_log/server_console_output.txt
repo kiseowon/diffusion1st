@@ -1,0 +1,216 @@
+Cloning into '/home/seowon1211/data1/conditioned_expression/no_pca_mlp_20261105_113720_ddea86/code'...
+결과 폴더: /home/seowon1211/data1/conditioned_expression/no_pca_mlp_20261105_113720_ddea86
+HEAD is now at 8e5655b Add PCA-free source inputs with shared compound features and memory reports
+{
+  "mode": "plan_only",
+  "jobs": 2,
+  "fits_up_to": 4,
+  "settings": {
+    "protocol_name": "meeting_time_condition_pilot_v1",
+    "input_components": null,
+    "output_components": null,
+    "input_transform": "training_source_probe_MinMax_no_PCA_no_clip",
+    "output_transform": "training_probe_mean_then_shared_RMS",
+    "context": 256,
+    "hidden": 64,
+    "activation": "LeakyReLU_0.2",
+    "dropout": 0.0,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "optimizer": "Adam",
+    "discriminator_optimizer": "SGD_lr_0.0001_momentum_0.9",
+    "batch_size": 128,
+    "epochs": 100,
+    "validation_epochs": [
+      1,
+      5,
+      10,
+      15,
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "mlp_loss": "full_probe_MAE",
+    "cgan_loss": "10_full_probe_MAE_plus_2_BCE_no_cycle",
+    "pathway": false,
+    "pca": false,
+    "output_activation": "linear",
+    "steps": 20,
+    "samples": 4,
+    "split_seed": 42,
+    "model_seed": 42,
+    "outer_folds": 5,
+    "evaluated_fold": 0,
+    "arms": [
+      "basic",
+      "morgan"
+    ],
+    "families": [
+      "mlp"
+    ],
+    "descriptor_policy": "bounded",
+    "source_aggregation": "none_fixed_metadata_slots_with_mask",
+    "slot_schema_policy": "all_available_source_metadata_no_expression_or_target_outcomes",
+    "output_space": "full",
+    "input_space": "full",
+    "feature_storage": "shared_compound_source_sequences_lazy_batch_concat",
+    "output_pca": false
+  },
+  "soft_budget_minutes": 60.0,
+  "note": "one exploratory compound holdout; no new job starts after budget, running job may finish later"
+}
+{
+  "mode": "execute",
+  "jobs": 2,
+  "fits_up_to": 4,
+  "settings": {
+    "protocol_name": "meeting_time_condition_pilot_v1",
+    "input_components": null,
+    "output_components": null,
+    "input_transform": "training_source_probe_MinMax_no_PCA_no_clip",
+    "output_transform": "training_probe_mean_then_shared_RMS",
+    "context": 256,
+    "hidden": 64,
+    "activation": "LeakyReLU_0.2",
+    "dropout": 0.0,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "optimizer": "Adam",
+    "discriminator_optimizer": "SGD_lr_0.0001_momentum_0.9",
+    "batch_size": 128,
+    "epochs": 100,
+    "validation_epochs": [
+      1,
+      5,
+      10,
+      15,
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "mlp_loss": "full_probe_MAE",
+    "cgan_loss": "10_full_probe_MAE_plus_2_BCE_no_cycle",
+    "pathway": false,
+    "pca": false,
+    "output_activation": "linear",
+    "steps": 20,
+    "samples": 4,
+    "split_seed": 42,
+    "model_seed": 42,
+    "outer_folds": 5,
+    "evaluated_fold": 0,
+    "arms": [
+      "basic",
+      "morgan"
+    ],
+    "families": [
+      "mlp"
+    ],
+    "descriptor_policy": "bounded",
+    "source_aggregation": "none_fixed_metadata_slots_with_mask",
+    "slot_schema_policy": "all_available_source_metadata_no_expression_or_target_outcomes",
+    "output_space": "full",
+    "input_space": "full",
+    "feature_storage": "shared_compound_source_sequences_lazy_batch_concat",
+    "output_pca": false
+  },
+  "soft_budget_minutes": 60.0,
+  "note": "one exploratory compound holdout; no new job starts after budget, running job may finish later"
+}
+Compounds: 89 23 28 source slots: 36
+MODEL DIMENSIONS basic {"inner": {"input_dimension": 126724, "output_dimension": 3453, "mlp_parameters": 32904829, "ddpm_parameters": 32904829, "cgan_generator_parameters": 32683837, "cgan_discriminator_parameters": 32679105, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993, "excludes_activations_inputs_optimizer_temporaries": true}, "final": {"input_dimension": 126724, "output_dimension": 3453, "mlp_parameters": 32904829, "ddpm_parameters": 32904829, "cgan_generator_parameters": 32683837, "cgan_discriminator_parameters": 32679105, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993, "excludes_activations_inputs_optimizer_temporaries": true}}
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3119915245154042}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=5: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=10: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=15: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=20: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=40: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=60: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=80: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=100: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.3119677465305917}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 1/5
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 5/5
+COMPLETED 1/2; elapsed 4.3 min; RMSE=0.292433
+MODEL DIMENSIONS morgan {"inner": {"input_dimension": 126724, "output_dimension": 3453, "mlp_parameters": 32904829, "ddpm_parameters": 32904829, "cgan_generator_parameters": 32683837, "cgan_discriminator_parameters": 32679105, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993, "excludes_activations_inputs_optimizer_temporaries": true}, "final": {"input_dimension": 126724, "output_dimension": 3453, "mlp_parameters": 32904829, "ddpm_parameters": 32904829, "cgan_generator_parameters": 32683837, "cgan_discriminator_parameters": 32679105, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993, "excludes_activations_inputs_optimizer_temporaries": true}}
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3119919515172418}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=5: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=10: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=15: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=20: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=40: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=60: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=80: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=100: {'epoch': 5, 'strength': 1.0, 'validation_response_rmse': 0.31195856630711416}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 1/5
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 5/5
+COMPLETED 2/2; elapsed 8.4 min; RMSE=0.292418
+     arm           model     rmse      mae  pearson_target_mean
+baseline time_level_mean 0.287834 0.169098             0.231368
+baseline   zero_response 0.298110 0.171649                  NaN
+   basic             mlp 0.292433 0.171954             0.190966
+  morgan             mlp 0.292418 0.171954             0.191058
+ALL COMPLETE: /home/seowon1211/data1/conditioned_expression/no_pca_mlp_20261105_113720_ddea86/results
+arm	model	n_targets	n_probes	rmse	mae	r2_probe_variance_weighted	pearson_target_mean	pearson_valid_targets	spearman_target_mean	spearman_valid_targets	epoch	strength	validation_response_rmse
+0	baseline	time_level_mean	336	3453	0.287834	0.169098	0.015517	0.231368	336	0.206766	336	NaN	NaN	NaN
+1	baseline	zero_response	336	3453	0.298110	0.171649	-0.056035	NaN	0	NaN	0	NaN	NaN	NaN
+2	basic	mlp	336	3453	0.292433	0.171954	-0.016193	0.190966	336	0.165178	336	5.0	1.0	0.311968
+3	morgan	mlp	336	3453	0.292418	0.171954	-0.016094	0.191058	336	0.165337	336	5.0	1.0	0.311959
+
+===== basic: 입력·출력 차원과 파라미터 수 =====
+{
+  "inner": {
+    "input_dimension": 126724,
+    "output_dimension": 3453,
+    "mlp_parameters": 32904829,
+    "ddpm_parameters": 32904829,
+    "cgan_generator_parameters": 32683837,
+    "cgan_discriminator_parameters": 32679105,
+    "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993,
+    "excludes_activations_inputs_optimizer_temporaries": true
+  },
+  "final": {
+    "input_dimension": 126724,
+    "output_dimension": 3453,
+    "mlp_parameters": 32904829,
+    "ddpm_parameters": 32904829,
+    "cgan_generator_parameters": 32683837,
+    "cgan_discriminator_parameters": 32679105,
+    "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993,
+    "excludes_activations_inputs_optimizer_temporaries": true
+  }
+}
+
+
+===== morgan: 입력·출력 차원과 파라미터 수 =====
+{
+  "inner": {
+    "input_dimension": 126724,
+    "output_dimension": 3453,
+    "mlp_parameters": 32904829,
+    "ddpm_parameters": 32904829,
+    "cgan_generator_parameters": 32683837,
+    "cgan_discriminator_parameters": 32679105,
+    "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993,
+    "excludes_activations_inputs_optimizer_temporaries": true
+  },
+  "final": {
+    "input_dimension": 126724,
+    "output_dimension": 3453,
+    "mlp_parameters": 32904829,
+    "ddpm_parameters": 32904829,
+    "cgan_generator_parameters": 32683837,
+    "cgan_discriminator_parameters": 32679105,
+    "mlp_fp32_weights_gradients_Adam_states_GiB": 0.490320160984993,
+    "excludes_activations_inputs_optimizer_temporaries": true
+  }
+}
+
+
+전체 완료: True
+저장 위치: /home/seowon1211/data1/conditioned_expression/no_pca_mlp_20261105_113720_ddea86

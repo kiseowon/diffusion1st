@@ -1,0 +1,6 @@
+arm,model,n_targets,n_probes,rmse,mae,r2_probe_variance_weighted,pearson_target_mean,pearson_valid_targets,spearman_target_mean,spearman_valid_targets,epoch,strength,validation_response_rmse,macro_f1_pct,down_f1_pct,up_f1_pct
+baseline,time_level_mean,336,3453,0.287834,0.169098,0.015517,0.231368,336,0.206766,336,,,,37.900172,8.157856,8.337102
+baseline,zero_response,336,3453,0.29811,0.171649,-0.056035,,0,,0,,,,32.407574,0.0,0.0
+morgan,mlp,336,3453,0.288869,0.169218,0.00842,0.209523,336,0.189976,336,100.0,1.0,0.309919,33.977269,1.809014,2.91577
+morgan,cgan,336,3453,0.289752,0.170133,0.002351,0.194707,336,0.172914,336,100.0,1.0,0.31064,33.791205,1.898155,2.260891
+morgan,ddpm,336,3453,0.289531,0.171269,0.003876,0.19957,336,0.168809,336,40.0,1.0,0.311067,33.639049,2.020456,1.670563

@@ -77,3 +77,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [입력·출력 PCA 없는 MLP 파일럿](docs/no-pca-input-output.md): 시간 슬롯마다 전체 probe 입력, 전체 probe 출력. basic/Morgan 두 조건부터 검사하며 source 공유와 batch별 concat으로 데이터 복제 메모리를 줄임.
 
 - [PCA 없는 cGAN/DDPM 추가 비교](docs/no-pca-generative-models.md): basic/Morgan × 두 생성모델만 추가. DDPM 평가 시 context 재사용 옵션으로 반복 encoder 계산과 입력 복제를 줄임.
+
+- [선택한 전체 probe 출력 파일럿 결과 모음](results/selected_full_probe_pilot_20261105_112018_614d84/report.md): 입력 PCA/전체 출력, 9조건·기준선의 회귀·F1 보고값과 서버 원문. Morgan MLP는 단일 holdout의 후속 검증 후보이며 평균 기준선 초과나 전체 지표 최적성을 의미하지 않음.
