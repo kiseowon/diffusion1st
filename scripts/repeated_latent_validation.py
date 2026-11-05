@@ -173,7 +173,7 @@ def rmse(Y, pred):
     return float(np.sqrt(np.mean((Y.astype(float) - pred) ** 2)))
 
 
-def prepare_stage(first, data, ids, meta, Y, fit, baseline):
+def prepare_stage(first, data, ids, meta, Y, fit, baseline, use_structure=True):
     import numpy as np
     import torch
     from sklearn.decomposition import PCA
@@ -192,6 +192,9 @@ def prepare_stage(first, data, ids, meta, Y, fit, baseline):
     scores = pca.transform(E)[:, keep]
     scaler = StandardScaler().fit(scores[fit])
     S = data.structure[[data.compound_to_index[c] for c in meta.compound]]
+    if not use_structure:
+        # Preserve all input slots and parameter counts; remove bits AND presence information.
+        S = np.zeros_like(S)
     X = np.c_[scaler.transform(scores), C, S].astype(np.float32)
     residual = Y[fit] - baseline[fit]
     output = PCA(n_components=min(PROTOCOL['output_components'], len(fit) - 1, Y.shape[1]),
@@ -207,7 +210,8 @@ def prepare_stage(first, data, ids, meta, Y, fit, baseline):
     Z = torch.zeros(len(ids), int(okeep.sum()))
     Z[fit] = torch.tensor(zfit / scale, dtype=torch.float32)
     state = dict(input_preprocess=pack['preprocess'], input_pca=pca, input_keep=keep,
-                 input_scaler=scaler, output_pca=output, output_keep=okeep, output_scale=scale)
+                 input_scaler=scaler, output_pca=output, output_keep=okeep, output_scale=scale,
+                 structure_enabled=bool(use_structure))
     return dict(X=torch.tensor(X), Z=Z, state=state)
 
 
@@ -491,13 +495,29 @@ def execute(args):
     inputs = [args.prepared / n for n in ['vitro_expression.npy', 'vivo_expression.npy', 'vitro_conditions.csv',
               'vivo_conditions.csv', 'pairs.csv.gz', 'probes.csv']] + [args.structure]
     protect_output(args.out, [args.prepared, args.structure])
-    contract = dict(protocol=PROTOCOL, arguments={k: str(v.resolve()) if isinstance(v, Path) else v
+    effective_protocol = dict(PROTOCOL, structure=not args.no_structure)
+    contract = dict(protocol=effective_protocol, arguments={k: str(v.resolve()) if isinstance(v, Path) else v
                     for k, v in vars(args).items() if k != 'execute'},
                     input_sha256={str(p.resolve()): digest(p) for p in inputs},
                     source_sha256={str(p.resolve()): digest(p) for p in [Path(__file__), SNAPSHOT]},
                     versions=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__,
                                   torch=torch.__version__, sklearn=sklearn.__version__, scipy=scipy.__version__, joblib=joblib.__version__))
     out = args.out.resolve()
+    if args.paired_on_run is not None:
+        if not args.no_structure:
+            raise ValueError('--paired-on-run is only for a structure-off experiment')
+        from compare_structure_ablation import paired_contract
+        on_run = args.paired_on_run.resolve()
+        protect_output(out, [on_run])
+        on_info = json.loads((on_run / 'run.json').read_text())
+        paired_contract(on_info, contract)
+        on_done = json.loads((on_run / 'completed.json').read_text())
+        a = on_info['arguments']
+        expected = len(a['split_seeds']) * a['folds'] * len(a['model_seeds']) * len(a.get('families', ['mlp', 'ddpm']))
+        if on_done.get('completed_jobs') != expected or on_done.get('expected_jobs') != expected:
+            raise ValueError('Paired structure-on run is incomplete')
+        contract['paired_on_run_sha256'] = digest(on_run / 'run.json')
+        print('PAIRED ON CONTRACT CHECK PASSED:', on_run, flush=True)
     contract_folder(out, contract)
     first, data, ids, meta, Y, taudit, saudit = load_data(args)
     pd.DataFrame(taudit).to_csv(out / 'response_target_audit.csv', index=False)
@@ -539,8 +559,8 @@ def execute(args):
                         time_level_mean_mse=float(np.mean((Y[idx] - mean_pred[pos]) ** 2)),
                         zero_response_mse=float(np.mean(Y[idx] ** 2))))
                 pd.DataFrame(baseline_rows).to_csv(out / 'baseline_condition_metrics.csv', index=False)
-                inner = prepare_stage(first, data, ids, meta, Y, itr, inner_base)
-                outer = prepare_stage(first, data, ids, meta, Y, training, final_base)
+                inner = prepare_stage(first, data, ids, meta, Y, itr, inner_base, use_structure=not args.no_structure)
+                outer = prepare_stage(first, data, ids, meta, Y, training, final_base, use_structure=not args.no_structure)
                 joblib.dump(inner['state'], folder / 'inner_preprocess.joblib')
                 joblib.dump(outer['state'], folder / 'final_preprocess.joblib')
                 for mseed in args.model_seeds:
@@ -558,7 +578,7 @@ def execute(args):
                             detail = meta.iloc[testing][['condition_id', 'compound', 'time_h', 'level']].copy()
                             detail['response_mse'] = np.mean((Y[testing] - pred) ** 2, axis=1)
                             detail.to_csv(attempt / 'condition_metrics.csv', index=False)
-                            metrics = dict(**job, **selected, response_rmse=rmse(Y[testing], pred))
+                            metrics = dict(**job, **selected, response_rmse=rmse(Y[testing], pred), structure_enabled=not args.no_structure)
                             save_json(attempt / 'metrics.json', metrics)
                             record = dict(job=job, metrics=metrics,
                                 metrics_path=str((attempt / 'condition_metrics.csv').relative_to(out)),
@@ -584,12 +604,17 @@ def parser():
     p.add_argument('--folds', type=int, default=5)
     p.add_argument('--threads', type=int, default=4)
     p.add_argument('--bootstrap-samples', type=int, default=1000)
+    p.add_argument('--paired-on-run', type=Path, help='Validate a completed on-run contract before starting off training')
+    p.add_argument('--no-structure', action='store_true',
+                   help='Zero all Morgan and presence slots; retain the same network input dimension')
     p.add_argument('--execute', action='store_true')
     return p
 
 
 def main(argv=None):
     p = parser(); args = p.parse_args(argv)
+    if args.paired_on_run is not None and not args.no_structure:
+        p.error('--paired-on-run requires --no-structure')
     if len(args.families) != len(set(args.families)):
         p.error('Duplicate model families')
     if args.folds < 2 or args.threads < 1 or args.bootstrap_samples < 0:
@@ -602,7 +627,7 @@ def main(argv=None):
     print(json.dumps(dict(mode='execute' if args.execute else 'plan_only',
         split_seeds=args.split_seeds, model_seeds=args.model_seeds, folds=args.folds,
         families=args.families, fold_seed_pairs=len(planned) // len(args.families), neural_jobs=len(planned),
-        neural_fits_up_to=len(planned) * 2, protocol=PROTOCOL), indent=2), flush=True)
+        neural_fits_up_to=len(planned) * 2, protocol=dict(PROTOCOL, structure=not args.no_structure)), indent=2), flush=True)
     if args.execute:
         execute(args)
     return planned

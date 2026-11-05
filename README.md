@@ -49,3 +49,7 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 [설정 이유·검증 범위](docs/ddpm-hyperparameter-rationale.md)와 [내부 검증 전용 실행기](scripts/validate_ddpm_architecture.py)를 추가했습니다. context/hidden 폭을 한 번에 하나씩 바꾸는5후보×3seed의15회 내부 fit 계획이며, 기본은 계획 모드입니다. 외부 테스트 평가·최종 refit은 포함하지 않고 연구 자료에서는 아직 실행하지 않았습니다.
 
 [DDPM 조합 탐색](docs/ddpm-joint-tuning.md): hidden×학습률×weight decay의12조합을 내부 검증하고 상위2개와 reference에 추가 초기화2개를 적용하는 실행기를 추가했습니다. 기본은 계획 모드,최대18회 내부fit이며 외부 test 평가와 최종refit은 하지 않습니다.
+
+## 구조 정보 대조
+
+[동일 설정 구조 on/off 비교](docs/structure-ablation.md)를 추가했습니다. `--no-structure`는 Morgan과 presence만0으로 바꾸고 입력 차원과 나머지 설정을 유지합니다. `--paired-on-run`으로 학습 전에 기존 on의 입력·설정·환경을 확인하고, 완료 후 비교 코드가 분할·기준선·대응 target을 검사합니다. 실제 연구 off 학습은 이 작업에서 실행하지 않았습니다.
