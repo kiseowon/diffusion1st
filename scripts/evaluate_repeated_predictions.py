@@ -158,7 +158,8 @@ def execute(args):
     args_run = info['arguments']
     audit = {}
     regression, classification, confusions, target_rows = [], [], [], []
-    baselines = ['target_conditions_ridge', 'time_level_mean', 'zero_response']
+    direct = args_run.get('prediction_target', 'ridge_residual') == 'direct_response'
+    baselines = ['time_level_mean', 'zero_response'] if direct else ['target_conditions_ridge', 'time_level_mean', 'zero_response']
     units = [(seed, -1, kind) for seed in args_run['split_seeds'] for kind in baselines]
     units += [(seed, m, kind) for seed in args_run['split_seeds'] for m in args_run['model_seeds'] for kind in args_run.get('families', ['mlp', 'ddpm'])]
     id_position = {int(cid): i for i, cid in enumerate(ids)}
@@ -218,12 +219,16 @@ def execute(args):
         target_rows.append(target)
         print(f'Evaluated {number}/{len(units)}: {unit}; RMSE={reg["rmse"]:.6f}', flush=True)
     reg = pd.DataFrame(regression); cls = pd.DataFrame(classification)
+    prediction_target = args_run.get('prediction_target', 'ridge_residual')
+    reg.insert(0, 'prediction_target', prediction_target)
+    cls.insert(0, 'prediction_target', prediction_target)
     for metric in ['accuracy', 'macro_f1', 'weighted_f1', 'active_sign_accuracy', 'actual_active_fraction', 'predicted_active_fraction',
                    'down_precision', 'down_recall', 'down_f1', 'small_precision', 'small_recall', 'small_f1', 'up_precision', 'up_recall', 'up_f1']:
         cls[metric + '_pct'] = cls[metric] * 100
     for seed in args_run['split_seeds']:
         baseline_rmse = float(reg.loc[(reg.split_seed == seed) & reg.model.eq('time_level_mean'), 'rmse'].iloc[0])
-        ridge_rmse = float(reg.loc[(reg.split_seed == seed) & reg.model.eq('target_conditions_ridge'), 'rmse'].iloc[0])
+        ridge_values = reg.loc[(reg.split_seed == seed) & reg.model.eq('target_conditions_ridge'), 'rmse']
+        ridge_rmse = float(ridge_values.iloc[0]) if len(ridge_values) else np.nan
         rows = reg.split_seed.eq(seed)
         reg.loc[rows, 'rmse_improvement_vs_time_level_pct'] = 100 * (1 - reg.loc[rows, 'rmse'] / baseline_rmse) if baseline_rmse > 0 else np.nan
         reg.loc[rows, 'rmse_improvement_vs_ridge_pct'] = 100 * (1 - reg.loc[rows, 'rmse'] / ridge_rmse) if ridge_rmse > 0 else np.nan
@@ -239,8 +244,9 @@ def execute(args):
     cls_summary = cls.groupby(['threshold', 'model'])[cls_metrics].agg(['mean', 'std'])
     for table, name in [(reg_summary, 'regression_summary.csv'), (cls_summary, 'classification_summary.csv')]:
         table.columns = ['_'.join(c) for c in table.columns]
+        table.insert(0, 'prediction_target', prediction_target)
         table.to_csv(out / name)
-    manifest = dict(training_run=str(run), thresholds=args.thresholds, training_run_sha256=digest(run / 'run.json'),
+    manifest = dict(training_run=str(run), prediction_target=prediction_target, thresholds=args.thresholds, training_run_sha256=digest(run / 'run.json'),
         evaluator_sha256=digest(Path(__file__)), original_inputs_verified=info['input_sha256'],
         artifacts_verified=audit, training_performed=False, checkpoint_or_joblib_loaded=False,
         threshold_interpretation='exploratory_amplitude_not_statistical_DE_or_verified_log2_fold_change',

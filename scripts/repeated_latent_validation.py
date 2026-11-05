@@ -173,7 +173,7 @@ def rmse(Y, pred):
     return float(np.sqrt(np.mean((Y.astype(float) - pred) ** 2)))
 
 
-def prepare_stage(first, data, ids, meta, Y, fit, baseline, use_structure=True):
+def prepare_stage(first, data, ids, meta, Y, fit, baseline, use_structure=True, prediction_target="ridge_residual"):
     import numpy as np
     import torch
     from sklearn.decomposition import PCA
@@ -196,7 +196,12 @@ def prepare_stage(first, data, ids, meta, Y, fit, baseline, use_structure=True):
         # Preserve all input slots and parameter counts; remove bits AND presence information.
         S = np.zeros_like(S)
     X = np.c_[scaler.transform(scores), C, S].astype(np.float32)
-    residual = Y[fit] - baseline[fit]
+    if prediction_target == 'direct_response':
+        if np.any(baseline != 0):
+            raise ValueError('Direct response mode must not receive a nonzero predictive baseline')
+        residual = Y[fit]
+    else:
+        residual = Y[fit] - baseline[fit]
     output = PCA(n_components=min(PROTOCOL['output_components'], len(fit) - 1, Y.shape[1]),
                  svd_solver='randomized', random_state=42).fit(residual)
     okeep = output.singular_values_ > output.singular_values_[0] * PROTOCOL['rank_tolerance']
@@ -211,7 +216,7 @@ def prepare_stage(first, data, ids, meta, Y, fit, baseline, use_structure=True):
     Z[fit] = torch.tensor(zfit / scale, dtype=torch.float32)
     state = dict(input_preprocess=pack['preprocess'], input_pca=pca, input_keep=keep,
                  input_scaler=scaler, output_pca=output, output_keep=okeep, output_scale=scale,
-                 structure_enabled=bool(use_structure))
+                 structure_enabled=bool(use_structure), prediction_target=prediction_target)
     return dict(X=torch.tensor(X), Z=Z, state=state)
 
 
@@ -394,22 +399,26 @@ def fit_job(job, inner, outer, Y, itr, validation, testing, training, inner_base
     import torch
     kind, seed = job['model'], job['model_seed']
     model, optimizer, disc, dopt = make_family_model(kind, inner['X'].shape[1], inner['Z'].shape[1], seed)
-    best = dict(epoch=0, strength=0., validation_response_rmse=rmse(Y[validation], inner_base[validation]))
-    history = [best.copy()]
+    direct = inner['state'].get('prediction_target', 'ridge_residual') == 'direct_response'
+    best = None if direct else dict(epoch=0, strength=0., validation_response_rmse=rmse(Y[validation], inner_base[validation]))
+    history = [] if direct else [best.copy()]
+    strengths = [1.] if direct else PROTOCOL['strengths']
     for epoch in range(1, PROTOCOL['epochs'] + 1):
         train_family_epoch(kind, model, optimizer, disc, dopt, inner, itr)
         if epoch in PROTOCOL['validation_epochs']:
             correction = restore(predict_family_scores(kind, model, inner, validation, seed + 20000), inner['state'])
-            for strength in PROTOCOL['strengths']:
+            for strength in strengths:
                 record = dict(epoch=epoch, strength=strength,
                               validation_response_rmse=rmse(Y[validation], inner_base[validation] + strength * correction))
                 if not np.isfinite(record['validation_response_rmse']):
                     raise ValueError('Nonfinite validation metric')
                 history.append(record)
-                if record['validation_response_rmse'] < best['validation_response_rmse']:
+                if best is None or record['validation_response_rmse'] < best['validation_response_rmse']:
                     best = record.copy()
             pd.DataFrame(history).to_csv(folder / 'validation_history.csv', index=False)
             print(f'{job} epoch={epoch}: {best}', flush=True)
+    if best is None:
+        raise ValueError('No validation epoch was evaluated')
     save_json(folder / 'selection.json', best)
     prediction = final_base[testing].copy()
     if best['strength'] > 0:
@@ -436,7 +445,8 @@ def aggregate(out, records, baseline_rows, bootstrap_samples):
             detail[key] = record['job'][key]
         all_rows.append(detail)
     baseline = pd.DataFrame(baseline_rows)
-    for name in ['target_conditions_ridge', 'time_level_mean', 'zero_response']:
+    baseline_names = [name for name in ['target_conditions_ridge', 'time_level_mean', 'zero_response'] if name + '_mse' in baseline.columns]
+    for name in baseline_names:
         frame = baseline[['split_seed', 'fold', 'condition_id', 'compound', name + '_mse']].copy()
         frame = frame.rename(columns={name + '_mse': 'response_mse'})
         frame['model'] = name
@@ -456,7 +466,7 @@ def aggregate(out, records, baseline_rows, bootstrap_samples):
     base = units.loc[units.model_seed.eq(-1)].pivot(index='split_seed', columns='model', values='response_rmse')
     paired = neural.reset_index().merge(base.reset_index(), on='split_seed', validate='many_to_one')
     for model in available:
-        for name in ['target_conditions_ridge', 'time_level_mean', 'zero_response']:
+        for name in baseline_names:
             paired[model + '_minus_' + name] = paired[model] - paired[name]
     paired.to_csv(out / 'paired_comparisons.csv', index=False)
     # Average squared errors across repeats/seeds for each target; this is NOT prediction ensembling.
@@ -494,12 +504,17 @@ def execute(args):
     from threadpoolctl import threadpool_limits
     inputs = [args.prepared / n for n in ['vitro_expression.npy', 'vivo_expression.npy', 'vitro_conditions.csv',
               'vivo_conditions.csv', 'pairs.csv.gz', 'probes.csv']] + [args.structure]
-    protect_output(args.out, [args.prepared, args.structure])
+    inputs += list(globals().get('EXTRA_INPUT_FILES', []))
+    protect_output(args.out, [args.prepared, args.structure] + list(globals().get('EXTRA_INPUT_FILES', [])))
+    direct = args.prediction_target == 'direct_response'
     effective_protocol = dict(PROTOCOL, structure=not args.no_structure)
+    if direct:
+        effective_protocol.update(prediction_target='direct_response', residual='none_no_ridge', strengths=[1.])
+        effective_protocol.pop('baseline_alphas')
     contract = dict(protocol=effective_protocol, arguments={k: str(v.resolve()) if isinstance(v, Path) else v
                     for k, v in vars(args).items() if k != 'execute'},
                     input_sha256={str(p.resolve()): digest(p) for p in inputs},
-                    source_sha256={str(p.resolve()): digest(p) for p in [Path(__file__), SNAPSHOT]},
+                    source_sha256={str(p.resolve()): digest(p) for p in [Path(__file__), SNAPSHOT] + list(globals().get('EXTRA_SOURCE_FILES', []))},
                     versions=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__,
                                   torch=torch.__version__, sklearn=sklearn.__version__, scipy=scipy.__version__, joblib=joblib.__version__))
     out = args.out.resolve()
@@ -541,26 +556,37 @@ def execute(args):
                     raise ValueError('Empty split')
                 assignments = [dict(compound=n, stage=('outer_test' if f == fold else 'inner_validation' if n in vn else 'inner_train')) for n, f in mapping.items()]
                 pd.DataFrame(assignments).to_csv(folder / 'compound_split.csv', index=False)
-                bhistory = []
-                for alpha in PROTOCOL['baseline_alphas']:
-                    pred, _ = baseline_stage(meta, Y, itr, alpha)
-                    bhistory.append(dict(alpha=alpha, validation_response_rmse=rmse(Y[validation], pred[validation])))
-                chosen = min(bhistory, key=lambda x: x['validation_response_rmse'])['alpha']
-                inner_base, inner_ridge = baseline_stage(meta, Y, itr, chosen)
-                final_base, final_ridge = baseline_stage(meta, Y, training, chosen)
+                if direct:
+                    # Zero is an interface offset only: no Ridge is fitted or added to predictions.
+                    inner_base = np.zeros_like(Y)
+                    final_base = np.zeros_like(Y)
+                    save_json(folder / 'prediction_policy.json', dict(prediction_target='direct_response', ridge_fitted=False, strength_fixed=1.))
+                else:
+                    bhistory = []
+                    for alpha in PROTOCOL['baseline_alphas']:
+                        pred, _ = baseline_stage(meta, Y, itr, alpha)
+                        bhistory.append(dict(alpha=alpha, validation_response_rmse=rmse(Y[validation], pred[validation])))
+                    chosen = min(bhistory, key=lambda x: x['validation_response_rmse'])['alpha']
+                    inner_base, inner_ridge = baseline_stage(meta, Y, itr, chosen)
+                    final_base, final_ridge = baseline_stage(meta, Y, training, chosen)
+                    pd.DataFrame(bhistory).to_csv(folder / 'baseline_validation.csv', index=False)
+                    joblib.dump(dict(inner=inner_ridge, final=final_ridge, alpha=chosen), folder / 'ridge.joblib')
                 mean_pred, counts = time_level_mean(meta, Y, training, testing)
-                pd.DataFrame(bhistory).to_csv(folder / 'baseline_validation.csv', index=False)
                 save_json(folder / 'time_level_training_counts.json', counts)
-                joblib.dump(dict(inner=inner_ridge, final=final_ridge, alpha=chosen), folder / 'ridge.joblib')
-                np.savez_compressed(folder / 'baseline_predictions.npz', target_ids=ids[testing], ridge=final_base[testing], time_level=mean_pred)
+                baseline_arrays = dict(target_ids=ids[testing], time_level=mean_pred)
+                if not direct:
+                    baseline_arrays['ridge'] = final_base[testing]
+                np.savez_compressed(folder / 'baseline_predictions.npz', **baseline_arrays)
                 for pos, idx in enumerate(testing):
-                    baseline_rows.append(dict(split_seed=seed, fold=fold, condition_id=int(ids[idx]), compound=str(meta.iloc[idx].compound),
-                        target_conditions_ridge_mse=float(np.mean((Y[idx] - final_base[idx]) ** 2)),
+                    row = dict(split_seed=seed, fold=fold, condition_id=int(ids[idx]), compound=str(meta.iloc[idx].compound),
                         time_level_mean_mse=float(np.mean((Y[idx] - mean_pred[pos]) ** 2)),
-                        zero_response_mse=float(np.mean(Y[idx] ** 2))))
+                        zero_response_mse=float(np.mean(Y[idx] ** 2)))
+                    if not direct:
+                        row['target_conditions_ridge_mse'] = float(np.mean((Y[idx] - final_base[idx]) ** 2))
+                    baseline_rows.append(row)
                 pd.DataFrame(baseline_rows).to_csv(out / 'baseline_condition_metrics.csv', index=False)
-                inner = prepare_stage(first, data, ids, meta, Y, itr, inner_base, use_structure=not args.no_structure)
-                outer = prepare_stage(first, data, ids, meta, Y, training, final_base, use_structure=not args.no_structure)
+                inner = prepare_stage(first, data, ids, meta, Y, itr, inner_base, use_structure=not args.no_structure, prediction_target=args.prediction_target)
+                outer = prepare_stage(first, data, ids, meta, Y, training, final_base, use_structure=not args.no_structure, prediction_target=args.prediction_target)
                 joblib.dump(inner['state'], folder / 'inner_preprocess.joblib')
                 joblib.dump(outer['state'], folder / 'final_preprocess.joblib')
                 for mseed in args.model_seeds:
@@ -578,7 +604,7 @@ def execute(args):
                             detail = meta.iloc[testing][['condition_id', 'compound', 'time_h', 'level']].copy()
                             detail['response_mse'] = np.mean((Y[testing] - pred) ** 2, axis=1)
                             detail.to_csv(attempt / 'condition_metrics.csv', index=False)
-                            metrics = dict(**job, **selected, response_rmse=rmse(Y[testing], pred), structure_enabled=not args.no_structure)
+                            metrics = dict(**job, **selected, response_rmse=rmse(Y[testing], pred), structure_enabled=not args.no_structure, prediction_target=args.prediction_target)
                             save_json(attempt / 'metrics.json', metrics)
                             record = dict(job=job, metrics=metrics,
                                 metrics_path=str((attempt / 'condition_metrics.csv').relative_to(out)),
@@ -604,6 +630,8 @@ def parser():
     p.add_argument('--folds', type=int, default=5)
     p.add_argument('--threads', type=int, default=4)
     p.add_argument('--bootstrap-samples', type=int, default=1000)
+    p.add_argument('--prediction-target', choices=['ridge_residual', 'direct_response'], default='ridge_residual',
+                   help='Direct mode uses no Ridge and no strength tuning; generates response PCA scores directly')
     p.add_argument('--paired-on-run', type=Path, help='Validate a completed on-run contract before starting off training')
     p.add_argument('--no-structure', action='store_true',
                    help='Zero all Morgan and presence slots; retain the same network input dimension')
@@ -624,10 +652,14 @@ def main(argv=None):
         if len(values) != len(set(values)) or any(n < 0 or n >= 2 ** 32 for n in values):
             p.error('Seeds must be unique integers in [0, 2**32)')
     planned = jobs(args)
+    protocol = dict(PROTOCOL, structure=not args.no_structure)
+    if args.prediction_target == 'direct_response':
+        protocol.update(prediction_target='direct_response', residual='none_no_ridge', strengths=[1.])
+        protocol.pop('baseline_alphas')
     print(json.dumps(dict(mode='execute' if args.execute else 'plan_only',
         split_seeds=args.split_seeds, model_seeds=args.model_seeds, folds=args.folds,
         families=args.families, fold_seed_pairs=len(planned) // len(args.families), neural_jobs=len(planned),
-        neural_fits_up_to=len(planned) * 2, protocol=dict(PROTOCOL, structure=not args.no_structure)), indent=2), flush=True)
+        neural_fits_up_to=len(planned) * 2, protocol=protocol), indent=2), flush=True)
     if args.execute:
         execute(args)
     return planned
