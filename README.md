@@ -69,3 +69,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [첫 미팅용 시간별 입력 보존 파일럿](docs/meeting-time-structure-pilot.md): 고정 슬롯+관측mask, PCA, 구조 없음/Morgan/2D Descriptor × MLP/cGAN/DDPM 9조건. 단일 holdout·seed·20epoch의 짧은 탐색이며 5fold 전체 검증이 아님.
 
 - [시간별 입력 보존 모델의 반복 검증](docs/repeated-time-structure-study.md): Descriptor를 제외한 basic/Morgan × 세 모델, 5fold × 초기화3개, 최대100epoch. 전역/개별 작업 소프트 시간 제한·정확한 OOF 집계·재개 지원.
+
+- [완료한 반복실험에 Descriptor 추가](docs/descriptor-addition-to-time-study.md): bounded 전처리의 Descriptor45조건만 새로 학습하고, 참조 설정·입력·버전·기준선 일치를 확인한 후 기존 basic/Morgan 결과와 별도 표로 병합.

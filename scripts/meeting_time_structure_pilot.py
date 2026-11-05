@@ -5,6 +5,7 @@ from pathlib import Path
 import platform
 import time
 import uuid
+import bounded_descriptors
 import repeated_latent_validation as core
 import aivive_inspired_validation as inspired
 import compare_structure_representations as chemistry
@@ -73,7 +74,7 @@ def prepare(data,source,slots,ids,meta,Y,fit,components=32):
     return dict(X=torch.tensor(X),Z=Z,state=state)
 
 
-def with_structure(base,data,meta,fit,raw,arm):
+def with_structure(base,data,meta,fit,raw,arm,descriptor_policy="bounded"):
     import numpy as np
     import torch
     width=max(data.structure.shape[1],len(raw.columns)+1)
@@ -83,9 +84,14 @@ def with_structure(base,data,meta,fit,raw,arm):
         m=data.structure[[data.compound_to_index[c] for c in meta.compound]]
         values[:,:m.shape[1]-1]=m[:,:-1];values[:,-1]=m[:,-1]
     elif arm=='descriptor':
-        ds=chemistry.fit_descriptors(raw,meta.iloc[fit].compound)
-        values,missing=chemistry.encode_descriptors(raw,meta.compound.tolist(),ds,width)
-        state.update(descriptor_preprocess=ds,descriptor_missing_by_target=missing)
+        if descriptor_policy=='bounded':
+            ds=bounded_descriptors.fit(raw,meta.iloc[fit].compound)
+            values,audit=bounded_descriptors.encode(raw,meta.compound.tolist(),ds,width)
+            state.update(descriptor_preprocess=ds,descriptor_numeric_audit=audit)
+        else:
+            ds=chemistry.fit_descriptors(raw,meta.iloc[fit].compound)
+            values,missing=chemistry.encode_descriptors(raw,meta.compound.tolist(),ds,width)
+            state.update(descriptor_preprocess=ds,descriptor_missing_by_target=missing)
     return dict(X=torch.cat([base['X'],torch.tensor(values)],dim=1),Z=base['Z'],state=state)
 
 
@@ -99,6 +105,7 @@ def main(argv=None):
     p.add_argument('--folds',type=int,default=5)
     p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor'],default=['basic','morgan','descriptor'])
     p.add_argument('--families',nargs='+',choices=['mlp','cgan','ddpm'],default=['mlp','cgan','ddpm'])
+    p.add_argument('--descriptor-policy',choices=['standard','bounded'],default='bounded')
     p.add_argument('--threads',type=int,default=4)
     p.add_argument('--budget-minutes',type=float,default=60.)
     p.add_argument('--execute',action='store_true')
@@ -114,7 +121,7 @@ def main(argv=None):
         input_transform='training_source_MinMax_then_PCA_then_StandardScaler',
         output_transform='training_response_PCA_shared_RMS',mlp_loss='PCA_score_MAE',
         cgan_loss='10_PCA_MAE_plus_2_BCE_no_cycle',pca=True,split_seed=a.split_seed,model_seed=a.model_seed,
-        outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,source_aggregation='none_fixed_metadata_slots_with_mask',
+        outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,descriptor_policy=a.descriptor_policy,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=n_jobs,fits_up_to=2*n_jobs,
         settings=settings,soft_budget_minutes=a.budget_minutes,
@@ -130,7 +137,7 @@ def main(argv=None):
     core.protect_output(a.out,[a.prepared,a.structure,a.smiles])
     raw,caudit,rdversion=chemistry.calculate_descriptors(a.smiles)
     code=[Path(__file__),Path(core.__file__),Path(inspired.__file__),Path(chemistry.__file__),core.SNAPSHOT,
-          Path(__file__).with_name('evaluate_repeated_predictions.py')]
+          Path(__file__).with_name('evaluate_repeated_predictions.py'),Path(bounded_descriptors.__file__)]
     contract=dict(settings=settings,arguments={k:str(v.resolve()) if isinstance(v,Path) else v for k,v in vars(a).items() if k!='execute'},
         input_sha256={str(f.resolve()):core.digest(f) for f in files},
         source_sha256={str(f.resolve()):core.digest(f) for f in code},
@@ -174,9 +181,14 @@ def main(argv=None):
             add_result('baseline','time_level_mean',mean);add_result('baseline','zero_response',np.zeros_like(mean))
             offset=np.zeros_like(Y)
             for arm in a.arms:
-                ip=with_structure(inner,data,meta,itr,raw,arm);op=with_structure(outer,data,meta,train,raw,arm)
+                ip=with_structure(inner,data,meta,itr,raw,arm,a.descriptor_policy);op=with_structure(outer,data,meta,train,raw,arm,a.descriptor_policy)
                 armfolder=a.out/arm;armfolder.mkdir(exist_ok=True)
                 joblib.dump(ip['state'],armfolder/'inner_preprocess.joblib');joblib.dump(op['state'],armfolder/'final_preprocess.joblib')
+                if arm=='descriptor' and a.descriptor_policy=='bounded':
+                    for name,pack in [('inner',ip),('final',op)]:
+                        audit=pack['state']['descriptor_numeric_audit']
+                        pd.DataFrame(dict(condition_id=ids,compound=meta.compound,
+                            missing=audit['missing_selected_values'],clipped=audit['clipped_selected_values'])).to_csv(armfolder/(name+'_descriptor_numeric_audit.csv'),index=False)
                 for kind in a.families:
                     job=dict(split_seed=a.split_seed,fold=a.fold,model_seed=a.model_seed,model=kind,arm=arm)
                     task=armfolder/kind;task.mkdir(exist_ok=True)

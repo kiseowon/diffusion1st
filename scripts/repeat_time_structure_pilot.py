@@ -1,4 +1,4 @@
-"""Repeat time-preserving structure comparisons; Descriptor excluded by design."""
+"""Repeat time-preserving structure comparisons; Optional bounded descriptors; default remains basic/Morgan."""
 import argparse
 import json
 from pathlib import Path
@@ -13,7 +13,7 @@ def arguments(a,fold,seed):
         '--out',str(a.out/f'fold_{fold}'/f'seed_{seed}'),'--epochs',str(a.epochs),
         '--threads',str(a.threads),'--budget-minutes',str(a.unit_budget_minutes),
         '--split-seed',str(a.split_seed),'--model-seed',str(seed),'--fold',str(fold),'--folds',str(a.folds),
-        '--arms',*a.arms,'--families',*a.families]
+        '--arms',*a.arms,'--families',*a.families,'--descriptor-policy',a.descriptor_policy]
 
 
 def summarize(a):
@@ -97,6 +97,79 @@ def summarize(a):
     return len(complete)==a.folds*len(a.model_seeds)
 
 
+
+def check_reference_root(a):
+    if a.arms!=['descriptor']:
+        raise ValueError('Reference reuse is only supported for descriptor-only addition')
+    status=json.loads((a.reference_run/'repeat_status.json').read_text())
+    if not status.get('all_complete'):raise ValueError('Reference study is incomplete')
+    old=json.loads((a.reference_run/'run.json').read_text())['arguments']
+    for name in ['prepared','structure','smiles']:
+        if Path(old[name]).resolve()!=getattr(a,name).resolve():raise ValueError('Reference input path mismatch: '+name)
+    for name in ['epochs','folds','split_seed','model_seeds','families','threads']:
+        if old[name]!=getattr(a,name):raise ValueError('Reference schedule mismatch: '+name)
+    if old['arms']!=['basic','morgan']:raise ValueError('Expected basic/Morgan reference')
+
+
+def check_reference_unit(a,fold,seed):
+    import contextlib,io,platform
+    import numpy as np,pandas as pd,torch,sklearn,scipy,joblib
+    from rdkit import rdBase
+    folder=a.reference_run/f'fold_{fold}'/f'seed_{seed}'
+    info=json.loads((folder/'run.json').read_text())
+    if json.loads((folder/'completed.json').read_text()).get('jobs')!=2*len(a.families):
+        raise ValueError('Reference unit incomplete')
+    # Check the actual previously completed fold/seed protocol before new training.
+    capture=io.StringIO()
+    with contextlib.redirect_stdout(capture):pilot.main(arguments(a,fold,seed))
+    expected=json.loads(capture.getvalue())['settings']
+    excluded={'arms','families','descriptor_policy'}
+    old={k:v for k,v in info['settings'].items() if k not in excluded}
+    new={k:v for k,v in expected.items() if k not in excluded}
+    if old!=new:raise ValueError('Reference training/preprocessing settings differ')
+    for filename,checksum in info['input_sha256'].items():
+        if core.digest(Path(filename))!=checksum:raise ValueError('Reference input changed: '+filename)
+    critical=[Path(core.__file__),Path(pilot.inspired.__file__),Path(pilot.chemistry.__file__),
+              core.SNAPSHOT,Path(__file__).with_name('evaluate_repeated_predictions.py')]
+    for path in critical:
+        matches=[h for n,h in info['source_sha256'].items() if Path(n).name==path.name]
+        if len(matches)!=1 or core.digest(path)!=matches[0]:
+            raise ValueError('Reference shared core differs: '+path.name)
+    versions=dict(python=platform.python_version(),rdkit=rdBase.rdkitVersion,numpy=np.__version__,pandas=pd.__version__,
+        torch=torch.__version__,sklearn=sklearn.__version__,joblib=joblib.__version__,scipy=scipy.__version__)
+    if versions!=info['versions']:raise ValueError('Reference environment version differs')
+
+
+def check_reference_baseline(a,fold,seed):
+    import numpy as np
+    old=a.reference_run/f'fold_{fold}'/f'seed_{seed}'/'baseline_predictions.npz'
+    new=a.out/f'fold_{fold}'/f'seed_{seed}'/'baseline_predictions.npz'
+    with np.load(old,allow_pickle=False) as x,np.load(new,allow_pickle=False) as y:
+        for name in ['target_ids','time_level']:
+            if not np.array_equal(x[name],y[name]):raise ValueError('Reference targets/baseline differ')
+
+
+def merge_reference(a):
+    import pandas as pd
+    files=[]
+    for name in ['summary.csv','classification_summary.csv','pooled_by_model_seed.csv','oof_condition_metrics.csv']:
+        oldpath=a.reference_run/name;newpath=a.out/name
+        old=pd.read_csv(oldpath);new=pd.read_csv(newpath)
+        combined=pd.concat([old,new[new.arm.ne('baseline')]],ignore_index=True)
+        combined.to_csv(a.out/('combined_'+name),index=False)
+        files.extend([oldpath,newpath])
+    reg=pd.read_csv(a.out/'combined_pooled_by_model_seed.csv')
+    pivot=reg[reg.model_seed.ge(0)].pivot(index=['model_seed','model'],columns='arm',values='rmse')
+    pivot['descriptor_minus_basic']=pivot.descriptor-pivot.basic
+    pivot['descriptor_minus_morgan']=pivot.descriptor-pivot.morgan
+    pivot.to_csv(a.out/'descriptor_paired_differences.csv')
+    core.save_json(a.out/'reference_reuse.json',dict(reference=str(a.reference_run.resolve()),
+        reference_source_version='old shared preprocessing/model/evaluator hashes checked; pilot descriptor branch extended',
+        numeric_policy='signed_log_training_MinMax_clip_no_test_fit',
+        old_scores_reused_not_independently_recomputed=True,
+        referenced_csv_sha256={str(p.resolve()):core.digest(p) for p in files}))
+
+
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['prepared','structure','smiles','out']:p.add_argument('--'+name,type=Path,required=True)
@@ -104,8 +177,10 @@ def main(argv=None):
     p.add_argument('--folds',type=int,default=5)
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seeds',nargs='+',type=int,default=[42,43,44])
-    p.add_argument('--arms',nargs='+',choices=['basic','morgan'],default=['basic','morgan'])
+    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor'],default=['basic','morgan'])
     p.add_argument('--families',nargs='+',choices=['mlp','cgan','ddpm'],default=['mlp','cgan','ddpm'])
+    p.add_argument('--descriptor-policy',choices=['bounded'],default='bounded')
+    p.add_argument('--reference-run',type=Path,help='Completed old repeated results to pair with descriptor-only run')
     p.add_argument('--threads',type=int,default=4)
     p.add_argument('--budget-minutes',type=float,default=60.)
     p.add_argument('--unit-budget-minutes',type=float,default=15.)
@@ -118,14 +193,16 @@ def main(argv=None):
     jobs=a.folds*len(a.model_seeds)*len(a.arms)*len(a.families)
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=jobs,fits_up_to=2*jobs,
         folds=a.folds,model_seeds=a.model_seeds,arms=a.arms,families=a.families,max_epochs=a.epochs,
-        descriptor='excluded_pending_numeric_diagnosis',soft_global_budget=a.budget_minutes,
+        descriptor=a.descriptor_policy if 'descriptor' in a.arms else 'not_requested',soft_global_budget=a.budget_minutes,
         note='Global budget checked between fold/seed units; current unit and evaluation can overrun'),indent=2),flush=True)
     if not a.execute:return jobs
     started=time.monotonic()
-    core.protect_output(a.out,[a.prepared,a.structure,a.smiles])
+    core.protect_output(a.out,[a.prepared,a.structure,a.smiles]+([a.reference_run] if a.reference_run else []))
+    if a.reference_run is not None:check_reference_root(a)
     # Root contract prevents mixing schedules/settings when resuming.
     contract=dict(arguments={k:str(v.resolve()) if isinstance(v,Path) else v for k,v in vars(a).items() if k!='execute'},
         source_sha256={str(Path(__file__).resolve()):core.digest(Path(__file__))})
+    if a.reference_run is not None:contract['reference_run_sha256']=core.digest(a.reference_run/'run.json')
     core.contract_folder(a.out,contract)
     stopped=False
     for seed in a.model_seeds:
@@ -134,11 +211,14 @@ def main(argv=None):
             if not (folder/'completed.json').exists() and time.monotonic()-started>a.budget_minutes*60:
                 stopped=True;break
             print(f'FOLD {fold+1}/{a.folds}, MODEL SEED {seed}',flush=True)
+            if a.reference_run is not None:check_reference_unit(a,fold,seed)
             # Invoking even completed units verifies their input/source/version contracts and hashes.
             pilot.main(arguments(a,fold,seed)+['--execute'])
             if not (folder/'completed.json').exists():stopped=True;break
+            if a.reference_run is not None:check_reference_baseline(a,fold,seed)
         if stopped:break
     complete=summarize(a)
+    if complete and a.reference_run is not None:merge_reference(a)
     core.save_json(a.out/'repeat_status.json',dict(all_complete=complete,elapsed_minutes=(time.monotonic()-started)/60,
                                                   interrupted_by_budget=stopped))
     print('REPEATED STUDY COMPLETE' if complete else 'PARTIAL RESULTS SAVED; resume with identical command',a.out,flush=True)

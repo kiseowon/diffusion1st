@@ -46,3 +46,6 @@ python scripts/repeat_time_structure_pilot.py \
 ```
 
 `--execute`를 붙이면 실행한다. source snapshot과 명령을 결과 옆에 보존한다. 처음 파일럿과 최대epoch가 달라졌으므로 최종성능 차이를 반복만의 효과로 해석하지 않는다.
+
+
+Descriptor 추가실험은 [별도 안내](descriptor-addition-to-time-study.md)를 따른다. 기본 비교는 계속 basic/Morgan이며 Descriptor를 요청하면 bounded 정책을 사용한다. 기존 source snapshot의 실행결과는 보존한다.
