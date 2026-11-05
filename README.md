@@ -63,3 +63,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [네 입력 × MLP/cGAN/DDPM 직접 반응 예측 실행 안내](docs/factorial-response-validation.md): 기본/구조/pathway/둘 다, Ridge 없는 별도 탐색 프로토콜. 기본은 계획 모드이며 실제 학습 결과는 아직 없음.
 
 - [AIVIVE를 참고한 PCA 없는 직접 반응 예측](docs/aivive-inspired-no-pca.md): 구조 없음/있음 × MLP/cGAN/DDPM. 참고한 설정과 변경한 설정을 구분한 별도 탐색 코드이며 AIVIVE 원본 재현이 아님.
+
+- [MLP의 Descriptor/Morgan 비교](docs/descriptor-morgan-comparison.md): 기본/2D Descriptor/Morgan, train-only 변수 선별·표준화와 동일 parameter 수를 적용한 별도 실행기. RAID 원본 재현이 아니며 실제 연구 데이터 결과는 아직 없음.
