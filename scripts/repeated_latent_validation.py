@@ -290,10 +290,19 @@ def predict_scores(kind, model, pack, rows, seed):
             if kind == 'mlp':
                 values = model(context, torch.zeros(len(batch), model.latent_dim), torch.zeros(len(batch), dtype=torch.long))
             else:
-                context = context.repeat_interleave(PROTOCOL['samples'], dim=0)
-                noisy = torch.randn((len(context), model.latent_dim), generator=generator)
+                cache_context = PROTOCOL.get('cache_diffusion_context', False)
+                if cache_context:
+                    # Evaluation-only deterministic encoder: compute before sample replication and reuse at all steps.
+                    encoded = model.context(context).repeat_interleave(PROTOCOL['samples'], dim=0)
+                    del context
+                    batch_length = len(encoded)
+                else:
+                    context = context.repeat_interleave(PROTOCOL['samples'], dim=0)
+                    batch_length = len(context)
+                noisy = torch.randn((batch_length, model.latent_dim), generator=generator)
                 for step in reversed(range(PROTOCOL['steps'])):
-                    x0 = model(context, noisy, torch.full((len(context),), step, dtype=torch.long))
+                    t = torch.full((batch_length,), step, dtype=torch.long)
+                    x0 = model.head(torch.cat([encoded, noisy, model.time(t)], dim=1)) if cache_context else model(context, noisy, t)
                     denominator = 1 - abar[step]
                     noisy = (beta[step] * prev[step].sqrt() / denominator * x0
                              + alpha[step].sqrt() * (1 - prev[step]) / denominator * noisy)

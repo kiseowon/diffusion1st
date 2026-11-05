@@ -168,6 +168,7 @@ def main(argv=None):
     p.add_argument('--epochs',type=int,default=20)
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-space',choices=['pca','full'],default='pca')
+    p.add_argument('--cache-diffusion-context',action='store_true',help='Reuse deterministic DDPM context at evaluation only')
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seed',type=int,default=42)
     p.add_argument('--fold',type=int,default=0)
@@ -193,6 +194,7 @@ def main(argv=None):
         outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,descriptor_policy=a.descriptor_policy,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
     settings.update(output_space=a.output_space,input_space=a.input_space)
+    if a.cache_diffusion_context:settings['cache_diffusion_context']=True
     if a.input_space=='full':
         settings.update(input_components=None,input_transform='training_source_probe_MinMax_no_PCA_no_clip',
             feature_storage='shared_compound_source_sequences_lazy_batch_concat',pca='output_only')
