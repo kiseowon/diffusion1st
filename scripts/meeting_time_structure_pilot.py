@@ -12,6 +12,38 @@ import compare_structure_representations as chemistry
 from evaluate_repeated_predictions import score
 
 
+
+class SharedSourceFeatures:
+    """Materialize only the requested batch, sharing source sequences across targets."""
+    def __init__(self,source,source_index,target,structure=None):
+        self.source=source;self.source_index=source_index;self.target=target;self.structure=structure
+        self.shape=(len(source_index),source.shape[1]+target.shape[1]+(0 if structure is None else structure.shape[1]))
+
+    def __getitem__(self,rows):
+        import torch
+        if isinstance(rows,tuple):
+            row,column=rows
+            return self[row][...,column]
+        parts=[self.source[self.source_index[rows]],self.target[rows]]
+        if self.structure is not None:parts.append(self.structure[rows])
+        return torch.cat(parts,dim=-1)
+
+    def with_structure(self,structure):
+        return SharedSourceFeatures(self.source,self.source_index,self.target,structure)
+
+
+def model_parameter_report(input_dim,output_dim):
+    c=inspired.SETTINGS['context'];h=inspired.SETTINGS['hidden'];embedding=core.PROTOCOL['steps']*16
+    first=(input_dim+1)*c
+    predictor=first+embedding+(c+output_dim+16+1)*h+(h+1)*output_dim
+    generator=first+embedding+(c+core.PROTOCOL['cgan_noise_dim']+1)*h+(h+1)*output_dim
+    discriminator=(input_dim+1)*256+(256+output_dim+1)*64+65
+    return dict(input_dimension=input_dim,output_dimension=output_dim,mlp_parameters=predictor,
+        ddpm_parameters=predictor,cgan_generator_parameters=generator,cgan_discriminator_parameters=discriminator,
+        mlp_fp32_weights_gradients_Adam_states_GiB=16*predictor/(1024**3),
+        excludes_activations_inputs_optimizer_temporaries=True)
+
+
 def schema_for(source):
     """Slots use input metadata only, never expression values or target outcomes."""
     counts=source.groupby(['compound','time_h','level','unit'],dropna=False).size()
@@ -32,7 +64,7 @@ def encoder_for(table,fit):
     return enc,enc.transform(features)
 
 
-def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca"):
+def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca",input_space="pca"):
     import numpy as np
     import torch
     from sklearn.preprocessing import MinMaxScaler,StandardScaler
@@ -41,11 +73,15 @@ def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca"):
     source_fit=np.flatnonzero(source.compound.isin(compounds))
     scaler=MinMaxScaler().fit(data.source[source.condition_id.to_numpy(int)[source_fit]])
     expression=scaler.transform(data.source[source.condition_id.to_numpy(int)])
-    pca=PCA(n_components=min(components,len(source_fit)-1,expression.shape[1]),svd_solver='randomized',random_state=42).fit(expression[source_fit])
-    keep=pca.singular_values_>pca.singular_values_[0]*1e-8
-    if not keep.any():raise ValueError('No varying source PCA axes')
-    values=pca.transform(expression)[:,keep]
-    pscale=StandardScaler().fit(values[source_fit]);values=pscale.transform(values)
+    pca=keep=pscale=None
+    if input_space=='full':
+        values=expression
+    else:
+        pca=PCA(n_components=min(components,len(source_fit)-1,expression.shape[1]),svd_solver='randomized',random_state=42).fit(expression[source_fit])
+        keep=pca.singular_values_>pca.singular_values_[0]*1e-8
+        if not keep.any():raise ValueError('No varying source PCA axes')
+        values=pca.transform(expression)[:,keep]
+        pscale=StandardScaler().fit(values[source_fit]);values=pscale.transform(values)
     senc,scond=encoder_for(source,source_fit)
     token=np.c_[values,scond,np.ones(len(source))].astype(np.float32)
     slot_index={slot:i for i,slot in enumerate(slots)}
@@ -60,11 +96,20 @@ def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca"):
                     slot=slot_index[(float(t),str(level),str(unit),occurrence)]))
         sequences[compound]=matrix.ravel()
     tenc,target_conditions=encoder_for(meta,fit)
-    X=np.c_[np.asarray([sequences[c] for c in meta.compound]),target_conditions].astype(np.float32)
+    if input_space=='full':
+        order=sorted(sequences);indices={c:i for i,c in enumerate(order)}
+        shared=np.asarray([sequences[c] for c in order],dtype=np.float32)
+        if not np.isfinite(shared).all() or not np.isfinite(target_conditions).all():raise ValueError('Invalid full inputs')
+        X=SharedSourceFeatures(torch.tensor(shared),torch.tensor([indices[c] for c in meta.compound],dtype=torch.long),
+                               torch.tensor(target_conditions,dtype=torch.float32))
+    else:
+        X=np.c_[np.asarray([sequences[c] for c in meta.compound]),target_conditions].astype(np.float32)
     state=dict(source_scaler=scaler,source_pca=pca,source_keep=keep,source_score_scaler=pscale,
         source_condition_encoder=senc,target_condition_encoder=tenc,slots=slots,source_slot_audit=sequence_audit,
-        prediction_target='direct_response',output_space=output_space,
-        source_feature_layout='slot_[PCA_scores,source_conditions,observed_flag]_then_target_conditions')
+        prediction_target='direct_response',output_space=output_space,input_space=input_space,
+        source_expression_dimension=values.shape[1],
+        source_feature_layout='slot_[raw_probe_values,source_conditions,observed_flag]_then_target_conditions' if input_space=='full' else 'slot_[PCA_scores,source_conditions,observed_flag]_then_target_conditions')
+    if input_space=='full':state['source_compound_order']=order
     if output_space=='full':
         mean=Y[fit].mean(0)
         centered=Y[fit]-mean
@@ -83,9 +128,9 @@ def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca"):
         if not okeep.any() or scale<=1e-8:raise ValueError('Invalid output PCA')
         z=z/scale
         state.update(output_pca=output,output_keep=okeep,output_scale=scale,output_dimension=int(okeep.sum()))
-    if not np.isfinite(X).all() or not np.isfinite(z).all():raise ValueError('Invalid features/targets')
+    if (not isinstance(X,SharedSourceFeatures) and not np.isfinite(X).all()) or not np.isfinite(z).all():raise ValueError('Invalid features/targets')
     Z=torch.zeros(len(Y),z.shape[1]);Z[fit]=torch.tensor(z,dtype=torch.float32)
-    return dict(X=torch.tensor(X),Z=Z,state=state)
+    return dict(X=X if isinstance(X,SharedSourceFeatures) else torch.tensor(X),Z=Z,state=state)
 
 
 def restore_output(scores,state):
@@ -113,7 +158,8 @@ def with_structure(base,data,meta,fit,raw,arm,descriptor_policy="bounded"):
             ds=chemistry.fit_descriptors(raw,meta.iloc[fit].compound)
             values,missing=chemistry.encode_descriptors(raw,meta.compound.tolist(),ds,width)
             state.update(descriptor_preprocess=ds,descriptor_missing_by_target=missing)
-    return dict(X=torch.cat([base['X'],torch.tensor(values)],dim=1),Z=base['Z'],state=state)
+    X=base['X'].with_structure(torch.tensor(values)) if isinstance(base['X'],SharedSourceFeatures) else torch.cat([base['X'],torch.tensor(values)],dim=1)
+    return dict(X=X,Z=base['Z'],state=state)
 
 
 def main(argv=None):
@@ -121,6 +167,7 @@ def main(argv=None):
     for name in ['prepared','structure','smiles','out']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--epochs',type=int,default=20)
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
+    p.add_argument('--input-space',choices=['pca','full'],default='pca')
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seed',type=int,default=42)
     p.add_argument('--fold',type=int,default=0)
@@ -145,11 +192,14 @@ def main(argv=None):
         cgan_loss='10_PCA_MAE_plus_2_BCE_no_cycle',pca=True,split_seed=a.split_seed,model_seed=a.model_seed,
         outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,descriptor_policy=a.descriptor_policy,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
-    settings['output_space']=a.output_space
+    settings.update(output_space=a.output_space,input_space=a.input_space)
+    if a.input_space=='full':
+        settings.update(input_components=None,input_transform='training_source_probe_MinMax_no_PCA_no_clip',
+            feature_storage='shared_compound_source_sequences_lazy_batch_concat',pca='output_only')
     if a.output_space=='full':
         settings.update(output_components=None,output_transform='training_probe_mean_then_shared_RMS',
             mlp_loss='full_probe_MAE',cgan_loss='10_full_probe_MAE_plus_2_BCE_no_cycle',
-            pca='input_only',output_pca=False)
+            pca='input_only' if a.input_space=='pca' else False,output_pca=False)
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=n_jobs,fits_up_to=2*n_jobs,
         settings=settings,soft_budget_minutes=a.budget_minutes,
         note='one exploratory compound holdout; no new job starts after budget, running job may finish later'),indent=2),flush=True)
@@ -200,8 +250,8 @@ def main(argv=None):
     try:
         core.PROTOCOL.update(settings);core.make_family_model=inspired.models;core.train_family_epoch=inspired.train;core.restore=restore_output
         with threadpool_limits(limits=a.threads):
-            inner=prepare(data,source,slots,ids,meta,Y,itr,output_space=a.output_space)
-            outer=prepare(data,source,slots,ids,meta,Y,train,output_space=a.output_space)
+            inner=prepare(data,source,slots,ids,meta,Y,itr,output_space=a.output_space,input_space=a.input_space)
+            outer=prepare(data,source,slots,ids,meta,Y,train,output_space=a.output_space,input_space=a.input_space)
             core.save_json(a.out/'target_representation.json',dict(output_space=a.output_space,
                 inner_dimension=inner['Z'].shape[1],final_dimension=outer['Z'].shape[1],n_probes=Y.shape[1],
                 full_target_roundtrip_max_abs_error=outer['state'].get('target_roundtrip_max_abs_error'),
@@ -215,6 +265,10 @@ def main(argv=None):
                 ip=with_structure(inner,data,meta,itr,raw,arm,a.descriptor_policy);op=with_structure(outer,data,meta,train,raw,arm,a.descriptor_policy)
                 armfolder=a.out/arm;armfolder.mkdir(exist_ok=True)
                 joblib.dump(ip['state'],armfolder/'inner_preprocess.joblib');joblib.dump(op['state'],armfolder/'final_preprocess.joblib')
+                dimensions=dict(inner=model_parameter_report(ip['X'].shape[1],ip['Z'].shape[1]),
+                                final=model_parameter_report(op['X'].shape[1],op['Z'].shape[1]))
+                core.save_json(armfolder/'model_dimensions.json',dimensions)
+                print('MODEL DIMENSIONS',arm,json.dumps(dimensions),flush=True)
                 if arm=='descriptor' and a.descriptor_policy=='bounded':
                     for name,pack in [('inner',ip),('final',op)]:
                         audit=pack['state']['descriptor_numeric_audit']

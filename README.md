@@ -73,3 +73,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [완료한 반복실험에 Descriptor 추가](docs/descriptor-addition-to-time-study.md): bounded 전처리의 Descriptor45조건만 새로 학습하고, 참조 설정·입력·버전·기준선 일치를 확인한 후 기존 basic/Morgan 결과와 별도 표로 병합.
 
 - [출력 PCA 없는 전체 probe 직접 예측](docs/full-probe-output.md): 입력 PCA·시간 슬롯은 유지하고 target은 가역 중심화/공통 스케일만 적용. `--output-space full`의 별도 출력 실험이며 기존 PCA 결과는 보존.
+
+- [입력·출력 PCA 없는 MLP 파일럿](docs/no-pca-input-output.md): 시간 슬롯마다 전체 probe 입력, 전체 probe 출력. basic/Morgan 두 조건부터 검사하며 source 공유와 batch별 concat으로 데이터 복제 메모리를 줄임.
