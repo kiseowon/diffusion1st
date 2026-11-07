@@ -14,6 +14,7 @@ def arguments(a,fold,seed):
         '--threads',str(a.threads),'--budget-minutes',str(a.unit_budget_minutes),
         '--split-seed',str(a.split_seed),'--model-seed',str(seed),'--fold',str(fold),'--folds',str(a.folds),
         '--arms',*a.arms,'--families',*a.families,'--descriptor-policy',a.descriptor_policy,'--output-space',a.output_space,'--input-space',a.input_space]
+    command += ['--input-components',str(a.input_components),'--structure-layout',a.structure_layout]
     if a.cache_diffusion_context:command.append('--cache-diffusion-context')
     return command
 
@@ -82,7 +83,7 @@ def summarize(a):
     paired=[]
     for seed,row in wide.iterrows():
         for model in a.families:
-            for left,right in [('morgan','basic'),('descriptor','basic'),('descriptor','morgan')]:
+            for left,right in [('morgan','basic'),('descriptor','basic'),('descriptor','morgan'),('both','basic'),('both','morgan'),('both','descriptor')]:
                 if left in a.arms and right in a.arms:
                     paired.append(dict(model_seed=seed,comparison=left+'_minus_'+right+'_'+model,
                         rmse_difference=row[(left,model)]-row[(right,model)]))
@@ -109,6 +110,8 @@ def summarize(a):
 
 
 def check_reference_root(a):
+    if a.input_components!=32 or a.structure_layout!='shared':
+        raise ValueError('Reference reuse requires original PCA32/shared layout')
     if a.output_space!='pca' or a.input_space!='pca':
         raise ValueError('Cannot merge old output-PCA scores with a full-output study')
     if a.arms!=['descriptor']:
@@ -190,11 +193,13 @@ def main(argv=None):
     p.add_argument('--epochs',type=int,default=100)
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-space',choices=['pca','full'],default='pca')
+    p.add_argument('--input-components',type=int,default=32)
+    p.add_argument('--structure-layout',choices=['shared','separate'],default='shared')
     p.add_argument('--cache-diffusion-context',action='store_true')
     p.add_argument('--folds',type=int,default=5)
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seeds',nargs='+',type=int,default=[42,43,44])
-    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor'],default=['basic','morgan'])
+    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan'])
     p.add_argument('--families',nargs='+',choices=['mlp','cgan','ddpm'],default=['mlp','cgan','ddpm'])
     p.add_argument('--descriptor-policy',choices=['bounded'],default='bounded')
     p.add_argument('--reference-run',type=Path,help='Completed old repeated results to pair with descriptor-only run')
@@ -203,6 +208,8 @@ def main(argv=None):
     p.add_argument('--unit-budget-minutes',type=float,default=15.)
     p.add_argument('--execute',action='store_true')
     a=p.parse_args(argv)
+    if a.input_components<1:p.error('input-components must be positive')
+    if 'both' in a.arms and a.structure_layout!='separate':p.error('both requires --structure-layout separate')
     if a.folds<2 or a.epochs<1 or a.threads<1 or min(a.budget_minutes,a.unit_budget_minutes)<=0:p.error('Invalid counts/budget')
     for values in [a.model_seeds,a.arms,a.families]:
         if len(values)!=len(set(values)):p.error('Duplicates')
@@ -210,8 +217,9 @@ def main(argv=None):
     jobs=a.folds*len(a.model_seeds)*len(a.arms)*len(a.families)
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=jobs,fits_up_to=2*jobs,
         folds=a.folds,model_seeds=a.model_seeds,arms=a.arms,families=a.families,max_epochs=a.epochs,input_space=a.input_space,output_space=a.output_space,
+        input_components=a.input_components,structure_layout=a.structure_layout,
         cache_diffusion_context=a.cache_diffusion_context,
-        descriptor=a.descriptor_policy if 'descriptor' in a.arms else 'not_requested',soft_global_budget=a.budget_minutes,
+        descriptor=a.descriptor_policy if any(arm in a.arms for arm in ['descriptor','both']) else 'not_requested',soft_global_budget=a.budget_minutes,
         note='Global budget checked between fold/seed units; current unit and evaluation can overrun'),indent=2),flush=True)
     if not a.execute:return jobs
     started=time.monotonic()
