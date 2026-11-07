@@ -1,0 +1,5 @@
+requested_dimension,mean_validation_rmse,std_validation_rmse,explained_variance_pct,parameter_count,n_model_seeds
+64,0.309657,0.000210,66.255462,1671805,3
+128,0.309946,0.000237,76.470232,2261629,3
+16,0.310904,0.000220,49.617785,1229437,3
+32,0.311164,0.000624,57.972056,1376893,3

@@ -1,0 +1,154 @@
+Cloning into '/tmp/ivive_pca_validation_nw6onynx/repo'...
+コード: /tmp/ivive_pca_validation_nw6onynx/repo
+結果フォルダ: /home/seowon1211/data1/conditioned_expression/input_pca_validation_20261107_124223_167095
+MLP 12回の内部学習を開始します。
+HEAD is now at ac8a2d2 Add fixed full-probe output repeated validation with complete paired comparisons
+入力・コードの SHA-256 を記録しています...
+内部学習: 89化合物 / 内部検証: 23化合物 / 外部テスト保留: 28化合物
+出力 probe 数: 3453
+
+PCA=16, 説明分散=49.62%, 最終入力次元=2992
+PCA=16 seed=42 epoch=1: val=0.311816, best=0.311816
+PCA=16 seed=42 epoch=5: val=0.311904, best=0.311816
+PCA=16 seed=42 epoch=10: val=0.312333, best=0.311816
+PCA=16 seed=42 epoch=15: val=0.312842, best=0.311816
+PCA=16 seed=42 epoch=20: val=0.313196, best=0.311816
+PCA=16 seed=42 epoch=40: val=0.312864, best=0.311816
+PCA=16 seed=42 epoch=60: val=0.312256, best=0.311816
+PCA=16 seed=42 epoch=80: val=0.311306, best=0.311306
+PCA=16 seed=42 epoch=100: val=0.311039, best=0.311039
+完了 1/12: {'requested_dimension': 16, 'actual_dimension': 16, 'model_seed': 42, 'epoch': 100, 'validation_response_rmse': 0.311038838710113, 'explained_variance_pct': 49.61778521537781, 'parameter_count': 1229437}
+PCA=16 seed=43 epoch=1: val=0.311821, best=0.311821
+PCA=16 seed=43 epoch=5: val=0.311878, best=0.311821
+PCA=16 seed=43 epoch=10: val=0.312273, best=0.311821
+PCA=16 seed=43 epoch=15: val=0.312879, best=0.311821
+PCA=16 seed=43 epoch=20: val=0.313254, best=0.311821
+PCA=16 seed=43 epoch=40: val=0.312680, best=0.311821
+PCA=16 seed=43 epoch=60: val=0.312217, best=0.311821
+PCA=16 seed=43 epoch=80: val=0.311461, best=0.311461
+PCA=16 seed=43 epoch=100: val=0.310650, best=0.310650
+完了 2/12: {'requested_dimension': 16, 'actual_dimension': 16, 'model_seed': 43, 'epoch': 100, 'validation_response_rmse': 0.3106497639405603, 'explained_variance_pct': 49.61778521537781, 'parameter_count': 1229437}
+PCA=16 seed=44 epoch=1: val=0.311855, best=0.311855
+PCA=16 seed=44 epoch=5: val=0.311901, best=0.311855
+PCA=16 seed=44 epoch=10: val=0.312275, best=0.311855
+PCA=16 seed=44 epoch=15: val=0.312814, best=0.311855
+PCA=16 seed=44 epoch=20: val=0.313337, best=0.311855
+PCA=16 seed=44 epoch=40: val=0.312874, best=0.311855
+PCA=16 seed=44 epoch=60: val=0.311646, best=0.311646
+PCA=16 seed=44 epoch=80: val=0.311135, best=0.311135
+PCA=16 seed=44 epoch=100: val=0.311023, best=0.311023
+完了 3/12: {'requested_dimension': 16, 'actual_dimension': 16, 'model_seed': 44, 'epoch': 100, 'validation_response_rmse': 0.31102338429246357, 'explained_variance_pct': 49.61778521537781, 'parameter_count': 1229437}
+
+PCA=32, 説明分散=57.97%, 最終入力次元=3568
+PCA=32 seed=42 epoch=1: val=0.311790, best=0.311790
+PCA=32 seed=42 epoch=5: val=0.311882, best=0.311790
+PCA=32 seed=42 epoch=10: val=0.312259, best=0.311790
+PCA=32 seed=42 epoch=15: val=0.312789, best=0.311790
+PCA=32 seed=42 epoch=20: val=0.313109, best=0.311790
+PCA=32 seed=42 epoch=40: val=0.312372, best=0.311790
+PCA=32 seed=42 epoch=60: val=0.312047, best=0.311790
+PCA=32 seed=42 epoch=80: val=0.311844, best=0.311790
+PCA=32 seed=42 epoch=100: val=0.311673, best=0.311673
+完了 4/12: {'requested_dimension': 32, 'actual_dimension': 32, 'model_seed': 42, 'epoch': 100, 'validation_response_rmse': 0.31167273199077383, 'explained_variance_pct': 57.97205567359924, 'parameter_count': 1376893}
+PCA=32 seed=43 epoch=1: val=0.311803, best=0.311803
+PCA=32 seed=43 epoch=5: val=0.311842, best=0.311803
+PCA=32 seed=43 epoch=10: val=0.312255, best=0.311803
+PCA=32 seed=43 epoch=15: val=0.312844, best=0.311803
+PCA=32 seed=43 epoch=20: val=0.313140, best=0.311803
+PCA=32 seed=43 epoch=40: val=0.312099, best=0.311803
+PCA=32 seed=43 epoch=60: val=0.311450, best=0.311450
+PCA=32 seed=43 epoch=80: val=0.311069, best=0.311069
+PCA=32 seed=43 epoch=100: val=0.310467, best=0.310467
+完了 5/12: {'requested_dimension': 32, 'actual_dimension': 32, 'model_seed': 43, 'epoch': 100, 'validation_response_rmse': 0.31046727164705556, 'explained_variance_pct': 57.97205567359924, 'parameter_count': 1376893}
+PCA=32 seed=44 epoch=1: val=0.311814, best=0.311814
+PCA=32 seed=44 epoch=5: val=0.311889, best=0.311814
+PCA=32 seed=44 epoch=10: val=0.312292, best=0.311814
+PCA=32 seed=44 epoch=15: val=0.312861, best=0.311814
+PCA=32 seed=44 epoch=20: val=0.313067, best=0.311814
+PCA=32 seed=44 epoch=40: val=0.312442, best=0.311814
+PCA=32 seed=44 epoch=60: val=0.311841, best=0.311814
+PCA=32 seed=44 epoch=80: val=0.311845, best=0.311814
+PCA=32 seed=44 epoch=100: val=0.311351, best=0.311351
+完了 6/12: {'requested_dimension': 32, 'actual_dimension': 32, 'model_seed': 44, 'epoch': 100, 'validation_response_rmse': 0.31135141252380366, 'explained_variance_pct': 57.97205567359924, 'parameter_count': 1376893}
+
+PCA=64, 説明分散=66.26%, 最終入力次元=4720
+PCA=64 seed=42 epoch=1: val=0.311845, best=0.311845
+PCA=64 seed=42 epoch=5: val=0.311902, best=0.311845
+PCA=64 seed=42 epoch=10: val=0.312225, best=0.311845
+PCA=64 seed=42 epoch=15: val=0.312691, best=0.311845
+PCA=64 seed=42 epoch=20: val=0.312896, best=0.311845
+PCA=64 seed=42 epoch=40: val=0.312096, best=0.311845
+PCA=64 seed=42 epoch=60: val=0.311068, best=0.311068
+PCA=64 seed=42 epoch=80: val=0.310615, best=0.310615
+PCA=64 seed=42 epoch=100: val=0.309720, best=0.309720
+完了 7/12: {'requested_dimension': 64, 'actual_dimension': 64, 'model_seed': 42, 'epoch': 100, 'validation_response_rmse': 0.3097204066298506, 'explained_variance_pct': 66.25546216964722, 'parameter_count': 1671805}
+PCA=64 seed=43 epoch=1: val=0.311765, best=0.311765
+PCA=64 seed=43 epoch=5: val=0.311808, best=0.311765
+PCA=64 seed=43 epoch=10: val=0.312103, best=0.311765
+PCA=64 seed=43 epoch=15: val=0.312492, best=0.311765
+PCA=64 seed=43 epoch=20: val=0.312682, best=0.311765
+PCA=64 seed=43 epoch=40: val=0.311684, best=0.311684
+PCA=64 seed=43 epoch=60: val=0.311037, best=0.311037
+PCA=64 seed=43 epoch=80: val=0.310596, best=0.310596
+PCA=64 seed=43 epoch=100: val=0.309828, best=0.309828
+完了 8/12: {'requested_dimension': 64, 'actual_dimension': 64, 'model_seed': 43, 'epoch': 100, 'validation_response_rmse': 0.3098280033513514, 'explained_variance_pct': 66.25546216964722, 'parameter_count': 1671805}
+PCA=64 seed=44 epoch=1: val=0.311821, best=0.311821
+PCA=64 seed=44 epoch=5: val=0.311892, best=0.311821
+PCA=64 seed=44 epoch=10: val=0.312279, best=0.311821
+PCA=64 seed=44 epoch=15: val=0.312692, best=0.311821
+PCA=64 seed=44 epoch=20: val=0.312798, best=0.311821
+PCA=64 seed=44 epoch=40: val=0.311684, best=0.311684
+PCA=64 seed=44 epoch=60: val=0.310851, best=0.310851
+PCA=64 seed=44 epoch=80: val=0.310033, best=0.310033
+PCA=64 seed=44 epoch=100: val=0.309423, best=0.309423
+完了 9/12: {'requested_dimension': 64, 'actual_dimension': 64, 'model_seed': 44, 'epoch': 100, 'validation_response_rmse': 0.30942258599158823, 'explained_variance_pct': 66.25546216964722, 'parameter_count': 1671805}
+
+PCA=128, 説明分散=76.47%, 最終入力次元=7024
+PCA=128 seed=42 epoch=1: val=0.311850, best=0.311850
+PCA=128 seed=42 epoch=5: val=0.311919, best=0.311850
+PCA=128 seed=42 epoch=10: val=0.312281, best=0.311850
+PCA=128 seed=42 epoch=15: val=0.312557, best=0.311850
+PCA=128 seed=42 epoch=20: val=0.312509, best=0.311850
+PCA=128 seed=42 epoch=40: val=0.311538, best=0.311538
+PCA=128 seed=42 epoch=60: val=0.310853, best=0.310853
+PCA=128 seed=42 epoch=80: val=0.310358, best=0.310358
+PCA=128 seed=42 epoch=100: val=0.310086, best=0.310086
+完了 10/12: {'requested_dimension': 128, 'actual_dimension': 128, 'model_seed': 42, 'epoch': 100, 'validation_response_rmse': 0.3100862790991319, 'explained_variance_pct': 76.4702320098877, 'parameter_count': 2261629}
+PCA=128 seed=43 epoch=1: val=0.311908, best=0.311908
+PCA=128 seed=43 epoch=5: val=0.311944, best=0.311908
+PCA=128 seed=43 epoch=10: val=0.312175, best=0.311908
+PCA=128 seed=43 epoch=15: val=0.312435, best=0.311908
+PCA=128 seed=43 epoch=20: val=0.312308, best=0.311908
+PCA=128 seed=43 epoch=40: val=0.311580, best=0.311580
+PCA=128 seed=43 epoch=60: val=0.310786, best=0.310786
+PCA=128 seed=43 epoch=80: val=0.310036, best=0.310036
+PCA=128 seed=43 epoch=100: val=0.309672, best=0.309672
+完了 11/12: {'requested_dimension': 128, 'actual_dimension': 128, 'model_seed': 43, 'epoch': 100, 'validation_response_rmse': 0.3096717249876744, 'explained_variance_pct': 76.4702320098877, 'parameter_count': 2261629}
+PCA=128 seed=44 epoch=1: val=0.311826, best=0.311826
+PCA=128 seed=44 epoch=5: val=0.311889, best=0.311826
+PCA=128 seed=44 epoch=10: val=0.312182, best=0.311826
+PCA=128 seed=44 epoch=15: val=0.312538, best=0.311826
+PCA=128 seed=44 epoch=20: val=0.312595, best=0.311826
+PCA=128 seed=44 epoch=40: val=0.311775, best=0.311775
+PCA=128 seed=44 epoch=60: val=0.310999, best=0.310999
+PCA=128 seed=44 epoch=80: val=0.310740, best=0.310740
+PCA=128 seed=44 epoch=100: val=0.310079, best=0.310079
+完了 12/12: {'requested_dimension': 128, 'actual_dimension': 128, 'model_seed': 44, 'epoch': 100, 'validation_response_rmse': 0.3100793876216418, 'explained_variance_pct': 76.4702320098877, 'parameter_count': 2261629}
+
+===== 内部検証の比較 =====
+ requested_dimension  mean_validation_rmse  std_validation_rmse  explained_variance_pct  parameter_count  n_model_seeds
+                  64              0.309657             0.000210               66.255462          1671805              3
+                 128              0.309946             0.000237               76.470232          2261629              3
+                  16              0.310904             0.000220               49.617785          1229437              3
+                  32              0.311164             0.000624               57.972056          1376893              3
+
+選択した入力 PCA 次元: 64
+外部テスト評価・最終再学習は実行していません。
+
+===== 입력 PCA 차원별 내부 검증 결과 =====
+requested_dimension	mean_validation_rmse	std_validation_rmse	explained_variance_pct	parameter_count	n_model_seeds
+0	64	0.309657	0.000210	66.255462	1671805	3
+1	128	0.309946	0.000237	76.470232	2261629	3
+2	16	0.310904	0.000220	49.617785	1229437	3
+3	32	0.311164	0.000624	57.972056	1376893	3
+저장 위치: /home/seowon1211/data1/conditioned_expression/input_pca_validation_20261107_124223_167095

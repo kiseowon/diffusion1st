@@ -1,0 +1,24 @@
+{
+  "source": "user_uploaded_server_console",
+  "server_folder": "/home/seowon1211/data1/conditioned_expression/input_pca_validation_20261107_124223_167095",
+  "reported_base_commit": "ac8a2d204aa8e337d6d4c242f17538233f019320",
+  "execution": "conversation_supplied_validation_wrapper_not_base_CLI",
+  "executed_wrapper_received": false,
+  "executed_wrapper_hash_verified": false,
+  "outer_test_evaluations": 0,
+  "final_refits": 0,
+  "model_seeds": [
+    42,
+    43,
+    44
+  ],
+  "selected_components": 64,
+  "completed_fits": 12,
+  "verification": "reported log only; no independent training verification",
+  "files_sha256": {
+    "README.md": "eb1091cc3ca8f40be1722bf28f29815e0c6453d510018ce5522f3f7d94fc5d57",
+    "by_seed_reported.csv": "782b962b248fe9da2a50179a17e9b094374e3aff6d978a644751d8bd3feb3879",
+    "server_console_output.txt": "2ad25bf68bc5624d02b0b9f9e4e8d38425f81ab991fcbb3a399b3e1be2f9d778",
+    "summary_reported.csv": "537879c7b34e2ef82038b48b2d7a2edad1152dc4bfeec0dbe3398865a71a0399"
+  }
+}

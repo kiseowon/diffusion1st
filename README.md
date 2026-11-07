@@ -83,3 +83,10 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [입력 PCA·전체 probe 출력의 9조건 반복 검증](docs/repeated-input-pca-full-output.md): 구조 표현3×모델3×화합물5fold×초기화3개. 출력 PCA 없이 원래 probe 공간 평가, Descriptor/Morgan/기본·모델·기준선의 짝지은 차이를 모두 저장.
 
 입력 PCA64 / 전체 probe 출력에서 구조 없음·Morgan·2D 기술자·결합의 12조건 비교: [실행 설계](docs/pca64-combined-structure.md).
+
+최근 서버 보고 결과:
+
+- [입력 PCA 차원 내부 검증: 64차원 선택](results/input_pca_validation_20261107_124223_167095/README.md)
+- [PCA64 · 구조 없음/Morgan/2D/결합 12조건 파일럿](results/pca64_structure4_pilot_20261107_130101_1f80e5/README.md)
+
+두 자료는 사용자 서버 로그에서 보존했으며 이 환경의 재학습 검증 결과가 아닙니다. 12조건은 fold0·모델seed42의 단일 탐색 평가입니다.

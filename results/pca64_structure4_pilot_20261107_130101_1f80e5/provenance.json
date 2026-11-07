@@ -1,0 +1,25 @@
+{
+  "source": "user_uploaded_server_console",
+  "server_folder": "/home/seowon1211/data1/conditioned_expression/pca64_structure4_pilot_20261107_130101_1f80e5",
+  "reported_code_commit": "1a138db2c255608d59e6993931e70dadb8ef4c54",
+  "conditions_completed": 12,
+  "model_seeds": [
+    42
+  ],
+  "split_seed": 42,
+  "evaluated_fold": 0,
+  "test_targets": 336,
+  "precision": "six_decimal_display_only",
+  "classification": "visible_columns_only_ellipsis_omitted",
+  "verification": "log parsing and arithmetic checks only; no independent prediction or training verification",
+  "raw_server_run_json_received": false,
+  "raw_predictions_received": false,
+  "files_sha256": {
+    "README.md": "71e13089581c513414a219eab67a858844ee4917ab4cf0945598005b5bd14cd3",
+    "classification_visible_columns_reported.csv": "bbbee9f258116aefd2ecac46812505814d62ce03d014de5a34fb24635cf5111b",
+    "paired_rmse_reported.csv": "a0551d997d1911c4e7d19ffaf8f64e602d717f62f54a7ce7bdd4f56756526319",
+    "protocol_reported.json": "124975c994e53185c1db2fc90d606165869630f593fd5c3749e0f67e9bdd9eb4",
+    "regression_reported.csv": "4026441bfd97b9fd2e0752bad99336022fd699872d314e75d5265647d8e98002",
+    "server_console_output.txt": "46aa1b8e8930210bdcb0611019222fa0bdd47609b4056010b5eca12d9a25064c"
+  }
+}

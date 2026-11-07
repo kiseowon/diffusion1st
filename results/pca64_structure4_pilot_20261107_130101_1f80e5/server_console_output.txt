@@ -1,0 +1,457 @@
+Cloning into '/home/seowon1211/data1/conditioned_expression/pca64_structure4_pilot_20261107_130101_1f80e5/code'...
+保存先: /home/seowon1211/data1/conditioned_expression/pca64_structure4_pilot_20261107_130101_1f80e5
+SMILES: /home/seowon1211/data1/compound_pubchem_smiles.csv
+PCA64 / 全probe出力 / 構造4条件 × モデル3種
+今回はfold 0・モデルseed 42のみ。5-fold全体の反復実験ではありません。
+HEAD is now at 1a138db Add configurable input PCA and combined Morgan descriptor pilot
+{
+  "mode": "plan_only",
+  "jobs": 12,
+  "fits_up_to": 24,
+  "settings": {
+    "protocol_name": "meeting_time_condition_pilot_v1",
+    "input_components": 64,
+    "output_components": null,
+    "input_transform": "training_source_MinMax_then_PCA_then_StandardScaler",
+    "output_transform": "training_probe_mean_then_shared_RMS",
+    "context": 256,
+    "hidden": 64,
+    "activation": "LeakyReLU_0.2",
+    "dropout": 0.0,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "optimizer": "Adam",
+    "discriminator_optimizer": "SGD_lr_0.0001_momentum_0.9",
+    "batch_size": 128,
+    "epochs": 100,
+    "validation_epochs": [
+      1,
+      5,
+      10,
+      15,
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "mlp_loss": "full_probe_MAE",
+    "cgan_loss": "10_full_probe_MAE_plus_2_BCE_no_cycle",
+    "pathway": false,
+    "pca": "input_only",
+    "output_activation": "linear",
+    "steps": 20,
+    "samples": 4,
+    "split_seed": 42,
+    "model_seed": 42,
+    "outer_folds": 5,
+    "evaluated_fold": 0,
+    "arms": [
+      "basic",
+      "morgan",
+      "descriptor",
+      "both"
+    ],
+    "families": [
+      "mlp",
+      "cgan",
+      "ddpm"
+    ],
+    "descriptor_policy": "bounded",
+    "source_aggregation": "none_fixed_metadata_slots_with_mask",
+    "slot_schema_policy": "all_available_source_metadata_no_expression_or_target_outcomes",
+    "output_space": "full",
+    "input_space": "pca",
+    "structure_layout": "separate",
+    "cache_diffusion_context": true,
+    "output_pca": false
+  },
+  "soft_budget_minutes": 1440.0,
+  "note": "one exploratory compound holdout; no new job starts after budget, running job may finish later"
+}
+{
+  "mode": "execute",
+  "jobs": 12,
+  "fits_up_to": 24,
+  "settings": {
+    "protocol_name": "meeting_time_condition_pilot_v1",
+    "input_components": 64,
+    "output_components": null,
+    "input_transform": "training_source_MinMax_then_PCA_then_StandardScaler",
+    "output_transform": "training_probe_mean_then_shared_RMS",
+    "context": 256,
+    "hidden": 64,
+    "activation": "LeakyReLU_0.2",
+    "dropout": 0.0,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "optimizer": "Adam",
+    "discriminator_optimizer": "SGD_lr_0.0001_momentum_0.9",
+    "batch_size": 128,
+    "epochs": 100,
+    "validation_epochs": [
+      1,
+      5,
+      10,
+      15,
+      20,
+      40,
+      60,
+      80,
+      100
+    ],
+    "mlp_loss": "full_probe_MAE",
+    "cgan_loss": "10_full_probe_MAE_plus_2_BCE_no_cycle",
+    "pathway": false,
+    "pca": "input_only",
+    "output_activation": "linear",
+    "steps": 20,
+    "samples": 4,
+    "split_seed": 42,
+    "model_seed": 42,
+    "outer_folds": 5,
+    "evaluated_fold": 0,
+    "arms": [
+      "basic",
+      "morgan",
+      "descriptor",
+      "both"
+    ],
+    "families": [
+      "mlp",
+      "cgan",
+      "ddpm"
+    ],
+    "descriptor_policy": "bounded",
+    "source_aggregation": "none_fixed_metadata_slots_with_mask",
+    "slot_schema_policy": "all_available_source_metadata_no_expression_or_target_outcomes",
+    "output_space": "full",
+    "input_space": "pca",
+    "structure_layout": "separate",
+    "cache_diffusion_context": true,
+    "output_pca": false
+  },
+  "soft_budget_minutes": 1440.0,
+  "note": "one exploratory compound holdout; no new job starts after budget, running job may finish later"
+}
+Compounds: 89 23 28 source slots: 36
+MODEL DIMENSIONS basic {"inner": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}, "final": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}}
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118090925713984}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118090925713984}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118090925713984}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118090925713984}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118090925713984}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31121813073943655}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=60: {'epoch': 60, 'strength': 1.0, 'validation_response_rmse': 0.31035478484808265}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.30983242949828177}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.30905704338522566}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'basic'}: 100/100
+COMPLETED 1/12; elapsed 0.7 min; RMSE=0.292164
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=40: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=60: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31203086987299056}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.3118302289940892}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.31074552807151495}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'basic'}: 100/100
+COMPLETED 2/12; elapsed 2.2 min; RMSE=0.292328
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31183079164284344}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31183079164284344}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31183079164284344}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31183079164284344}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31183079164284344}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3105578759507441}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=60: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3105578759507441}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=80: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3105578759507441}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'} epoch=100: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3105578759507441}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'}: 1/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'}: 10/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'}: 20/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'}: 30/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'basic'}: 40/40
+COMPLETED 3/12; elapsed 3.0 min; RMSE=0.290484
+MODEL DIMENSIONS morgan {"inner": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}, "final": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}}
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118082502449757}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118082502449757}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118082502449757}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118082502449757}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118082502449757}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3108910444042803}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=60: {'epoch': 60, 'strength': 1.0, 'validation_response_rmse': 0.30999242811712957}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.30942888062149787}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.3087731166130842}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'morgan'}: 100/100
+COMPLETED 4/12; elapsed 3.7 min; RMSE=0.289421
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=40: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=60: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120424529667988}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.31144972901963824}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.31027721491115107}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'morgan'}: 100/100
+COMPLETED 5/12; elapsed 5.2 min; RMSE=0.290189
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118287742094196}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118287742094196}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118287742094196}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118287742094196}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118287742094196}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31046537502813476}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=60: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31046537502813476}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=80: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31046537502813476}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'} epoch=100: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31046537502813476}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'}: 1/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'}: 10/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'}: 20/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'}: 30/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'morgan'}: 40/40
+COMPLETED 6/12; elapsed 5.9 min; RMSE=0.289869
+MODEL DIMENSIONS descriptor {"inner": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}, "final": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}}
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118107728676742}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118107728676742}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118107728676742}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118107728676742}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118107728676742}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31145639762103977}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=60: {'epoch': 60, 'strength': 1.0, 'validation_response_rmse': 0.3105793967050119}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.3098585539997037}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.3096659213696659}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'descriptor'}: 100/100
+COMPLETED 7/12; elapsed 6.5 min; RMSE=0.290802
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=40: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=60: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3120853506405914}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.3119144841085724}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.31083296395923476}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'descriptor'}: 100/100
+COMPLETED 8/12; elapsed 8.0 min; RMSE=0.291633
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118277016310887}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118277016310887}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118277016310887}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118277016310887}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118277016310887}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3101952280787155}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=60: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3101952280787155}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=80: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3101952280787155}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'} epoch=100: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.3101952280787155}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'}: 1/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'}: 10/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'}: 20/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'}: 30/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'descriptor'}: 40/40
+COMPLETED 9/12; elapsed 8.7 min; RMSE=0.290167
+MODEL DIMENSIONS both {"inner": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}, "final": {"input_dimension": 6769, "output_dimension": 3453, "mlp_parameters": 2196349, "ddpm_parameters": 2196349, "cgan_generator_parameters": 1975357, "cgan_discriminator_parameters": 1970625, "mlp_fp32_weights_gradients_Adam_states_GiB": 0.032728150486946106, "excludes_activations_inputs_optimizer_temporaries": true}}
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31181218482608447}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31181218482608447}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31181218482608447}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31181218482608447}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31181218482608447}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31114625582224514}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=60: {'epoch': 60, 'strength': 1.0, 'validation_response_rmse': 0.3103789274549702}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.3096572423931979}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.309470444338291}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'mlp', 'arm': 'both'}: 100/100
+COMPLETED 10/12; elapsed 9.3 min; RMSE=0.289181
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=40: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=60: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.31210532080721387}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=80: {'epoch': 80, 'strength': 1.0, 'validation_response_rmse': 0.3117575050784115}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'} epoch=100: {'epoch': 100, 'strength': 1.0, 'validation_response_rmse': 0.3106014127312979}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 1/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 10/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 20/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 30/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 40/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 50/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 60/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 70/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 80/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 90/100
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'cgan', 'arm': 'both'}: 100/100
+COMPLETED 11/12; elapsed 10.7 min; RMSE=0.290365
+START {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=1: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118274746421851}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=5: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118274746421851}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=10: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118274746421851}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=15: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118274746421851}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=20: {'epoch': 1, 'strength': 1.0, 'validation_response_rmse': 0.3118274746421851}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=40: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31018677838948017}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=60: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31018677838948017}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=80: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31018677838948017}
+{'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'} epoch=100: {'epoch': 40, 'strength': 1.0, 'validation_response_rmse': 0.31018677838948017}
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'}: 1/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'}: 10/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'}: 20/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'}: 30/40
+Refit {'split_seed': 42, 'fold': 0, 'model_seed': 42, 'model': 'ddpm', 'arm': 'both'}: 40/40
+COMPLETED 12/12; elapsed 11.4 min; RMSE=0.289908
+       arm           model     rmse      mae  pearson_target_mean
+  baseline time_level_mean 0.287834 0.169098             0.231368
+  baseline   zero_response 0.298110 0.171649                  NaN
+     basic             mlp 0.292164 0.171491             0.191563
+     basic            cgan 0.292328 0.171591             0.188705
+     basic            ddpm 0.290484 0.170592             0.200855
+    morgan             mlp 0.289421 0.169207             0.208393
+    morgan            cgan 0.290189 0.169662             0.198071
+    morgan            ddpm 0.289869 0.170207             0.203399
+descriptor             mlp 0.290802 0.170149             0.195546
+descriptor            cgan 0.291633 0.171192             0.189526
+descriptor            ddpm 0.290167 0.170532             0.201068
+      both             mlp 0.289181 0.168825             0.208088
+      both            cgan 0.290365 0.170064             0.196178
+      both            ddpm 0.289908 0.170357             0.202395
+ALL COMPLETE: /home/seowon1211/data1/conditioned_expression/pca64_structure4_pilot_20261107_130101_1f80e5/results
+
+===== 回帰指標 =====
+arm	model	n_targets	n_probes	rmse	mae	r2_probe_variance_weighted	pearson_target_mean	pearson_valid_targets	spearman_target_mean	spearman_valid_targets	epoch	strength	validation_response_rmse
+0	baseline	time_level_mean	336	3453	0.287834	0.169098	0.015517	0.231368	336	0.206766	336	NaN	NaN	NaN
+1	baseline	zero_response	336	3453	0.298110	0.171649	-0.056035	NaN	0	NaN	0	NaN	NaN	NaN
+2	basic	mlp	336	3453	0.292164	0.171491	-0.014330	0.191563	336	0.172478	336	100.0	1.0	0.309057
+3	basic	cgan	336	3453	0.292328	0.171591	-0.015464	0.188705	336	0.168026	336	100.0	1.0	0.310746
+4	basic	ddpm	336	3453	0.290484	0.170592	-0.002695	0.200855	336	0.171734	336	40.0	1.0	0.310558
+5	morgan	mlp	336	3453	0.289421	0.169207	0.004628	0.208393	336	0.187431	336	100.0	1.0	0.308773
+6	morgan	cgan	336	3453	0.290189	0.169662	-0.000658	0.198071	336	0.176026	336	100.0	1.0	0.310277
+7	morgan	ddpm	336	3453	0.289869	0.170207	0.001543	0.203399	336	0.173765	336	40.0	1.0	0.310465
+8	descriptor	mlp	336	3453	0.290802	0.170149	-0.004894	0.195546	336	0.176534	336	100.0	1.0	0.309666
+9	descriptor	cgan	336	3453	0.291633	0.171192	-0.010644	0.189526	336	0.169496	336	100.0	1.0	0.310833
+10	descriptor	ddpm	336	3453	0.290167	0.170532	-0.000507	0.201068	336	0.172587	336	40.0	1.0	0.310195
+11	both	mlp	336	3453	0.289181	0.168825	0.006280	0.208088	336	0.186649	336	100.0	1.0	0.309470
+12	both	cgan	336	3453	0.290365	0.170064	-0.001873	0.196178	336	0.175339	336	100.0	1.0	0.310601
+13	both	ddpm	336	3453	0.289908	0.170357	0.001278	0.202395	336	0.173512	336	40.0	1.0	0.310187
+
+===== 構造追加によるRMSE差：負なら改善 =====
+Morgan − なし	Descriptor − なし	両方 − なし	両方 − Morgan	両方 − Descriptor
+model					
+cgan	-0.002139	-0.000695	-0.001963	0.000176	-0.001268
+ddpm	-0.000614	-0.000317	-0.000576	0.000038	-0.000259
+mlp	-0.002743	-0.001362	-0.002983	-0.000240	-0.001621
+
+===== 分類指標 =====
+arm	model	threshold	accuracy	macro_f1	weighted_f1	active_sign_accuracy	n_active	actual_active_fraction	predicted_active_fraction	...	down_f1	down_support	small_precision	small_recall	small_f1	small_support	up_precision	up_recall	up_f1	up_support
+0	baseline	time_level_mean	0.5	0.945474	0.379002	0.923979	0.707271	62703	0.054045	0.005720	...	0.081579	31099	0.948433	0.996885	0.972056	1097505	0.390212	0.046671	0.083371	31604
+1	baseline	time_level_mean	1.0	0.986409	0.347841	0.980004	0.736340	15721	0.013550	0.000362	...	0.045294	6701	0.986609	0.999799	0.993160	1144487	0.410714	0.002550	0.005068	9020
+2	baseline	zero_response	0.5	0.945955	0.324076	0.919684	0.000000	62703	0.054045	0.000000	...	0.000000	31099	0.945955	1.000000	0.972227	1097505	0.000000	0.000000	0.000000	31604
+3	baseline	zero_response	1.0	0.986450	0.331060	0.979721	0.000000	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+4	basic	mlp	0.5	0.945050	0.341064	0.920674	0.686203	62703	0.054045	0.002518	...	0.021844	31099	0.946704	0.998272	0.971804	1097505	0.251266	0.015694	0.029543	31604
+5	basic	mlp	1.0	0.986424	0.331353	0.979714	0.732841	15721	0.013550	0.000033	...	0.000893	6701	0.986454	0.999971	0.993166	1144487	0.000000	0.000000	0.000000	9020
+6	basic	cgan	0.5	0.945336	0.337340	0.920496	0.685725	62703	0.054045	0.001855	...	0.018016	31099	0.946530	0.998752	0.971940	1097505	0.261871	0.011518	0.022065	31604
+7	basic	cgan	1.0	0.986444	0.331059	0.979718	0.727689	15721	0.013550	0.000006	...	0.000000	6701	0.986450	0.999994	0.993176	1144487	0.000000	0.000000	0.000000	9020
+8	basic	ddpm	0.5	0.945880	0.330285	0.920151	0.698132	62703	0.054045	0.000609	...	0.016077	31099	0.946201	0.999650	0.972191	1097505	0.488095	0.001297	0.002588	31604
+9	basic	ddpm	1.0	0.986450	0.331060	0.979721	0.743019	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+10	morgan	mlp	0.5	0.945680	0.336947	0.920625	0.699552	62703	0.054045	0.001450	...	0.016231	31099	0.946513	0.999139	0.972114	1097505	0.330341	0.011644	0.022495	31604
+11	morgan	mlp	1.0	0.986444	0.331158	0.979720	0.743146	15721	0.013550	0.000008	...	0.000298	6701	0.986451	0.999993	0.993176	1144487	0.000000	0.000000	0.000000	9020
+12	morgan	cgan	0.5	0.945866	0.334028	0.920465	0.691514	62703	0.054045	0.000975	...	0.014690	31099	0.946377	0.999471	0.972200	1097505	0.381026	0.007752	0.015195	31604
+13	morgan	cgan	1.0	0.986448	0.331059	0.979720	0.731569	15721	0.013550	0.000002	...	0.000000	6701	0.986450	0.999998	0.993178	1144487	0.000000	0.000000	0.000000	9020
+14	morgan	ddpm	0.5	0.945910	0.330379	0.920173	0.701402	62703	0.054045	0.000586	...	0.015836	31099	0.946206	0.999678	0.972207	1097505	0.620253	0.001550	0.003093	31604
+15	morgan	ddpm	1.0	0.986450	0.331060	0.979721	0.748553	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+16	descriptor	mlp	0.5	0.945522	0.338046	0.920646	0.690047	62703	0.054045	0.001729	...	0.017690	31099	0.946570	0.998919	0.972040	1097505	0.301124	0.012720	0.024409	31604
+17	descriptor	mlp	1.0	0.986440	0.331257	0.979719	0.737294	15721	0.013550	0.000014	...	0.000596	6701	0.986451	0.999988	0.993173	1144487	0.000000	0.000000	0.000000	9020
+18	descriptor	cgan	0.5	0.945699	0.336959	0.920629	0.686841	62703	0.054045	0.001417	...	0.018218	31099	0.946503	0.999161	0.972119	1097505	0.329400	0.010600	0.020539	31604
+19	descriptor	cgan	1.0	0.986450	0.331060	0.979721	0.729216	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+20	descriptor	ddpm	0.5	0.945896	0.330811	0.920202	0.699488	62703	0.054045	0.000637	...	0.016448	31099	0.946222	0.999645	0.972200	1097505	0.594059	0.001898	0.003785	31604
+21	descriptor	ddpm	1.0	0.986450	0.331060	0.979721	0.747026	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+22	both	mlp	0.5	0.945780	0.335752	0.920565	0.700684	62703	0.054045	0.001218	...	0.014628	31099	0.946446	0.999300	0.972155	1097505	0.358836	0.010537	0.020472	31604
+23	both	mlp	1.0	0.986448	0.331159	0.979722	0.744864	15721	0.013550	0.000003	...	0.000298	6701	0.986451	0.999997	0.993178	1144487	0.000000	0.000000	0.000000	9020
+24	both	cgan	0.5	0.945873	0.334588	0.920512	0.690318	62703	0.054045	0.001013	...	0.015939	31099	0.946397	0.999453	0.972202	1097505	0.385911	0.007974	0.015625	31604
+25	both	cgan	1.0	0.986450	0.331060	0.979721	0.730679	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+26	both	ddpm	0.5	0.945911	0.330960	0.920221	0.701832	62703	0.054045	0.000633	...	0.016824	31099	0.946227	0.999655	0.972208	1097505	0.655914	0.001930	0.003849	31604
+27	both	ddpm	1.0	0.986450	0.331060	0.979721	0.749571	15721	0.013550	0.000000	...	0.000000	6701	0.986450	1.000000	0.993179	1144487	0.000000	0.000000	0.000000	9020
+28 rows × 22 columns
+
+
+完了: /home/seowon1211/data1/conditioned_expression/pca64_structure4_pilot_20261107_130101_1f80e5
+
