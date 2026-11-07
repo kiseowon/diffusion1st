@@ -54,5 +54,36 @@ class MeetingPilotTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):pilot.main(argv)
             self.assertEqual(len(pd.read_csv(root/'pilot/results.csv')),11)
             self.assertEqual(len(list((root/'pilot').rglob('complete.json'))),9)
+            combined=argv.copy();combined[combined.index(str(root/'pilot'))]=str(root/'combined')
+            combined+=['--arms','basic','morgan','descriptor','both','--structure-layout','separate','--input-components','4','--output-space','full']
+            with contextlib.redirect_stdout(io.StringIO()):pilot.main(combined)
+            self.assertEqual(len(list((root/'combined').rglob('complete.json'))),12)
+            dimensions=[__import__('json').loads(p.read_text())['inner']['input_dimension'] for p in (root/'combined').rglob('model_dimensions.json')]
+            self.assertEqual(len(set(dimensions)),1)
             with patch.object(core,'fit_job',side_effect=AssertionError('Must resume')):
                 with contextlib.redirect_stdout(io.StringIO()):pilot.main(argv)
+
+    def test_separate_structure_blocks_and_combined(self):
+        import numpy as np
+        import pandas as pd
+        import torch
+        from types import SimpleNamespace
+        raw=pd.DataFrame({'d1':[1.,2.,3.,9.], 'd2':[3.,1.,5.,4.]},index=['a','b','c','d'])
+        data=SimpleNamespace(structure=np.array([[1,0,1],[0,1,1],[1,1,1],[0,0,1]],dtype=np.float32),compound_to_index={'a':0,'b':1,'c':2,'d':3})
+        meta=pd.DataFrame({'compound':['a','b','c','d']})
+        base={'X':torch.ones(4,2),'Z':torch.ones(4,4),'state':{}}
+        packs={arm:pilot.with_structure(base,data,meta,np.array([0,1,2]),raw,arm,'bounded','separate') for arm in ['basic','morgan','descriptor','both']}
+        self.assertEqual(len({p['X'].shape[1] for p in packs.values()}),1)
+        width=packs['both']['state']['structure_block_width']
+        torch.testing.assert_close(packs['both']['X'][:,2:2+width],packs['morgan']['X'][:,2:2+width])
+        torch.testing.assert_close(packs['both']['X'][:,2+width:],packs['descriptor']['X'][:,2+width:])
+        self.assertEqual(torch.count_nonzero(packs['basic']['X'][:,2:]).item(),0)
+        self.assertEqual(torch.count_nonzero(packs['morgan']['X'][:,2+width:]).item(),0)
+        changed=raw.copy();changed.loc['d']=1e6
+        q=pilot.with_structure(base,data,meta,np.array([0,1,2]),changed,'both','bounded','separate')
+        torch.testing.assert_close(q['X'][:2],packs['both']['X'][:2])
+
+    def test_combined_plan(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            count=pilot.main(['--prepared','/missing','--structure','/missing','--smiles','/missing','--out','/missing','--arms','basic','morgan','descriptor','both','--structure-layout','separate','--input-components','64','--output-space','full'])
+        self.assertEqual(count,12)

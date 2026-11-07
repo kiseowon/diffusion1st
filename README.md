@@ -81,3 +81,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 - [선택한 전체 probe 출력 파일럿 결과 모음](results/selected_full_probe_pilot_20261105_112018_614d84/report.md): 입력 PCA/전체 출력, 9조건·기준선의 회귀·F1 보고값과 서버 원문. Morgan MLP는 단일 holdout의 후속 검증 후보이며 평균 기준선 초과나 전체 지표 최적성을 의미하지 않음.
 
 - [입력 PCA·전체 probe 출력의 9조건 반복 검증](docs/repeated-input-pca-full-output.md): 구조 표현3×모델3×화합물5fold×초기화3개. 출력 PCA 없이 원래 probe 공간 평가, Descriptor/Morgan/기본·모델·기준선의 짝지은 차이를 모두 저장.
+
+입력 PCA64 / 전체 probe 출력에서 구조 없음·Morgan·2D 기술자·결합의 12조건 비교: [실행 설계](docs/pca64-combined-structure.md).

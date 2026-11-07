@@ -140,7 +140,19 @@ def restore_output(scores,state):
             +state['output_pca'].mean_)
 
 
-def with_structure(base,data,meta,fit,raw,arm,descriptor_policy="bounded"):
+def with_structure(base,data,meta,fit,raw,arm,descriptor_policy="bounded",structure_layout="shared"):
+    if structure_layout == "separate":
+        import torch
+        left=with_structure(base,data,meta,fit,raw,"morgan" if arm in ("morgan","both") else "basic",descriptor_policy)
+        right=with_structure(base,data,meta,fit,raw,"descriptor" if arm in ("descriptor","both") else "basic",descriptor_policy)
+        width=left["state"]["structure_slots"]
+        lv=left["X"].structure if isinstance(left["X"],SharedSourceFeatures) else left["X"][:,-width:]
+        rv=right["X"].structure if isinstance(right["X"],SharedSourceFeatures) else right["X"][:,-width:]
+        values=torch.cat([lv,rv],dim=1)
+        X=base["X"].with_structure(values) if isinstance(base["X"],SharedSourceFeatures) else torch.cat([base["X"],values],dim=1)
+        state=dict(right["state"],structure_representation=arm,structure_layout="separate",structure_slots=2*width,structure_block_width=width)
+        return dict(X=X,Z=base["Z"],state=state)
+    if arm == "both":raise ValueError("both requires separate structure layout")
     import numpy as np
     import torch
     width=max(data.structure.shape[1],len(raw.columns)+1)
@@ -168,18 +180,22 @@ def main(argv=None):
     p.add_argument('--epochs',type=int,default=20)
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-space',choices=['pca','full'],default='pca')
+    p.add_argument('--input-components',type=int,default=32)
+    p.add_argument('--structure-layout',choices=['shared','separate'],default='shared')
     p.add_argument('--cache-diffusion-context',action='store_true',help='Reuse deterministic DDPM context at evaluation only')
     p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seed',type=int,default=42)
     p.add_argument('--fold',type=int,default=0)
     p.add_argument('--folds',type=int,default=5)
-    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor'],default=['basic','morgan','descriptor'])
+    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan','descriptor'])
     p.add_argument('--families',nargs='+',choices=['mlp','cgan','ddpm'],default=['mlp','cgan','ddpm'])
     p.add_argument('--descriptor-policy',choices=['standard','bounded'],default='bounded')
     p.add_argument('--threads',type=int,default=4)
     p.add_argument('--budget-minutes',type=float,default=60.)
     p.add_argument('--execute',action='store_true')
     a=p.parse_args(argv)
+    if a.input_components<1:p.error('input-components must be positive')
+    if 'both' in a.arms and a.structure_layout!='separate':p.error('both requires --structure-layout separate')
     if a.epochs<1 or a.threads<1 or a.budget_minutes<=0:p.error('Invalid epoch/thread/budget')
     if a.folds<2 or not 0<=a.fold<a.folds or any(s<0 or s>=2**32 for s in [a.split_seed,a.model_seed]):p.error('Invalid folds/seeds')
     if len(set(a.arms))!=len(a.arms) or len(set(a.families))!=len(a.families):p.error('Duplicate arms/families')
@@ -187,13 +203,14 @@ def main(argv=None):
     epochs=sorted(set(e for e in [1,5,10,15,20]+list(range(40,a.epochs+1,20))+[a.epochs] if e<=a.epochs))
     settings=dict(inspired.SETTINGS,protocol_name='meeting_time_condition_pilot_v1',
         epochs=a.epochs,validation_epochs=epochs,batch_size=128,learning_rate=1e-4,
-        input_components=32,output_components=32,steps=20,samples=4,
+        input_components=a.input_components,output_components=32,steps=20,samples=4,
         input_transform='training_source_MinMax_then_PCA_then_StandardScaler',
         output_transform='training_response_PCA_shared_RMS',mlp_loss='PCA_score_MAE',
         cgan_loss='10_PCA_MAE_plus_2_BCE_no_cycle',pca=True,split_seed=a.split_seed,model_seed=a.model_seed,
         outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,descriptor_policy=a.descriptor_policy,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
     settings.update(output_space=a.output_space,input_space=a.input_space)
+    if a.structure_layout!="shared":settings["structure_layout"]=a.structure_layout
     if a.cache_diffusion_context:settings['cache_diffusion_context']=True
     if a.input_space=='full':
         settings.update(input_components=None,input_transform='training_source_probe_MinMax_no_PCA_no_clip',
@@ -252,8 +269,8 @@ def main(argv=None):
     try:
         core.PROTOCOL.update(settings);core.make_family_model=inspired.models;core.train_family_epoch=inspired.train;core.restore=restore_output
         with threadpool_limits(limits=a.threads):
-            inner=prepare(data,source,slots,ids,meta,Y,itr,output_space=a.output_space,input_space=a.input_space)
-            outer=prepare(data,source,slots,ids,meta,Y,train,output_space=a.output_space,input_space=a.input_space)
+            inner=prepare(data,source,slots,ids,meta,Y,itr,output_space=a.output_space,input_space=a.input_space,components=a.input_components)
+            outer=prepare(data,source,slots,ids,meta,Y,train,output_space=a.output_space,input_space=a.input_space,components=a.input_components)
             core.save_json(a.out/'target_representation.json',dict(output_space=a.output_space,
                 inner_dimension=inner['Z'].shape[1],final_dimension=outer['Z'].shape[1],n_probes=Y.shape[1],
                 full_target_roundtrip_max_abs_error=outer['state'].get('target_roundtrip_max_abs_error'),
@@ -264,14 +281,14 @@ def main(argv=None):
             add_result('baseline','time_level_mean',mean);add_result('baseline','zero_response',np.zeros_like(mean))
             offset=np.zeros_like(Y)
             for arm in a.arms:
-                ip=with_structure(inner,data,meta,itr,raw,arm,a.descriptor_policy);op=with_structure(outer,data,meta,train,raw,arm,a.descriptor_policy)
+                ip=with_structure(inner,data,meta,itr,raw,arm,a.descriptor_policy,a.structure_layout);op=with_structure(outer,data,meta,train,raw,arm,a.descriptor_policy,a.structure_layout)
                 armfolder=a.out/arm;armfolder.mkdir(exist_ok=True)
                 joblib.dump(ip['state'],armfolder/'inner_preprocess.joblib');joblib.dump(op['state'],armfolder/'final_preprocess.joblib')
                 dimensions=dict(inner=model_parameter_report(ip['X'].shape[1],ip['Z'].shape[1]),
                                 final=model_parameter_report(op['X'].shape[1],op['Z'].shape[1]))
                 core.save_json(armfolder/'model_dimensions.json',dimensions)
                 print('MODEL DIMENSIONS',arm,json.dumps(dimensions),flush=True)
-                if arm=='descriptor' and a.descriptor_policy=='bounded':
+                if arm in ('descriptor','both') and a.descriptor_policy=='bounded':
                     for name,pack in [('inner',ip),('final',op)]:
                         audit=pack['state']['descriptor_numeric_audit']
                         pd.DataFrame(dict(condition_id=ids,compound=meta.compound,
