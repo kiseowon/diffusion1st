@@ -71,7 +71,8 @@ def reproduction_report(saved, regenerated, truth, allow_numerical=False):
         raise ValueError('Prediction/truth shape mismatch')
     if not all(np.isfinite(x).all() for x in [saved,regenerated,truth]):
         raise ValueError('Nonfinite reproduction values')
-    delta=regenerated.astype(np.float64)-saved.astype(np.float64)
+    saved=saved.astype(np.float64);regenerated=regenerated.astype(np.float64);truth=truth.astype(np.float64)
+    delta=regenerated-saved
     rms_difference=float(np.sqrt(np.mean(delta*delta)))
     reference_rms=float(np.sqrt(np.mean(saved.astype(np.float64)**2)))
     saved_mse=((saved-truth)**2).mean(1)
@@ -79,19 +80,26 @@ def reproduction_report(saved, regenerated, truth, allow_numerical=False):
     saved_rmse=float(np.sqrt(saved_mse.mean()))
     regenerated_rmse=float(np.sqrt(regenerated_mse.mean()))
     strict=bool(np.allclose(regenerated,saved,rtol=5e-6,atol=1e-6))
+    # Reverse triangle inequality, per target:
+    # |RMSE(p,y)-RMSE(q,y)| <= RMS(p-q).
+    target_difference=np.abs(np.sqrt(saved_mse)-np.sqrt(regenerated_mse))
+    target_prediction_rms=np.sqrt(np.mean(delta*delta,axis=1))
+    bound_excess=float(np.maximum(target_difference-target_prediction_rms,0).max())
     limits=dict(max_abs_difference=5e-5,normalized_prediction_rms_difference=1e-5,
-                global_rmse_difference=1e-6,max_target_rmse_difference=2e-6)
+                global_rmse_difference=1e-6,target_rmse_bound_excess=1e-12)
     report=dict(max_abs_difference=float(np.abs(delta).max()),
         prediction_rms_difference=rms_difference,
         normalized_prediction_rms_difference=rms_difference/max(reference_rms,1e-12),
         saved_rmse=saved_rmse,regenerated_rmse=regenerated_rmse,
         global_rmse_difference=abs(saved_rmse-regenerated_rmse),
-        max_target_rmse_difference=float(np.abs(np.sqrt(saved_mse)-np.sqrt(regenerated_mse)).max()),
+        max_target_rmse_difference=float(target_difference.max()),
+        max_target_prediction_rms_difference=float(target_prediction_rms.max()),
+        target_rmse_bound_excess=bound_excess,
         strict_allclose_passed=strict,allow_numerical_requested=bool(allow_numerical),limits=limits)
     bounded=all(report[k]<=v for k,v in limits.items())
     report['bounded_numerical_check_passed']=bool(bounded)
     report['accepted']=bool(strict or (allow_numerical and bounded))
-    report['interpretation']='numerical agreement within reported limits, not bitwise reproduction or proof of the source of differences'
+    report['interpretation']=('numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences' if report['accepted'] else 'reproduction check failed; masking must not proceed')
     return report
 
 

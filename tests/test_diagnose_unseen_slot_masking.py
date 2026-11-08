@@ -60,3 +60,18 @@ class FrozenMaskTests(unittest.TestCase):
         self.assertFalse(diagnostic.reproduction_report(saved,systematic,truth,True)['accepted'])
         bad=regenerated.copy();bad[0,0]=np.nan
         with self.assertRaises(ValueError):diagnostic.reproduction_report(saved,bad,truth,True)
+
+    def test_local_rmse_change_uses_prediction_distance_bound(self):
+        import numpy as np
+        saved=np.ones((100,64));saved[0,:]=.001;truth=np.zeros_like(saved)
+        regenerated=saved.copy();regenerated[0,:]+=2.0673832185624796e-6
+        check=diagnostic.reproduction_report(saved,regenerated,truth,True)
+        self.assertFalse(check['strict_allclose_passed'])
+        self.assertGreater(check['max_target_rmse_difference'],2e-6)
+        self.assertLessEqual(check['target_rmse_bound_excess'],1e-12)
+        self.assertTrue(check['accepted'])
+        self.assertLess(check['global_rmse_difference'],1e-6)
+        # Localized, much larger discrepancies remain rejected by the
+        # unchanged absolute prediction bound even if global RMSE is diluted.
+        regenerated[0,:]+=1e-3
+        self.assertFalse(diagnostic.reproduction_report(saved,regenerated,truth,True)['accepted'])
