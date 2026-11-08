@@ -98,3 +98,5 @@ PCA64·화학구조4조건의 고정 설정 반복 검증은 [설계 문서](doc
 [목표 조건·in vitro·Morgan의 MLP 입력 기여도 비교](docs/information-contribution.md): 네 입력 조건을 같은 5-fold·모델seed에서 비교합니다.
 
 [Pair 단위 MLP 대 전체 source 연결 비교](docs/pairwise-mlp-comparison.md): 완료된 입력 기여도 실험의 분할·전처리를 재사용하고 target-equal 가중치와 최대 업데이트 예산을 맞춥니다.
+
+[24시간·High 고정 조건 toy 실험](docs/fixed-condition-toy.md): 공통 화합물에서 구조 없음/Morgan/2D × 작은 MLP/cGAN/DDPM, 입력 PCA64·전체 probe 출력. 기본 단일 분할·초기화3회입니다.
