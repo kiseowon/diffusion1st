@@ -64,7 +64,38 @@ def append_structure(base, state, meta, unit, structure_path):
     return torch.tensor(np.c_[base,values],dtype=torch.float32)
 
 
-def diagnose(unit,out,arms,threads=4):
+
+def reproduction_report(saved, regenerated, truth, allow_numerical=False):
+    """Keep strict default; allow only explicitly bounded numerical differences."""
+    if saved.shape!=regenerated.shape or saved.shape!=truth.shape:
+        raise ValueError('Prediction/truth shape mismatch')
+    if not all(np.isfinite(x).all() for x in [saved,regenerated,truth]):
+        raise ValueError('Nonfinite reproduction values')
+    delta=regenerated.astype(np.float64)-saved.astype(np.float64)
+    rms_difference=float(np.sqrt(np.mean(delta*delta)))
+    reference_rms=float(np.sqrt(np.mean(saved.astype(np.float64)**2)))
+    saved_mse=((saved-truth)**2).mean(1)
+    regenerated_mse=((regenerated-truth)**2).mean(1)
+    saved_rmse=float(np.sqrt(saved_mse.mean()))
+    regenerated_rmse=float(np.sqrt(regenerated_mse.mean()))
+    strict=bool(np.allclose(regenerated,saved,rtol=5e-6,atol=1e-6))
+    limits=dict(max_abs_difference=5e-5,normalized_prediction_rms_difference=1e-5,
+                global_rmse_difference=1e-6,max_target_rmse_difference=2e-6)
+    report=dict(max_abs_difference=float(np.abs(delta).max()),
+        prediction_rms_difference=rms_difference,
+        normalized_prediction_rms_difference=rms_difference/max(reference_rms,1e-12),
+        saved_rmse=saved_rmse,regenerated_rmse=regenerated_rmse,
+        global_rmse_difference=abs(saved_rmse-regenerated_rmse),
+        max_target_rmse_difference=float(np.abs(np.sqrt(saved_mse)-np.sqrt(regenerated_mse)).max()),
+        strict_allclose_passed=strict,allow_numerical_requested=bool(allow_numerical),limits=limits)
+    bounded=all(report[k]<=v for k,v in limits.items())
+    report['bounded_numerical_check_passed']=bool(bounded)
+    report['accepted']=bool(strict or (allow_numerical and bounded))
+    report['interpretation']='numerical agreement within reported limits, not bitwise reproduction or proof of the source of differences'
+    return report
+
+
+def diagnose(unit,out,arms,threads=4,allow_numerical=False):
     import sklearn,scipy
     info=json.loads((unit/'run.json').read_text());settings=info['settings']
     prepared=Path(info['arguments']['prepared']);structure=Path(info['arguments']['structure'])
@@ -107,15 +138,19 @@ def diagnose(unit,out,arms,threads=4):
             weight_change=float((model.context[0].weight[:,unseen_columns].detach()-initial_unseen).abs().max()) if unseen_columns else 0.
             indices=np.arange(len(ids));noise_seed=seed+30000
             regenerated=pilot.restore_output(core.predict_family_scores('ddpm',model,{'X':X},indices,noise_seed),state)
-            max_error=float(np.max(np.abs(regenerated-saved_prediction)))
-            if not np.allclose(regenerated,saved_prediction,rtol=5e-6,atol=1e-6):
-                core.save_json(out/'reproduction_failed.json',dict(arm=arm,max_abs_difference=max_error,masking_not_run=True))
+            truth=np.asarray(actual[ids]-actual[ta.loc[ids].to_numpy(int)],dtype=np.float64)
+            reproduction=reproduction_report(saved_prediction,regenerated,truth,allow_numerical)
+            core.save_json(out/f'{arm}_reproduction_check.json',reproduction)
+            np.savez_compressed(out/f'{arm}_reproduction_predictions.npz',target_ids=ids,saved=saved_prediction,regenerated=regenerated)
+            print('REPRODUCTION',arm,json.dumps(reproduction),flush=True)
+            max_error=reproduction['max_abs_difference']
+            if not reproduction['accepted']:
+                core.save_json(out/'reproduction_failed.json',dict(arm=arm,**reproduction,masking_not_run=True))
                 raise ValueError('Original prediction failed reproduction; stopped before masking: '+arm)
             counterfactual=pilot.restore_output(core.predict_family_scores('ddpm',model,{'X':MX},indices,noise_seed),state)
-            truth=np.asarray(actual[ids]-actual[ta.loc[ids].to_numpy(int)],dtype=np.float64)
             original_mse=((regenerated-truth)**2).mean(1);masked_mse=((counterfactual-truth)**2).mean(1)
             if not np.isfinite(counterfactual).all():raise ValueError('Nonfinite masked predictions')
-            rows.append(dict(arm=arm,model_seed=seed,epoch=record['selection']['epoch'],noise_seed=noise_seed,reproduction_max_abs_difference=max_error,original_rmse=float(np.sqrt(original_mse.mean())),masked_rmse=float(np.sqrt(masked_mse.mean())),changed_targets=int(changed.sum()),unseen_slots=len(unseen),unseen_weight_max_change_from_seed_initialization=weight_change,original_prediction_abs_max=float(np.abs(regenerated).max()),masked_prediction_abs_max=float(np.abs(counterfactual).max())))
+            rows.append(dict(arm=arm,model_seed=seed,epoch=record['selection']['epoch'],noise_seed=noise_seed,reproduction_max_abs_difference=max_error,reproduction_global_rmse_difference=reproduction['global_rmse_difference'],reproduction_strict_allclose=reproduction['strict_allclose_passed'],saved_original_rmse=reproduction['saved_rmse'],original_rmse=float(np.sqrt(original_mse.mean())),masked_rmse=float(np.sqrt(masked_mse.mean())),changed_targets=int(changed.sum()),unseen_slots=len(unseen),unseen_weight_max_change_from_seed_initialization=weight_change,original_prediction_abs_max=float(np.abs(regenerated).max()),masked_prediction_abs_max=float(np.abs(counterfactual).max())))
             for c,g in meta.groupby('compound'):
                 ix=g.index.to_numpy();details.append(dict(arm=arm,compound=c,changed_input=bool(changed[ix].any()),n_targets=len(ix),original_rmse=float(np.sqrt(original_mse[ix].mean())),masked_rmse=float(np.sqrt(masked_mse[ix].mean()))))
             for slot in unseen:audit_rows.append(dict(arm=arm,slot=slot,definition=repr(state['slots'][slot]),token_width=token_width))
@@ -124,16 +159,16 @@ def diagnose(unit,out,arms,threads=4):
             print(rows[-1],flush=True)
     finally:core.PROTOCOL.clear();core.PROTOCOL.update(old)
     pd.DataFrame(audit_rows).to_csv(out/'masked_slots.csv',index=False)
-    core.save_json(out/'provenance.json',dict(unit=str(unit.resolve()),arms=arms,threads=threads,training=False,refitting_preprocessing=False,prediction_regeneration=True,same_noise_seed=True,scope='Post-hoc frozen-model input ablation, not a corrected benchmark or independent test; masked information is removed.',consumed_sha256={str(p.resolve()):core.digest(p) for p in consumed},input_sha256=info['input_sha256'],diagnostic_sha256=core.digest(Path(__file__)),prediction_code_hash_verified=True))
+    core.save_json(out/'provenance.json',dict(unit=str(unit.resolve()),arms=arms,threads=threads,training=False,refitting_preprocessing=False,prediction_regeneration=True,same_noise_seed=True,allow_numerical_reproduction=allow_numerical,scope='Post-hoc frozen-model input ablation, not a corrected benchmark or independent test; masked information is removed.',consumed_sha256={str(p.resolve()):core.digest(p) for p in consumed},input_sha256=info['input_sha256'],diagnostic_sha256=core.digest(Path(__file__)),prediction_code_hash_verified=True))
     print('\nSUMMARY\n'+pd.DataFrame(rows).to_string(index=False),flush=True)
     print('\nCOMPOUND DETAILS\n'+pd.DataFrame(details).sort_values(['arm','original_rmse'],ascending=[True,False]).to_string(index=False),flush=True)
     return pd.DataFrame(rows)
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--unit',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--threads',type=int,default=4);p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan','descriptor','both']);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--allow-numerical-reproduction',action='store_true',help='Explicitly allow bounded numerical differences; preserve original and regenerated predictions plus detailed checks');p.add_argument('--unit',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--threads',type=int,default=4);p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan','descriptor','both']);a=p.parse_args()
     if a.threads<1 or len(a.arms)!=len(set(a.arms)):p.error('Invalid threads/duplicate arms')
     from threadpoolctl import threadpool_limits
-    with threadpool_limits(limits=a.threads):diagnose(a.unit,a.out,a.arms,a.threads)
+    with threadpool_limits(limits=a.threads):diagnose(a.unit,a.out,a.arms,a.threads,a.allow_numerical_reproduction)
 
 if __name__=='__main__':main()

@@ -42,3 +42,21 @@ class FrozenMaskTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'failed reproduction'):
                 with contextlib.redirect_stdout(io.StringIO()):diagnostic.diagnose(unit,root/'failed',['basic'],1)
             self.assertFalse((root/'failed/basic_diagnostic_predictions.npz').exists())
+
+    def test_numerical_tolerance_requires_explicit_flag_and_all_bounds(self):
+        import numpy as np
+        saved=np.ones((16,64));saved[0,0]=.001
+        truth=np.zeros_like(saved)
+        regenerated=saved.copy();regenerated[0,0]+=1.4543533325195312e-5
+        strict=diagnostic.reproduction_report(saved,regenerated,truth)
+        self.assertFalse(strict['strict_allclose_passed'])
+        self.assertFalse(strict['accepted'])
+        permitted=diagnostic.reproduction_report(saved,regenerated,truth,True)
+        self.assertTrue(permitted['accepted'])
+        self.assertLess(permitted['global_rmse_difference'],1e-6)
+        too_large=saved.copy();too_large[0,0]+=.001
+        self.assertFalse(diagnostic.reproduction_report(saved,too_large,truth,True)['accepted'])
+        systematic=saved+2e-5
+        self.assertFalse(diagnostic.reproduction_report(saved,systematic,truth,True)['accepted'])
+        bad=regenerated.copy();bad[0,0]=np.nan
+        with self.assertRaises(ValueError):diagnostic.reproduction_report(saved,bad,truth,True)
