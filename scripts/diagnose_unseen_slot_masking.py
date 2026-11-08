@@ -103,7 +103,9 @@ def reproduction_report(saved, regenerated, truth, allow_numerical=False):
     return report
 
 
-def diagnose(unit,out,arms,threads=4,allow_numerical=False):
+def diagnose(unit,out,arms,threads=4,allow_numerical=False,generation_seeds=None):
+    if generation_seeds is not None and (not generation_seeds or len(set(generation_seeds))!=len(generation_seeds) or any(s<0 or s>=2**32 for s in generation_seeds)):
+        raise ValueError("Generation seeds must be unique uint32 values")
     import sklearn,scipy
     info=json.loads((unit/'run.json').read_text());settings=info['settings']
     prepared=Path(info['arguments']['prepared']);structure=Path(info['arguments']['structure'])
@@ -155,6 +157,19 @@ def diagnose(unit,out,arms,threads=4,allow_numerical=False):
             if not reproduction['accepted']:
                 core.save_json(out/'reproduction_failed.json',dict(arm=arm,**reproduction,masking_not_run=True))
                 raise ValueError('Original prediction failed reproduction; stopped before masking: '+arm)
+            if generation_seeds is not None:
+                for sample_seed in generation_seeds:
+                    prediction=regenerated if sample_seed==noise_seed else pilot.restore_output(core.predict_family_scores('ddpm',model,{'X':X},indices,sample_seed),state)
+                    if not np.isfinite(prediction).all():raise ValueError('Nonfinite sampling diagnostic predictions')
+                    mse=((prediction-truth)**2).mean(1)
+                    rows.append(dict(arm=arm,model_seed=seed,epoch=record['selection']['epoch'],generation_seed=sample_seed,samples_per_target=settings['samples'],rmse=float(np.sqrt(mse.mean())),mae=float(np.abs(prediction-truth).mean()),prediction_abs_p99=float(np.quantile(np.abs(prediction),.99)),prediction_abs_max=float(np.abs(prediction).max()),saved_original_rmse=reproduction['saved_rmse'],reproduction_max_abs_difference=max_error,reproduction_global_rmse_difference=reproduction['global_rmse_difference']))
+                    for c,g in meta.groupby('compound'):
+                        ix=g.index.to_numpy();details.append(dict(arm=arm,model_seed=seed,generation_seed=sample_seed,compound=c,n_targets=len(ix),rmse=float(np.sqrt(mse[ix].mean())),prediction_abs_max=float(np.abs(prediction[ix]).max())))
+                    np.savez_compressed(out/f'{arm}_generation_{sample_seed}.npz',target_ids=ids,prediction=prediction)
+                    pd.DataFrame(rows).to_csv(out/'generation_summary.csv',index=False)
+                    pd.DataFrame(details).to_csv(out/'generation_by_compound.csv',index=False)
+                    print('GENERATION',rows[-1],flush=True)
+                continue
             counterfactual=pilot.restore_output(core.predict_family_scores('ddpm',model,{'X':MX},indices,noise_seed),state)
             original_mse=((regenerated-truth)**2).mean(1);masked_mse=((counterfactual-truth)**2).mean(1)
             if not np.isfinite(counterfactual).all():raise ValueError('Nonfinite masked predictions')
@@ -166,17 +181,21 @@ def diagnose(unit,out,arms,threads=4,allow_numerical=False):
             pd.DataFrame(rows).to_csv(out/'summary.csv',index=False);pd.DataFrame(details).to_csv(out/'by_compound.csv',index=False)
             print(rows[-1],flush=True)
     finally:core.PROTOCOL.clear();core.PROTOCOL.update(old)
-    pd.DataFrame(audit_rows).to_csv(out/'masked_slots.csv',index=False)
-    core.save_json(out/'provenance.json',dict(unit=str(unit.resolve()),arms=arms,threads=threads,training=False,refitting_preprocessing=False,prediction_regeneration=True,same_noise_seed=True,allow_numerical_reproduction=allow_numerical,scope='Post-hoc frozen-model input ablation, not a corrected benchmark or independent test; masked information is removed.',consumed_sha256={str(p.resolve()):core.digest(p) for p in consumed},input_sha256=info['input_sha256'],diagnostic_sha256=core.digest(Path(__file__)),prediction_code_hash_verified=True))
+    if generation_seeds is None:pd.DataFrame(audit_rows).to_csv(out/'masked_slots.csv',index=False)
+    core.save_json(out/'provenance.json',dict(unit=str(unit.resolve()),arms=arms,threads=threads,training=False,refitting_preprocessing=False,prediction_regeneration=True,same_noise_seed=generation_seeds is None,generation_seeds=generation_seeds,slot_masking=generation_seeds is None,allow_numerical_reproduction=allow_numerical,scope=('Frozen-model sampling-seed diagnostic, fixed unmasked inputs and original samples-per-target; not independent training replicates or a new benchmark, no seed selection or ensemble.' if generation_seeds is not None else 'Post-hoc frozen-model input ablation, not a corrected benchmark or independent test; masked information is removed.'),consumed_sha256={str(p.resolve()):core.digest(p) for p in consumed},input_sha256=info['input_sha256'],diagnostic_sha256=core.digest(Path(__file__)),prediction_code_hash_verified=True))
     print('\nSUMMARY\n'+pd.DataFrame(rows).to_string(index=False),flush=True)
-    print('\nCOMPOUND DETAILS\n'+pd.DataFrame(details).sort_values(['arm','original_rmse'],ascending=[True,False]).to_string(index=False),flush=True)
+    print('\nCOMPOUND DETAILS\n'+pd.DataFrame(details).sort_values(['arm','rmse' if generation_seeds is not None else 'original_rmse'],ascending=[True,False]).to_string(index=False),flush=True)
+    if generation_seeds is not None:
+        aggregate=pd.DataFrame(rows).groupby('arm').agg(rmse_mean=('rmse','mean'),rmse_std=('rmse','std'),rmse_min=('rmse','min'),rmse_max=('rmse','max'),prediction_abs_max=('prediction_abs_max','max'))
+        aggregate.to_csv(out/'generation_aggregate.csv')
+        print('\nGENERATION AGGREGATE\n'+aggregate.to_string(),flush=True)
     return pd.DataFrame(rows)
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--allow-numerical-reproduction',action='store_true',help='Explicitly allow bounded numerical differences; preserve original and regenerated predictions plus detailed checks');p.add_argument('--unit',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--threads',type=int,default=4);p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan','descriptor','both']);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--generation-seeds',type=int,nargs='+',help='Sampling-only mode: fixed model and original inputs; no slot masking');p.add_argument('--allow-numerical-reproduction',action='store_true',help='Explicitly allow bounded numerical differences; preserve original and regenerated predictions plus detailed checks');p.add_argument('--unit',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--threads',type=int,default=4);p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan','descriptor','both']);a=p.parse_args()
     if a.threads<1 or len(a.arms)!=len(set(a.arms)):p.error('Invalid threads/duplicate arms')
     from threadpoolctl import threadpool_limits
-    with threadpool_limits(limits=a.threads):diagnose(a.unit,a.out,a.arms,a.threads,a.allow_numerical_reproduction)
+    with threadpool_limits(limits=a.threads):diagnose(a.unit,a.out,a.arms,a.threads,a.allow_numerical_reproduction,a.generation_seeds)
 
 if __name__=='__main__':main()

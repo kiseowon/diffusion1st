@@ -33,6 +33,22 @@ class FrozenMaskTests(unittest.TestCase):
             unaffected=detail[~detail.changed_input]
             np.testing.assert_allclose(unaffected.original_rmse,unaffected.masked_rmse,rtol=1e-6,atol=1e-6)
             self.assertEqual(before,{str(p):core.digest(p) for p in unit.rglob('*') if p.is_file()})
+            # Sampling-only mode must keep the input tensor identical for every
+            # generation seed and must never call training or apply slot masking.
+            sampler=core.predict_family_scores;seen_inputs=[]
+            def checked_sampler(kind,model,pack,rows,seed):
+                seen_inputs.append(pack['X'].clone())
+                return sampler(kind,model,pack,rows,seed)
+            with patch.object(core,'train_epoch',side_effect=AssertionError('No training')),patch.object(core,'predict_family_scores',side_effect=checked_sampler):
+                with contextlib.redirect_stdout(io.StringIO()):sampling=diagnostic.diagnose(unit,root/'sampling',['basic'],1,True,[30042,40042,50042])
+            self.assertEqual(len(sampling),3)
+            self.assertEqual(set(sampling.generation_seed),{30042,40042,50042})
+            self.assertEqual(len(seen_inputs),3)
+            import torch
+            for x in seen_inputs[1:]:torch.testing.assert_close(x,seen_inputs[0],rtol=0,atol=0)
+            self.assertFalse((root/'sampling/basic_diagnostic_predictions.npz').exists())
+            self.assertFalse((root/'sampling/masked_slots.csv').exists())
+            self.assertEqual(before,{str(p):core.digest(p) for p in unit.rglob('*') if p.is_file()})
             # Corrupt only the saved prediction and update its integrity hash to
             # exercise the numerical reproduction guard, not just file checks.
             task=unit/'basic/ddpm';marker=task/'complete.json';record=json.loads(marker.read_text());p=task/record['prediction_path']
