@@ -100,3 +100,5 @@ PCA64·화학구조4조건의 고정 설정 반복 검증은 [설계 문서](doc
 [Pair 단위 MLP 대 전체 source 연결 비교](docs/pairwise-mlp-comparison.md): 완료된 입력 기여도 실험의 분할·전처리를 재사용하고 target-equal 가중치와 최대 업데이트 예산을 맞춥니다.
 
 [24시간·High 고정 조건 toy 실험](docs/fixed-condition-toy.md): 공통 화합물에서 구조 없음/Morgan/2D × 작은 MLP/cGAN/DDPM, 입력 PCA64·전체 probe 출력. 기본 단일 분할·초기화3회입니다.
+
+[고정 toy 모델의 학습·테스트 예측과 DDPM 노이즈 복원 진단](docs/toy-fit-diagnostics.md): 재학습 없이 저장된 최종 모델을 검사합니다.
