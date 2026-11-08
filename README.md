@@ -92,3 +92,5 @@ checkpoint와 joblib은 역직렬화하거나 실행하지 않았습니다. **�
 두 자료는 사용자 서버 로그에서 보존했으며 이 환경의 재학습 검증 결과가 아닙니다. 12조건은 fold0·모델seed42의 단일 탐색 평가입니다.
 
 PCA64·화학구조4조건의 고정 설정 반복 검증은 [설계 문서](docs/pca64-combined-structure.md#고정-설정-반복-검증)를 참고하세요. 5-fold × 모델seed3개 ×12조건이며 독립 분할3회가 아닙니다.
+
+[입력 PCA64 대 전체 probe 반복 비교](docs/paired-input-pca-full.md): 기본 MLP·구조 없음/Morgan, 5-fold×모델seed3개×입력2모드. 첫 층 크기와 입력 스케일 차이를 함께 보고합니다.
