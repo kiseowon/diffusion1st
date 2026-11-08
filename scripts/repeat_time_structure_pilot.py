@@ -14,7 +14,7 @@ def arguments(a,fold,seed):
         '--threads',str(a.threads),'--budget-minutes',str(a.unit_budget_minutes),
         '--split-seed',str(a.split_seed),'--model-seed',str(seed),'--fold',str(fold),'--folds',str(a.folds),
         '--arms',*a.arms,'--families',*a.families,'--descriptor-policy',a.descriptor_policy,'--output-space',a.output_space,'--input-space',a.input_space]
-    command += ['--input-components',str(a.input_components),'--structure-layout',a.structure_layout]
+    command += ['--input-components',str(a.input_components),'--structure-layout',a.structure_layout,'--source-input',a.source_input]
     if a.cache_diffusion_context:command.append('--cache-diffusion-context')
     return command
 
@@ -110,6 +110,7 @@ def summarize(a):
 
 
 def check_reference_root(a):
+    if a.source_input!='present':raise ValueError('Cannot reuse reference for source ablation')
     if a.input_components!=32 or a.structure_layout!='shared':
         raise ValueError('Reference reuse requires original PCA32/shared layout')
     if a.output_space!='pca' or a.input_space!='pca':
@@ -194,6 +195,7 @@ def main(argv=None):
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-components',type=int,default=32)
+    p.add_argument('--source-input',choices=['present','absent'],default='present')
     p.add_argument('--structure-layout',choices=['shared','separate'],default='shared')
     p.add_argument('--cache-diffusion-context',action='store_true')
     p.add_argument('--folds',type=int,default=5)
@@ -217,7 +219,7 @@ def main(argv=None):
     jobs=a.folds*len(a.model_seeds)*len(a.arms)*len(a.families)
     print(json.dumps(dict(mode='execute' if a.execute else 'plan_only',jobs=jobs,fits_up_to=2*jobs,
         folds=a.folds,model_seeds=a.model_seeds,arms=a.arms,families=a.families,max_epochs=a.epochs,input_space=a.input_space,output_space=a.output_space,
-        input_components=a.input_components,structure_layout=a.structure_layout,
+        input_components=a.input_components,structure_layout=a.structure_layout,source_input=a.source_input,
         cache_diffusion_context=a.cache_diffusion_context,
         descriptor=a.descriptor_policy if any(arm in a.arms for arm in ['descriptor','both']) else 'not_requested',soft_global_budget=a.budget_minutes,
         note='Global budget checked between fold/seed units; current unit and evaluation can overrun'),indent=2),flush=True)

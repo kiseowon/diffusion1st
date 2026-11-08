@@ -133,6 +133,25 @@ def prepare(data,source,slots,ids,meta,Y,fit,components=32,output_space="pca",in
     return dict(X=X if isinstance(X,SharedSourceFeatures) else torch.tensor(X),Z=Z,state=state)
 
 
+
+def source_input(pack, mode):
+    """Remove the whole source branch during both training and evaluation."""
+    import torch
+    if mode not in ('present','absent'):raise ValueError('Invalid source input mode')
+    if mode=='present':return pack
+    X=pack['X']
+    if isinstance(X,SharedSourceFeatures):
+        X=SharedSourceFeatures(torch.zeros_like(X.source),X.source_index,X.target,X.structure)
+        source_width=pack['X'].source.shape[1]
+    else:
+        encoder=pack['state']['target_condition_encoder']
+        target_width=2+sum(len(c) for c in encoder.named_transformers_['category'].categories_)
+        source_width=X.shape[1]-target_width
+        if source_width<=0:raise ValueError('Invalid source/target feature layout')
+        X=X.clone();X[:,:source_width]=0
+    return dict(pack,X=X,state=dict(pack['state'],source_input='absent',source_feature_width=source_width,source_ablation='expression_source_conditions_and_observation_masks_all_zero_during_fit_and_evaluation'))
+
+
 def restore_output(scores,state):
     if state.get('output_space','pca')=='full':
         return scores*state['output_scale']+state['output_mean']
@@ -181,6 +200,7 @@ def main(argv=None):
     p.add_argument('--output-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-space',choices=['pca','full'],default='pca')
     p.add_argument('--input-components',type=int,default=32)
+    p.add_argument('--source-input',choices=['present','absent'],default='present')
     p.add_argument('--structure-layout',choices=['shared','separate'],default='shared')
     p.add_argument('--cache-diffusion-context',action='store_true',help='Reuse deterministic DDPM context at evaluation only')
     p.add_argument('--split-seed',type=int,default=42)
@@ -210,6 +230,7 @@ def main(argv=None):
         outer_folds=a.folds,evaluated_fold=a.fold,arms=a.arms,families=a.families,descriptor_policy=a.descriptor_policy,source_aggregation='none_fixed_metadata_slots_with_mask',
         slot_schema_policy='all_available_source_metadata_no_expression_or_target_outcomes')
     settings.update(output_space=a.output_space,input_space=a.input_space)
+    if a.source_input=="absent":settings["source_input"]="absent"
     if a.structure_layout!="shared":settings["structure_layout"]=a.structure_layout
     if a.cache_diffusion_context:settings['cache_diffusion_context']=True
     if a.input_space=='full':
@@ -271,6 +292,7 @@ def main(argv=None):
         with threadpool_limits(limits=a.threads):
             inner=prepare(data,source,slots,ids,meta,Y,itr,output_space=a.output_space,input_space=a.input_space,components=a.input_components)
             outer=prepare(data,source,slots,ids,meta,Y,train,output_space=a.output_space,input_space=a.input_space,components=a.input_components)
+            inner=source_input(inner,a.source_input);outer=source_input(outer,a.source_input)
             core.save_json(a.out/'target_representation.json',dict(output_space=a.output_space,
                 inner_dimension=inner['Z'].shape[1],final_dimension=outer['Z'].shape[1],n_probes=Y.shape[1],
                 full_target_roundtrip_max_abs_error=outer['state'].get('target_roundtrip_max_abs_error'),
