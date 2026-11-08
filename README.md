@@ -102,3 +102,5 @@ PCA64·화학구조4조건의 고정 설정 반복 검증은 [설계 문서](doc
 [24시간·High 고정 조건 toy 실험](docs/fixed-condition-toy.md): 공통 화합물에서 구조 없음/Morgan/2D × 작은 MLP/cGAN/DDPM, 입력 PCA64·전체 probe 출력. 기본 단일 분할·초기화3회입니다.
 
 [고정 toy 모델의 학습·테스트 예측과 DDPM 노이즈 복원 진단](docs/toy-fit-diagnostics.md): 재학습 없이 저장된 최종 모델을 검사합니다.
+
+[무작위 출력 probe256개 비교](docs/random-output-subset-toy.md): 입력·화합물 분할·전처리·reference epoch는 유지하고, 기존 전체 출력 모델도 같은256개에서 재평가합니다.
