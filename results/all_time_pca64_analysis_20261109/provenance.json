@@ -1,0 +1,26 @@
+{
+  "analysis_date": "2026-11-09 Asia/Seoul",
+  "primary_scope": "all-time/dose PCA64/full3453, four structure arms, MLP/cGAN/DDPM, 5 fixed compound folds x model seeds42/43/44",
+  "verification": "Parsed user server logs; no source expression/prediction arrays from this run independently re-evaluated; no training/prediction regeneration in this analysis",
+  "completed_jobs": 180,
+  "files_sha256": {
+    "README.md": "5a9cdd3a8b7929701ea3dad87dad794c57ac803b2f2af2d720017f5c248fe2c9",
+    "epoch_selection_summary.csv": "410212e33bd96de08eed02657b8805a0dfe6dee1b752bd2f86d3d8d8d842d9e9",
+    "fixed_model_sampling_server_log.txt": "d91fee8ea9c54cbf4dbad6373c6cc5423b7fb66c6cee897125a17be297741395",
+    "fixed_slot_masking_server_log.txt": "28886c6ace6a0e9e558916a6e12ef5cbbb83e4dbe3382aa62dd3c2cb6a8b1dad",
+    "full_repeated_server_log.txt": "e288d2457d75db343db639f82a3485d199379aaf439b8c8062a40deec380a785",
+    "input_range_server_log.txt": "a2278a6c47d29ad2c6bf54658f6f8a7c6cf3d23beb0bce1163b4b4c57ac54ce3",
+    "reported_classification_summary.csv": "1c9b86368a525e3dab86161ca727ba5e1fdcefd06aa6218453ef5118201d2f1e",
+    "reported_followup_summaries.json": "321b732f2fbc6c7f513f42fadae5ef10ec054ea5ea214f7f3d09ad13661dbb9f",
+    "reported_jobs_and_epoch_selection.csv": "9a9e63340be6265321ea07129f468450882f6e71a00b9000ec36abc0b5ed9c8b",
+    "reported_model_dimensions.csv": "e634efa0c6c9ae9abdafa159f3303f6def33e64a69d72423c24c7a99c78302bb",
+    "reported_regression_summary.csv": "bc3e35d7318a1de846c77d2afd097cf6be65c42a6a7821954bd18a9805e84f77"
+  },
+  "sources": {
+    "full_repeated_server_log.txt": "/workspace/attachments/79df33bf-eeea-4702-88de-adfaba871205/붙여넣은 텍스트.txt",
+    "input_range_server_log.txt": "/workspace/attachments/a1bc25c6-d694-402e-9ba6-e9da18aa75bd/붙여넣은 텍스트.txt",
+    "fixed_slot_masking_server_log.txt": "/workspace/attachments/57538c65-151b-4fb4-b39e-2d7160bb133c/붙여넣은 텍스트.txt",
+    "fixed_model_sampling_server_log.txt": "/workspace/attachments/438ca2c2-a133-4855-bab7-a1eab8a9ad04/붙여넣은 텍스트.txt"
+  },
+  "note": "Per-job reported test RMSE rounded to six decimals; selection validation values are dict precision from log. Pasted paired OOF differences are truncated in source; not reconstructed as complete raw paired CSV."
+}

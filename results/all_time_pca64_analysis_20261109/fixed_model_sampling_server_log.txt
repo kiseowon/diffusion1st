@@ -1,0 +1,433 @@
+Cloning into '/home/seowon1211/data1/conditioned_expression/frozen_sampling_check_20261108_080805_6db426/code'...
+검사 대상: /home/seowon1211/data1/conditioned_expression/repeated_pca64_structure4_20261107_135949_e51164/results/fold_1/seed_43
+저장 위치: /home/seowon1211/data1/conditioned_expression/frozen_sampling_check_20261108_080805_6db426/report
+모델·입력 고정 / 생성 seed만 변경 / 재학습 없음
+HEAD is now at b7186d9 Diagnose sampling-seed variability with fixed DDPM models and unmasked inputs
+REPRODUCTION basic {"max_abs_difference": 1.4543533325195312e-05, "prediction_rms_difference": 3.772014293406524e-07, "normalized_prediction_rms_difference": 8.664303571848461e-07, "saved_rmse": 0.5166340237698216, "regenerated_rmse": 0.5166340018407006, "global_rmse_difference": 2.19291209635486e-08, "max_target_rmse_difference": 2.0673832185624796e-06, "max_target_prediction_rms_difference": 2.645930644871611e-06, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+GENERATION {'arm': 'basic', 'model_seed': 43, 'epoch': 80, 'generation_seed': 30043, 'samples_per_target': 4, 'rmse': 0.5166340018407006, 'mae': 0.2572476411066038, 'prediction_abs_p99': 1.992771433317841, 'prediction_abs_max': 12.620737585025047, 'saved_original_rmse': 0.5166340237698216, 'reproduction_max_abs_difference': 1.4543533325195312e-05, 'reproduction_global_rmse_difference': 2.19291209635486e-08}
+GENERATION {'arm': 'basic', 'model_seed': 43, 'epoch': 80, 'generation_seed': 40043, 'samples_per_target': 4, 'rmse': 0.49014773399131184, 'mae': 0.246671754389665, 'prediction_abs_p99': 1.7911606248706151, 'prediction_abs_max': 12.993773969607567, 'saved_original_rmse': 0.5166340237698216, 'reproduction_max_abs_difference': 1.4543533325195312e-05, 'reproduction_global_rmse_difference': 2.19291209635486e-08}
+GENERATION {'arm': 'basic', 'model_seed': 43, 'epoch': 80, 'generation_seed': 50043, 'samples_per_target': 4, 'rmse': 0.5427590087561831, 'mae': 0.2629616206940994, 'prediction_abs_p99': 2.196651372724506, 'prediction_abs_max': 13.985338720278953, 'saved_original_rmse': 0.5166340237698216, 'reproduction_max_abs_difference': 1.4543533325195312e-05, 'reproduction_global_rmse_difference': 2.19291209635486e-08}
+REPRODUCTION morgan {"max_abs_difference": 5.245208740234375e-06, "prediction_rms_difference": 1.665962378884159e-07, "normalized_prediction_rms_difference": 4.845123927754895e-07, "saved_rmse": 0.4393445039219904, "regenerated_rmse": 0.439344490808742, "global_rmse_difference": 1.3113248431562141e-08, "max_target_rmse_difference": 6.029233491910979e-07, "max_target_prediction_rms_difference": 9.539229490052474e-07, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+GENERATION {'arm': 'morgan', 'model_seed': 43, 'epoch': 80, 'generation_seed': 30043, 'samples_per_target': 4, 'rmse': 0.439344490808742, 'mae': 0.2296197686584252, 'prediction_abs_p99': 1.5679859793595454, 'prediction_abs_max': 9.586674245791649, 'saved_original_rmse': 0.4393445039219904, 'reproduction_max_abs_difference': 5.245208740234375e-06, 'reproduction_global_rmse_difference': 1.3113248431562141e-08}
+GENERATION {'arm': 'morgan', 'model_seed': 43, 'epoch': 80, 'generation_seed': 40043, 'samples_per_target': 4, 'rmse': 0.41784162429405003, 'mae': 0.2216895519262716, 'prediction_abs_p99': 1.403117109135018, 'prediction_abs_max': 10.315450223880028, 'saved_original_rmse': 0.4393445039219904, 'reproduction_max_abs_difference': 5.245208740234375e-06, 'reproduction_global_rmse_difference': 1.3113248431562141e-08}
+GENERATION {'arm': 'morgan', 'model_seed': 43, 'epoch': 80, 'generation_seed': 50043, 'samples_per_target': 4, 'rmse': 0.45732613216719653, 'mae': 0.23429279701605998, 'prediction_abs_p99': 1.71891564827535, 'prediction_abs_max': 10.710143598513817, 'saved_original_rmse': 0.4393445039219904, 'reproduction_max_abs_difference': 5.245208740234375e-06, 'reproduction_global_rmse_difference': 1.3113248431562141e-08}
+REPRODUCTION descriptor {"max_abs_difference": 9.5367431640625e-06, "prediction_rms_difference": 2.416937472267346e-07, "normalized_prediction_rms_difference": 3.5324945419466156e-07, "saved_rmse": 0.7382520346066442, "regenerated_rmse": 0.7382521013872445, "global_rmse_difference": 6.678060027187627e-08, "max_target_rmse_difference": 1.4522993834198417e-06, "max_target_prediction_rms_difference": 1.5463536645497297e-06, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+GENERATION {'arm': 'descriptor', 'model_seed': 43, 'epoch': 60, 'generation_seed': 30043, 'samples_per_target': 4, 'rmse': 0.7382521013872445, 'mae': 0.29551099780142714, 'prediction_abs_p99': 3.112664855878746, 'prediction_abs_max': 22.894707423537525, 'saved_original_rmse': 0.7382520346066442, 'reproduction_max_abs_difference': 9.5367431640625e-06, 'reproduction_global_rmse_difference': 6.678060027187627e-08}
+GENERATION {'arm': 'descriptor', 'model_seed': 43, 'epoch': 60, 'generation_seed': 40043, 'samples_per_target': 4, 'rmse': 0.6258696609971547, 'mae': 0.2738855259405833, 'prediction_abs_p99': 2.560936276994537, 'prediction_abs_max': 23.00957940229729, 'saved_original_rmse': 0.7382520346066442, 'reproduction_max_abs_difference': 9.5367431640625e-06, 'reproduction_global_rmse_difference': 6.678060027187627e-08}
+GENERATION {'arm': 'descriptor', 'model_seed': 43, 'epoch': 60, 'generation_seed': 50043, 'samples_per_target': 4, 'rmse': 0.7445612870674319, 'mae': 0.30330560440851045, 'prediction_abs_p99': 3.3073485343491864, 'prediction_abs_max': 24.764071208327564, 'saved_original_rmse': 0.7382520346066442, 'reproduction_max_abs_difference': 9.5367431640625e-06, 'reproduction_global_rmse_difference': 6.678060027187627e-08}
+REPRODUCTION both {"max_abs_difference": 4.76837158203125e-06, "prediction_rms_difference": 1.6265964482239438e-07, "normalized_prediction_rms_difference": 3.046285398499823e-07, "saved_rmse": 0.6001313690374112, "regenerated_rmse": 0.6001314084197071, "global_rmse_difference": 3.9382295979883963e-08, "max_target_rmse_difference": 7.98210086028206e-07, "max_target_prediction_rms_difference": 9.263696312048765e-07, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+GENERATION {'arm': 'both', 'model_seed': 43, 'epoch': 60, 'generation_seed': 30043, 'samples_per_target': 4, 'rmse': 0.6001314084197071, 'mae': 0.26062190727193296, 'prediction_abs_p99': 2.3999851501948877, 'prediction_abs_max': 17.43376610884026, 'saved_original_rmse': 0.6001313690374112, 'reproduction_max_abs_difference': 4.76837158203125e-06, 'reproduction_global_rmse_difference': 3.9382295979883963e-08}
+GENERATION {'arm': 'both', 'model_seed': 43, 'epoch': 60, 'generation_seed': 40043, 'samples_per_target': 4, 'rmse': 0.512381770492705, 'mae': 0.24469004658650514, 'prediction_abs_p99': 1.9554039759208912, 'prediction_abs_max': 18.089953166335377, 'saved_original_rmse': 0.6001313690374112, 'reproduction_max_abs_difference': 4.76837158203125e-06, 'reproduction_global_rmse_difference': 3.9382295979883963e-08}
+GENERATION {'arm': 'both', 'model_seed': 43, 'epoch': 60, 'generation_seed': 50043, 'samples_per_target': 4, 'rmse': 0.6091569441882394, 'mae': 0.267912330866306, 'prediction_abs_p99': 2.58352012548162, 'prediction_abs_max': 18.997889262526783, 'saved_original_rmse': 0.6001313690374112, 'reproduction_max_abs_difference': 4.76837158203125e-06, 'reproduction_global_rmse_difference': 3.9382295979883963e-08}
+
+SUMMARY
+       arm  model_seed  epoch  generation_seed  samples_per_target     rmse      mae  prediction_abs_p99  prediction_abs_max  saved_original_rmse  reproduction_max_abs_difference  reproduction_global_rmse_difference
+     basic          43     80            30043                   4 0.516634 0.257248            1.992771           12.620738             0.516634                         0.000015                         2.192912e-08
+     basic          43     80            40043                   4 0.490148 0.246672            1.791161           12.993774             0.516634                         0.000015                         2.192912e-08
+     basic          43     80            50043                   4 0.542759 0.262962            2.196651           13.985339             0.516634                         0.000015                         2.192912e-08
+    morgan          43     80            30043                   4 0.439344 0.229620            1.567986            9.586674             0.439345                         0.000005                         1.311325e-08
+    morgan          43     80            40043                   4 0.417842 0.221690            1.403117           10.315450             0.439345                         0.000005                         1.311325e-08
+    morgan          43     80            50043                   4 0.457326 0.234293            1.718916           10.710144             0.439345                         0.000005                         1.311325e-08
+descriptor          43     60            30043                   4 0.738252 0.295511            3.112665           22.894707             0.738252                         0.000010                         6.678060e-08
+descriptor          43     60            40043                   4 0.625870 0.273886            2.560936           23.009579             0.738252                         0.000010                         6.678060e-08
+descriptor          43     60            50043                   4 0.744561 0.303306            3.307349           24.764071             0.738252                         0.000010                         6.678060e-08
+      both          43     60            30043                   4 0.600131 0.260622            2.399985           17.433766             0.600131                         0.000005                         3.938230e-08
+      both          43     60            40043                   4 0.512382 0.244690            1.955404           18.089953             0.600131                         0.000005                         3.938230e-08
+      both          43     60            50043                   4 0.609157 0.267912            2.583520           18.997889             0.600131                         0.000005                         3.938230e-08
+
+COMPOUND DETAILS
+       arm  model_seed  generation_seed           compound  n_targets     rmse  prediction_abs_max
+     basic          43            50043              TNFÉø         12 1.686807           13.985339
+     basic          43            50043         phalloidin          4 1.652594           10.848998
+     basic          43            30043              TNFÉø         12 1.576734           12.620738
+     basic          43            40043         phalloidin          4 1.394165           10.949483
+     basic          43            40043              TNFÉø         12 1.259663           12.993774
+     basic          43            30043         phalloidin          4 1.257175            7.636406
+     basic          43            40043         gentamicin         12 1.147261           12.591101
+     basic          43            50043         gentamicin         12 1.074543            9.583014
+     basic          43            30043         gentamicin         12 0.994312            9.126074
+     basic          43            30043        tunicamycin         12 0.949222           10.582794
+     basic          43            50043        tunicamycin         12 0.862513            7.735479
+     basic          43            40043        tunicamycin         12 0.761212            7.948251
+     basic          43            40043      galactosamine         12 0.651792            2.194870
+     basic          43            30043      galactosamine         12 0.648897            2.188440
+     basic          43            50043      galactosamine         12 0.646016            1.910510
+     basic          43            50043  acetamidofluorene         12 0.455110            1.259355
+     basic          43            30043  acetamidofluorene         12 0.454808            1.378623
+     basic          43            40043  acetamidofluorene         12 0.454503            1.361768
+     basic          43            50043       bromobenzene         12 0.398129            2.447407
+     basic          43            40043           caffeine         12 0.393188            4.132247
+     basic          43            40043       bromobenzene         12 0.365329            2.189260
+     basic          43            30043       bromobenzene         12 0.348420            1.491998
+     basic          43            50043     chlorpromazine          8 0.343493            1.100665
+     basic          43            40043     chlorpromazine          8 0.338833            0.872766
+     basic          43            30043     chlorpromazine          8 0.337888            0.809538
+     basic          43            40043 methyltestosterone         12 0.333714            2.519044
+     basic          43            30043           caffeine         12 0.329739            3.005677
+     basic          43            30043         nifedipine         12 0.326892            0.872992
+     basic          43            50043         nifedipine         12 0.326837            0.816194
+     basic          43            30043            danazol         12 0.326811            0.689098
+     basic          43            40043         nifedipine         12 0.326717            0.849436
+     basic          43            40043            danazol         12 0.326486            0.692269
+     basic          43            50043            danazol         12 0.326428            0.686660
+     basic          43            50043           caffeine         12 0.325861            3.271891
+     basic          43            30043 methyltestosterone         12 0.311647            2.478774
+     basic          43            50043 methyltestosterone         12 0.309720            2.092149
+     basic          43            30043           sulindac         12 0.306624            0.714096
+     basic          43            40043           sulindac         12 0.306500            0.734184
+     basic          43            50043           sulindac         12 0.305753            0.805472
+     basic          43            30043           diazepam         12 0.302078            2.720833
+     basic          43            50043           diazepam         12 0.294813            2.561880
+     basic          43            40043           diazepam         12 0.293505            2.266736
+     basic          43            30043         iproniazid         12 0.289073            3.715077
+     basic          43            30043       benziodarone         12 0.283776            0.804056
+     basic          43            50043       benziodarone         12 0.283228            0.826361
+     basic          43            40043       benziodarone         12 0.282663            0.903516
+     basic          43            40043      chlormadinone         12 0.278092            0.837703
+     basic          43            30043      chlormadinone         12 0.277911            0.857103
+     basic          43            50043      chlormadinone         12 0.277872            0.831563
+     basic          43            40043        methimazole         12 0.274770            0.827216
+     basic          43            50043        methimazole         12 0.274386            0.909274
+     basic          43            30043        methimazole         12 0.272652            1.090002
+     basic          43            40043         iproniazid         12 0.268506            2.541120
+     basic          43            50043         iproniazid         12 0.260737            2.394677
+     basic          43            30043         cimetidine         12 0.260303            1.766688
+     basic          43            30043     nitrofurantoin         12 0.258215            1.497327
+     basic          43            50043     nitrofurantoin         12 0.257775            1.347008
+     basic          43            40043     nitrofurantoin         12 0.256603            1.466983
+     basic          43            40043         cimetidine         12 0.253757            2.048729
+     basic          43            40043       azathioprine         12 0.244147            0.801068
+     basic          43            30043       azathioprine         12 0.244135            0.741781
+     basic          43            50043       azathioprine         12 0.244116            0.719610
+     basic          43            50043         cimetidine         12 0.239236            1.387979
+     basic          43            40043          vitamin A         12 0.236230            0.827929
+     basic          43            50043          vitamin A         12 0.235915            0.832964
+     basic          43            30043          vitamin A         12 0.235824            0.854000
+     basic          43            30043        triamterene         12 0.234901            1.456988
+     basic          43            40043           pemoline         12 0.232207            0.687163
+     basic          43            30043           pemoline         12 0.232046            0.639893
+     basic          43            50043           pemoline         12 0.231198            0.659633
+     basic          43            40043        triamterene         12 0.229280            1.577732
+     basic          43            30043           ajmaline         12 0.229274            0.774627
+     basic          43            50043           ajmaline         12 0.228939            0.750299
+     basic          43            30043        allopurinol         12 0.228654            0.988256
+     basic          43            40043           ajmaline         12 0.228102            0.762875
+     basic          43            50043        allopurinol         12 0.227475            0.891298
+     basic          43            40043        allopurinol         12 0.227185            0.872637
+     basic          43            50043        triamterene         12 0.223653            1.318149
+     basic          43            40043           acarbose         12 0.217894            1.154730
+     basic          43            30043          metformin         12 0.217800            0.716221
+     basic          43            50043          metformin         12 0.217777            0.711749
+     basic          43            40043          metformin         12 0.217771            0.713957
+     basic          43            50043           acarbose         12 0.217734            1.105574
+     basic          43            30043           acarbose         12 0.217152            1.035302
+      both          43            50043              TNFÉø         12 2.292391           18.997889
+      both          43            30043              TNFÉø         12 2.237148           17.433766
+      both          43            40043              TNFÉø         12 1.733644           18.089953
+      both          43            30043        tunicamycin         12 1.414607           13.659551
+      both          43            50043        tunicamycin         12 1.366800            9.262458
+      both          43            50043         phalloidin          4 1.331303            7.692126
+      both          43            40043         phalloidin          4 1.235430            9.026541
+      both          43            30043         phalloidin          4 1.148051            6.639131
+      both          43            40043        tunicamycin         12 1.073736            9.573496
+      both          43            30043      galactosamine         12 0.631756            2.054591
+      both          43            40043      galactosamine         12 0.627389            1.640561
+      both          43            50043      galactosamine         12 0.624770            1.632360
+      both          43            40043         gentamicin         12 0.514094            6.702130
+      both          43            50043  acetamidofluorene         12 0.454681            0.825038
+      both          43            40043  acetamidofluorene         12 0.454487            0.824055
+      both          43            30043  acetamidofluorene         12 0.454442            0.842717
+      both          43            50043         gentamicin         12 0.435186            4.845731
+      both          43            30043         gentamicin         12 0.397066            4.360639
+      both          43            40043           caffeine         12 0.377340            3.523483
+      both          43            50043     chlorpromazine          8 0.355550            1.144924
+      both          43            30043     chlorpromazine          8 0.348380            0.944720
+      both          43            40043     chlorpromazine          8 0.345049            0.851336
+      both          43            30043       bromobenzene         12 0.336213            0.705133
+      both          43            50043       bromobenzene         12 0.335878            0.713844
+      both          43            40043       bromobenzene         12 0.335860            0.721931
+      both          43            50043         nifedipine         12 0.328890            0.711219
+      both          43            40043         nifedipine         12 0.328791            0.714163
+      both          43            30043         nifedipine         12 0.328789            0.713760
+      both          43            30043            danazol         12 0.325395            0.746587
+      both          43            50043            danazol         12 0.325281            0.754634
+      both          43            40043            danazol         12 0.325215            0.756405
+      both          43            30043           caffeine         12 0.313068            2.254390
+      both          43            50043           caffeine         12 0.312676            2.434564
+      both          43            30043           sulindac         12 0.311832            0.768022
+      both          43            40043           sulindac         12 0.311655            0.774848
+      both          43            50043           sulindac         12 0.311553            0.791895
+      both          43            40043      chlormadinone         12 0.282653            0.747536
+      both          43            30043      chlormadinone         12 0.282612            0.748085
+      both          43            50043      chlormadinone         12 0.282550            0.741847
+      both          43            50043       benziodarone         12 0.278729            1.010167
+      both          43            30043       benziodarone         12 0.278145            0.926490
+      both          43            50043        methimazole         12 0.277706            0.726839
+      both          43            40043        methimazole         12 0.277626            0.722919
+      both          43            30043        methimazole         12 0.277257            0.745821
+      both          43            40043       benziodarone         12 0.276561            1.023311
+      both          43            50043     nitrofurantoin         12 0.253173            0.921341
+      both          43            30043     nitrofurantoin         12 0.252909            0.963624
+      both          43            40043     nitrofurantoin         12 0.252901            0.965756
+      both          43            30043           diazepam         12 0.249451            1.044333
+      both          43            40043           diazepam         12 0.248964            0.978880
+      both          43            50043           diazepam         12 0.248788            1.031837
+      both          43            30043       azathioprine         12 0.244223            0.694387
+      both          43            50043       azathioprine         12 0.244219            0.697899
+      both          43            40043       azathioprine         12 0.244170            0.697079
+      both          43            30043 methyltestosterone         12 0.239149            0.660119
+      both          43            40043 methyltestosterone         12 0.239134            0.661395
+      both          43            50043 methyltestosterone         12 0.239021            0.661386
+      both          43            30043          vitamin A         12 0.236070            0.734123
+      both          43            40043          vitamin A         12 0.236066            0.732404
+      both          43            50043          vitamin A         12 0.236035            0.728267
+      both          43            50043           pemoline         12 0.234087            0.684967
+      both          43            40043           pemoline         12 0.234069            0.681744
+      both          43            30043           pemoline         12 0.233885            0.674091
+      both          43            30043        allopurinol         12 0.229727            0.721023
+      both          43            50043        allopurinol         12 0.229710            0.719289
+      both          43            40043        allopurinol         12 0.229514            0.712524
+      both          43            30043           ajmaline         12 0.228930            0.636838
+      both          43            50043           ajmaline         12 0.228867            0.633433
+      both          43            40043           ajmaline         12 0.228291            0.639664
+      both          43            40043          metformin         12 0.220293            0.701568
+      both          43            30043          metformin         12 0.220220            0.699594
+      both          43            50043          metformin         12 0.220153            0.698945
+      both          43            30043        triamterene         12 0.215251            0.700970
+      both          43            40043        triamterene         12 0.215150            0.697607
+      both          43            50043        triamterene         12 0.215054            0.694450
+      both          43            40043           acarbose         12 0.207967            0.644676
+      both          43            30043           acarbose         12 0.207942            0.644753
+      both          43            50043           acarbose         12 0.207908            0.642191
+      both          43            30043         cimetidine         12 0.207250            0.655897
+      both          43            40043         cimetidine         12 0.207229            0.652203
+      both          43            50043         cimetidine         12 0.207163            0.655412
+      both          43            30043         iproniazid         12 0.196785            0.688061
+      both          43            40043         iproniazid         12 0.196736            0.692102
+      both          43            50043         iproniazid         12 0.196668            0.687477
+descriptor          43            50043              TNFÉø         12 2.854742           24.764071
+descriptor          43            30043              TNFÉø         12 2.823784           22.894707
+descriptor          43            40043              TNFÉø         12 2.175090           23.009579
+descriptor          43            30043        tunicamycin         12 1.802713           17.876019
+descriptor          43            50043        tunicamycin         12 1.746382           12.581096
+descriptor          43            50043         phalloidin          4 1.634656           10.178291
+descriptor          43            40043         phalloidin          4 1.544537           11.951432
+descriptor          43            40043        tunicamycin         12 1.391002           12.995204
+descriptor          43            30043         phalloidin          4 1.333108            8.340789
+descriptor          43            40043         gentamicin         12 0.918917           11.712867
+descriptor          43            50043         gentamicin         12 0.812551            8.398691
+descriptor          43            30043         gentamicin         12 0.801301            9.623111
+descriptor          43            30043      galactosamine         12 0.728696            4.027298
+descriptor          43            40043      galactosamine         12 0.708202            3.331027
+descriptor          43            50043      galactosamine         12 0.703379            3.393687
+descriptor          43            50043  acetamidofluorene         12 0.456073            0.855710
+descriptor          43            30043  acetamidofluorene         12 0.455855            0.890893
+descriptor          43            40043  acetamidofluorene         12 0.455579            0.891199
+descriptor          43            40043           caffeine         12 0.376785            3.554489
+descriptor          43            30043     chlorpromazine          8 0.340068            0.758552
+descriptor          43            50043     chlorpromazine          8 0.340016            0.810279
+descriptor          43            40043     chlorpromazine          8 0.337436            0.692815
+descriptor          43            30043       bromobenzene         12 0.334679            0.760491
+descriptor          43            50043       bromobenzene         12 0.333912            0.786451
+descriptor          43            40043       bromobenzene         12 0.333679            0.806008
+descriptor          43            50043         nifedipine         12 0.328741            0.716364
+descriptor          43            40043         nifedipine         12 0.328662            0.719095
+descriptor          43            30043         nifedipine         12 0.328622            0.722337
+descriptor          43            30043            danazol         12 0.326585            0.706303
+descriptor          43            50043            danazol         12 0.326570            0.709845
+descriptor          43            40043            danazol         12 0.326529            0.709694
+descriptor          43            30043           sulindac         12 0.311287            0.784523
+descriptor          43            40043           sulindac         12 0.310987            0.799889
+descriptor          43            50043           sulindac         12 0.310656            0.837712
+descriptor          43            30043           caffeine         12 0.306266            2.198796
+descriptor          43            50043           caffeine         12 0.303938            2.375709
+descriptor          43            30043       benziodarone         12 0.283907            0.801227
+descriptor          43            50043       benziodarone         12 0.283701            0.804877
+descriptor          43            40043       benziodarone         12 0.282593            0.892724
+descriptor          43            40043      chlormadinone         12 0.281624            0.748443
+descriptor          43            30043      chlormadinone         12 0.281565            0.748508
+descriptor          43            50043      chlormadinone         12 0.281508            0.742830
+descriptor          43            50043        methimazole         12 0.276774            0.750422
+descriptor          43            40043        methimazole         12 0.276630            0.743969
+descriptor          43            30043        methimazole         12 0.275948            0.791872
+descriptor          43            30043           diazepam         12 0.262862            1.426500
+descriptor          43            40043           diazepam         12 0.260672            1.262244
+descriptor          43            50043           diazepam         12 0.260555            1.355650
+descriptor          43            50043     nitrofurantoin         12 0.253983            0.944422
+descriptor          43            30043     nitrofurantoin         12 0.253568            1.000305
+descriptor          43            40043     nitrofurantoin         12 0.253474            0.993459
+descriptor          43            50043       azathioprine         12 0.243887            0.688947
+descriptor          43            30043       azathioprine         12 0.243880            0.684981
+descriptor          43            40043       azathioprine         12 0.243829            0.689367
+descriptor          43            40043 methyltestosterone         12 0.240329            0.658894
+descriptor          43            30043 methyltestosterone         12 0.240269            0.657664
+descriptor          43            50043 methyltestosterone         12 0.240097            0.659225
+descriptor          43            30043          vitamin A         12 0.236467            0.745970
+descriptor          43            40043          vitamin A         12 0.236443            0.732175
+descriptor          43            50043          vitamin A         12 0.236431            0.736638
+descriptor          43            50043           pemoline         12 0.233980            0.687239
+descriptor          43            40043           pemoline         12 0.233958            0.682592
+descriptor          43            30043           pemoline         12 0.233765            0.672824
+descriptor          43            30043           ajmaline         12 0.232538            0.906345
+descriptor          43            50043           ajmaline         12 0.230987            0.906794
+descriptor          43            30043        allopurinol         12 0.229649            0.725213
+descriptor          43            50043        allopurinol         12 0.229609            0.723051
+descriptor          43            40043        allopurinol         12 0.229395            0.715329
+descriptor          43            40043           ajmaline         12 0.229027            0.962327
+descriptor          43            40043          metformin         12 0.220393            0.704399
+descriptor          43            30043          metformin         12 0.220333            0.703128
+descriptor          43            50043          metformin         12 0.220238            0.701948
+descriptor          43            30043        triamterene         12 0.214972            0.695762
+descriptor          43            40043        triamterene         12 0.214817            0.692232
+descriptor          43            50043        triamterene         12 0.214705            0.689207
+descriptor          43            40043           acarbose         12 0.209406            0.661674
+descriptor          43            30043           acarbose         12 0.209364            0.661328
+descriptor          43            50043           acarbose         12 0.209332            0.658232
+descriptor          43            50043         cimetidine         12 0.207382            0.650805
+descriptor          43            40043         cimetidine         12 0.207104            0.646841
+descriptor          43            30043         cimetidine         12 0.206826            0.650956
+descriptor          43            30043         iproniazid         12 0.196979            0.686943
+descriptor          43            40043         iproniazid         12 0.196928            0.691580
+descriptor          43            50043         iproniazid         12 0.196871            0.686039
+    morgan          43            50043         phalloidin          4 1.503017            9.535198
+    morgan          43            50043              TNFÉø         12 1.339116           10.710144
+    morgan          43            40043         phalloidin          4 1.320674            9.778384
+    morgan          43            30043         phalloidin          4 1.261740            7.595686
+    morgan          43            30043              TNFÉø         12 1.247004            9.586674
+    morgan          43            40043              TNFÉø         12 1.011496           10.315450
+    morgan          43            40043         gentamicin         12 0.768760            8.256652
+    morgan          43            30043        tunicamycin         12 0.763376            8.726707
+    morgan          43            50043         gentamicin         12 0.698346            6.619624
+    morgan          43            50043        tunicamycin         12 0.695414            5.876825
+    morgan          43            30043         gentamicin         12 0.654168            6.521650
+    morgan          43            40043      galactosamine         12 0.609307            1.112379
+    morgan          43            30043      galactosamine         12 0.607532            1.141437
+    morgan          43            50043      galactosamine         12 0.606459            1.038902
+    morgan          43            40043        tunicamycin         12 0.602806            6.185100
+    morgan          43            50043  acetamidofluorene         12 0.452822            1.089453
+    morgan          43            40043  acetamidofluorene         12 0.451698            1.151165
+    morgan          43            30043  acetamidofluorene         12 0.451506            1.244535
+    morgan          43            40043           caffeine         12 0.402232            4.077624
+    morgan          43            50043       bromobenzene         12 0.376615            1.837608
+    morgan          43            40043       bromobenzene         12 0.357269            1.801477
+    morgan          43            30043           caffeine         12 0.352673            3.184036
+    morgan          43            50043     chlorpromazine          8 0.350755            1.286578
+    morgan          43            30043       bromobenzene         12 0.346124            1.283782
+    morgan          43            40043     chlorpromazine          8 0.344539            1.019489
+    morgan          43            50043           caffeine         12 0.344456            3.527781
+    morgan          43            30043     chlorpromazine          8 0.341608            0.963603
+    morgan          43            50043         nifedipine         12 0.328093            0.725575
+    morgan          43            30043         nifedipine         12 0.327979            0.730632
+    morgan          43            40043         nifedipine         12 0.327907            0.727140
+    morgan          43            30043            danazol         12 0.323594            0.796357
+    morgan          43            50043            danazol         12 0.320656            0.930394
+    morgan          43            40043            danazol         12 0.319699            0.955833
+    morgan          43            30043           sulindac         12 0.309173            0.702151
+    morgan          43            40043           sulindac         12 0.308951            0.704233
+    morgan          43            50043           sulindac         12 0.308632            0.726595
+    morgan          43            40043      chlormadinone         12 0.279392            0.820849
+    morgan          43            30043      chlormadinone         12 0.279249            0.841510
+    morgan          43            50043      chlormadinone         12 0.279170            0.815753
+    morgan          43            40043        methimazole         12 0.278028            0.723577
+    morgan          43            50043        methimazole         12 0.277941            0.759728
+    morgan          43            30043        methimazole         12 0.276380            0.883259
+    morgan          43            50043       benziodarone         12 0.274604            1.345868
+    morgan          43            30043       benziodarone         12 0.273079            1.309635
+    morgan          43            40043       benziodarone         12 0.272247            1.498626
+    morgan          43            30043           diazepam         12 0.257714            2.002525
+    morgan          43            50043           diazepam         12 0.254523            1.870549
+    morgan          43            40043           diazepam         12 0.252694            1.608693
+    morgan          43            50043     nitrofurantoin         12 0.251314            1.078177
+    morgan          43            30043     nitrofurantoin         12 0.251300            1.181406
+    morgan          43            40043     nitrofurantoin         12 0.250693            1.152524
+    morgan          43            30043       azathioprine         12 0.243900            0.716952
+    morgan          43            50043       azathioprine         12 0.243859            0.712557
+    morgan          43            40043       azathioprine         12 0.243781            0.719360
+    morgan          43            30043 methyltestosterone         12 0.238168            0.642156
+    morgan          43            50043 methyltestosterone         12 0.238047            0.643507
+    morgan          43            40043 methyltestosterone         12 0.237345            0.646398
+    morgan          43            40043          vitamin A         12 0.234918            0.844704
+    morgan          43            30043          vitamin A         12 0.234873            0.865964
+    morgan          43            50043          vitamin A         12 0.234834            0.834562
+    morgan          43            30043           pemoline         12 0.231479            0.651265
+    morgan          43            50043           pemoline         12 0.231212            0.667293
+    morgan          43            40043           pemoline         12 0.230793            0.682386
+    morgan          43            30043           ajmaline         12 0.229576            0.693170
+    morgan          43            50043           ajmaline         12 0.229467            0.688428
+    morgan          43            40043           ajmaline         12 0.229426            0.684113
+    morgan          43            30043        allopurinol         12 0.228319            0.887461
+    morgan          43            50043        allopurinol         12 0.227560            0.805568
+    morgan          43            40043        allopurinol         12 0.227438            0.804852
+    morgan          43            30043        triamterene         12 0.221721            1.169962
+    morgan          43            40043        triamterene         12 0.219580            1.208663
+    morgan          43            40043          metformin         12 0.217877            0.712616
+    morgan          43            50043        triamterene         12 0.217854            1.064459
+    morgan          43            50043          metformin         12 0.217847            0.707284
+    morgan          43            30043          metformin         12 0.217816            0.708990
+    morgan          43            30043           acarbose         12 0.209638            0.675278
+    morgan          43            50043           acarbose         12 0.209609            0.674149
+    morgan          43            40043           acarbose         12 0.209596            0.673750
+    morgan          43            30043         cimetidine         12 0.206242            0.655159
+    morgan          43            40043         cimetidine         12 0.205898            0.652073
+    morgan          43            50043         cimetidine         12 0.205733            0.653663
+    morgan          43            30043         iproniazid         12 0.202705            1.264729
+    morgan          43            50043         iproniazid         12 0.198682            1.103071
+    morgan          43            40043         iproniazid         12 0.198205            1.048942
+
+GENERATION AGGREGATE
+            rmse_mean  rmse_std  rmse_min  rmse_max  prediction_abs_max
+arm                                                                    
+basic        0.516514  0.026306  0.490148  0.542759           13.985339
+both         0.573890  0.053459  0.512382  0.609157           18.997889
+descriptor   0.702894  0.066780  0.625870  0.744561           24.764071
+morgan       0.438171  0.019768  0.417842  0.457326           10.710144
+
+===== 생성 seed별 성능과 예측 크기 =====
+arm	model_seed	epoch	generation_seed	samples_per_target	rmse	mae	prediction_abs_p99	prediction_abs_max	saved_original_rmse	reproduction_max_abs_difference	reproduction_global_rmse_difference
+0	basic	43	80	30043	4	0.516634	0.257248	1.992771	12.620738	0.516634	0.000015	2.192912e-08
+1	basic	43	80	40043	4	0.490148	0.246672	1.791161	12.993774	0.516634	0.000015	2.192912e-08
+2	basic	43	80	50043	4	0.542759	0.262962	2.196651	13.985339	0.516634	0.000015	2.192912e-08
+3	morgan	43	80	30043	4	0.439344	0.229620	1.567986	9.586674	0.439345	0.000005	1.311325e-08
+4	morgan	43	80	40043	4	0.417842	0.221690	1.403117	10.315450	0.439345	0.000005	1.311325e-08
+5	morgan	43	80	50043	4	0.457326	0.234293	1.718916	10.710144	0.439345	0.000005	1.311325e-08
+6	descriptor	43	60	30043	4	0.738252	0.295511	3.112665	22.894707	0.738252	0.000010	6.678060e-08
+7	descriptor	43	60	40043	4	0.625870	0.273886	2.560936	23.009579	0.738252	0.000010	6.678060e-08
+8	descriptor	43	60	50043	4	0.744561	0.303306	3.307349	24.764071	0.738252	0.000010	6.678060e-08
+9	both	43	60	30043	4	0.600131	0.260622	2.399985	17.433766	0.600131	0.000005	3.938230e-08
+10	both	43	60	40043	4	0.512382	0.244690	1.955404	18.089953	0.600131	0.000005	3.938230e-08
+11	both	43	60	50043	4	0.609157	0.267912	2.583520	18.997889	0.600131	0.000005	3.938230e-08
+
+===== 동일 모델에서 생성 seed에 따른 변동 =====
+arm	rmse_mean	rmse_std	rmse_min	rmse_max	prediction_abs_max
+0	basic	0.516514	0.026306	0.490148	0.542759	13.985339
+1	both	0.573890	0.053459	0.512382	0.609157	18.997889
+2	descriptor	0.702894	0.066780	0.625870	0.744561	24.764071
+3	morgan	0.438171	0.019768	0.417842	0.457326	10.710144
+
+===== 문제 화합물별 RMSE =====
+generation_seed	30043	40043	50043
+arm	compound			
+basic	TNFÉø	1.576734	1.259663	1.686807
+galactosamine	0.648897	0.651792	0.646016
+gentamicin	0.994312	1.147261	1.074543
+phalloidin	1.257175	1.394165	1.652594
+tunicamycin	0.949222	0.761212	0.862513
+both	TNFÉø	2.237148	1.733644	2.292391
+galactosamine	0.631756	0.627389	0.624770
+gentamicin	0.397066	0.514094	0.435186
+phalloidin	1.148051	1.235430	1.331303
+tunicamycin	1.414607	1.073736	1.366800
+descriptor	TNFÉø	2.823784	2.175090	2.854742
+galactosamine	0.728696	0.708202	0.703379
+gentamicin	0.801301	0.918917	0.812551
+phalloidin	1.333108	1.544537	1.634656
+tunicamycin	1.802713	1.391002	1.746382
+morgan	TNFÉø	1.247004	1.011496	1.339116
+galactosamine	0.607532	0.609307	0.606459
+gentamicin	0.654168	0.768760	0.698346
+phalloidin	1.261740	1.320674	1.503017
+tunicamycin	0.763376	0.602806	0.695414
+
+완료: /home/seowon1211/data1/conditioned_expression/frozen_sampling_check_20261108_080805_6db426/report
+기존 모델·실험 결과는 변경하지 않았습니다.
+

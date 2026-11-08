@@ -1,0 +1,87 @@
+Cloning into '/home/seowon1211/data1/conditioned_expression/input_range_check_20261108_070434_b2cacc/code'...
+검사 대상: /home/seowon1211/data1/conditioned_expression/repeated_pca64_structure4_20261107_135949_e51164/results/fold_1/seed_43
+진단 저장: /home/seowon1211/data1/conditioned_expression/input_range_check_20261108_070434_b2cacc/report
+HEAD is now at d243424 Inspect saved input ranges without training or prediction regeneration
+stage  training_compounds  training_source_PCA_abs_max  training_observed_slots  defined_slots  output_scale
+inner                  89                    10.412291                       15             36      0.298378
+final                 112                    12.013038                       15             36      0.294207
+
+FINAL TEST SOURCE INPUTS
+stage partition           compound units  pca_abs_max  pca_outside_fraction_mean  probe_outside_MinMax_fraction_mean  scaled_log_dose_abs_max  scaled_time_abs_max  unknown_unit_conditions  unknown_level_conditions  unseen_slot_conditions
+final      test      galactosamine    μM     8.321214                   0.005208                            0.018470                 2.138906             1.365071                        0                         0                       0
+final      test           caffeine    μM     5.893188                   0.000000                            0.006436                 2.138906             1.365071                        0                         0                       0
+final      test           sulindac    μM     5.297414                   0.001736                            0.006049                 1.473491             1.365071                        0                         0                       0
+final      test         gentamicin mg/mL     4.755437                   0.000000                            0.006339                 1.343993             1.365071                        9                         0                       9
+final      test        tunicamycin μg/mL     4.685383                   0.000000                            0.005663                 1.215729             1.365071                        0                         0                       3
+final      test         phalloidin μg/mL     3.660406                   0.000000                            0.001287                 1.004478             1.365071                        0                         0                       3
+final      test       azathioprine    μM     3.583611                   0.000000                            0.000450                 1.615872             1.365071                        0                         0                       0
+final      test         nifedipine    μM     3.506016                   0.000000                            0.000579                 0.678412             1.365071                        0                         0                       0
+final      test           diazepam    μM     3.457536                   0.000000                            0.000483                 0.929079             1.365071                        0                         0                       0
+final      test      chlormadinone    μM     3.428884                   0.000000                            0.001448                 1.274908             1.365071                        0                         0                       0
+final      test         iproniazid    μM     3.250738                   0.000000                            0.000804                 1.473491             1.365071                        0                         0                       0
+final      test          metformin    μM     3.158633                   0.000000                            0.000450                 1.187047             1.365071                        0                         0                       0
+final      test     nitrofurantoin    μM     3.091703                   0.000000                            0.000290                 0.929079             1.365071                        0                         0                       0
+final      test           ajmaline    μM     2.855772                   0.000000                            0.000129                 0.690109             1.365071                        0                         0                       0
+final      test       benziodarone    μM     2.822602                   0.000000                            0.000644                 1.383408             1.365071                        0                         0                       0
+final      test  acetamidofluorene    μM     2.526222                   0.000000                            0.000869                 1.215729             1.365071                        0                         0                       0
+final      test        methimazole    μM     2.477524                   0.000000                            0.000225                 2.138906             1.365071                        0                         0                       0
+final      test       bromobenzene    μM     2.461196                   0.000000                            0.000225                 0.761399             1.365071                        0                         0                       0
+final      test            danazol    μM     2.204504                   0.000000                            0.001158                 1.308010             1.365071                        0                         0                       0
+final      test     chlorpromazine    μM     2.063433                   0.000000                            0.000225                 1.426980             1.365071                        0                         0                       0
+final      test          vitamin A    μM     2.021491                   0.000000                            0.000483                 1.561558             1.365071                        0                         0                       0
+final      test              TNFÉø ng/mL     1.663101                   0.000000                            0.000129                 1.215729             1.365071                        9                         0                       9
+final      test           acarbose    μM     1.567198                   0.000000                            0.000129                 2.138906             1.365071                        0                         0                       0
+final      test           pemoline    μM     1.558082                   0.000000                            0.000000                 1.096758             1.365071                        0                         0                       0
+final      test         cimetidine    μM     1.549613                   0.000000                            0.000000                 0.690109             1.365071                        0                         0                       0
+final      test methyltestosterone    μM     1.472768                   0.000000                            0.000000                 1.274908             1.365071                        0                         0                       0
+final      test        triamterene    μM     1.413978                   0.000000                            0.000257                 1.343993             1.365071                        0                         0                       0
+final      test        allopurinol    μM     1.305050                   0.000000                            0.000064                 0.889663             1.365071                        0                         0                       0
+
+FINAL TEST TARGET CONDITIONS
+                    scaled_log_dose_abs  scaled_time_abs  unknown_unit  unknown_level
+compound                                                                             
+phalloidin                     2.451484         1.671258         False          False
+TNFÉø                          2.282312         1.671258         False          False
+azathioprine                   1.874706         1.671258         False          False
+chlormadinone                  1.780098         1.671258         False          False
+danazol                        1.780098         1.671258         False          False
+iproniazid                     1.545623         1.671258         False          False
+pemoline                       1.431449         1.671258         False          False
+metformin                      1.372785         1.671258         False          False
+cimetidine                     1.372785         1.671258         False          False
+acetamidofluorene              1.372785         1.671258         False          False
+nifedipine                     1.372785         1.671258         False          False
+acarbose                       1.372785         1.671258         False          False
+galactosamine                  1.372785         1.671258         False          False
+vitamin A                      1.279832         1.671258         False          False
+gentamicin                     1.279832         1.671258         False          False
+methimazole                    1.279832         1.671258         False          False
+caffeine                       1.279832         1.671258         False          False
+nitrofurantoin                 1.072785         1.671258         False          False
+allopurinol                    1.059493         1.671258         False          False
+sulindac                       1.059493         1.671258         False          False
+triamterene                    1.059493         1.671258         False          False
+diazepam                       0.773990         1.671258         False          False
+benziodarone                   0.670557         1.671258         False          False
+ajmaline                       0.670557         1.671258         False          False
+methyltestosterone             0.670557         1.671258         False          False
+bromobenzene                   0.670557         1.671258         False          False
+tunicamycin                    0.670557         1.671258         False          False
+chlorpromazine                 0.438480         1.671258         False          False
+DIAGNOSTIC COMPLETE: /home/seowon1211/data1/conditioned_expression/input_range_check_20261108_070434_b2cacc/report
+
+===== 문제 화합물의 내부/최종 입력 비교 =====
+stage	partition	compound	units	pca_abs_max	pca_outside_fraction_mean	probe_outside_MinMax_fraction_mean	scaled_log_dose_abs_max	scaled_time_abs_max	unknown_unit_conditions	unknown_level_conditions	unseen_slot_conditions
+112	final	test	TNFÉø	ng/mL	1.663101	0.000000	0.000129	1.215729	1.365071	9	0	9
+229	inner	test	TNFÉø	ng/mL	1.834612	0.000000	0.000193	1.286788	1.365319	9	0	9
+126	final	test	galactosamine	μM	8.321214	0.005208	0.018470	2.138906	1.365071	0	0	0
+243	inner	test	galactosamine	μM	10.093131	0.003472	0.019468	2.127375	1.365319	0	0	0
+127	final	test	gentamicin	mg/mL	4.755437	0.000000	0.006339	1.343993	1.365071	9	0	9
+244	inner	test	gentamicin	mg/mL	5.651198	0.000000	0.007176	1.417328	1.365319	9	0	9
+135	final	test	phalloidin	μg/mL	3.660406	0.000000	0.001287	1.004478	1.365071	0	0	3
+252	inner	test	phalloidin	μg/mL	2.992547	0.000000	0.001287	1.071788	1.365319	0	0	3
+138	final	test	tunicamycin	μg/mL	4.685383	0.000000	0.005663	1.215729	1.365071	0	0	3
+255	inner	test	tunicamycin	μg/mL	4.928941	0.000000	0.006918	1.286788	1.365319	0	0	3
+
+학습·예측 재생성 없이 검사 완료
+결과: /home/seowon1211/data1/conditioned_expression/input_range_check_20261108_070434_b2cacc/report

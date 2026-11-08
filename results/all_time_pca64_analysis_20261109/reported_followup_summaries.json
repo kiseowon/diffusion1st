@@ -1,0 +1,46 @@
+{
+  "source": "transcribed_user_pasted_summaries_not_original_CSVs",
+  "precision": "six_decimal_reported",
+  "information_contribution": {
+    "A_conditions": {
+      "rmse": 0.292199,
+      "mae": 0.170968,
+      "pearson": 0.241039
+    },
+    "B_conditions_vitro": {
+      "rmse": 0.294091,
+      "mae": 0.173007,
+      "pearson": 0.216767
+    },
+    "C_conditions_morgan": {
+      "rmse": 0.29291,
+      "mae": 0.172515,
+      "pearson": 0.220796
+    },
+    "D_conditions_vitro_morgan": {
+      "rmse": 0.292321,
+      "mae": 0.171884,
+      "pearson": 0.228686
+    },
+    "baseline_time_level": {
+      "rmse": 0.288403,
+      "mae": 0.17147,
+      "pearson": 0.257109
+    }
+  },
+  "paired_input_pca_full": {
+    "basic": {
+      "pca_rmse": 0.294091,
+      "full_rmse": 0.2973
+    },
+    "morgan": {
+      "pca_rmse": 0.292321,
+      "full_rmse": 0.296534
+    }
+  },
+  "pairwise_MLP": {
+    "basic_rmse": 0.292724,
+    "morgan_rmse": 0.292496
+  },
+  "not_used_for_all_time_causal_claims": "24h High toy and its random256 output subset are different cohorts/protocols"
+}

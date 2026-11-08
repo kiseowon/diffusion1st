@@ -1,0 +1,177 @@
+Cloning into '/home/seowon1211/data1/conditioned_expression/frozen_slot_check_v3_20261108_075729_da4633/code'...
+검사 대상: /home/seowon1211/data1/conditioned_expression/repeated_pca64_structure4_20261107_135949_e51164/results/fold_1/seed_43
+진단 저장: /home/seowon1211/data1/conditioned_expression/frozen_slot_check_v3_20261108_075729_da4633/report
+재학습 없음 / 저장 모델로 진단 예측만 수행
+HEAD is now at ab44c7d Use per-target prediction-distance bound in reproduction audit
+REPRODUCTION basic {"max_abs_difference": 1.4543533325195312e-05, "prediction_rms_difference": 3.772014293406524e-07, "normalized_prediction_rms_difference": 8.664303571848461e-07, "saved_rmse": 0.5166340237698216, "regenerated_rmse": 0.5166340018407006, "global_rmse_difference": 2.19291209635486e-08, "max_target_rmse_difference": 2.0673832185624796e-06, "max_target_prediction_rms_difference": 2.645930644871611e-06, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+{'arm': 'basic', 'model_seed': 43, 'epoch': 80, 'noise_seed': 30043, 'reproduction_max_abs_difference': 1.4543533325195312e-05, 'reproduction_global_rmse_difference': 2.19291209635486e-08, 'reproduction_strict_allclose': False, 'saved_original_rmse': 0.5166340237698216, 'original_rmse': 0.5166340018407006, 'masked_rmse': 0.5582389813130006, 'changed_targets': 40, 'unseen_slots': 21, 'unseen_weight_max_change_from_seed_initialization': 0.0, 'original_prediction_abs_max': 12.620737585025047, 'masked_prediction_abs_max': 13.322333845095848}
+REPRODUCTION morgan {"max_abs_difference": 5.245208740234375e-06, "prediction_rms_difference": 1.665962378884159e-07, "normalized_prediction_rms_difference": 4.845123927754895e-07, "saved_rmse": 0.4393445039219904, "regenerated_rmse": 0.439344490808742, "global_rmse_difference": 1.3113248431562141e-08, "max_target_rmse_difference": 6.029233491910979e-07, "max_target_prediction_rms_difference": 9.539229490052474e-07, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+{'arm': 'morgan', 'model_seed': 43, 'epoch': 80, 'noise_seed': 30043, 'reproduction_max_abs_difference': 5.245208740234375e-06, 'reproduction_global_rmse_difference': 1.3113248431562141e-08, 'reproduction_strict_allclose': False, 'saved_original_rmse': 0.4393445039219904, 'original_rmse': 0.439344490808742, 'masked_rmse': 0.4619080058889294, 'changed_targets': 40, 'unseen_slots': 21, 'unseen_weight_max_change_from_seed_initialization': 0.0, 'original_prediction_abs_max': 9.586674245791649, 'masked_prediction_abs_max': 9.93429044147036}
+REPRODUCTION descriptor {"max_abs_difference": 9.5367431640625e-06, "prediction_rms_difference": 2.416937472267346e-07, "normalized_prediction_rms_difference": 3.5324945419466156e-07, "saved_rmse": 0.7382520346066442, "regenerated_rmse": 0.7382521013872445, "global_rmse_difference": 6.678060027187627e-08, "max_target_rmse_difference": 1.4522993834198417e-06, "max_target_prediction_rms_difference": 1.5463536645497297e-06, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+{'arm': 'descriptor', 'model_seed': 43, 'epoch': 60, 'noise_seed': 30043, 'reproduction_max_abs_difference': 9.5367431640625e-06, 'reproduction_global_rmse_difference': 6.678060027187627e-08, 'reproduction_strict_allclose': False, 'saved_original_rmse': 0.7382520346066442, 'original_rmse': 0.7382521013872445, 'masked_rmse': 0.7821588469124665, 'changed_targets': 40, 'unseen_slots': 21, 'unseen_weight_max_change_from_seed_initialization': 0.0, 'original_prediction_abs_max': 22.894707423537525, 'masked_prediction_abs_max': 24.345860225051197}
+REPRODUCTION both {"max_abs_difference": 4.76837158203125e-06, "prediction_rms_difference": 1.6265964482239438e-07, "normalized_prediction_rms_difference": 3.046285398499823e-07, "saved_rmse": 0.6001313690374112, "regenerated_rmse": 0.6001314084197071, "global_rmse_difference": 3.9382295979883963e-08, "max_target_rmse_difference": 7.98210086028206e-07, "max_target_prediction_rms_difference": 9.263696312048765e-07, "target_rmse_bound_excess": 0.0, "strict_allclose_passed": false, "allow_numerical_requested": true, "limits": {"max_abs_difference": 5e-05, "normalized_prediction_rms_difference": 1e-05, "global_rmse_difference": 1e-06, "target_rmse_bound_excess": 1e-12}, "bounded_numerical_check_passed": true, "accepted": true, "interpretation": "numerical agreement within reported limits; not bitwise reproduction or proof of the source of differences"}
+{'arm': 'both', 'model_seed': 43, 'epoch': 60, 'noise_seed': 30043, 'reproduction_max_abs_difference': 4.76837158203125e-06, 'reproduction_global_rmse_difference': 3.9382295979883963e-08, 'reproduction_strict_allclose': False, 'saved_original_rmse': 0.6001313690374112, 'original_rmse': 0.6001314084197071, 'masked_rmse': 0.6337923726972521, 'changed_targets': 40, 'unseen_slots': 21, 'unseen_weight_max_change_from_seed_initialization': 0.0, 'original_prediction_abs_max': 17.43376610884026, 'masked_prediction_abs_max': 18.41464112409905}
+
+SUMMARY
+       arm  model_seed  epoch  noise_seed  reproduction_max_abs_difference  reproduction_global_rmse_difference  reproduction_strict_allclose  saved_original_rmse  original_rmse  masked_rmse  changed_targets  unseen_slots  unseen_weight_max_change_from_seed_initialization  original_prediction_abs_max  masked_prediction_abs_max
+     basic          43     80       30043                         0.000015                         2.192912e-08                         False             0.516634       0.516634     0.558239               40            21                                                0.0                    12.620738                  13.322334
+    morgan          43     80       30043                         0.000005                         1.311325e-08                         False             0.439345       0.439344     0.461908               40            21                                                0.0                     9.586674                   9.934290
+descriptor          43     60       30043                         0.000010                         6.678060e-08                         False             0.738252       0.738252     0.782159               40            21                                                0.0                    22.894707                  24.345860
+      both          43     60       30043                         0.000005                         3.938230e-08                         False             0.600131       0.600131     0.633792               40            21                                                0.0                    17.433766                  18.414641
+
+COMPOUND DETAILS
+       arm           compound  changed_input  n_targets  original_rmse  masked_rmse
+     basic              TNFÉø           True         12       1.576734     1.718404
+     basic         phalloidin           True          4       1.257175     1.250374
+     basic         gentamicin           True         12       0.994312     1.236982
+     basic        tunicamycin           True         12       0.949222     1.051598
+     basic      galactosamine          False         12       0.648897     0.648897
+     basic  acetamidofluorene          False         12       0.454808     0.454808
+     basic       bromobenzene          False         12       0.348420     0.348420
+     basic     chlorpromazine          False          8       0.337888     0.337888
+     basic           caffeine          False         12       0.329739     0.329739
+     basic         nifedipine          False         12       0.326892     0.326892
+     basic            danazol          False         12       0.326811     0.326811
+     basic methyltestosterone          False         12       0.311647     0.311647
+     basic           sulindac          False         12       0.306624     0.306624
+     basic           diazepam          False         12       0.302078     0.302078
+     basic         iproniazid          False         12       0.289073     0.289073
+     basic       benziodarone          False         12       0.283776     0.283776
+     basic      chlormadinone          False         12       0.277911     0.277911
+     basic        methimazole          False         12       0.272652     0.272652
+     basic         cimetidine          False         12       0.260303     0.260303
+     basic     nitrofurantoin          False         12       0.258215     0.258215
+     basic       azathioprine          False         12       0.244135     0.244135
+     basic          vitamin A          False         12       0.235824     0.235824
+     basic        triamterene          False         12       0.234901     0.234901
+     basic           pemoline          False         12       0.232046     0.232046
+     basic           ajmaline          False         12       0.229274     0.229274
+     basic        allopurinol          False         12       0.228654     0.228654
+     basic          metformin          False         12       0.217800     0.217800
+     basic           acarbose          False         12       0.217152     0.217152
+      both              TNFÉø           True         12       2.237148     2.424989
+      both        tunicamycin           True         12       1.414607     1.523949
+      both         phalloidin           True          4       1.148051     1.089208
+      both      galactosamine          False         12       0.631756     0.631756
+      both  acetamidofluorene          False         12       0.454442     0.454442
+      both         gentamicin           True         12       0.397066     0.354884
+      both     chlorpromazine          False          8       0.348380     0.348380
+      both       bromobenzene          False         12       0.336213     0.336213
+      both         nifedipine          False         12       0.328789     0.328789
+      both            danazol          False         12       0.325395     0.325395
+      both           caffeine          False         12       0.313068     0.313068
+      both           sulindac          False         12       0.311832     0.311832
+      both      chlormadinone          False         12       0.282612     0.282612
+      both       benziodarone          False         12       0.278145     0.278145
+      both        methimazole          False         12       0.277257     0.277257
+      both     nitrofurantoin          False         12       0.252909     0.252909
+      both           diazepam          False         12       0.249451     0.249451
+      both       azathioprine          False         12       0.244223     0.244223
+      both methyltestosterone          False         12       0.239149     0.239149
+      both          vitamin A          False         12       0.236070     0.236070
+      both           pemoline          False         12       0.233885     0.233885
+      both        allopurinol          False         12       0.229727     0.229727
+      both           ajmaline          False         12       0.228930     0.228930
+      both          metformin          False         12       0.220220     0.220220
+      both        triamterene          False         12       0.215251     0.215251
+      both           acarbose          False         12       0.207942     0.207942
+      both         cimetidine          False         12       0.207250     0.207250
+      both         iproniazid          False         12       0.196785     0.196785
+descriptor              TNFÉø           True         12       2.823784     3.098388
+descriptor        tunicamycin           True         12       1.802713     1.885670
+descriptor         phalloidin           True          4       1.333108     1.291320
+descriptor         gentamicin           True         12       0.801301     0.740830
+descriptor      galactosamine          False         12       0.728696     0.728696
+descriptor  acetamidofluorene          False         12       0.455855     0.455855
+descriptor     chlorpromazine          False          8       0.340068     0.340068
+descriptor       bromobenzene          False         12       0.334679     0.334679
+descriptor         nifedipine          False         12       0.328622     0.328622
+descriptor            danazol          False         12       0.326585     0.326585
+descriptor           sulindac          False         12       0.311287     0.311287
+descriptor           caffeine          False         12       0.306266     0.306266
+descriptor       benziodarone          False         12       0.283907     0.283907
+descriptor      chlormadinone          False         12       0.281565     0.281565
+descriptor        methimazole          False         12       0.275948     0.275948
+descriptor           diazepam          False         12       0.262862     0.262862
+descriptor     nitrofurantoin          False         12       0.253568     0.253568
+descriptor       azathioprine          False         12       0.243880     0.243880
+descriptor methyltestosterone          False         12       0.240269     0.240269
+descriptor          vitamin A          False         12       0.236467     0.236467
+descriptor           pemoline          False         12       0.233765     0.233765
+descriptor           ajmaline          False         12       0.232538     0.232538
+descriptor        allopurinol          False         12       0.229649     0.229649
+descriptor          metformin          False         12       0.220333     0.220333
+descriptor        triamterene          False         12       0.214972     0.214972
+descriptor           acarbose          False         12       0.209364     0.209364
+descriptor         cimetidine          False         12       0.206826     0.206826
+descriptor         iproniazid          False         12       0.196979     0.196979
+    morgan         phalloidin           True          4       1.261740     1.265445
+    morgan              TNFÉø           True         12       1.247004     1.331915
+    morgan        tunicamycin           True         12       0.763376     0.855363
+    morgan         gentamicin           True         12       0.654168     0.778452
+    morgan      galactosamine          False         12       0.607532     0.607532
+    morgan  acetamidofluorene          False         12       0.451506     0.451506
+    morgan           caffeine          False         12       0.352673     0.352673
+    morgan       bromobenzene          False         12       0.346124     0.346124
+    morgan     chlorpromazine          False          8       0.341608     0.341608
+    morgan         nifedipine          False         12       0.327979     0.327979
+    morgan            danazol          False         12       0.323594     0.323594
+    morgan           sulindac          False         12       0.309173     0.309173
+    morgan      chlormadinone          False         12       0.279249     0.279249
+    morgan        methimazole          False         12       0.276380     0.276380
+    morgan       benziodarone          False         12       0.273079     0.273079
+    morgan           diazepam          False         12       0.257714     0.257714
+    morgan     nitrofurantoin          False         12       0.251300     0.251300
+    morgan       azathioprine          False         12       0.243900     0.243900
+    morgan methyltestosterone          False         12       0.238168     0.238168
+    morgan          vitamin A          False         12       0.234873     0.234873
+    morgan           pemoline          False         12       0.231479     0.231479
+    morgan           ajmaline          False         12       0.229576     0.229576
+    morgan        allopurinol          False         12       0.228319     0.228319
+    morgan        triamterene          False         12       0.221721     0.221721
+    morgan          metformin          False         12       0.217816     0.217816
+    morgan           acarbose          False         12       0.209638     0.209638
+    morgan         cimetidine          False         12       0.206242     0.206242
+    morgan         iproniazid          False         12       0.202705     0.202705
+
+===== 원본 재현 검사 =====
+arm	saved_original_rmse	original_rmse	reproduction_max_abs_difference	reproduction_global_rmse_difference
+0	basic	0.516634	0.516634	0.000015	2.192912e-08
+1	morgan	0.439345	0.439344	0.000005	1.311325e-08
+2	descriptor	0.738252	0.738252	0.000010	6.678060e-08
+3	both	0.600131	0.600131	0.000005	3.938230e-08
+
+===== 미관측 slot 마스킹 비교 =====
+masked_minus_original_rmse가 음수면 마스킹 후 오차 감소
+arm	original_rmse	masked_rmse	masked_minus_original_rmse	changed_targets	unseen_slots	unseen_weight_max_change_from_seed_initialization	original_prediction_abs_max	masked_prediction_abs_max
+0	basic	0.516634	0.558239	0.041605	40	21	0.0	12.620738	13.322334
+1	morgan	0.439344	0.461908	0.022564	40	21	0.0	9.586674	9.934290
+2	descriptor	0.738252	0.782159	0.043907	40	21	0.0	22.894707	24.345860
+3	both	0.600131	0.633792	0.033661	40	21	0.0	17.433766	18.414641
+
+===== 문제 화합물별 변화 =====
+arm	compound	changed_input	n_targets	original_rmse	masked_rmse	masked_minus_original_rmse
+0	basic	TNFÉø	True	12	1.576734	1.718404	0.141670
+84	both	TNFÉø	True	12	2.237148	2.424989	0.187841
+56	descriptor	TNFÉø	True	12	2.823784	3.098388	0.274604
+28	morgan	TNFÉø	True	12	1.247004	1.331915	0.084912
+14	basic	galactosamine	False	12	0.648897	0.648897	0.000000
+98	both	galactosamine	False	12	0.631756	0.631756	0.000000
+70	descriptor	galactosamine	False	12	0.728696	0.728696	0.000000
+42	morgan	galactosamine	False	12	0.607532	0.607532	0.000000
+15	basic	gentamicin	True	12	0.994312	1.236982	0.242670
+99	both	gentamicin	True	12	0.397066	0.354884	-0.042181
+71	descriptor	gentamicin	True	12	0.801301	0.740830	-0.060471
+43	morgan	gentamicin	True	12	0.654168	0.778452	0.124284
+23	basic	phalloidin	True	4	1.257175	1.250374	-0.006801
+107	both	phalloidin	True	4	1.148051	1.089208	-0.058843
+79	descriptor	phalloidin	True	4	1.333108	1.291320	-0.041788
+51	morgan	phalloidin	True	4	1.261740	1.265445	0.003705
+26	basic	tunicamycin	True	12	0.949222	1.051598	0.102376
+110	both	tunicamycin	True	12	1.414607	1.523949	0.109342
+82	descriptor	tunicamycin	True	12	1.802713	1.885670	0.082957
+54	morgan	tunicamycin	True	12	0.763376	0.855363	0.091987
+
+완료: /home/seowon1211/data1/conditioned_expression/frozen_slot_check_v3_20261108_075729_da4633/report
+기존 실험 결과는 변경하지 않았습니다.
+

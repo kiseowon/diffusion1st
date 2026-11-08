@@ -1,0 +1,4 @@
+model,conditions,selected_epoch_100,selected_epoch_median,minimum_reported_fold_rmse,maximum_reported_fold_rmse
+cgan,60,59,100.0,0.279512,0.32446
+ddpm,60,2,40.0,0.279881,0.738252
+mlp,60,49,100.0,0.278143,0.323735

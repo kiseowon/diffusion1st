@@ -104,3 +104,5 @@ PCA64·화학구조4조건의 고정 설정 반복 검증은 [설계 문서](doc
 [고정 toy 모델의 학습·테스트 예측과 DDPM 노이즈 복원 진단](docs/toy-fit-diagnostics.md): 재학습 없이 저장된 최종 모델을 검사합니다.
 
 [무작위 출력 probe256개 비교](docs/random-output-subset-toy.md): 입력·화합물 분할·전처리·reference epoch는 유지하고, 기존 전체 출력 모델도 같은256개에서 재평가합니다.
+
+[전체 시간·용량 PCA64 실험 성능 분석](docs/all-time-pca64-performance-analysis.md): 기존 로그와 입력 기여도·마스킹·생성 seed 검사를 대조해 확인 사실과 원인 가설을 구분했습니다. 새 학습은 하지 않았습니다.
