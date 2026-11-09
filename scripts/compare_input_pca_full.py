@@ -67,7 +67,7 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['prepared','structure','smiles','out']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--families',nargs='+',choices=['mlp','cgan','ddpm'],default=['mlp'])
-    p.add_argument('--arms',nargs='+',choices=['basic','morgan'],default=['basic','morgan'])
+    p.add_argument('--arms',nargs='+',choices=['basic','morgan','descriptor','both'],default=['basic','morgan'])
     p.add_argument('--folds',type=int,default=5);p.add_argument('--split-seed',type=int,default=42)
     p.add_argument('--model-seeds',nargs='+',type=int,default=[42,43,44])
     p.add_argument('--epochs',type=int,default=100);p.add_argument('--threads',type=int,default=4)

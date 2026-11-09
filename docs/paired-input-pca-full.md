@@ -19,3 +19,11 @@
 전체fold 예측을 합쳐 모델seed별 지표를 계산하고 seed간 평균/표준편차를 보고한다. paired_by_model_seed.csv의 full_minus_pca_rmse가 음수면 전체입력이 좋다. RMSE가1차, MAE/Pearson/F1가보조지표다. 모든seed/구조조건/기준선을 보존하고 최저실행만 선택하지 않는다. pooled_metrics.csv, comparison_summary.csv, combined_classification_summary.csv도 보존한다. 5-fold가 세seed에서 공유되므로 독립적인분할3회가 아니고, p-value/화합물bootstrap CI는 제공하지 않는다. 과거시험결과 관찰이 있는 탐색평가이며 독립확증시험으로 표현하지 않는다.
 
 이 환경의 합성검사는 두모드전체OOF, 같은target/기준선/분할, 파라미터기록, 재개, 설정불일치거부만 확인한다. 실제 실험재현 완료와 구분한다.
+
+## 구조 3종 × 모델 3종의 전체 비교
+
+`--arms basic morgan descriptor --families mlp cgan ddpm`으로 구조 없음/Morgan/2D와 세 모델을 모두 명시할 수 있다. 두 입력 방식 × 3구조 × 3모델 × 5-fold × 3초기화 = **270조건, 최대 540fit**이다. 과거 일부 결과와 합치지 않고 동일 코드로 두 입력 방식을 함께 계산한다. `both`도 선택 가능하지만 이 계획에는 포함하지 않는다. 기본 CLI 범위는 기존 MLP·구조 없음/Morgan을 유지한다.
+
+서버용 독립 실행 셀은 [launchers/run_complete_pca_full.py](../launchers/run_complete_pca_full.py)다. 입력 경로를 먼저 검사하고 저장소 snapshot을 새 결과 폴더에 복제한다. 재개할 때는 `RESUME_ROOT`를 해당 폴더로 지정하며 코드를 새로 받지 않는다. 모드별 소프트 예산은 7일로 설정했지만 실제 소요 시간 추정은 아니다. CPU 전체 입력 학습은 큰 메모리와 긴 시간이 필요할 수 있다. 임의로 실패 seed를 빼거나 PCA로 대체하지 않고 부분 완료로 남긴다.
+
+합성 데이터 검사는 세 구조·세 모델의 두 파이프라인, 대응 집계, 재개 및 설정 변경 거부를 확인한다. 실제 270조건 학습 결과 확보와는 구분한다.
