@@ -27,3 +27,5 @@
 서버용 독립 실행 셀은 [launchers/run_complete_pca_full.py](../launchers/run_complete_pca_full.py)다. 입력 경로를 먼저 검사하고 저장소 snapshot을 새 결과 폴더에 복제한다. 재개할 때는 `RESUME_ROOT`를 해당 폴더로 지정하며 코드를 새로 받지 않는다. 모드별 소프트 예산은 7일로 설정했지만 실제 소요 시간 추정은 아니다. CPU 전체 입력 학습은 큰 메모리와 긴 시간이 필요할 수 있다. 임의로 실패 seed를 빼거나 PCA로 대체하지 않고 부분 완료로 남긴다.
 
 합성 데이터 검사는 세 구조·세 모델의 두 파이프라인, 대응 집계, 재개 및 설정 변경 거부를 확인한다. 실제 270조건 학습 결과 확보와는 구분한다.
+
+입력 폴더는 **prepared_controls**다. 로더가 처리군과 대응 대조군을 빼서 입력·정답 변화량을 계산하므로 prepared_delta를 넣으면 안 된다. 실행기는 clone/학습 전에 변화량 representation과 target Control pair 존재를 검사한다. 초기 launcher 5787a26의 prepared_delta 기본 경로는 잘못된 설정이었고 첫 데이터 검사에서 중단됐다. 해당 실패 폴더는 보존하고 수정 실행은 새 폴더에서 시작한다.

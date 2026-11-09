@@ -13,13 +13,23 @@ RESUME_ROOT = None
 ROOT = Path(RESUME_ROOT) if RESUME_ROOT else BASE / (
     'complete_pca_full_' + datetime.now().strftime('%Y%m%d_%H%M%S') + '_' + uuid.uuid4().hex[:6])
 CODE = ROOT / 'code'
-PREPARED = BASE / 'prepared_delta'
+PREPARED = BASE / 'prepared_controls'
 STRUCTURE = D / 'struct_feats/struct_morgan2048.csv'
 SMILES = D / 'compound_pubchem_smiles.csv'
 for path in [PREPARED/'preparation.json', PREPARED/'pairs.csv.gz',
-             PREPARED/'vitro_expression.npy', PREPARED/'vivo_expression.npy', STRUCTURE, SMILES]:
+             PREPARED/'vitro_expression.npy', PREPARED/'vivo_expression.npy',
+             PREPARED/'vitro_conditions.csv', PREPARED/'vivo_conditions.csv', PREPARED/'probes.csv',
+             STRUCTURE, SMILES]:
     if not path.is_file():
         raise FileNotFoundError(f'{path}\nSet PREPARED, STRUCTURE or SMILES to the existing input file before running.')
+# This loader computes treated-minus-control itself; never feed precomputed deltas.
+import pandas as pd
+metadata = json.loads((PREPARED/'preparation.json').read_text())
+if metadata.get('representation') == 'treatment_minus_matched_control':
+    raise ValueError('Use prepared_controls, not prepared_delta: this runner calculates responses internally.')
+levels = pd.read_csv(PREPARED/'pairs.csv.gz', usecols=['level_target'])['level_target']
+if not levels.eq('Control').any():
+    raise ValueError('prepared_controls must contain target Control pairs; training has not started.')
 if RESUME_ROOT:
     if not (CODE/'scripts/compare_input_pca_full.py').is_file():
         raise FileNotFoundError(CODE)
